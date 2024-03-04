@@ -1,0 +1,107 @@
+  {
+      "victima":
+        { "preguntas":[
+            [
+
+            { "id": 1, "val": "Para mi" },
+            { "id": 2, "val": "Para mi hermano/a" },
+            { "id": 3, "val": "Para mi vecino/a" },
+            { "id": 4, "val": "Otro" }
+        ]],
+       
+        "estilos": [
+          { "background": "#0080A8" },
+          { "bgrChecked": "linear-gradient(180deg, #0080a8 0%, #0c5b74 100%)" }
+        ]
+      },
+
+      "castigo": 
+      { "preguntas":[
+        [
+          { "id": 1, "val": "Prohibiendote la comida" },
+          { "id": 2, "val": "Encerrando en una habitacion" },
+          { "id": 3, "val": "Ninguna" }
+      ]],
+
+        "estilos": [
+            { "background": "#10866D" },
+            { "bgrChecked":"linear-gradient(180deg, #10866D 0%, #0D5445 100%)" }
+        ]
+    },
+      "motivo": 
+      { "preguntas":[
+      [
+          { "id": 1, "val": "Amenazas" },
+          { "id": 2, "val": "Insultos diarios" },
+          { "id": 3, "val": "Castigos prohibiendo comida" },
+          { "id": 4, "val": "Encierros por mucho tiempo" },
+          { "id": 5, "val": "Tocamientos, manoseos, abrazos indeseados" },
+          { "id": 6, "val": "Hacer o ver cosas de manera obligada" },
+          { "id": 8, "val": "Otro motivo. Especificar" }
+          ]],
+          "estilos": [
+              { "background": "#10866D" },
+              { "bgrChecked":  "linear-gradient(180deg, #10866D 0%, #0D5445 100%)" }
+          ]
+        },
+      "agresor": 
+      { "preguntas":[
+        [
+          { "id": 1, "val": "Papá/Mamá" },
+          { "id": 2, "val": "Padrastro/Madrastra" },
+          { "id": 3, "val": "Tío/Tía" },
+          { "id": 4, "val": "Vecino/a" },
+          { "id": 5, "val": "Maestro/a" },
+          { "id": 6, "val": "Profesor/a" },
+          { "id": 7, "val": "Un amigo/a" },
+          { "id": 8, "val": "Un extraño/a" },
+          { "id": 9, "val": "Otro motivo. Especificar" }
+      ]],
+        "estilos": [
+            { "background": "#148575" },
+            { "bgrChecked": "linear-gradient(180deg, #148575 0%, #0A5348 100%)" }
+        ]
+      },
+
+      "genero_agresor": 
+        { "preguntas": [
+      [
+          { "id": 1, "val": "Mujer" },
+          { "id": 2, "val": "Varon" }
+      ]],
+        "estilos": [
+            { "background": "#168294" },
+            { "bgrChecked": "linear-gradient(180deg, #168294 0%, rgba(22, 130, 148, 0.61) 0.01%, #1A5D69 100%)" }
+        ]
+      },
+
+      "genero":
+      { "preguntas": [
+        [
+          { "id": 1, "val": "Mujer" },
+          { "id": 2, "val": "Varon" },
+          { "id": 3, "val": "Prefiero no decirlo" },
+          { "id": 4, "val": "Otro. especificar" }
+          ]],
+            "estilos": [
+                { "background": "#338373" },
+                { "bgrChecked":  "linear-gradient(180deg, #338373 0%, #126454 100%)" }
+            ]
+        },
+
+      "lugar":
+      {"preguntas": [
+        [  { "id": 1, "val": "Mi casa" },
+          { "id": 2, "val": "Casa del vecino" },
+          { "id": 3, "val": "Casa de un familiar" },
+          { "id": 4, "val": "Escuela" },
+          { "id": 5, "val": "Club" },
+          { "id": 6, "val": "Otro. Especificar" }
+      ]],
+        "estilos": [
+            { "background": "#0080A8" },
+            { "bgrChecked": "linear-gradient(180deg, #0080a8 0%, #0c5b74 100%)" }
+        ]
+      }
+    }
+  

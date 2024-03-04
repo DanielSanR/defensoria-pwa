@@ -1,0 +1,124 @@
+
+<ion-content class="ion-padding" [style.--background]="background">
+
+  <swiper #swiper [config]="config" (slideChangeTransitionEnd)="onAfterTransition()">
+ 
+   <!-- Slide 1 -->
+     <ng-template swiperSlide >
+  <ion-grid class="Grid-first"> 
+  
+   <ion-row>
+   <ion-col size="12" >
+   <ion-icon src="../../assets/icon/navigate.svg" class="Grid-first-icon"></ion-icon>
+    </ion-col>
+    <ion-col size="12" class="Grid-first-col-text">
+      <ion-text class="Grid-first-col-text-title">
+        <h1 class="Grid-first-col-text-title-h1">!Hola!</h1>
+        <p class="Grid-first-col-text-title-p">
+          Esta es una aplicación que te permitirá realizar un pedido de ayuda en el caso que estés pasando por alguna situación de violencia. 
+          Tené en cuenta que toda la información que brindes es confidencial y será utilizada solamente por las personas que procederán a ayudarte (ley 25326).
+          A continuación, tendrás que responder unas breves preguntas para que podamos ayudarte.
+        </p>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row class="Grid-first-row">
+    <ion-col class="Grid-first-row-col" size="12">
+      <ion-icon src="../../assets/icon/family-onboarding.svg" class="Grid-first-row-col-icon-onboarding"></ion-icon>
+    </ion-col>
+    <ion-col size="12" class="Grid-first-col-tyc">
+      <ion-text class="Grid-first-col-tyc-text">
+          <p> Apretando el boton “Continuar”, aceptas nuestros
+            <span class="Grid-first-col-tyc-text-note">“Terminos y Condiciones & Politicas de Privacidad”.</span>
+          </p>
+    </ion-text>
+    </ion-col>
+   </ion-row>
+   <ion-row class="Grid-first-button-row">
+    <ion-col size="12" class="Grid-first-button-row-col">
+      <ion-button class="Grid-first-button-row-col-nextBtn" (click)="next()">Continuar</ion-button>
+    </ion-col>
+   </ion-row>
+    <!-- <ion-row class="Grid-first-button-row">
+      <ion-col size="12" class="Grid-first-button-row-col">
+        <ion-button class="Grid-first-button-row-col-nextBtn" (click)="next()">Continuar</ion-button>
+      </ion-col>
+     </ion-row> -->
+  </ion-grid>
+</ng-template>    
+  <!-- Slide 2 -->
+   <ng-template swiperSlide>
+  <ion-grid class="Grid-first">
+   <ion-row>
+    <ion-col size="12">
+      <ion-icon src="../../assets/icon/navigate.svg" class="Grid-first-icon"></ion-icon>
+    </ion-col>
+   </ion-row>
+   <ion-row>
+    <ion-col size="12" class="Grid-first-col-text">
+      <ion-text class="Grid-first-col-text-title">
+        <h1 class="Grid-first-col-text-title-h1">Habilita tu ubicación.</h1>
+        <p class="Grid-first-col-text-title-p">
+          Este sitio utilizará tu ubicación para poder ayudarte.
+        </p>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row class="Grid-first-row">
+    <ion-col class="Grid-first-row-col" size="12">
+      <ion-icon src="../../assets/icon/location-onboarding.svg" class="Grid-first-row-col-icon-location-onboarding"></ion-icon>
+    </ion-col>
+    <ion-col size="12" class="Grid-first-col-tyc">
+      <ion-text class="Grid-first-col-tyc-text">
+          <p>
+            Este sitio web utiliza tu ubicación para poder brindarte una mejor experiencia y poder proceder correctamente con tu solicitud.
+          </p>
+    </ion-text>
+    </ion-col>
+   </ion-row>
+    <ion-row class="Grid-first-button-row">
+      <ion-col size="12" class="Grid-first-button-row-col">
+        <ion-button class="Grid-first-button-row-col-nextBtn" (click)="getLocation()">Habilitar ubicación</ion-button>
+      </ion-col>
+      <ion-col size="12" class="Grid-first-button-row-col">
+        <ion-button  fill="clear" class="Grid-first-button-row-col-skipBtn" (click)="skip()">
+            No, más tarde.
+        </ion-button>
+      </ion-col>
+     </ion-row>
+  </ion-grid>
+</ng-template>     
+<ng-template swiperSlide>
+  <ion-grid fullscreen="true" class="Grid-choice">
+    <ion-row class="Grid-choice-row" style="flex-grow: 1;">
+      <ion-col class="ion-text-center" size="12">
+        <ion-icon src="../../assets/icon/kid.svg" style="height:150px;width: 230px;"></ion-icon>
+      </ion-col>
+      <ion-col class="Grid-choice-row-col"  size="12">
+        <ion-button  class="Grid-choice-row-col-Btn" (click)="select('kid')"> SOY NIÑO / NIÑA</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="Grid-choice-row">
+      <ion-col class="ion-text-center" size="12">
+        <ion-icon src="../../assets/icon/teen.svg" style="height:150px;width: 230px;"></ion-icon>
+      </ion-col>
+      <ion-col class="Grid-choice-row-col"size="12">
+        <ion-button class="Grid-choice-row-col-Btn"  (click)="select('teen')" > SOY ADOLESCENTE</ion-button>
+      </ion-col>
+    </ion-row>
+<ion-row>
+
+<ion-col size="12" class="ion-text-center">
+  <ion-button class="Arrow-Btn" (click)="save()" [disabled]="!selected">
+    <ion-icon  class="Arrow-Btn-Icon" src="../../assets/icon/chevron-forward.svg"></ion-icon>
+</ion-button>
+</ion-col>
+</ion-row>
+
+  </ion-grid>
+  
+</ng-template>
+
+</swiper>  
+
+</ion-content>

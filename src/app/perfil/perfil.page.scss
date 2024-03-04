@@ -1,0 +1,117 @@
+
+ion-content{
+    --background:#F4F4F4;
+}
+
+.Grid{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    height: 100%; 
+    display: block; 
+    flex-flow: column;
+    &-perfil-col{
+        border-radius: 20px;
+           background: #5A4BB2;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        &-div{
+            width: 100%;
+            position: relative;
+            margin-bottom: 10px;
+         
+            &-image{
+                
+                border-radius: 50%;
+                margin-top: -60px;
+                bottom: calc(-1*(80px + 4px));
+                width: 115px;
+                height: 115px;
+                border-radius: 50%;
+                background: #f4f4f4;
+                border:solid 2px #FE910E;
+                margin-bottom: 30px;
+            }
+            &-label{
+                &-p{
+                    color:#fff;
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-bottom: 5px;
+                }
+            }
+            
+        }
+       
+    }
+}
+ 
+.datos{
+    width: 100%;
+    border-radius: 15px;
+    padding:10px;
+    --background: #ffff;
+    --border-radius: 15px;
+
+    &-label-p{
+        
+        padding:6px;
+        color:#000;
+        font-size: 18px;
+    }
+    &-datos-icon{
+            color:#000 !important; 
+    }
+ }
+
+ .form{
+  
+    width: 100%;
+    margin-top: 5px;
+ 
+    padding:0px;
+    --background: #ffff;
+   border-radius:15px;
+    border:1px solid #5A4BB2;
+    &-label-p{
+        
+        padding:0px;
+        color:#000;
+        font-size: 18px;
+    }
+    &-datos-icon{
+            color:#000 !important; 
+    }
+ }
+
+ .save{
+    font-weight: 100;
+            text-transform: none;
+            --background:#FE910E !important;
+            --color:#fff;
+            width: 100%;
+            height: 100%;
+            --padding-bottom: 0.5rem;
+            --border-radius: 0.2rem;
+            --padding-top: 0.5rem;
+            font-size: 1rem;
+           --border-radius:15px;
+ }
+
+
+
+.toolbar{
+    --background:#F4F4F4;
+    --color:#5A4BB2;
+    --border-color: none; --border-width: 0px !important;
+    --box-shadow:none;
+}
+
+.lista{
+    --inner-padding-end: 0;
+    border-radius:8px;
+    --border-radius:8px;
+    --background: #f4f4f4;
+}
+ 

@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+    <ion-grid [fixed]="true" class="Grid">
+        <ion-row   class="ion-justify-content-center ion-align-items-center">
+            <ion-col size="12">
+              <ion-item lines="none" detail='false' button class="datos" [routerLink]="['/principal/perfil']">
+                    <ion-label class="datos-label">
+                    <p class="datos-label-p">¡ Completa tus datos !</p>
+                      
+                    </ion-label>  
+                    <ion-icon class="datos-icon" slot="end" src="../../assets/icon/chevron-forward.svg" ></ion-icon>
+                </ion-item>
+        
+            </ion-col>
+        </ion-row>
+        <ion-row class="Grid-row">
+            <ion-col size="12" class="Grid-row-col">
+                <ion-icon src="../../assets/icon/home-icon1.svg" class="Grid-row-col-icon"></ion-icon>
+            </ion-col>
+        </ion-row>   
+        <ion-row class="Grid-row ion-justify-content-center">
+            <ion-col class="Grid-row-col" size="6" *ngFor="let item of values">
+            <ion-card class="Grid-row-col-card" (click)="redirect(item)">
+                <ion-card-header class="Grid-row-col-card-header ion-text-center">
+                    <div align="center">
+                    <ion-thumbnail style="width:35px;height:35px;margin-bottom:15px">
+                        <ion-icon src="../../assets/icon/{{item.icon}}" style="color:white;width: 25px;height: 25px;margin-top:15px">
+                        </ion-icon>
+                    </ion-thumbnail>
+                </div>
+                </ion-card-header>
+                <ion-card-content class="Grid-row-col-card-content">
+                   {{ item.text}}
+                </ion-card-content>
+            </ion-card>
+            </ion-col>
+            <ion-col class="ion-padding-top" size="6">
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

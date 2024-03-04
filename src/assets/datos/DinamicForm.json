@@ -1,0 +1,91 @@
+  [{
+    "key": "victima",
+    "title":"¿Para quién estas pidiendo ayuda?",
+    "type": "item",
+    "multiple": false,
+    "preguntas":[
+            { "id": 1, "val": "Para mi" },
+            { "id": 2, "val": "Para mi hermano/a" },
+            { "id": 3, "val": "Para mi vecino/a" },
+            { "id": 4, "val": "Otro" }
+            ]
+       
+    },
+    {
+        "key": "motivo",
+        "title":"Indicá el motivo por el cuál está pidiendo ayuda",
+        "type": "item",
+        "multiple": true,
+         "preguntas":[
+          { "id": 1, "val": "Amenazas" },
+          { "id": 2, "val": "Insultos diarios" },
+          { "id": 3, "val": "Castigos prohibiendo comida" },
+          { "id": 4, "val": "Encierros por mucho tiempo" },
+          { "id": 5, "val": "Tocamientos, manoseos, abrazos indeseados" },
+          { "id": 6, "val": "Hacer o ver cosas de manera obligada" },
+          { "id": 8, "val": "Otro motivo. Especificar" }
+          ]
+        } ,
+        {
+      "key": "agresor",
+      "type": "item",
+      "multiple": true,
+      "title":"¿Quién es la persona agresora?",
+      "preguntas":[
+        
+          { "id": 1, "val": "Papá/Mamá" },
+          { "id": 2, "val": "Padrastro/Madrastra" },
+          { "id": 3, "val": "Tío/Tía" },
+          { "id": 4, "val": "Vecino/a" },
+          { "id": 5, "val": "Maestro/a" },
+          { "id": 6, "val": "Profesor/a" },
+          { "id": 7, "val": "Un amigo/a" },
+          { "id": 8, "val": "Un extraño/a" },
+          { "id": 9, "val": "Otro motivo. Especificar" }
+       ]
+      },
+      {
+    "key": "genero_agresor",
+    "title":" Género de la persona agresora",
+    "type": "item",
+    "multiple": false,
+     "preguntas": [
+      
+          { "id": 1, "val": "Mujer" },
+          { "id": 2, "val": "Varon" }
+      ]
+      },
+      {
+        "key": "edad",
+        "type": "range",
+        "multiple": false,
+        "title": "Cuantos años tenes?"
+        }
+     , 
+      {
+        "key": "genero",
+        "type": "item",
+        "multiple": false,
+        "title":"Indica tu genero",
+        "preguntas": [
+          { "id": 1, "val": "Mujer" },
+          { "id": 2, "val": "Varon" },
+          { "id": 3, "val": "Prefiero no decirlo" },
+          { "id": 4, "val": "Otro. especificar" }
+          ]
+        },
+        {
+        "key": "lugar",
+        "title":"Lugar en que ocurre la violencia",
+        "type": "item",
+        "multiple": true,
+        "preguntas": [
+          { "id": 1, "val": "Mi casa" },
+          { "id": 2, "val": "Casa del vecino" },
+          { "id": 3, "val": "Casa de un familiar" },
+          { "id": 4, "val": "Escuela" },
+          { "id": 5, "val": "Club" },
+          { "id": 6, "val": "Otro. Especificar" }
+      ]      
+    }
+  ]

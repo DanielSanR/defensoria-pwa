@@ -1,0 +1,101 @@
+  [{
+    "key": "victima",
+    "title":"¿Quién necesita ayuda?",
+    "type": "item",
+    "multiple": false,
+    "icon": false,
+    "preguntas":[
+            { "id": 1, "val": "Yo" },
+            { "id": 2, "val": "Mi hermano/a" },
+            { "id": 3, "val": "Mi amigo/a" },
+            { "id": 4, "val": "Otra persona" }
+            ]
+       
+    },
+    {
+        "key": "motivo",
+        "title":"¿Por qué necesitas ayuda? Podes elegir más de una",
+        "type": "item",
+        "multiple": true,
+        "icon": true,
+         "preguntas":[
+          { "id": 1, "val": "Hay amenazas o insultos","icon":"../../assets/icon/form/question1p0.svg" },
+          { "id": 2, "val": "Se prohíbe la comida","icon":"../../assets/icon/form/question1p1.svg"  },
+          { "id": 3, "val": "Hay encierros por mucho tiempo","icon":"../../assets/icon/form/question1p2.svg"  },
+          { "id": 4, "val": "Hay golpes,cortes,quemaduras,etc.","icon":"../../assets/icon/form/question1p3.svg"  },
+          { "id": 5, "val": "Hay niños trabajando","icon":"../../assets/icon/form/question1p4.svg"  },
+          { "id": 6, "val": "Hay manoseos en el cuerpo o abrazos no agradables","icon":"../../assets/icon/form/question1p5.svg"  },
+          { "id": 8, "val": "Hacen ver cosas no agradables por la computadora","icon":"../../assets/icon/form/question1p6.svg"  },
+          { "id": 8, "val": "Otra razón","icon":"../../assets/icon/form/interrogation.svg" }
+          
+          ]
+        } ,
+        {
+      "key": "agresor",
+      "type": "item",
+      "multiple": true,
+      "icon": false,
+      "title":"¿Quién te lastima o lastima a quien conocés?",
+      "preguntas":[
+        
+          { "id": 1, "val": "Papá/Mamá" },
+          { "id": 2, "val": "Padrastro/Madrastra" },
+          { "id": 3, "val": "Tío/Tía" },
+          { "id": 4, "val": "Vecino/a" },
+          { "id": 5, "val": "Maestro/a" },
+          { "id": 6, "val": "Profesor/a" },
+          { "id": 7, "val": "Un amigo/a" },
+          { "id": 8, "val": "Un extraño/a" },
+          { "id": 9, "val": "Otro motivo. Especificar" },
+          { "id": 9, "val": "No lo quiero decir" }
+       ]
+      },
+      {
+    "key": "genero_agresor",
+    "title":" Género de la persona agresora",
+    "type": "item",
+    "multiple": false,
+    "icon": true,
+     "preguntas": [
+      
+          { "id": 1, "val": "Mujer","icon":"../../assets/icon/form/question4p1.svg"  },
+          { "id": 2, "val": "Varon","icon":"../../assets/icon/form/question4p2.svg"  }
+      ]
+      },
+      {
+        "key": "edad",
+        "type": "range",
+        "multiple": false,
+        "icon": false,
+        "title": "Cuántos años tenés?"
+        }
+     , 
+      {
+        "key": "genero",
+        "type": "item",
+        "multiple": false,
+        "icon": true,
+        "title":"¿Cuál es tu género?",
+        "preguntas": [
+          { "id": 1, "val": "Mujer","icon":"../../assets/icon/form/question6p1.svg"  },
+          { "id": 2, "val": "Varon","icon":"../../assets/icon/form/question6p2.svg" },
+          { "id": 3, "val": "Prefiero no decirlo","icon":"../../assets/icon/form/question6p3.svg" }
+          ]
+        },
+        {
+        "key": "lugar",
+        "title":"¿Dónde pasa todo?",
+        "type": "item",
+        "multiple": true,
+        "icon": true,
+        "preguntas": [
+          { "id": 1, "val": "Mi casa","icon":"../../assets/icon/form/question7p1.svg" },
+          { "id": 2, "val": "Casa del vecino","icon":"../../assets/icon/form/question7p2.svg" },
+          { "id": 3, "val": "Casa de un familiar","icon":"../../assets/icon/form/question7p3.svg" },
+          { "id": 4, "val": "Escuela","icon":"../../assets/icon/form/question7p4.svg" },
+          { "id": 5, "val": "Club","icon":"../../assets/icon/form/question7p5.svg" },
+          { "id": 6, "val": "En internet/ instagram/ facebook/ juegos","icon":"../../assets/icon/form/question7p6.svg" },
+          { "id": 7, "val": "Otro. Especificar","icon":"../../assets/icon/form/interrogation.svg" }
+      ]      
+    }
+  ]
