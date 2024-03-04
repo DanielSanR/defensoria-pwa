@@ -89,8 +89,7 @@ export class MapService {
    this.comisarias= data;
 
   if (this.comisarias.length > 0) {
-    for (const m of this.comisarias) {
-      console.log(m.longitud, m.latitud)
+    for (const m of this.comisarias) { 
       if (m.longitud && m.latitud) {
         let address = (m.descripcion.length > 1 ? m.descripcion : 'Direccion no disponible');
         let name = (m.nombre.length > 1 ? m.nombre : 'Nombre no disponible');
