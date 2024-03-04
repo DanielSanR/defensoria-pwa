@@ -36,11 +36,11 @@ interface Properties {
 
 export class MapService {
   map!: Leaflet.Map;
-  properties = [] as Properties[]
+  comisarias = [] as any[]
   hospitales = [] as Properties[];
   coord: Observable<any> | undefined;
   ltlng: BehaviorSubject<any> = new BehaviorSubject(null);
-   private greenIcon = new Leaflet.Icon({
+   private comisariaIcon = new Leaflet.Icon({
     iconUrl: '../../assets/icon/policia.svg',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [42, 42],
@@ -86,17 +86,17 @@ export class MapService {
   }).addTo(this.map);
   fetch('./assets/datos/comisarias.json').then(res => res.json())
   .then(data=>{
-   this.properties= data;
+   this.comisarias= data;
 
-  if (this.properties.length > 0) {
-    for (const m of this.properties) {
-      if (m.Longitud && m.Latitud) {
-        let lt = [m.Longitud, m.Latitud];
-        let address = (m.Descripcion.length > 1 ? m.Descripcion : 'Direccion no disponible');
-        let name = (m.Nombre.length > 1 ? m.Nombre : 'Nombre no disponible');
-        let city = (m.Ciudad.length > 1 ? m.Ciudad : 'Ciudad no disponible');
-        let phone = (m.Telefono.length > 1 ? m.Telefono : 'Telefono no disponible');
-        Leaflet.marker([m.Latitud, m.Longitud], { icon: this.greenIcon }).addTo(this.map)
+  if (this.comisarias.length > 0) {
+    for (const m of this.comisarias) {
+      console.log(m.longitud, m.latitud)
+      if (m.longitud && m.latitud) {
+        let address = (m.descripcion.length > 1 ? m.descripcion : 'Direccion no disponible');
+        let name = (m.nombre.length > 1 ? m.nombre : 'Nombre no disponible');
+        let city = (m.ciudad.length > 1 ? m.ciudad : 'Ciudad no disponible');
+        let phone = (m.telefono.length > 1 ? m.telefono : 'Telefono no disponible');
+        Leaflet.marker([m.longitud,m.latitud],{icon:this.comisariaIcon}).addTo(this.map)
           .bindPopup(`<div style="font-weight: bold; text-align: center;">COMISARIA</div><hr>` +
             `<strong>Ciudad: </strong>${city}<br>` +
             `<strong>Nombre: </strong>${name}<br>` +
@@ -105,18 +105,8 @@ export class MapService {
       }
     }
   }
-  if (this.map) {
-    let circle = Leaflet.circleMarker(cords, {
-      radius: 50,
-      color: 'cornflowerblue',
-      fillOpacity: 0.2,
-      opacity: 0.5
-    }).addTo(this.map);
-  }
+
     });
-/*  .catch( err =>{
-  console.error(err);
- }); */
  fetch('./assets/datos/hospitales.json').then(res => res.json())
   .then(data=>{
    this.hospitales= data;
@@ -134,22 +124,15 @@ export class MapService {
       `<strong>Telefono: </strong>${ phone }<br><hr>`);
    }
     });
+    if (this.map) {
+      let circle = Leaflet.circleMarker(cords, {
+        radius: 50,
+        color: 'cornflowerblue',
+        fillOpacity: 0.2,
+        opacity: 0.5
+      }).addTo(this.map);
+    }
 
 }
 }
 
-/*     new ELG.reverseGeocode()
-    .latlng(lt)
-    .run( (error, result, response)=>{
-      console.log(error);
-      let address = ( result.address.Address.length> 1 ? result.address.Address : 'Direccion no disponible');
-      let name = (m.nombre.length > 1 ? m.nombre : 'Nombre no disponible');
-      let city = ( result.address.City.length> 1 ? result.address.City : 'Ciudad no disponible');
-      let phone = (m.telefono.length > 1 ? m.telefono : 'Telefono no disponible');
-      Leaflet.marker([m.longitud,m.latitud],{icon:this.greenIcon}).addTo(this.map)
-      .bindPopup(`<div style="font-weight: bold; text-align: center;">COMISARIA</div><hr>` +
-      `<strong>Ciudad: </strong>${ city }<br>` +
-      `<strong>Nombre: </strong>${ name}<br>` +
-      `<strong>Direccion: </strong>${ address}<br>` +
-      `<strong>Telefono: </strong>${ phone }<br><hr>`);
-    }); */

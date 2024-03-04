@@ -62,8 +62,11 @@ export class DeviceService {
  
   updateDeviceForm(form : any){
     let currentDevice = this.getCurrentDevice()
+    currentDevice.quiz = {...form};
+    currentDevice.form_update = true;
+    this.deviceSubject.next(currentDevice)
+    this.storage.saveStorage('device', JSON.stringify(currentDevice));
     
-    console.log(form);
   }
 
 }

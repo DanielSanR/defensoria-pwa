@@ -23,7 +23,6 @@ export class StorageService {
     } else {
       this.isOnboardingDone.next(false);
     }
-    console.log('onboarding', this.isOnboardingDone.value);
   }
   async init() {
     const storage = await this.storage.create();

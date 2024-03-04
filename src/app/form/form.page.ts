@@ -126,22 +126,14 @@ public config: SwiperOptions ={
       gender: this.checked(this.dinamicForm[5]),
       place: this.checked(this.dinamicForm[6]),
     };
-    console.log(formTemp);
     const t = await this.mailService.sendForm('form',formTemp);
     if(t){
       this.swiper?.swiperRef.slideNext(500)
       this.finalized = true;
     }
     else { this.finalized = false;}
-    /* const val = await this.formService.setForm(formTemp);
-    if(val){
-      this.swiper?.swiperRef.slideNext(500);
-      this.finalized = true;
-    }else {
-      this.finalized = true;
-    } */
-  
   }
+  
   onAfterTransitionEnd(){
     setTimeout(() => {
       this.background = '#5A4BB2';

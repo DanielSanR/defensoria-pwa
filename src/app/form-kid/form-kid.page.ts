@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { OnInit,ChangeDetectorRef, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { RangeCustomEvent, LoadingController } from '@ionic/angular';
@@ -49,7 +50,8 @@ public dinamicForm: PreguntasForm[] = PreguntasformArr;
   };
   constructor(private router: Router,private formService: FormService,
     private cd: ChangeDetectorRef, private loadingController: LoadingController,
-    private sendMailService : SendmailService, private toastService :ToastService) { }
+    private sendMailService : SendmailService, private toastService :ToastService,
+    private mailService: SendmailService) { }
 
   ngOnInit() {
   }
@@ -73,7 +75,6 @@ public dinamicForm: PreguntasForm[] = PreguntasformArr;
     this.selected = false;
     this.router.navigateByUrl('/principal/inicio');
   }
-  //check
    filterItems(arr) {
     return arr.filter((el) => el).map((e) => e.isChecked).includes(true);
   }
@@ -113,7 +114,7 @@ public dinamicForm: PreguntasForm[] = PreguntasformArr;
     await this.clearCheckbox();
     this.finalized = false;
     this.swiper.swiperRef.destroy(true, true);
-       loading.dismiss();
+    loading.dismiss();
   }
   async enviar(){
 
@@ -126,24 +127,15 @@ public dinamicForm: PreguntasForm[] = PreguntasformArr;
       gender: this.checked(this.dinamicForm[5]),
       place: this.checked(this.dinamicForm[6]),
     };
-    console.log(formTemp);
-    //guardamos en cache
-    const formCache = await this.formService.setForm(formTemp);
-    if(formCache){
-      //const res = await this.sendMailService.sendForm();
-    /*   if(res){
-        this.toastService.toast('Datos guardados correctamente','success');
-      }
-      else {
-        this.toastService.toast('Hubo un error al guardar el formulario :(','danger');
-      } */
-      this.swiper.swiperRef.slideNext(500);
+    const t = await this.mailService.sendForm('form',formTemp);
+    if(t){
+      this.swiper?.swiperRef.slideNext(500)
       this.bandera= false;
       this.finalized = true;
-    }else {
-      this.finalized = true;
-      this.bandera= false;
     }
+    else { this.finalized = true;
+    this.bandera= false;}
+
 
   }
   onAfterTransitionEnd(){

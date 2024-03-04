@@ -75,25 +75,7 @@ async getSelected(): Promise<boolean>{
          return Promise.resolve(false);
       }
   }
-async setForm(form: any){
-    const id = await this.storageService.getStorage2('id');
-    const quiz = await this.storageService.setStorage('quiz',form);
-    await this.update(form,'form');
-    try{
-      //Simulamos que guarda
-      const response = true
-      if(response){
-       this.storageService.saveStorage('form_update',true);
-       this.form.next(form);
-       return Promise.resolve(true);
-       }
-     }
-     catch{
-       this.storageService.saveStorage('form_update',false);
-       return Promise.resolve(false);
-     }
-     return Promise.resolve(false);
-}
+
 
 getForm(){
   return this.form.asObservable();
