@@ -68,17 +68,17 @@
     <ion-content class="ion-padding"  style="--background: #f4f4f4;">
      <ion-list  style="background: #f4f4f4;padding:0px;">
       <ion-list-header style="--background: #5A4BB2;border-radius: 8px;">
-          <ion-label align="center" style="">
+          <ion-label align="center">
             <h2 style="font-size: 16px;font-weight: 500;color:#fff">Configuración</h2>
           </ion-label>
       </ion-list-header>
-      <ion-item class="lista" detail='false' button   (click)="changeForm()" lines="none">
+      <ion-item class="lista" detail='false' button  (click)="changeForm()" lines="none">
         <ion-label>
           <p>Elegír otro Formulario</p>
         </ion-label>
         <ion-icon style="color:#5A4BB2;" name="chevron-forward-outline"></ion-icon>
       </ion-item>
-      <ion-item class="lista" detail='false' button   lines="none">
+      <ion-item class="lista" detail='false' button (click)="deleteData()"  lines="none">
         <ion-label>
           <p>Eliminar mis datos 
         </ion-label>

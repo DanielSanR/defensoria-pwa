@@ -16,7 +16,7 @@ SwiperCore.use([Pagination,Navigation,Autoplay,EffectFade]);
   templateUrl: './onboarding.page.html',
   styleUrls: ['./onboarding.page.scss'],
 })
-export class OnboardingPage implements OnInit,OnDestroy {
+export class OnboardingPage implements OnInit {
   @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
   public background = '';
   key = 'AAPK895f48d83b5543ab80c5d058d510d5971uhYgfFtvdNCIB-no6TgvFEbUE-H-h6ZfPfs9GOWCpAtsp9cTGA8zFsd2DiPWwPf';
@@ -48,6 +48,7 @@ export class OnboardingPage implements OnInit,OnDestroy {
 ) { }
 
   ngOnInit() {
+    console.log("inicio")
     this.background = '#F4F4F4';
   }
   next(){
@@ -94,14 +95,15 @@ export class OnboardingPage implements OnInit,OnDestroy {
 
     
       select(event: any){
+        console.log(this.swiper?.swiperRef.activeIndex);
         this.selected = event;
       }
       skip(){
         this.swiper?.swiperRef.slideNext(500);
       }
     
-      ngOnDestroy(){
-        this.swiper?.swiperRef.destroy();
+      ionViewDidLeave(){
+        this.swiper?.swiperRef.slideTo(0,500);
       }
     
       onAfterTransition() {

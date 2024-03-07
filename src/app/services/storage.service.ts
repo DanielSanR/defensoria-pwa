@@ -67,7 +67,7 @@ export class StorageService {
     async clearData(){
       this.storage.clear();
       this.isOnboardingDone.next(false);
-    //  this.router.navigateByUrl('/',{replaceUrl: true})
+      
     }
 
 }

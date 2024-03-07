@@ -17,13 +17,10 @@ export class TabsPage implements OnInit {
   constructor(public platform: Platform,public formService: FormService) {}
 
   ngOnInit() {
-    const loaded = this.formService.getSelected();
-    if(loaded){
       const sub = this.formService.getSelectedData().subscribe((data) => {
         this.route = data;
       });
       this.$obs.add(sub);
-    }
    this.width= this.platform.width();
   }
 
@@ -36,7 +33,6 @@ export class TabsPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    this.$obs.unsubscribe();
     this.propagateToActiveTab('ionViewDidLeave');
   }
 

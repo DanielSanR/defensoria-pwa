@@ -17,9 +17,7 @@ export class FormGuard implements CanActivate {
     filter(val => val !== null),
     take(1),
     map(selectedUser =>{
-      console.log(selectedUser);
         if(!selectedUser){
-          console.log(selectedUser);
           return this.router.parseUrl('/');
         }
         else{

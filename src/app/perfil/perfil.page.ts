@@ -39,7 +39,6 @@ export class PerfilPage implements OnInit {
          address: ['',[Validators.required]],
         });
         this.loaded = await this.userService.getUser();
-        console.log(this.loaded);
         if(this.loaded){
           const sub =  this.userService.getData().subscribe( res=> {this.patchForm(res);});
           this.$obs.add(sub);
@@ -52,20 +51,12 @@ export class PerfilPage implements OnInit {
       }
       else{
         const result = await this.sendmail.sendForm('user',this.myForm.value);
-        //const userCache = await this.userService.setUser(this.myForm.value);
-       /*  if(userCache){
-          const res = await this.sendmail.sendForm();
-          if(res){
-          this.toastService.toast('Datos guardados correctamente','success');
+        if(result){
+          this.toastService.toast('Tus datos se guardaron correctamente','success');
         }
         else{
           this.toastService.toast('Hubo un error al guardar tus datos :(','danger');
         }  
-        } */
-       /*  else{
-          this.toastService.toast('Error al guardar los datos en caché','danger');
-        } */
-        
       }
      
     }
@@ -88,9 +79,9 @@ export class PerfilPage implements OnInit {
       modal.present();
       await modal.onWillDismiss();
     }
-    async changeForm(){
+    async deleteData(){
       const alert = await this.alertController.create({
-        header: 'Estás seguro?',
+        header: 'Estás seguro de eliminar tus datos?',
         buttons: [
           {
             text: 'No',
@@ -100,7 +91,8 @@ export class PerfilPage implements OnInit {
             text: 'Si',
             cssClass: 'alert-button-confirm',
             handler: () => {
-             // this.userService.clearData();
+              this.deviceService.clearDevice();
+              this.router.navigateByUrl('/onboarding',{replaceUrl: true})
             },
           },
         ],
@@ -109,5 +101,25 @@ export class PerfilPage implements OnInit {
       await alert.present();
     }
 
+     async changeForm(){
+      const alert = await this.alertController.create({
+        header: 'Estás seguro de cambiar el formulario?',
+        buttons: [
+          {
+            text: 'No',
+            cssClass: 'alert-button-cancel',
+          },
+          {
+            text: 'Si',
+            cssClass: 'alert-button-confirm',
+            handler: async () => {
+                await this.deviceService.changeForm();
+            },
+          },
+        ],
+      });
+  
+      await alert.present();
+     }
     
 }
