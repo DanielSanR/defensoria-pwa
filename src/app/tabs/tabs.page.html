@@ -1,5 +1,5 @@
-<ion-tabs #tabs (ionTabsDidChange)="tabChange(tabs)">
-  <ion-tab-bar slot="bottom" mode="ios">
+<ion-tabs *ngIf="!isDesktop"  #tabs (ionTabsDidChange)="tabChange(tabs)">
+  <ion-tab-bar mode="ios">
      
       <ion-tab-button *ngIf="(route === 'teen')" [routerLink]="['/formulario']"  layout="icon-top">
           <ion-icon src="../../assets/icon/microfono.svg" ></ion-icon>
@@ -28,3 +28,36 @@
       </ion-tab-button>  
   </ion-tab-bar>
 </ion-tabs>
+
+<div *ngIf="isDesktop" class="desktop">
+    <ion-header class="ion-no-border">
+        <ion-toolbar style="border-bottom: 0px" >
+            <ion-row class="ion-align-items-center" style="padding-top: 25px;" >
+                <ion-col size="3" class="col">
+                    <img src="../../assets/icon/yocuento-desktop.svg" alt="logo" class="col-logo">
+                </ion-col>
+                <ion-col size="9">
+                    <div class="navbar" class="ion-text-center">
+                        <ion-button fill="clear" routerLink="/principal/inicio" routerDirection="root" routerLinkActive="active-link" class="link">
+                            Inicio
+                        </ion-button>
+                        <ion-button fill="clear" routerLink="/formulario" routerDirection="root" routerLinkActive="active-link" class="link">
+                                Formulario
+                        </ion-button>
+                        <ion-button fill="clear" routerLink="/principal/mapa" routerDirection="root" routerLinkActive="active-link" class="link">
+                            Mapa
+                        </ion-button>
+                        <ion-button fill="clear" routerLink="/principal/numeros-utiles" routerDirection="root" routerLinkActive="active-link" class="link">
+                            Teléfono
+                        </ion-button>
+                        <ion-button fill="clear" routerLink="/principal/perfil" routerDirection="root" routerLinkActive="active-link" class="link">
+                            Perfil
+                        </ion-button>
+                        
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-toolbar>
+        </ion-header>
+    <ion-router-outlet class="desktop-wrapper"></ion-router-outlet>
+</div>

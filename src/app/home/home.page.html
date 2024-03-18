@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
-    <ion-grid [fixed]="true" class="Grid">
-        <ion-row   class="ion-justify-content-center ion-align-items-center">
+    <ion-grid   class="Grid">
+        <ion-row  class="ion-justify-content-center ion-align-items-center ion-hide-xl-up">
             <ion-col size="12">
               <ion-item lines="none" detail='false' button class="datos" [routerLink]="['/principal/perfil']">
                     <ion-label class="datos-label">
@@ -12,18 +12,32 @@
         
             </ion-col>
         </ion-row>
-        <ion-row class="Grid-row">
+        <ion-row class="Grid-row ion-justify-content-left ion-align-items-left ion-hide-xl-down">
+            <ion-label class="titulo">
+                <h2 class="titulo-h2">
+                    ¡Hola, bienvenido!
+                </h2>
+                <h4 class="titulo-h4">
+                    Completa tus datos ingresando a <strong class="titulo-h4-strong"> Tu Perfil</strong>
+                </h4>
+            </ion-label>
+        </ion-row>
+        <ion-row class="Grid-row ion-hide-xl-up">
             <ion-col size="12" class="Grid-row-col">
                 <ion-icon src="../../assets/icon/home-icon1.svg" class="Grid-row-col-icon"></ion-icon>
             </ion-col>
         </ion-row>   
         <ion-row class="Grid-row ion-justify-content-center">
-            <ion-col class="Grid-row-col" size="6" *ngFor="let item of values">
+            <ion-col class="Grid-row-col" SizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3" *ngFor="let item of values">
             <ion-card class="Grid-row-col-card" (click)="redirect(item)">
                 <ion-card-header class="Grid-row-col-card-header ion-text-center">
                     <div align="center">
-                    <ion-thumbnail style="width:35px;height:35px;margin-bottom:15px">
+                    <ion-thumbnail class="ion-hide-xl-up" style="width:35px;height:35px;margin-bottom:15px">
                         <ion-icon src="../../assets/icon/{{item.icon}}" style="color:white;width: 25px;height: 25px;margin-top:15px">
+                        </ion-icon>
+                    </ion-thumbnail>
+                    <ion-thumbnail class="ion-hide-xl-down"  style="width:109px;height:109px;margin-bottom:15px">
+                        <ion-icon src="../../assets/icon/{{item.icon}}" style="color:white;width: 99px;height: 99px;margin-top:15px">
                         </ion-icon>
                     </ion-thumbnail>
                 </div>

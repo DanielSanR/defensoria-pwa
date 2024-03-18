@@ -11,8 +11,7 @@ ion-content {
     background: #F4F4F4;
     --background:url("../../assets/images/kid-teen.svg") no-repeat center center / cover;
 
-}
-
+} 
 //Primer slider
 //START GRID FOR SLIDER 1 AND 2
 .Grid-first{
@@ -26,20 +25,34 @@ ion-content {
         padding-top:0.5rem;
         &-title{
             &-h1{
-                margin-top: 0rem !important;
-                font-size: 1.2rem !important;
+                margin-top: 0rem ;
+                font-size: 1.2rem;
                 font-weight: 700;
             }
             &-p{
                 text-align: justify;
-                margin-top: 0.5rem !important;
+                margin-top: 0.5rem ;
                 font-weight: 400;
-                font-size: 0.9rem !important;
+                font-size: 0.9rem;
                 line-height: 120%; 
             } 
         }
     }
     &-row{
+        flex-grow: 1;
+        &-col{
+            padding-top:1rem;
+            &-icon-onboarding{
+                height:200px;
+                width: 300px;
+            }
+            &-icon-location-onboarding{
+                height:300px;
+                width: 300px;
+            }
+        }
+    }
+    &-row2{
         flex-grow: 1;
         &-col{
             padding-top:1rem;
@@ -69,7 +82,7 @@ ion-content {
         &-col-nextBtn{
             font-weight: 100;
             text-transform: none;
-            --background:#FE910E !important;
+            --background:#FE910E;
             --color:#fff;
             width: 100%;
             height: 100%;
@@ -93,18 +106,21 @@ ion-content {
     height: 100%; 
     display: flex; 
     flex-flow: column;
+    justify-content: center;
+    align-items: center;
     &-row{
         text-align: center;
-        padding-top: 50px !important;
+        padding-top: 50px;
         height: 100%;
         &-col-Btn{
             width: 80%;
+            max-width: 336px;
             height: auto;
             --padding-top:11px;
             --padding-bottom:11px;
             font-weight: 400;
             font-size: 18px;
-            --border-radius: 15px;
+            --border-radius: 8px;
             --background: #fff;
             color:#000;
             --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
@@ -113,7 +129,7 @@ ion-content {
                     ion-button:hover,ion-button:focus{
                         &::part(native){
                         --background:#FE910E;
-                        color:#fff !important; 
+                        color:#fff; 
                     }}
    
  }
@@ -129,20 +145,134 @@ ion-content {
         position: absolute;
     }
  }
- //media for less tan 360, for adjust font-size
-   @media (max-width:376px ) {
+  /*  @media (max-width:376px ) {
     .Grid-choice-row-col-Btn{
         font-size: 16px;
 
      }
-}
-//media for width 412 or more, for adjust padding of grid
-@media (min-width:376px ) {
+} */
  
+}
 
-     
-}  
-}  
+
+
+@media (min-width:1200px ) {
+.Grid-first{
+    display: flex;
+    flex-flow: column nowrap;
+    padding-left: 0px;
+    &-row {
+        padding-left: 0.5rem;
+        padding-right: 1rem;
+        min-height: 718px;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: flex-start;
+        &-col {
+            padding: 1rem;
+            /* min-height: 370px !important;
+            max-width: 440px !important;
+            max-height: 600px !important;  */
+            &-text {
+                    padding-top: 1rem;
+                    align-self: center;
+                    &-title {
+                        &-h1 {
+                            font-size: 40px !important;
+                            font-weight: 700 !important;
+                            padding-bottom: 7px;
+                        } 
+                        &-p {
+                            max-width: 567px;
+                            font-size: 18px;
+                            font-weight: 600;
+                        }
+                    }}
+            &-icon-onboarding{
+                height: 448px;
+                width: 100%;
+            }
+            &-location-onboarding{
+                width: 100%;
+                height: 403px;
+            }  
+            
+        }
+        &-icon{
+            padding-left: 121px;
+            width: 123px;
+            height: 96px;
+        }
+    }
+    &-row2 {
+        flex-direction: row-reverse;
+        justify-content: right; 
+        align-items: right;  
+        
+        &-col {
+            padding: 2rem;
+        }
+    }
+    &-button-row {
+        margin-top: auto;
+        margin-bottom:auto;
+        padding-bottom: 92px; 
+        width: 100%;  
+        justify-content: right;
+        &-col{
+            text-align: left;
+        }
+        &-col-nextBtn, &-col-skipBtn {
+            
+            max-width: 571px; 
+            margin: auto; 
+            width: 100%;
+        }
+    }
+}
+}   
+
+@media (min-width:1200px ) {
+    .Grid-choice{
+      /*   height: 100%;  */
+       /*  display: flex; 
+        flex-flow: column;
+        justify-content: center;
+        align-items: center; */
+        &-row{
+            width:100%;
+            text-align: center;
+            justify-content: space-between;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            margin-top: -10px;
+            &-col{
+                padding-top: 0px;
+                padding-bottom: 0px;
+                max-width: 550px !important;
+
+                &-Btn{
+                    margin: 0px;
+                    width: 80%;
+                    max-width: 336px;
+                    height: auto;
+                    --padding-top:5px;
+                    --padding-bottom:5px;
+                    font-weight: 700;
+                    font-size: 20px;
+                    --border-radius: 8px;
+                    --background: #FE910E;
+                    color:#fff;
+                    --ripple-color: #fff;
+   
+
+                            }
+                            
+                        }
+                    }
+        }
+    }
+ 
 /* 
 ion-grid {
     --ion-grid-padding: 20px;

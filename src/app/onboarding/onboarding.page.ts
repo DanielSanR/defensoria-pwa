@@ -28,9 +28,6 @@ export class OnboardingPage implements OnInit {
   public config: SwiperOptions ={
     allowTouchMove:false,
     keyboard:true,
-     pagination:{
-      type: 'progressbar'
-    },
     effect: 'fade',
         fadeEffect: {
             crossFade: true
@@ -94,9 +91,11 @@ export class OnboardingPage implements OnInit {
     
 
     
-      select(event: any){
-        console.log(this.swiper?.swiperRef.activeIndex);
+      select(event: any,type: string){
         this.selected = event;
+        if(type === 'desktop'){
+          this.save();
+        }
       }
       skip(){
         this.swiper?.swiperRef.slideNext(500);

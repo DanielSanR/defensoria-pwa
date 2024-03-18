@@ -2,6 +2,7 @@
     background: white;
 }
 
+
 ion-tab-bar{
     position: relative;
     margin: 0 auto;
@@ -61,4 +62,31 @@ ion-tab-button {
 }
 
 
- 
+@media (min-width:1200px){
+    .link{
+        --color:#000;
+        font-size: 18px;
+        text-transform: capitalize;
+        font-weight: 700;
+    }
+    .active-link{
+        --color:#FE910E;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .col{
+        width: 100%;
+        padding-left: 150px;
+        &-logo{
+            width: 123px;
+            height: 96px;
+        
+        }
+    }
+    
+    .desktop{
+        ion-router-outlet{
+            margin-top: 140px; 
+        }
+    }
+} 

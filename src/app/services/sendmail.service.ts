@@ -33,6 +33,7 @@ export class SendmailService {
     if(type == 'user'){
       await this.deviceService.updateDeviceUser(data);
       this.storageService.getStorage2('device').then(value => {
+        //aca "enviaria" a la API, la idea es integrarlo tambien a envio de mails, por eso este service de sendmail
         console.log(value);
         return Promise.resolve(true);
       }); 
@@ -40,6 +41,7 @@ export class SendmailService {
     if(type =='form'){
       await this.deviceService.updateDeviceForm(data);
       this.storageService.getStorage2('device').then(value =>{
+        //aca "enviaria" a la API, la idea es integrarlo tambien a envio de mails, por eso este service de sendmail
         console.log(value)
         return Promise.resolve(true);
       })

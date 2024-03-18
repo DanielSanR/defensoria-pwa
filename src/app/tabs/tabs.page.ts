@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonTabs, Platform } from '@ionic/angular';
 import { FormService } from '../services/form.service';
 import { Subscription } from 'rxjs';
+import { ScreensizeService } from '../services/screensize.service';
 
 @Component({
   selector: 'app-tabs',
@@ -9,12 +10,22 @@ import { Subscription } from 'rxjs';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage implements OnInit {
-
+  isDesktop: boolean;
   public width: number;
   route: string;
   public $obs = new Subscription();
   private activeTab?: HTMLElement;
-  constructor(public platform: Platform,public formService: FormService) {}
+  constructor(public platform: Platform,public formService: FormService,
+    private screenSizeService: ScreensizeService) {
+      this.screenSizeService.isDesktopView().subscribe(isDesktop => {
+        console.log(isDesktop)
+        if (this.isDesktop && !isDesktop) {
+          window.location.reload();
+        }
+        this.isDesktop = isDesktop;  
+      });
+        
+    }
 
   ngOnInit() {
       const sub = this.formService.getSelectedData().subscribe((data) => {

@@ -34,6 +34,7 @@ align-content: center;
 &-row{
   margin-bottom: 30px;
   height: 100%;
+  width: 100%;
   align-content: center;
   align-items: center;
   text-align: center;
@@ -104,12 +105,57 @@ ion-button:hover,ion-button:focus{
       max-width: 240px;
   }
 
-}
+}  
 @media  (min-width:280px) and (max-width:359px)  {
 ion-button{
   min-height: 55px;
   font-size: 12px;
   max-width: 240px;
+  }
 }
 
-}
+ 
+
+@media (min-width:1200px ) {
+  .Grid{ 
+    margin-left: 141px;
+    margin-right: 140px;
+    &-row{
+      margin-bottom: 5px;
+      
+      height: 100%;
+      width: 100%;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0px;
+      
+      &-col-card{
+        width: 100%;
+        height: 100%;
+        &-content{
+          
+           font-size: 36px;
+           font-weight: 700;
+           white-space: nowrap;
+      }
+            }
+      }
+      &-row:last-child{
+        padding-bottom: 200px;
+      }
+    }
+  }
+  .titulo{
+    &-h2{
+      font-weight: 700;
+      font-size: 40px;
+    }
+    .h4{
+      font-size: 20px;
+      &-strong{
+        font-size: 20px;
+      }
+    }
+  }
+ 

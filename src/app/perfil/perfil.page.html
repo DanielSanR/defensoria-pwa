@@ -1,69 +1,92 @@
 
  
 <ion-content> 
-  <ion-grid style="display: flex;flex-direction: row-reverse;padding: 0px;">
-    <ion-row>
-      <ion-col size="12">
-         <ion-button id="open-popover" class="toolbar" ><ion-icon slot="icon-only"  name="ellipsis-horizontal"></ion-icon></ion-button></ion-col>
-    </ion-row>
-  </ion-grid>
 <form style="padding-top:0px" [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
-<ion-grid class="Grid ">
-  
-  <ion-row class="Grid-perfil">
-    <ion-col class="Grid-perfil-col" size="12">
-      <div class="Grid-perfil-col-div">
-      <img src="../../assets/images/perfil.png" class="Grid-perfil-col-div-image">
-        <ion-label class="Grid-perfil-col-div-label">
-          <p class="Grid-perfil-col-div-label-p">¡ Hola,</p>
-          <p class="Grid-perfil-col-div-label-p">{{ loaded ? title : 'Queremos Conocerte más'}} !</p>
+<ion-grid class="Grid">
+  <ion-row class="Grid-row-perfil">
+    <ion-button class="Grid-row-perfil-button ion-hide-xl-up" id="open-popover" ><ion-icon slot="icon-only"  name="ellipsis-horizontal" ></ion-icon></ion-button>
+    <ion-col class="Grid-row-perfil-img-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="2" sizeXl="2">
+      <div class="Grid-row-perfil-img-col-div">
+      <img src="../../assets/images/perfil.png" class="Grid-row-perfil-img-col-div-image">
+      </div>
+    </ion-col>
+    <ion-col class="Grid-row-perfil-label-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="10" sizeXl="10">
+        <ion-label class="Grid-row-perfil-label-col-label ion-hide-xl-up">
+          <p class="Grid-row-perfil-label-col-label-p">¡ Hola,</p>
+          <p class="Grid-row-perfil-label-col-label-p">{{ loaded ? title : 'Queremos Conocerte más'}} !</p>
         </ion-label>
-  </div>
-</ion-col>
-<ion-col size="12">
-  <ion-item detail='false' button class="datos" lines="none" [routerLink]="['/principal/preguntas-frecuentes']">
-    <ion-label class="datos-label ion-text-center">
-    <p class="datos-label-p">Tips Y consejos </p>
-    </ion-label>  
-    <ion-icon class="datos-icon" slot="end" src="../../assets/icon/chevron-black.svg" ></ion-icon>
-</ion-item> 
-</ion-col>
-<ion-col size="12">
-  <ion-item  class="form" lines="none" >
-    <ion-label class="form-label" position="stacked">Nombre</ion-label>
-    <ion-input class="form-label-p" formControlName="name" placeholder="Mi nombre es ..."></ion-input>
-    <ion-icon src="../../assets/icon/nameForm.svg"slot="start"></ion-icon>
-</ion-item>
-</ion-col>
-<ion-col size="12">
-  <ion-item  class="form" lines="none" >
-    <ion-label class="form-label" position="stacked">Telefono</ion-label>
-    <ion-input class="form-label-p" formControlName="phone" placeholder="Mi telefono es ..."></ion-input>
-    <ion-icon src="../../assets/icon/phoneForm.svg"slot="start"></ion-icon>
-</ion-item>
-</ion-col>
-<ion-col size="12">
-  <ion-item  class="form" lines="none" >
-    <ion-label class="form-label" position="stacked">Correo electrónico</ion-label>
-    <ion-input class="form-label-p" formControlName="email" placeholder="Mi correo  es ..."></ion-input>
-    <ion-icon src="../../assets/icon/mailForm.svg"slot="start"></ion-icon>
-</ion-item>
-</ion-col>
-<ion-col size="12">
-  <ion-item  class="form" lines="none" >
-    <ion-label class="form-label" position="stacked">Dirección</ion-label>
-    <ion-input class="form-label-p" formControlName="address" placeholder="Mi dirección es ..."></ion-input>
-    <ion-icon src="../../assets/icon/locationForm.svg"slot="start"></ion-icon>
-</ion-item>
-</ion-col>
-<ion-col size="12">
-  <ion-button class="save" type="submit" [disabled]="!this.myForm.valid">Actualizar</ion-button>
-</ion-col>
+        <ion-label class="Grid-row-perfil-label-col-label ion-hide-xl-down">
+          <p class="Grid-row-perfil-label-col-label-p">¡ Hola, {{ loaded ? title : 'Queremos Conocerte más'}} !</p>
+        </ion-label>
+    </ion-col>
   </ion-row>
+  <ion-row class="Grid-row-tips"> 
+  <ion-col size="12" class="ion-hide-xl-up">
+    <ion-item detail='false' button class="Grid-row-tips-datos" lines="none" [routerLink]="['/principal/preguntas-frecuentes']">
+      <ion-label class="Grid-row-tips-datos-label ion-text-center">
+      <p class="Grid-row-tips-datos-label-p">Tips Y consejos </p>
+      </ion-label>  
+      <ion-icon class="Grid-row-tips-datos-icon" slot="end" src="../../assets/icon/chevron-black.svg" ></ion-icon>
+  </ion-item> 
+  </ion-col>
+  </ion-row>
+  <ion-row class="Grid-row-title">
+    <ion-col class="Grid-row-title-col">
+      <ion-text class="Grid-row-title-col-text">
+        <h2 class="Grid-row-title-col-text-h2">Completa tus datos </h2>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="Grid-row-form"> 
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="6" sizeXl="6" class="Grid-row-form-col">
+    <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
+      <h2 class="Grid-row-form-col-text-h2">Nombre</h2>
+    </ion-text>
+    <ion-item  class="Grid-row-form-col-item" lines="none" >
+      <ion-label class="Grid-frow-orm-col-item-label  ion-hide-xl-up" position="stacked">Nombre</ion-label>
+      <ion-input class="Grid-row-form-col-item-label-input-p" formControlName="name" placeholder="Mi nombre es ..."></ion-input>
+      <ion-icon src="../../assets/icon/nameForm.svg"slot="start"></ion-icon>
+  </ion-item>
+  </ion-col>
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="6" sizeXl="6" class="Grid-form-col">
+    <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
+      <h2 class="Grid-row-form-col-text-h2">Telefono</h2>
+    </ion-text>
+    <ion-item  class="Grid-row-form-col-item" lines="none" >
+      <ion-label class="Grid-row-form-col-item-label  ion-hide-xl-up" position="stacked">Telefono</ion-label>
+      <ion-input class="Grid-row-form-col-item-label-input-p" formControlName="phone" placeholder="Mi telefono es ..."></ion-input>
+      <ion-icon src="../../assets/icon/phoneForm.svg"slot="start"></ion-icon>
+  </ion-item>
+  </ion-col>
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="6" sizeXl="6" class="Grid-row-form-col">
+    <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
+      <h2 class="Grid-row-form-col-text-h2">Correo electrónico</h2>
+    </ion-text>
+    <ion-item  class="Grid-row-form-col-item" lines="none" >
+      <ion-label class="Grid-row-form-col-item-label  ion-hide-xl-up" position="stacked">Correo electrónico</ion-label>
+      <ion-input class="Grid-row-form-col-item-label-input-p" formControlName="email" placeholder="Mi correo  es ..."></ion-input>
+      <ion-icon src="../../assets/icon/mailForm.svg"slot="start"></ion-icon>
+  </ion-item>
+  </ion-col>
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="6" sizeXl="6" class="Grid-row-form-col">
+    <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
+      <h2 class="Grid-row-form-col-text-h2">Dirección</h2>
+    </ion-text>
+    <ion-item  class="Grid-row-form-col-item" lines="none" >
+      <ion-label class="Grid-row-form-col-item-label  ion-hide-xl-up" position="stacked">Dirección</ion-label>
+      <ion-input class="Grid-row-form-col-item-label-input-p" formControlName="address" placeholder="Mi dirección es ..."></ion-input>
+      <ion-icon src="../../assets/icon/locationForm.svg"slot="start"></ion-icon>
+  </ion-item>
+  </ion-col>
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12" style="text-align: center;padding-top: 36px;">
+    <ion-button class="save" type="submit" [disabled]="!this.myForm.valid">Actualizar</ion-button>
+  </ion-col>
+    </ion-row>
 </ion-grid>
 </form>
-
-<ion-popover [dismissOnSelect]="true" [keepContentsMounted]="true" trigger="open-popover" >
+</ion-content>
+  <ion-popover [dismissOnSelect]="true" [keepContentsMounted]="true" trigger="open-popover" >
   <ng-template >
     <ion-content class="ion-padding"  style="--background: #f4f4f4;">
      <ion-list  style="background: #f4f4f4;padding:0px;">
@@ -93,5 +116,5 @@
      </ion-list>
     </ion-content>
   </ng-template>
-</ion-popover>
-</ion-content>
+</ion-popover>  
+
