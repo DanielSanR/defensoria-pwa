@@ -1,6 +1,6 @@
 
 ion-content{
-    --background:#f4f4f4 ;
+    --background:#fff ;
 }
 
 .Grid{
@@ -8,11 +8,12 @@ ion-content{
     padding-right: 15px;
     padding-top: 55px; 
     height: 100%; 
+    width: 100%;
     display: flex; 
-    flex-flow: column;
+    flex-flow: column;   
     &-row-perfil{
         &-button{ 
-            --background:#f4f4f4;
+            --background:#fff;
             --color:#5A4BB2;
             --border-color: none; --border-width: 0px !important;
             --box-shadow:none;
@@ -20,7 +21,7 @@ ion-content{
             top: 0;
             right: 0;
     }
-        border-radius: 24px;
+        border-radius: 15px;
         background: #5A4BB2;
         text-align: center;
         align-items: center;
@@ -29,26 +30,27 @@ ion-content{
             &-div{
                 width: 100%;
                 position: relative;
-                margin-bottom: 10px;
                 &-image{
                     border-radius: 50%;
-                    margin-top: -60px;
+                    margin-top: -50px;
                     bottom: calc(-1*(80px + 4px));
                     width: 115px;
                     height: 115px;
                     border-radius: 50%;
                     background: #f4f4f4;
                     border:solid 2px #FE910E;
-                    margin-bottom: 30px;
+                    margin-bottom: 36px;
                 }
             }
         }
         &-label-col{
+            margin-bottom: 30px;
+            padding: 0px;
             &-label-p{
                 color:#fff;
                 font-size: 18px;
                 font-weight: 700;
-                margin-bottom: 5px;
+                margin-bottom: 4.5px;
             }
         }
         
@@ -58,16 +60,13 @@ ion-content{
     &-datos{
         width: 100%;
         border-radius: 15px;
-        padding:10px;
-        --background: #ffff;
+        padding:5px;
+        --background: #F4F4F4;
         --border-radius: 15px;
             &-label-p{
                 padding:6px;
-                color:#000;
+                color:#455A64;
                 font-size: 18px;
-            }
-            &-datos-icon{
-                    color:#000 !important; 
             }
     }
 }
@@ -81,11 +80,10 @@ ion-content{
             --background: #ffff;
         border-radius:15px;
             border:1px solid #5A4BB2;
-            &-label-p{
-                
+            &-label-input-p{
                 padding:0px;
                 color:#000;
-                font-size: 18px;
+                font-size: 14px;
             }
             &-datos-icon{
                     color:#000 !important; 

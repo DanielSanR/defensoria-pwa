@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class StorageService {
-  public isOnboardingDone: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isOnboardingDone: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
 
   private _storage: Storage | null = null;
 
@@ -17,8 +17,7 @@ export class StorageService {
 
   async isOnboarding() {
     const onboarding = await this.storage.get('onboarding');
-    if (onboarding) {
-      
+    if (onboarding) { 
       this.isOnboardingDone.next(true);
     } else {
       this.isOnboardingDone.next(false);
