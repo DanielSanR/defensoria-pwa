@@ -4,13 +4,13 @@
 <form style="padding-top:0px;width: 100%;height: 100%;" [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
 <ion-grid class="Grid">
   <ion-row class="Grid-row-perfil">
-    <ion-button class="Grid-row-perfil-button ion-hide-xl-up" id="open-popover" ><ion-icon slot="icon-only"  name="ellipsis-horizontal" ></ion-icon></ion-button>
-    <ion-col class="Grid-row-perfil-img-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="2" sizeXl="2">
+    <ion-button class="Grid-row-perfil-button" id="open-popover" ><ion-icon slot="icon-only"  name="ellipsis-horizontal" ></ion-icon></ion-button>
+    <ion-col class="Grid-row-perfil-img-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="2">
       <div class="Grid-row-perfil-img-col-div">
       <img src="../../assets/images/perfil.png" class="Grid-row-perfil-img-col-div-image">
       </div>
     </ion-col>
-    <ion-col class="Grid-row-perfil-label-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="10" sizeXl="10">
+    <ion-col class="Grid-row-perfil-label-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="10">
         <ion-label class="Grid-row-perfil-label-col-label ion-hide-xl-up">
           <p class="Grid-row-perfil-label-col-label-p">¡ Hola ,</p>
           <p class="Grid-row-perfil-label-col-label-p">{{ loaded ? title : 'Queremos Conocerte más'}} !</p>
@@ -38,7 +38,7 @@
   </ion-row>
 
   <ion-row class="Grid-row-form"> 
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="6" sizeXl="6" class="Grid-row-form-col">
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-row-form-col">
     <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
       <h2 class="Grid-row-form-col-text-h2">Nombre</h2>
     </ion-text>
@@ -48,7 +48,7 @@
       <ion-icon src="../../assets/icon/nameForm.svg"slot="start"></ion-icon>
   </ion-item>
   </ion-col>
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="6" sizeXl="6" class="Grid-form-col">
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-form-col">
     <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
       <h2 class="Grid-row-form-col-text-h2">Telefono</h2>
     </ion-text>
@@ -58,7 +58,7 @@
       <ion-icon src="../../assets/icon/phoneForm.svg"slot="start"></ion-icon>
   </ion-item>
   </ion-col>
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="6" sizeXl="6" class="Grid-row-form-col">
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-row-form-col">
     <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
       <h2 class="Grid-row-form-col-text-h2">Correo electrónico</h2>
     </ion-text>
@@ -68,7 +68,7 @@
       <ion-icon src="../../assets/icon/mailForm.svg"slot="start"></ion-icon>
   </ion-item>
   </ion-col>
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="6" sizeXl="6" class="Grid-row-form-col">
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-row-form-col">
     <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
       <h2 class="Grid-row-form-col-text-h2">Dirección</h2>
     </ion-text>
@@ -85,10 +85,47 @@
     <ion-button class="save " type="submit" [disabled]="!this.myForm.valid">Actualizar mis datos</ion-button>
   </ion-col>
     </ion-row> 
+    <ion-row class="Grid-row-tips ion-hide-xl-down">
+      <ion-col class="Grid-row-tips-col">
+        <ion-label class="Grid-row-tips-col-label">
+          <h2 class="Grid-row-tips-col-label-h2">Tips y consejos - <strong class="Grid-row-tips-col-label-h2-strong">Sobre tus derechos</strong></h2>
+          <h4 class="Grid-row-tips-col-label-h4">¿Cuáles son los derechos de los Niños, Niñas y Adolescentes?</h4>
+        </ion-label>
+        <ion-item lines="none" class="Grid-row-tips-col-item">
+            <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
+            <ion-label class="Grid-row-tips-col-item-label">Identidad: tienen derecho a una identidad; es decir, tienen derecho a una inscripción oficial de quiénes son, que incluya su nombre, nacionalidad y relaciones familiares.</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="Grid-row-tips-col-item">
+          <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
+          <ion-label class="Grid-row-tips-col-item-label">Vivir en familia: no se debe separar a los niños, niñas y adolescentes de su padre y su madre, a menos que estos no los cuiden como es debido (por ejemplo, si el padre o la madre hacen daño al niño o le descuidan). Cuando el padre y la madre no vivan juntos, el niño debería permanecer en contacto con los dos, salvo que esto le perjudique.</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="Grid-row-tips-col-item">
+            <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
+            <ion-label class="Grid-row-tips-col-item-label">A ser escuchados: tienen derecho a expresar su opinión sobre los asuntos que les afectan. Los adultos deben escuchar a los niños y tomarles en serio.</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="Grid-row-tips-col-item">
+          <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
+          <ion-label class="Grid-row-tips-col-item-label">A tener buena salud: tienen derecho a la mejor atención de la salud que se les pueda brindar, al agua limpia para beber, a una alimentación sana y a un entorno limpio y seguro en el que vivir.</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="Grid-row-tips-col-item">
+            <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
+            <ion-label class="Grid-row-tips-col-item-label">A la educación: tienen derecho a recibir una educación. La educación primaria debería ser gratuita. La educación secundaria y superior deben estar al alcance de todos los niños. Se debería apoyar a los niños para que asistan a la escuela hasta completar el grado más alto posible.</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="Grid-row-tips-col-item">
+          <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
+          <ion-label class="Grid-row-tips-col-item-label">A una alimentación saludable, vestimenta y vivienda digna: tienen derecho a la alimentación, al vestido y a un lugar seguro donde vivir, para que puedan crecer del mejor modo posible.</ion-label>
+       </ion-item>
+       <ion-item lines="none" class="Grid-row-tips-col-item">
+        <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
+        <ion-label class="Grid-row-tips-col-item-label">Podés conocer más derechos aquí <a target="_blank" href="https://www.unicef.org/es/convencion-derechos-nino/convencion-version-ninos">  https://www.unicef.org/es/convencion-derechos-nino/convencion-version-ninos </a></ion-label>
+       </ion-item>
+ 
+      </ion-col>
+    </ion-row>
 </ion-grid>
 </form>
 </ion-content>
-  <ion-popover [dismissOnSelect]="true" [keepContentsMounted]="true" trigger="open-popover" >
+  <ion-popover [dismissOnSelect]="true" [keepContentsMounted]="true" id="open-popover" trigger="open-popover">
   <ng-template >
     <ion-content class="ion-padding"  style="--background: #f4f4f4;">
      <ion-list  style="background: #f4f4f4;padding:0px;">
@@ -109,7 +146,14 @@
         </ion-label>
         <ion-icon style="color:#5A4BB2;" name="chevron-forward-outline"></ion-icon>
       </ion-item>
-      <ion-item  class="lista" detail='false' button (click)="modalAboutUs()"  lines="none">
+      <ion-item  class="lista ion-hide-xl-up" detail='false' button (click)="modalAboutUs()"  lines="none">
+        <ion-label>
+          <p>Sobre nosotros</p>
+        </ion-label>
+        <ion-icon style="color:#5A4BB2;" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+      <ion-item  class="lista ion-hide-xl-down" detail='false' [routerLink]="['/principal/sobre-nosotros']"
+        lines="none">
         <ion-label>
           <p>Sobre nosotros</p>
         </ion-label>

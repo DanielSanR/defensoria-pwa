@@ -1,6 +1,7 @@
 
 ion-content{
-    --background:#fff ;
+    --background:#fff;
+    
 }
 
 .Grid{
@@ -28,8 +29,7 @@ ion-content{
         align-content: center;
         &-img-col{
             &-div{
-                width: 100%;
-                position: relative;
+                width: 100%; 
                 &-image{
                     border-radius: 50%;
                     margin-top: -50px;
@@ -127,6 +127,14 @@ ion-content{
         padding-left: 125px;
         padding-right: 125px;
         &-row-perfil{
+            position: relative;
+            &-button{
+                --background:#5A4BB2;
+                --color:#fff;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
             &-img-col{
                 padding-top: 12px;
                 padding-bottom: 12px;
@@ -171,6 +179,50 @@ ion-content{
                 }
             }
         }
+
+        &-row-tips{
+            padding-top: 69px;
+            padding-left: 16px;
+            padding-right: 16px;
+            
+            &-col{
+                &-label{
+                &-h2{
+                    padding-left: 10px;
+                    font-size: 26px;
+                    font-weight: 700;
+                    &-strong{
+                        font-weight: 500;
+                        color:#5A4BB2;
+                    
+                    }
+                }
+                &-h4{
+                    padding-left: 10px;
+                    padding-top: 18px;
+                    font-size: 22px;
+                    font-weight: 600;
+                    padding-bottom: 16px;
+                }
+                
+            }
+            &-item{
+                 
+                &-icon{ 
+                    font-size: 6px;
+                    color: #000; 
+                     
+                     
+
+                }
+                &-label{
+                    
+                    margin: 0px;
+                    padding-left: 16px;
+                }
+            }
+        }
+        }
       
          
     }
@@ -180,3 +232,11 @@ ion-content{
         max-width: 454px;
     }
 }  
+
+ion-popover#open-popover::part(content) {
+    top: unset !important;
+    left: 0 !important;
+    bottom: 0;
+    width: 100vw;
+    border-radius: 8px;
+  }
