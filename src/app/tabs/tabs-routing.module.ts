@@ -33,6 +33,11 @@ const routes: Routes = [
         loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule),
          canLoad: [OnboardingGuard]
       }, 
+       {
+        path: 'sobre-nosotros',
+        loadChildren: () => import('../sobre-nosotros/sobre-nosotros.module').then(m => m.SobreNosotrosPageModule),
+         canLoad: [OnboardingGuard]
+      },
       {
         path: '',
         redirectTo: '/principal/inicio',

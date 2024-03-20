@@ -2,67 +2,81 @@
     height: 100%; 
     display: flex; 
     flex-flow: column;
-    &-icon{
-        height:32px;width: 32px;
-    }
-    &-col-text{
-        padding-top:0.5rem;
-        &-title{
-            &-h1{
-                margin-top: 0rem !important;
-                font-size: 1.2rem !important;
-                font-weight: 700;
+    &-card{
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 24px;
+        border: #5A4BB2 3px solid;
+        &-header{
+            padding-left: 24px;
+            padding-top: 35px;
+            padding-bottom: 38px;
+            background-color: #5A4BB2;
+            &-title{
+                
+                font-size: 20px;
+                font-weight: 600;
+                color: #fff;
             }
-            &-p{
-                text-align: justify;
-                margin-top: 0.5rem !important;
-                font-weight: 400;
-                font-size: 0.9rem !important;
-                line-height: 120%; 
-            } 
         }
-    }
-    &-row{
-        flex-grow: 1;
-        &-col{
-            text-align: center;
-            padding-top:0px;
+        &-content{
+            max-height: calc(100% - #{50px});
+            position: relative;
+            overflow: hidden;
+            overflow-y: auto;
+            ::-webkit-scrollbar {
+                display: none;
+            }
             &-icon{
-                height:220px;
-                width: 350px;
+                height:160px;
+                width: 160px;
+            }
+            &-label{
+                &-p{
+                    font-size: 12px;
+                    font-weight: 400; 
+                }	
+            
             }
         }
     }
-    &-col-tyc{
-        &-text{
-            color: #7B7676;
-            font-weight: 400;
-            font-size: 0.8rem;
-            line-height: 140%;
-            &-note{
-                font-size: 0.6rem;
+
+    
+}
+
+
+@media (min-width:1200px){
+
+    .Grid{
+        padding-left: 118px;
+        padding-right: 102px;
+        &-card{
+            &-header{
+                &-title{
+                    padding:16px;
+                    font-size: 40px;
+                    font-weight: 700;
+                    color: #fff;
+                }
+            }
+            &-content{
+                &-icon{
+                    height:270px;
+                    width: 346px;
+                }
+                &-label{
+                    &-p{ 
+                        padding-left: 20px;
+                        padding-right: 8px;
+                        padding-top:12px;
+                        font-size: 20px;
+                        font-weight: 600; 
+                    }	
+                
+                }
+            }
         }
-        }
-    }
-    &-button-row{
-        text-align: center;
-        &-col-nextBtn{
-            font-weight: 100;
-            text-transform: none;
-            --background:#FE910E !important;
-            --color:#fff;
-            width: 100%;
-            height: 100%;
-            --padding-bottom: 0.5rem;
-            --border-radius: 0.2rem;
-            --padding-top: 0.5rem;
-            font-size: 1rem;
-        }
-        &-col-skipBtn{
-            font-weight: 500;
-            text-transform: none;
-            --color:#FE910E;
-            font-size: 0.9rem;
-        }
+
     }
 }
