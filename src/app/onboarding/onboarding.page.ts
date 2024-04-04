@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef,OnDestroy } from '@angular/core';
-import SwiperCore ,{Pagination, Autoplay,SwiperOptions,EffectFade, Navigation} from 'swiper';
-import { SwiperComponent } from 'swiper/angular';
+import { Component, OnInit, ViewChild, ChangeDetectorRef,OnDestroy, ElementRef, AfterViewInit } from '@angular/core';/* 
+import SwiperCore ,{Pagination, Autoplay,SwiperOptions,EffectFade, Navigation} from 'swiper'; *//* 
+import { SwiperComponent } from 'swiper/angular'; */
 import { Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
 import { AlertController, LoadingController } from '@ionic/angular';
@@ -9,15 +9,23 @@ import { ToastService } from '../services/toast.service';
 import { SendmailService } from '../services/sendmail.service';
 import { v4 as uuidv4 } from 'uuid';
 import { DeviceService } from '../services/device.service';
-SwiperCore.use([Pagination,Navigation,Autoplay,EffectFade]);
-
+import Swiper from 'swiper';
 @Component({
   selector: 'app-onboarding',
   templateUrl: './onboarding.page.html',
   styleUrls: ['./onboarding.page.scss'],
 })
 export class OnboardingPage implements OnInit {
-  @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
+  private swiperInstance: any;
+
+  @ViewChild('swiper')
+  set swiper(swiperRef: ElementRef) {
+    setTimeout(() => {
+      this.swiperInstance = swiperRef.nativeElement.swiper;
+      console.log(this.swiperInstance)
+    }, 0);
+  } 
+  didInit: boolean = false;
   public background = '';
   key = 'AAPK895f48d83b5543ab80c5d058d510d5971uhYgfFtvdNCIB-no6TgvFEbUE-H-h6ZfPfs9GOWCpAtsp9cTGA8zFsd2DiPWwPf';
   result: string= '';
@@ -25,17 +33,6 @@ export class OnboardingPage implements OnInit {
   latitude: any;
   longitude: any;
   accuracy: any;
-  public config: SwiperOptions ={
-    allowTouchMove:false,
-    keyboard:true,
-    effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
-        autoplay: {
-          delay: 100000,
-        },
-  };
   usuarioId = uuidv4();
   constructor(private router: Router, private cd: ChangeDetectorRef,
     private alertController: AlertController,private toastService: ToastService
@@ -44,14 +41,17 @@ export class OnboardingPage implements OnInit {
     private sendMail: SendmailService, private deviceService: DeviceService
 ) { }
 
-  ngOnInit() {
-    console.log("inicio")
+  ngOnInit() { 
     this.background = '#F4F4F4';
   }
-  next(){
-    this.swiper?.swiperRef.slideNext(500);
+ 
+  next(){ 
+    this.swiperInstance.slideNext()
   }
 
+  end(){
+    console.log("end")
+  }
   async getLocation(){
     const loading = await this.loadingController.create();
     await loading.present();
@@ -64,7 +64,9 @@ export class OnboardingPage implements OnInit {
     await Geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((resp: any ) => {
         this.latitude = resp.coords.latitude;
         this.longitude = resp.coords.longitude;
-        this.swiper?.swiperRef.slideNext(500);
+        setTimeout(() => {
+          this.swiperInstance.slideNext()
+        }, 500);
     }).catch((error) => {
         (async ()=>{
           await alert.present();
@@ -89,7 +91,9 @@ export class OnboardingPage implements OnInit {
         }
       }
     
-
+      init(){
+        console.log("init")
+      }
     
       select(event: any,type: string){
         this.selected = event;
@@ -98,16 +102,17 @@ export class OnboardingPage implements OnInit {
         }
       }
       skip(){
-        this.swiper?.swiperRef.slideNext(500);
+        this.swiperInstance.slideNext()
       }
     
       ionViewDidLeave(){
-        this.swiper?.swiperRef.slideTo(0,500);
+        this.swiperInstance.slideNext()
       }
     
-      onAfterTransition() {
-        if(this.swiper?.swiperRef.activeIndex === 2){
+      slideWillChange() {
+          console.log(this.swiperInstance)
+           if(this.swiperInstance.activeIndex === 2){
           this.background ='url("../../assets/images/kid-teen.svg") no-repeat center center / cover';
-        }
+        }   
       }
 }

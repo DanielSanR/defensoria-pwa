@@ -1,51 +1,107 @@
-//Swiper Syles
+
 .swiper {
-    width: 100%;
+    width: auto;
     height: auto;
     
 }
-.main-header{
-    height: 30vh;
+swiper-container {
     width: 100%;
-    background: #5A4BB2;
-    box-shadow: 0 1px 10px #5A4BB2;
-    border-radius: 0 0 25px 25px;
-    padding-top: 0px;
- 
-} 
+    height: 100%;
+}	
+.Grid{ 
+    overflow-y: hidden;
+    padding:0px;
+    background: #FFF;
+    &-row{
+        padding:0px;
+        &-col{
+            padding:0px;
+            &-swiper{
+                &-template{
+                   &-container{
+                    &-header{
+                        width: 100%;
+                        height: 30vh;
+                        background: #5A4BB2;
+                        box-shadow: 0 1px 10px #5A4BB2;
+                        border-radius: 0 0 25px 25px;
+                        padding-top: 0px;
+                        &-span{
+                            color:#ffff;
+                        }
+                        &-titulo{
+                            font-family: 'Open Sans';
+                            font-style: normal;
+                            font-weight: 800;
+                            font-size: 18px;
+                            color: #FFFFFF;
+                        }
+                    }
+                    &-items{
+                        background: #FFF;
+                        &-list2{
+                            background: #FFF;
+                            margin-top:40px;
+                            margin-left: 55px;
+                            margin-right: 55px;
+                            &-item{
+                                --background: #fff;
+                                --color: #333;
+                                margin-bottom: 16px;
+                                margin-top: 16px;
+                                --border-color: #454545;
+                                --border-style: solid;
+                                --border-width: 1px;
+                                --border-radius: 8px;
+                                white-space: unset !important;
+                                &-label{
+                                    color:#333;
+                                    padding-left:0px;
+                                    padding-top: 6px;
+                                    padding-bottom: 7px;
+                                    white-space: unset !important;
+                                }
+                        }
+                    }
+                   } 
+                }
+            }
+        }
+    }
+}
+}
+.button-selected {
+    --padding-top: 10px;
+    --padding-bottom:10px;
+    --padding-start:10px;
+    --padding-end:10px;
+    font-size: 32px;
+    --border-radius:50%;
+    --background: #5A4BB2;
+    --color: #fff; 
+    --border-color: #fff;
+    --border-radius:50%;
+  }
+  
+  .button-unselected {
+    --padding-top: 10px;
+    --padding-bottom:10px;
+    --padding-start:10px;
+    --padding-end:10px;
+    --border-radius:50%;
+    font-size: 32px;
+    --background: #fff;
+    --color: black;
+    --border-color: #5A4BB2;
+  }
  ion-content{
-    --background:#F4F4F4;
+    --background:#FFF;
  }
  
 //Footer 
 ion-footer {
-    /*  background-color: #ad83b1; */
-    background: #F4F4F4;
-    --border: #F4F4F4;
-}
-.list-form{
-    background: #F4F4F4;
-    margin-top:40px;
-    margin-left: 55px;
-    margin-right: 55px;
-    &-item{
-    --background: #fff;
-    --color: #000;
-    margin-bottom: 16px;
-    margin-top: 16px;
-    --border-color: #fff;
-    --border-style: none;
-    --border-width: 2px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    white-space: unset !important;
-    &-label{
-        padding-left:35px;
-        padding-top: 6px;
-        padding-bottom: 7px;
-        white-space: unset !important;
-    }
-    }
+    background: #FFF;
+    --border: #FFF;
 }
 
 .close-icon{
@@ -59,21 +115,11 @@ ion-footer {
 .swiper-slide{
     overflow: visible !important;
 }
-.titulo {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 120%;
-    color: #FFFFFF;
-}
-
 .btn {
     --background: #5A4BB2;
-    width: 60px;
-    height: 60px;
-    --border-radius: 60% !important;
-    font-size: 17px;
+    width: 101px;
+    height: 40px;
+    --border-radius: 4px !important;
 }
 
 .btn-enviar {
@@ -128,4 +174,71 @@ ion-range::part(bar-active) {
     background: #C7793C;
 }
 
+@media (min-width:1200px ) {
+    .Grid{
+        padding-left: 125px;
+        padding-right: 125px;
+        padding-top: 55px;
+        &-row{ 
+            &-col{ 
+                &-swiper{
+                    height: 600px;
+                width: 1000px;
+                    &-template{
+                       &-container{
+                        &-header{
+                            height: auto;
+                            box-shadow:none;
+                            border-radius: 24px;
+                            padding-bottom: 25px;
+                            &-titulo{
+                                font-weight: 700;
+                                font-size: 36px;
+                                padding-top: 16px;
+                                padding-bottom: 18px;
+                                &-label-p{
+                                        margin: 0px;
+                                }
+                            }
+                        }
+                        &-items{ 
+                            text-align: center;
+                            padding-top: 0px;
+                            padding-left: 150px;
+                            padding-right: 150px;
+                            &-list2{
+                                margin-top:20px;
+                                margin-left: 245px;
+                                margin-right: 245px;
+                                &-item{
+                                    padding:5px;
+                                    &-label{
+                                        font-size: 16px;
+                                        font-weight: 600; 
+                                        text-align: center;
+                                }
+                            }
+                                &-item2{
+                                    padding:5px;
+                                    font-size: 12px;
+                                    &-input{ 
+                                        --background: #FE910E;
+                                        --color: #000;
+                                        --padding-start:12px;
+                                    }
+                                }
+                        }
+                       } 
+                    }
+                }
+            }
+        }
+    }
+    }
+
+    ion-footer {
+        padding-bottom: 60px;
+    }
+
+}
  

@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage implements OnInit,OnDestroy {
+export class HomePage implements OnInit,OnDestroy { 
   values: any[]=[
     {id:1,text:'Pedir Ayuda',icon:'microfono.svg',page:'/formulario',externalURL:false},
     {id:2,text:'Consejos',icon:'faq.svg',page:'principal/preguntas-frecuentes',externalURL:false},

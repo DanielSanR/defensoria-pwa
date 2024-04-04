@@ -1,33 +1,38 @@
-<ion-content>
-  <div class="main-header">
-  
-  <div class="titulo">
-  <ion-label class="titulo-label">
-      Contactate con quien necesites
-  </ion-label></div>
-  <ion-grid class="Grid">
-          <ion-row class="Grid-row"> 
-              <ion-col class="Grid-row-col"  size="6">
-                  <div>
-                  <ion-icon src="../../assets/icon/hospital.svg"></ion-icon>     
-                  <div class="Grid-row-col-label">
-                  <ion-label class="Grid-row-col-label-badge">
-                      Hospitales
-                  </ion-label></div>  
-              </div> 
-              </ion-col>
-              <ion-col class="Grid-row-col"  size="6">
-                  <div>
-                  <ion-icon src="../../assets/icon/policia.svg"></ion-icon>        
-                  <div class="Grid-row-col-label">
-                  <ion-label class="Grid-row-col-label-badge">
-                      Comisarías
-                  </ion-label></div>   
-              </div>
-              </ion-col>
-          </ion-row>
-  </ion-grid>
-</div>
-  <div id="map">
-  </div>
+<ion-content> 
+
+    <ion-grid class="Grid">
+        <ion-row class="Grid-row main-header">
+            <ion-col class="Grid-row-col"  sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6">
+                <div class="titulo">
+                    <ion-label class="titulo-label">
+                        Contactate con quien necesites
+                    </ion-label></div>
+            </ion-col>
+            <ion-col class="Grid-row-col"   sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
+            <div class="Grid-row-col-container">
+                <ion-icon src="../../assets/icon/hospital.svg"></ion-icon>     
+                <div class="Grid-row-col-container-label">
+                <ion-label class="Grid-row-col-container-label-badge">
+                    Hospitales
+                </ion-label></div>  
+            </div> 
+        </ion-col>
+            <ion-col class="Grid-row-col"   sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
+                <div class="Grid-row-col-container">
+                <ion-icon src="../../assets/icon/policia.svg"></ion-icon>        
+                <div class="Grid-row-col-container-label">
+                <ion-label class="Grid-row-col-container-label-badge">
+                    Comisarías
+                </ion-label></div>   
+            </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="map" id="map"></div>
 </ion-content>

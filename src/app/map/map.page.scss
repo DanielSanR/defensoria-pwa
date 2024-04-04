@@ -1,10 +1,12 @@
 ion-content{
     --background:#ffff;
+    height: 100%;
+    width: 100%;
 }
 
 .titulo{
     text-align: center;
-    padding: 20px 39px 9px 39px ;
+    padding: 20px 0px 5px 0px ;
     width: 100%;
     &-label{
         font-weight: 600;
@@ -16,33 +18,36 @@ ion-content{
 .Grid{
     display: flex;
     flex-direction: column;
-    padding: 0px 20px;
+    padding: 0px;
     &-row-col{ 
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
         ion-icon{
             width: 25px;
             height: 25px;
             background: rgba(255, 255, 255, 0.35);
-    border-radius: 8px;
-    padding:8px
+            border-radius: 8px;
+            padding:8px
         }
         text-align: center;
         width: 100%;
-        padding-left: 0px;
-        padding-right: 0px;
- 
         justify-content: center;
- 
-        
-        &-label{
-            width: 100%;
-            padding: 0px;
-            &-badge{
-                font-weight: 200;
-                font-size: 14px;
-                color: #FFFFFF;
+        &-container{
+            &-label{
+                width: 100%;
+                padding: 0px;
+                &-badge{
+                    font-weight: 200;
+                    font-size: 14px;
+                    color: #FFFFFF;
+                }
             }
         }
+       
     }
+     
+     
 }
 
     .main-header{
@@ -63,3 +68,71 @@ ion-content{
     width: auto;
     height:73%;
   }
+
+
+  
+@media (min-width:1200px ) {
+    .main-header{
+        border-bottom: 0px;
+        border-radius: 15px 15px 0 0;
+        height: auto;
+        box-shadow:0px;
+        padding-bottom: 5px;
+    }
+    .Grid{
+        padding-left: 125px;
+        padding-right: 125px;
+        padding-top: 55px;
+        padding-bottom: 0px;
+        &-row{
+            padding-top: 32px;
+            &-col{
+                display: flex;
+                text-align: center;
+                align-items: center;
+     
+                &-container{
+                    display: flex;
+                    text-align: center;
+                    align-items: center;
+     
+                    &-label-badge{
+                         font-size: 24px;
+                         font-weight: 700;
+                    }
+                }
+                ion-icon{
+                    width:  64px;
+                    height:  64px;
+                    background: none;
+                    padding:0px
+                }
+            }
+        }
+        
+    }
+    .titulo{
+        padding-top: 0px;
+        padding-left: 32px;
+        padding-bottom: 0px;
+        text-align: left;
+        &-label{
+            font-size: 28px;
+            font-weight: 700;
+    }
+    }
+    #map{
+        margin-left: 125px;
+        margin-right: 125px;
+        margin-top: -10px;
+        border: 5px solid #5A4BB2;
+        border-radius: 0 0 15px 15px;
+        box-shadow: none;
+        height: fit-content;
+        z-index:99999;
+        width: auto;
+        height:73%;
+      }  
+ 
+
+}

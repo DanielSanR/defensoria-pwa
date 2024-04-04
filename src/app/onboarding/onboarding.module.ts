@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { SwiperModule } from 'swiper/angular';
+import { FormsModule } from '@angular/forms'; 
 import { IonicModule } from '@ionic/angular';
 
 import { OnboardingPageRoutingModule } from './onboarding-routing.module';
@@ -13,9 +12,9 @@ import { OnboardingPage } from './onboarding.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    OnboardingPageRoutingModule,
-    SwiperModule
+    OnboardingPageRoutingModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [OnboardingPage]
 })
 export class OnboardingPageModule {}

@@ -118,6 +118,7 @@ ion-button{
 
 @media (min-width:1200px ) {
   .Grid{ 
+    padding-top: 116px;
     margin-left: 141px;
     margin-right: 140px;
     &-row{
@@ -129,7 +130,7 @@ ion-button{
       align-items: center;
       text-align: center;
       padding: 0px;
-      
+       
       &-col-card{
         width: 100%;
         height: 100%;
@@ -140,22 +141,29 @@ ion-button{
            white-space: nowrap;
       }
             }
+      &-titulo-desktop{
+        width:100%;
+        text-align: left;
+        justify-content: left;
+        &-label{
+          &-h2{
+            font-weight: 700;
+            font-size: 40px; 
+          }
+          &-h4{
+            font-size: 30px;
+            &-strong{
+              font-weight: 700;
+              font-size: 30px;
+            }
+          }
+        }
+      }
       }
       &-row:last-child{
         padding-bottom: 200px;
       }
     }
   }
-  .titulo{
-    &-h2{
-      font-weight: 700;
-      font-size: 40px;
-    }
-    .h4{
-      font-size: 20px;
-      &-strong{
-        font-size: 20px;
-      }
-    }
-  }
+   
  

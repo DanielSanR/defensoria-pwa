@@ -1,58 +1,87 @@
-<ion-content padding  scrollEvents="true" fullscreen="true" [style.--background]="background">
-  <!--  (slideChange)="slideChanges()" (slideChangeTransitionEnd)="onBeforeTransition()" -->
-  <ion-grid style="padding:0px">
-      <ion-row style="padding:0px">
-          <ion-col size="12" style="padding:0px">
-              <swiper #swiper [config]="config" *ngIf="dinamicForm" (reachEnd)="onAfterTransitionEnd()" >
-                    <ng-template swiperSlide *ngFor="let item of dinamicForm;index as i">
-                      <div class="slide-container"> 
-                       <div class="main-header"  align="end">
-                          <span  style="color:#ffff">
-                              <ion-icon name="close-circle-outline"  class="close-icon" (click)="close()"></ion-icon>
-                          </span>
-                           <div class="ion-text-center col-titulo">
-                                      <label><p class="titulo">
-                                          {{i+1}} / 7
-                                      </p> <p class="titulo">
-                                          {{item.title}}
-                                      </p></label>
-                                  </div>
-                           </div>
-                           <ion-col [ngSwitch]="item.type">
-                              <ion-list *ngSwitchCase="'range'" lines="none"  style="background:#f4f4f4;"> 
-                                              <ion-range (ionChange)="ageRange($event)" [min]="0" [max]="18" [value]="5" [pin]="true" [snaps]="true"></ion-range>        
-                              </ion-list>
-                              <ion-list *ngSwitchCase="'item'" class="list-form"  lines="none">
-                                  <ion-item [ngStyle]=" {'--background': entry?.isChecked===true ? backgroundChecked : background}" button class="list-form-item" *ngFor="let entry of item.preguntas as Preguntas;index as i" (click)="select(entry,item,i)">
-                                      <ion-label [ngStyle]="{'--color': entry?.isChecked===true ? '#FFF' : '#000'}" class="list-form-item-label" > {{entry.val}}</ion-label>
-                                  </ion-item>
-                              </ion-list>
-                          </ion-col>
+<ion-content padding   [style.--background]="background">
+     <ion-grid class="Grid">
+      <ion-row class="Grid-row">
+          <ion-col class="Grid-row-col" size="12" >
+            <swiper-container 
+              #swiper
+              [allowTouchMove]="false" 
+              [autoHeight]="true"
+              speed="2000">
+              <swiper-slide class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">
+                  <div class="Grid-row-col-swiper-template-container"> 
+                   <div class="Grid-row-col-swiper-template-container-header ion-hide-xl-up"  align="end">
+                      <span class="Grid-row-col-swiper-template-container-header-span">
+                          <ion-icon name="close-circle-outline"  class="close-icon" (click)="close()"></ion-icon>
+                      </span>
+                       <div class="Grid-row-col-swiper-template-container-header-titulo ion-text-center">
+                           <label class="Grid-row-col-swiper-template-container-header-titulo-label" >  
+                                <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{i+1}} / 7</p> 
+                                <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{group.title}}</p>
+                            </label>
+                        </div>
+                       </div>
+                       <div class="Grid-row-col-swiper-template-container-header ion-hide-xl-down">
+                         <div class="Grid-row-col-swiper-template-container-header-titulo ion-text-center">
+                             <label class="Grid-row-col-swiper-template-container-header-titulo-label" >  
+                                  <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{i+1}} / 7</p> 
+                                  <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{group.title}}</p>
+                              </label>
+                          </div>
+                         </div>
+                       <ion-col  class="Grid-row-col-swiper-template-container-items">
+                        <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+                               <ion-list *ngIf="group.type==='item'" class="Grid-row-col-swiper-template-container-items-list2" lines="none">
+                                <ion-item lines="full" class="Grid-row-col-swiper-template-container-items-list2-item"
+                                  *ngFor="let pregunta of group.preguntas; let j = index"
+                                  [ngStyle]="{'--background': pregunta.isChecked ? backgroundChecked : background}"
+                                  button (click)="toggleSelection(group.key, pregunta.val)">
+                                  <ion-label [ngStyle]="{'color': pregunta?.isChecked===true ? '#FFF' : '#333'}">{{ pregunta.val }}</ion-label>
+                                  <ion-icon *ngIf="pregunta.icon" slot="end" [src]="pregunta.icon" style="width: 55px;height: 55px;"></ion-icon> 
+                                </ion-item>
+                              </ion-list>  
+                              <div *ngIf="group.type === 'range'">
+                                <ion-list class="Grid-row-col-swiper-template-container-items-list2">
+                                  <ion-grid>
+                                    <ion-row>
+                                      <ion-col size="auto" *ngFor="let edad of edadesDisponibles">
+                                        <ion-button  style="min-height: 60px;min-width: 60px;max-width: 60px;max-height: 60px;font-weight: 700;"  [class.button-selected]="edad === edadSeleccionada"
+                                                     [class.button-unselected]="edad !== edadSeleccionada"
+                                          [fill]="edad === edadSeleccionada ? 'solid' : 'outline'"
+                                          (click)="seleccionarEdad(edad)">
+                                          {{ edad }}
+                                        </ion-button>
+                                      </ion-col>
+                                    </ion-row>
+                                  </ion-grid>
+                                </ion-list>
                               </div>
-                  </ng-template>  
-                  <ng-template swiperSlide>
-                      <div class="slide-container" style="padding-top: 150px;">
-                              <div class="ion-text-center" style="height: 50%;">
-                                  <ion-label class="ion-text-center">
-                                      <ion-icon src="../../assets/icon/text.svg" style="width:300px;height:178px;"></ion-icon>         
-                                  </ion-label>
-                              </div>
-                              <div class="ion-text-center" style="padding-top: 20px;">
-                               <ion-thumbnail style="display: contents;">
-                                      <ion-icon src="../../assets/icon/send.svg" style="width:300px;height:250px;"></ion-icon>         
-                                  </ion-thumbnail>
-                              </div>
-                              </div>
-                  </ng-template> 
-              </swiper>
+                          </form>
+                      </ion-col>
+                 </div>
+              </swiper-slide>
+               <swiper-slide class="Grid-row-col-swiper-template">
+                <div>
+                  <div class="ion-text-center" style="height: 50%;">
+                      <ion-label class="ion-text-center">
+                          <ion-icon src="../../assets/icon/text.svg" style="width:300px;height:178px;"></ion-icon>         
+                      </ion-label>
+                  </div>
+                  <div class="ion-text-center" style="padding-top: 20px;">
+                   <ion-thumbnail style="display: contents;">
+                          <ion-icon src="../../assets/icon/send.svg" style="width:300px;height:250px;"></ion-icon>         
+                      </ion-thumbnail>
+                  </div>
+                  </div>
+               </swiper-slide>
+            </swiper-container>
           </ion-col>
       </ion-row>
-  </ion-grid>
-</ion-content>  
+  </ion-grid>   
+</ion-content>
 <ion-footer class="ion-no-border" [style.background]="background">
   <ion-grid style="padding-left: 35px;
-  padding-right: 35px;" >
-      <ion-row>
+                   padding-right: 35px;" >
+    <ion-row>
           <ion-col size="12" *ngIf="bandera" class="ion-text-center" >
               <ion-button class="btn-enviar" (click)="enviar()">
                   ENVIAR FORMULARIO
@@ -65,15 +94,14 @@
           </ion-col>
           <ion-col size="6" *ngIf="!bandera && !finalized" style="padding-right: 15px;"  class="ion-text-end">
               <ion-button class="btn" (click)="prev()" [disabled]="selected">
-                  <ion-icon src="../../assets/icon/chevron-forward.svg" style="width:35px ;height:34px;position: absolute;transform: rotate(180deg);"></ion-icon>
+                  <ion-icon src="../../assets/icon/chevron-forward.svg" style="width:24px ;height:24px;position: absolute;transform: rotate(180deg);"></ion-icon>
               </ion-button>
           </ion-col>
           <ion-col size="6" *ngIf="!bandera && !finalized" style="padding-left: 15px" class="ion-text-start">
               <ion-button class="btn" (click)="next()" [disabled]="!selected">
-                  <ion-icon src="../../assets/icon/chevron-forward.svg" style="width:35px ;height:34px;position: absolute;"></ion-icon>
+                  <ion-icon src="../../assets/icon/chevron-forward.svg" style="width:24px ;height:24px;position: absolute;"></ion-icon>
               </ion-button>
           </ion-col>
-
       </ion-row>
   </ion-grid>
-</ion-footer>
+</ion-footer>  

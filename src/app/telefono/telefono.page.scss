@@ -1,112 +1,171 @@
 ion-content{
     --ion-background-color: #fff;
 }
-.header{
-    border-radius: 0 0 15px 15px;
-    background-color: #F4F4F4;
- 
-    padding-bottom: 5px;
- /*    padding-bottom: 25px; */
- 
-    &-icon{
-    
-        width: 100%;
-        height:max-content;
-        display: contents;
-      
-    
-    }
-    }
-
-    .Grid{
-        height: auto !important;
-       // height: calc(100% - 225px);
-        display: flex; 
-        flex-flow: column;
-        padding-left: 27px;
-        padding-right: 27px;
-        padding-bottom: 0px;
-        padding-top: 0px;
- 
-        &-row-col{
+.Grid{
+    height: auto !important; 
+    display: flex; 
+    flex-flow: column;
+    padding-left: 27px;
+    padding-right: 27px;
+    padding-bottom: 0px;
+    padding-top: 50px;
+    &-row{
+        &-col{
             width: 100% !important;
-            padding: 0px;
-            &-item{
-          
-                --background: #FE910E;
-                --border-radius: 15px;
-               
-                margin-top: -7px;
+            padding: 5px;
+            &-contact-item{
+                width: 100%;
+                height: 100%;
+                margin-top: 5px;
+                margin-right: 20px;
+                padding:0px; 
+                border-radius:15px;
+                border:2px solid #5A4BB2;
+                &-label{
+                    margin-top: 6px;
+                    margin-bottom: 6px;
+                    &-p{ 
+                        padding:0px;
+                        color:gba(0, 0, 0, 0.87);
+                        font-size: 14px;
+                    }
+                    &-correo{  
+            
+                        padding:0px;
+                        color:gba(0, 0, 0, 0.87);
+                        font-size: 12px;
+                        white-space: normal;
+                    }
+                }
                 
+                &-label-h4{  
+        
+                    padding:0px;
+                    color: #000;;
+                    font-size: 12px;
+                }
+                &-icon{
+                    margin-right:5px !important;
+                }
+                }
+                
+            &-item{
+                --background: #FE910E;
+                --border-radius: 15px; 
                 &-label-p{
                     padding: 3px;
                     font-size: 18px;
-                     color:#fff;
-                }
-                &-icon{
-                    margin:auto;
-                    padding-left: 15px;
-                    color: #fff;
+                    color:#fff;
                 }
             }
+            &-header{
+                border-radius: 0 0 15px 15px;
+                background-color: #fff;
+                padding-bottom: 5px;
+                
+                &-icon{
+                    width: 100%;
+                    height:max-content;
+                    display: contents;
+                }
+                }
         }
-    
     }
 
-    .form{
-  
-        width: 100%;
-        margin-top: 5px;
-     
-        padding:0px;
-        --background: #ffff;
-       border-radius:15px;
-        border:2px solid #5A4BB2;
-        &-label{
-            margin-top: 6px;
-            margin-bottom: 6px;
-        }
-        &-label-p{  
+}
+@media (min-width:280px) and (max-width:380px) {
+.Grid{
+    height: calc(100% - 221px);
+    }
+}
 
-            padding:0px;
-            color:gba(0, 0, 0, 0.87);
-            font-size: 14px;
-        }
-        &-label-correo{  
+@media (min-width:1200px ) {
+.Grid{
+    padding-top: 0px;
+    padding-left: 115px;
+    padding-right: 115px;
+    &-row{
+        padding-top: 33px;
+        display: flex;
+        &-col{
+            padding:8px; 
+            &-contact-item{
+                --padding-start:0px
+                --pading-end:0px; 
+                --inner-padding-end: 0px;
+ 
+                width: 100%; 
+                &-icon{
+                    width: 95px;
+                    height: 95px; 
+                }
+                &-label{ 
+                    align-content: center;
+                    width: 100%;
+                    padding:0px;
+                    margin: 0px;
+                    &-h4{
+                        margin: 0px;
+                        width: 100%;
+                        font-size: 20px;
+                        font-weight: 700;
+                    }
+                    &-p{
+                        margin: 0px;
+                        width: 100%;
+                        font-weight: 400;
+                        font-size: 18px;
+                    }
+                    &-correo{
+                        margin: 0px;
+                        width: 100%;
+                        font-weight: 400;
+                        font-size: 16px;
+                    }
+                }
 
-            padding:0px;
-            color:gba(0, 0, 0, 0.87);
-            font-size: 12px;
-            white-space: normal;
-        }
-        &-label-h4{  
-
-            padding:0px;
-            color: #000;;
-            font-size: 12px;
-        }
-        &-icon{
-            margin-right:5px !important;
-        }
-     }
-
-     @media (min-width:1023px) {
-        .header{
-            border-radius: 0 0 15px 15px;
+            }
+            &-contact-item::part(native){
+                display: flex;
+                flex-direction: column;
+                align-items: center;  
+                text-align: center; 
+            }
+            &-label-desktop{
+                &-h1{
+                    padding-left:72px; 
+                    font-size: 40px;
+                    font-weight: 700;
+                    color: #5A4BB2;
+                }
+            }
+            &-header{
+                padding-top: 55px;
+                display: flex;
+                text-align: center;
+                align-items: center;
+                border-radius: 0 0 15px 15px; 
+                width: 100%; 
+                height: 356px;
+                &-icon{
+                    height: 296px;
+                    width: 476px;
     
-            background: url('../../assets/icon/numeros-utiles-header.svg') no-repeat center / 100%;
-            height: 345px;
-            width: 100%;
-            &-icon{
-            display: none;
-           
-            
+                }
             }
-            }
-     }
+        }
+    }
+}
+.icon-padding{
+    padding-top: 30px;
+    padding-bottom: 6px;
+}        
+.label-padding{
+    padding-left: 27px;
+    padding-right: 27px;
+}
 
-     @media (min-width:280px) and (max-width:380px) {
-        .Grid{
-            height: calc(100% - 221px);
-            }
-     }
+.limite-height{
+    max-height: 320px;
+}
+}

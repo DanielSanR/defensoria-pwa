@@ -39,6 +39,11 @@ const routes: Routes = [
          canLoad: [OnboardingGuard]
       },
       {
+        path: 'formulario',
+        loadChildren: () => import('../form/form.module').then(m => m.FormPageModule),
+        canLoad: [OnboardingGuard]
+      },
+      {
         path: '',
         redirectTo: '/principal/inicio',
         pathMatch: 'full'

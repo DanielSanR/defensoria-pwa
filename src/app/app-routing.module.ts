@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
 
-  },
+  }/* ,
   {
     path: 'formulario',
     loadChildren: () => import('./form/form.module').then( m => m.FormPageModule),
@@ -26,7 +26,7 @@ const routes: Routes = [
     data: {
       expectedSelected: 'kid'
     }
-  },
+  } */,
   {
     path: 'onboarding',
     loadChildren: () => import('./onboarding/onboarding.module').then( m => m.OnboardingPageModule),

@@ -1,24 +1,22 @@
 <ion-content [fullscreen]="true">
-    <ion-grid   class="Grid">
-        <ion-row  class="ion-justify-content-center ion-align-items-center ion-hide-xl-up">
+    <ion-grid  class="Grid">
+        <ion-row class="Grid-row ion-hide-xl-up">
             <ion-col size="12">
               <ion-item lines="none" detail='false' button class="datos" [routerLink]="['/principal/perfil']">
                     <ion-label class="datos-label">
                     <p class="datos-label-p">¡ Completa tus datos !</p>
-                      
                     </ion-label>  
                     <ion-icon class="datos-icon" slot="end" src="../../assets/icon/chevron-forward.svg" ></ion-icon>
                 </ion-item>
-        
             </ion-col>
         </ion-row>
-        <ion-row class="Grid-row ion-justify-content-left ion-align-items-left ion-hide-xl-down">
-            <ion-label class="titulo">
-                <h2 class="titulo-h2">
+        <ion-row class="Grid-row-titulo-desktop ion-hide-xl-down">
+            <ion-label class="Grid-row-titulo-desktop-label">
+                <h2 class="Grid-row-titulo-desktop-label-h2">
                     ¡Hola, bienvenido!
                 </h2>
-                <h4 class="titulo-h4">
-                    Completa tus datos ingresando a <strong class="titulo-h4-strong"> Tu Perfil</strong>
+                <h4 class="Grid-row-titulo-desktop-label-h4">
+                    <strong class="titulo-h4-strong">Completa tus datos ingresando a </strong> Tu Perfil
                 </h4>
             </ion-label>
         </ion-row>

@@ -12,13 +12,10 @@ import { ScreensizeService } from '../services/screensize.service';
 export class TabsPage implements OnInit {
   isDesktop: boolean;
   public width: number;
-  route: string;
-  public $obs = new Subscription();
   private activeTab?: HTMLElement;
   constructor(public platform: Platform,public formService: FormService,
     private screenSizeService: ScreensizeService) {
       this.screenSizeService.isDesktopView().subscribe(isDesktop => {
-        console.log(isDesktop)
         if (this.isDesktop && !isDesktop) {
           window.location.reload();
         }
@@ -28,10 +25,6 @@ export class TabsPage implements OnInit {
     }
 
   ngOnInit() {
-      const sub = this.formService.getSelectedData().subscribe((data) => {
-        this.route = data;
-      });
-      this.$obs.add(sub);
    this.width= this.platform.width();
   }
 
