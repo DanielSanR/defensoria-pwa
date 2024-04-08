@@ -42,7 +42,7 @@ export class OnboardingPage implements OnInit {
 ) { }
 
   ngOnInit() { 
-    this.background = '#F4F4F4';
+    this.background = '#fff';
   }
  
   next(){ 
@@ -109,8 +109,7 @@ export class OnboardingPage implements OnInit {
         this.swiperInstance.slideNext()
       }
     
-      slideWillChange() {
-          console.log(this.swiperInstance)
+      slideWillChange() { 
            if(this.swiperInstance.activeIndex === 2){
           this.background ='url("../../assets/images/kid-teen.svg") no-repeat center center / cover';
         }   
