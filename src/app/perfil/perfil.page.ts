@@ -9,6 +9,7 @@ import { SobreNosotrosPage } from '../sobre-nosotros/sobre-nosotros.page';
 import { Route, Router } from '@angular/router';
 import { SendmailService } from '../services/sendmail.service';
 import { DeviceService } from '../services/device.service';
+import { ScreensizeService } from '../services/screensize.service';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -28,7 +29,8 @@ export class PerfilPage implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private sendmail: SendmailService,
-    private deviceService: DeviceService
+    private deviceService: DeviceService,
+    private screensizeService: ScreensizeService
      ) { }
 
      async ngOnInit() {

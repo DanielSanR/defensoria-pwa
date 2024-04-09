@@ -1,7 +1,7 @@
 
  
-<ion-content>  
-<form style="padding-top:0px;width: 100%;height: 100%;" [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
+<ion-content [fullscreen]="true">  
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
 <ion-grid class="Grid">
   <ion-row class="Grid-row-perfil">
     <ion-button class="Grid-row-perfil-button" id="open-popover" ><ion-icon slot="icon-only"  name="ellipsis-horizontal" ></ion-icon></ion-button>
@@ -42,19 +42,21 @@
     <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
       <h2 class="Grid-row-form-col-text-h2">Nombre</h2>
     </ion-text>
-    <ion-item  class="Grid-row-form-col-item" lines="none" >
-      <ion-label class="Grid-frow-orm-col-item-label  ion-hide-xl-up" position="stacked">Nombre</ion-label>
-      <ion-input class="Grid-row-form-col-item-label-input-p" formControlName="name" placeholder="Mi nombre es ..."></ion-input>
+    <ion-item  class="Grid-row-form-col-item" lines="none">
+      <ion-input class="Grid-row-form-col-item-label-input-p"  labelPlacement="stacked"  formControlName="name" placeholder="Mi nombre es ...">
+        <div slot="label" class="ion-hide-xl-up">Email</div>
+      </ion-input>
       <ion-icon src="../../assets/icon/nameForm.svg"slot="start"></ion-icon>
   </ion-item>
   </ion-col>
   <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-form-col">
     <ion-text class="Grid-row-form-col-text ion-hide-xl-down">
-      <h2 class="Grid-row-form-col-text-h2">Telefono</h2>
+      <h2 class="Grid-row-form-col-text-h2">Teléfono</h2>
     </ion-text>
     <ion-item  class="Grid-row-form-col-item" lines="none" >
-      <ion-label class="Grid-row-form-col-item-label  ion-hide-xl-up" position="stacked">Telefono</ion-label>
-      <ion-input class="Grid-row-form-col-item-label-input-p" formControlName="phone" placeholder="Mi telefono es ..."></ion-input>
+      <ion-input  labelPlacement="stacked"  class="Grid-row-form-col-item-label-input-p" formControlName="phone" placeholder="Mi telefono es ...">
+        <div slot="label" class="ion-hide-xl-up">Teléfono</div>
+      </ion-input>
       <ion-icon src="../../assets/icon/phoneForm.svg"slot="start"></ion-icon>
   </ion-item>
   </ion-col>
@@ -63,8 +65,10 @@
       <h2 class="Grid-row-form-col-text-h2">Correo electrónico</h2>
     </ion-text>
     <ion-item  class="Grid-row-form-col-item" lines="none" >
-      <ion-label class="Grid-row-form-col-item-label  ion-hide-xl-up" position="stacked">Correo electrónico</ion-label>
-      <ion-input class="Grid-row-form-col-item-label-input-p" formControlName="email" placeholder="Mi correo  es ..."></ion-input>
+      
+      <ion-input   labelPlacement="stacked"  class="Grid-row-form-col-item-label-input-p" formControlName="email" placeholder="Mi correo  es ...">
+        <div slot="label" class="ion-hide-xl-up">Correo electrónico</div>
+      </ion-input>
       <ion-icon src="../../assets/icon/mailForm.svg"slot="start"></ion-icon>
   </ion-item>
   </ion-col>
@@ -73,19 +77,20 @@
       <h2 class="Grid-row-form-col-text-h2">Dirección</h2>
     </ion-text>
     <ion-item  class="Grid-row-form-col-item" lines="none" >
-      <ion-label class="Grid-row-form-col-item-label  ion-hide-xl-up" position="stacked">Dirección</ion-label>
-      <ion-input class="Grid-row-form-col-item-label-input-p" formControlName="address" placeholder="Mi dirección es ..."></ion-input>
+      <ion-input  labelPlacement="stacked"   class="Grid-row-form-col-item-label-input-p" formControlName="address" placeholder="Mi dirección es ...">
+        <div slot="label" class="ion-hide-xl-up">Dirección</div>
+      </ion-input>
       <ion-icon src="../../assets/icon/locationForm.svg"slot="start"></ion-icon>
   </ion-item>
   </ion-col>
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12" style="text-align: center;padding:0px;">
+  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12" style="text-align: center;padding-bottom:10px;">
     <ion-button class="save ion-hide-xl-up" type="submit" [disabled]="!this.myForm.valid">Actualizar</ion-button>
   </ion-col>
   <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12" class="ion-hide-xl-down" style="text-align: center;padding-top: 36px;">
     <ion-button class="save " type="submit" [disabled]="!this.myForm.valid">Actualizar mis datos</ion-button>
   </ion-col>
     </ion-row> 
-    <ion-row class="Grid-row-tips ion-hide-xl-down">
+<!--     <ion-row class="Grid-row-tips ion-hide-xl-down">
       <ion-col class="Grid-row-tips-col">
         <ion-label class="Grid-row-tips-col-label">
           <h2 class="Grid-row-tips-col-label-h2">Tips y consejos - <strong class="Grid-row-tips-col-label-h2-strong">Sobre tus derechos</strong></h2>
@@ -121,7 +126,7 @@
        </ion-item>
  
       </ion-col>
-    </ion-row>
+    </ion-row> -->
 </ion-grid>
 </form>
 </ion-content>

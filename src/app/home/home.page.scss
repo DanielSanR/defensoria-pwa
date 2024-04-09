@@ -5,19 +5,8 @@ ion-content {
 }
 
 .datos{
-width: 100%;
-margin-top: 31px;
-border-radius: 15px;
-padding:10px;
---background: #FE910E;
---border-radius: 15px;
-&-label-p{
-  padding:6px;
-  color:#fff;
-  font-size: 16px;
-  text-wrap: nowrap;
 
-}
+
 &-datos-icon{
       --color:#fff !important;
   
@@ -25,143 +14,154 @@ padding:10px;
 }
  
 .Grid{
-
-height: 100%; 
-display: flex; 
-flex-flow: column;
-align-items: center;
-align-content: center;
-&-row{
-  margin-bottom: 30px;
-  height: 100%;
-  width: 100%;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  padding:0px 16px 0px 16px;
-  &-col-card{
-      margin: 0px auto;
-      padding-left: 0px;
-      width: 100%;
-      --background: #5A4BB2;
-      --color:#fff;
-      border-radius: 15px;
-      &-header{
-          padding-top: 30px;
-          padding-bottom: 0px;
+  height: 100%; 
+  display: flex; 
+  flex-flow: column; 
+  &-mobileTitle-row{ 
+    &-col{
+      &-item{
+        width: 100%; 
+        border-radius: 15px;
+        padding:10px;
+        --background: #FE910E;
+        --border-radius: 15px;
+        &-label-p{
+          padding:6px;
+          color:#fff;
+          font-size: 16px;
+          text-wrap: nowrap;
+          text-align: center;
+        
+        }
       }
-      &-content{
-          padding-bottom: 25px;
-           font-size: 18px;
-           white-space: nowrap;
-      }
+    }
   }
-  &-col-card:last-child{
+    &-iconMobile-row{
+      height: 100%;
       width: 100%;
+      &-col{
+        align-self: center;
+        text-align: center;
+        &-icon{
+          width: 121px;
+          height: 111px;
+        }
+      }
+    }
+    &-options-row{
+      margin-top: auto;
+      &-col{
+        &-container{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          min-width: 125px;
+          min-height: 125px;
+          background-color: #5A4BB2;
+          border-radius: 15px;
+          &-thumbnail{
+            width: 25px;
+            height: 25px;
+            &-icon{
+              color: #fff;
+              font-size: 25px;
+            }
+          }
+          &-label{
+            padding-top: 10px;
+            &-p{
+                color: #fff;
+                font-size: 18px;
+                font-weight: 700;
+                white-space: nowrap;
+            }
+          
+          }
+        }
+      }
+    }
   }
-  &-col-icon{
-      height:111px;
-      width: 121px;
-      text-align: center;
-     
-  }
-}
-&-row:first-child{
-  height: 100%;
-  align-content: end;
-  padding-bottom: 40px;
-  align-items: center;
-}
-}
 
-ion-button{
-font-size: 20px;
---color: #202020;
-opacity: 0.8;
-min-height: 80px;
-min-width: 100%;
---background: #FFFFFF;
---background-activated: #ffffff;
---border-radius: 15px;
 
-&::part(native){
-  border: 1.5px solid #C7C7C7;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-}
-ion-button:hover,ion-button:focus{
-  &::part(native){
-  border-color:rgba(255, 102, 0, 0.83);
-  --border-style: solid;
-  --border-width: 3px;
-}
-}
-
-@media (min-width:360px) and (max-width:380px)  {
-  ion-button{
-      min-height: 60px;
-      font-size: 16px;
-      max-width: 240px;
-  }
-
-}  
-@media  (min-width:280px) and (max-width:359px)  {
-ion-button{
-  min-height: 55px;
-  font-size: 12px;
-  max-width: 240px;
-  }
-}
-
- 
 
 @media (min-width:1200px ) {
   .Grid{ 
-    padding-top: 116px;
-    margin-left: 141px;
-    margin-right: 140px;
-    &-row{
-      margin-bottom: 5px;
+    justify-content: center;
+    //centrame todo este grid con flexbox
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    width:  fit-content;
+    &-desktopTitle-row{
+      &-col{
+        width:100%;
+        height: 100%;
+        text-align: left;
+        justify-content: left;
+        align-content: center;
       
-      height: 100%;
+      &-label{
+        &-h2{
+          font-weight: 700;
+          font-size: 40px; 
+        }
+        &-h4{
+          font-size: 30px;
+          &-strong{
+            font-weight: 700;
+            font-size: 30px;
+          }
+        }
+      }
+    }
+    }
+    &-options-row{
+      padding-top: 64px;
+      margin: 0px;
       width: 100%;
-      align-content: center;
-      align-items: center;
-      text-align: center;
+      &-col{
+        align-content: center;
+
+        &-container{
+          width: 280px;
+          max-width: 280px;
+          height: 251px;
+          max-height: 251px;
+            &-thumbnail{
+              width: 100px;
+              height: 100px;
+              &-icon{
+                  font-size: 100px;
+              }
+            }
+            &-label{
+              &-p{
+                font-size: 40px;
+              }
+            }
+        }
+      }
+    }
+
+    &-row{ 
+      margin-bottom: 5px; 
+      width: 100%; 
       padding: 0px;
-       
       &-col-card{
         width: 100%;
         height: 100%;
+        min-width: 251px;
+        min-height: 251px;
         &-content{
-          
            font-size: 36px;
            font-weight: 700;
            white-space: nowrap;
       }
             }
-      &-titulo-desktop{
-        width:100%;
-        text-align: left;
-        justify-content: left;
-        &-label{
-          &-h2{
-            font-weight: 700;
-            font-size: 40px; 
-          }
-          &-h4{
-            font-size: 30px;
-            &-strong{
-              font-weight: 700;
-              font-size: 30px;
-            }
-          }
-        }
-      }
-      }
-      &-row:last-child{
-        padding-bottom: 200px;
+       
       }
     }
   }

@@ -11,7 +11,7 @@ ion-content{
     height: 100%; 
     width: 100%;
     display: flex; 
-    flex-flow: column;   
+    flex-direction: column;   
     &-row-perfil{
         &-button{ 
             --background:#fff;
@@ -93,9 +93,6 @@ ion-content{
     }
     
 }
- 
- 
- 
 
  .save{
     font-weight: 100;
@@ -118,6 +115,32 @@ ion-content{
     --background: #f4f4f4;
 }
  
+@media(max-width:376px){
+    .Grid-row-form-col-item-label-input-p{
+        font-size: 12px;
+    }
+    .Grid-row-perfil{
+        &-img-col-div{
+            &-image{
+                width: 95px;
+                height: 95px;
+                margin-bottom: 0px;
+                margin-top: -35px;
+            }
+        }
+        &-label-col{
+            padding-bottom: 0px;
+            &-label-p{
+                color:#fff;
+                font-size: 14px;
+                font-weight: 700;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+
 
 @media (min-width:1200px ) {
     ion-content{
