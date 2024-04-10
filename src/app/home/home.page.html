@@ -29,7 +29,7 @@
         </ion-row>   
         <ion-row class="Grid-options-row">
             <ion-col class="Grid-options-row-col" sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3" *ngFor="let item of values">
-              <div class="Grid-options-row-col-container">
+              <div class="Grid-options-row-col-container" (click)="redirect(item)">
                     <ion-thumbnail class="Grid-options-row-col-container-thumbnail">
                         <ion-icon src="../../assets/icon/{{item.icon}}" class="Grid-options-row-col-container-thumbnail-icon">
                         </ion-icon>

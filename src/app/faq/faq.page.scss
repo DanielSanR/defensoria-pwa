@@ -1,146 +1,100 @@
-ion-content{
-    --ion-background-color: #fff;
-}
 
+ion-content{
+    --background:#fff;
+    
+}
 
 .Grid{
-    display: block; 
-    flex-flow: column;
-    &-row-col{
-        width: 100% !important;
-        &-item{
-      
-            --background: #FE910E;
-            --border-radius: 15px;
-           
-            margin-top: -22px;
-            
-            &-label-p{
-                padding: 6px;
-                font-size: 18px;
-                 color:#fff;
+    height: 100%; 
+    width: 100%; 
+    width: fit-content;
+    &-row-tips{
+        &-col{
+            &-label{
+            &-h2{
+                padding-left: 10px;
+                font-size: 16px;
+                font-weight: 700;
+                &-strong{
+                    font-weight: 500;
+                    color:#5A4BB2;
+                }
             }
-            &-icon{
-                margin:auto;
-                padding-left: 15px;
-                color: #fff;
+            &-h4{
+                padding-left: 10px;
+                padding-top: 18px;
+                font-size: 14px;
+                font-weight: 600;
+                padding-bottom: 16px;
+            }
+        }
+        &-item{ 
+            &-icon{ 
+                font-size: 6px;
+                color: #000; 
+
+            }
+            &-label{
+                font-size: 14px;
+                margin: 0px;
+                padding-left: 16px;
             }
         }
     }
-
-}
-.header{
-    border-radius: 0 0 15px 15px;
-    background-color: #F4F4F4;
- 
-   
- /*    padding-bottom: 25px; */
- 
-    &-icon{
-    
-        width: 100%;
-        height:max-content;
-        display: contents;
-    
-    }
     }
     
-    .titulo{
-        padding: 34px 39px 9px 39px ;
-        width: 100%;
-        margin-bottom: 56px;
-}
-.correo{
-    padding: 11px 39px 9px 39px ;
-    width: 100%;
-    margin-bottom: 20px;
 }
 
-
- ion-list{
-    background: #fff !important;
- }
-
-ion-grid{
-    padding: 0 28px;
-}
-
- 
- 
-.label-detalle{
-    font-family: 'Open Sans';
-    font-style: normal;
-    &-titulo{
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 120%;
-        color: rgba(32, 32, 32, 0.7);
-    }
-    &-sub{
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 120%;
-        /* or 17px */
-
-
-        color: rgba(32, 32, 32, 0.7);
-    }
-}
-
-.label-correo{
-    font-family: 'Open Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 120%;
-/* identical to box height, or 17px */
-
-
-color: #000000;
-}
-
-ion-accordion {
-    
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background: #ffff;
-    border: 1px solid #5A4BB2;
-    border-radius: 15px;
-  }
- 
-  ion-accordion.accordion-expanding,
-  ion-accordion.accordion-expanded {
-    width: 100%;
-  
-    margin: 5px auto;
-  }
-  
-  ion-accordion.accordion-collapsing ion-item[slot="header"],
-  ion-accordion.accordion-collapsed ion-item[slot="header"] {
-    --background: #fff;
-    font-size: 14px;
-    
-    --color: #5A4BB2;
-  }
-  
-  ion-accordion.accordion-expanding ion-item[slot="header"],
-  ion-accordion.accordion-expanded ion-item[slot="header"] {
-    --background: #ffff;
-    --color: #5A4BB2;
-  }
- 
-
- @media (min-width:1023px) {
-    .header{
-        border-radius: 0 0 15px 15px;
-
-        background: url('../../assets/icon/faq-2.svg') no-repeat center / 100%;
-        height: 350px;
-        width: 100%;
-        &-icon{
-        display: none;
-       
+@media (min-width:1200px ) {
+    .Grid{
+        display: flex;
+        flex-direction: column;
         
+        padding: 0px;
+        justify-content: center; 
+        width: fit-content;
+        &-row-tips{
+            min-width: 1190px; 
+            padding-left: 16px;
+            padding-right: 16px;
+            &-col{
+                &-label{
+                &-h2{
+                    padding-left: 10px;
+                    font-size: 26px;
+                    font-weight: 700;
+                    &-strong{
+                        font-weight: 500;
+                        color:#5A4BB2;
+                    
+                    }
+                }
+                &-h4{
+                    padding-left: 10px;
+                    padding-top: 18px;
+                    font-size: 22px;
+                    font-weight: 600;
+                    padding-bottom: 16px;
+                }
+                
+            }
+            &-item{ 
+                &-icon{ 
+                    font-size: 6px;
+                    color: #000; 
+                     
+                     
+
+                }
+                &-label{
+                    font-size: 16px;
+                    margin: 0px;
+                    padding-left: 16px;
+                }
+            }
         }
         }
- }
+      
+         
+    }
+} 

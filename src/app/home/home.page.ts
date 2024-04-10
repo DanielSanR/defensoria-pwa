@@ -10,8 +10,8 @@ import { Subscription } from 'rxjs';
 })
 export class HomePage implements OnInit,OnDestroy { 
   values: any[]=[
-    {id:1,text:'Pedir Ayuda',icon:'microfono.svg',page:'/formulario',externalURL:false},
-    {id:2,text:'Consejos',icon:'faq.svg',page:'principal/preguntas-frecuentes',externalURL:false},
+    {id:1,text:'Pedir Ayuda',icon:'microfono.svg',page:'/principal/formulario',externalURL:false},
+    {id:2,text:'Consejos',icon:'faq.svg',page:'/principal/preguntas-frecuentes',externalURL:false},
     {id:3,text:'Sitio Web',icon:'globe-outline.svg',page:'https://defensoriadennya.misiones.gob.ar/',externalURL:true},
     {id:4,text:'Mapa',icon:'map.svg',page:'/principal/mapa',externalURL:false}];
   formRoute: string;
@@ -21,7 +21,6 @@ export class HomePage implements OnInit,OnDestroy {
     const sub = this.formService.getSelectedData().subscribe(
       res=>{
         this.formRoute= (res==='teen' && res != null) ? this.values[0].page ='/formulario' : this.values[0].page ='/formulario-kids';
-  
       }
     );
     this.$obs.add(sub);
@@ -30,13 +29,14 @@ export class HomePage implements OnInit,OnDestroy {
     this.$obs.unsubscribe();
   }
 
-  redirect(item: any){
+  redirect(item: any){ 
+    console.log(item)
     if(item.externalURL){
 
       location.assign(item.page);
     }
 
-    this.router.navigateByUrl(item.page);
+    this.router.navigate([item.page]);
   }
 }
 

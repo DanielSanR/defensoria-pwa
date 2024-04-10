@@ -5,23 +5,26 @@ ion-content{
 }
 
 .Grid{
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 55px; 
+     
     height: 100%; 
     width: 100%;
     display: flex; 
     flex-direction: column;   
-    &-row-perfil{
-        &-button{ 
+    &-button-row{
+        width: 100%;
+        justify-content: right;
+        &-btn{ 
+            --box-shadow:hidden;
             --background:#fff;
-            --color:#5A4BB2;
-            --border-color: none; --border-width: 0px !important;
-            --box-shadow:none;
-            position: absolute;
-            top: 0;
-            right: 0;
+            --color:#5A4BB2
+        }
     }
+    &-row-actualizar{
+        margin-top: auto;
+
+    }
+    &-row-perfil{
+     
         border-radius: 15px;
         background: #5A4BB2;
         text-align: center;
@@ -39,19 +42,21 @@ ion-content{
                     border-radius: 50%;
                     background: #f4f4f4;
                     border:solid 2px #FE910E;
-                    margin-bottom: 36px;
+                    margin-bottom: 24px;
                 }
             }
         }
         &-label-col{
-            margin-bottom: 30px;
+            margin-bottom: 16px;
             padding: 0px;
             &-label-p{
+                padding-top: 6px;
                 color:#fff;
                 font-size: 18px;
                 font-weight: 700;
-                margin-bottom: 4.5px;
+                
             }
+             
         }
         
 
@@ -72,20 +77,20 @@ ion-content{
 }
     &-row-form{
         &-col{
+            padding: 8px;
             &-item{
                 width: 100%;
-            margin-top: 5px;
-        
-            padding:0px;
-            --background: #ffff;
-        border-radius:15px;
-            border:1px solid #5A4BB2;
-            &-label-input-p{
+                margin-top: 5px;
                 padding:0px;
-                color:#000;
-                font-size: 14px;
-            }
-            &-datos-icon{
+                --background: #ffff;
+                border-radius:15px;
+                border:1px solid #454545;
+                &-label-input-p{
+                    padding:0px;
+                    color:#000;
+                    font-size: 14px;
+                }
+                &-datos-icon{
                     color:#000 !important; 
             }
         }
@@ -108,6 +113,11 @@ ion-content{
            --border-radius:8px;
  }
 
+
+ .form{
+    height: 100%;
+    overflow-y: scroll;
+ }
 .lista{
     --inner-padding-end: 0;
     border-radius:8px;
@@ -143,21 +153,28 @@ ion-content{
 
 
 @media (min-width:1200px ) {
+    .form{
+        overflow-y: hidden;
+    }
     ion-content{
         --background:#ffff ;
     }
     .Grid{
-        padding-left: 125px;
-        padding-right: 125px;
-        &-row-perfil{
-            position: relative;
-            &-button{
-                --background:#5A4BB2;
-                --color:#fff;
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
+        padding: 0px;
+        justify-content: center; 
+        width: fit-content;
+        &-button-row{
+            margin-bottom: -50px;
+           &-btn{
+            --color:#fff;
+            --background:#5A4BB2;
+           }
+        }
+        &-row-actualizar{
+            margin-top: 0;
+
+        }
+        &-row-perfil{ 
             &-img-col{
                 padding-top: 12px;
                 padding-bottom: 12px;
@@ -178,28 +195,41 @@ ion-content{
             &-label-col{
                 margin-bottom: 0px;
                 text-align: left;
+                &-label-p{
+                    font-size: 30px;
+                    font-weight: 700;
+                }
             }
 
         }
         &-row-title{
+            padding-left: 16px;
             padding-top: 22px;
-            &-col-text-h2{
+            &-col{
+                padding: 0px;
+                &-text-h2{
                     font-size: 26px;
                     font-weight: 700;
                 }
+            }
+            
             
         
         }
         &-row-form{
-            padding-left: 16px;
-            padding-right: 16px;
+            min-width: 1190px;
+            padding-top: 13px; 
+            padding-left: 8px;
             &-col-text{
                 margin: 0px;
                 &-h2{
-                    padding-left: 10px;
+                    padding-bottom: 6px;
+                    margin: 0px;
                     font-size: 20px;
                     font-weight: 600;
                 }
+            }
+            &-col-item{ 
             }
         }
 
@@ -229,8 +259,7 @@ ion-content{
                 }
                 
             }
-            &-item{
-                 
+            &-item{ 
                 &-icon{ 
                     font-size: 6px;
                     color: #000; 
@@ -239,7 +268,7 @@ ion-content{
 
                 }
                 &-label{
-                    
+                    font-size: 16px;
                     margin: 0px;
                     padding-left: 16px;
                 }
@@ -254,8 +283,7 @@ ion-content{
         text-align: center;
         max-width: 454px;
     }
-}  
-
+} 
 ion-popover#open-popover::part(content) {
     top: unset !important;
     left: 0 !important;
