@@ -1,59 +1,31 @@
-<ion-content [fullscreen]="true"> 
-    <ion-grid  class="Grid">
-        <ion-row class="Grid-mobileTitle-row ion-hide-xl-up">
-            <ion-col size="12" class="Grid-mobileTitle-row-col ion-hide-xl-up">
-              <ion-item class="Grid-mobileTitle-row-col-item ion-hide-xl-up" lines="none" detail='false' button [routerLink]="['/principal/perfil']">
-                    <ion-label class="Grid-mobileTitle-row-col-item-label ion-hide-xl-up">
-                    <p class="Grid-mobileTitle-row-col-item-label-p">¡ Completa tus datos !</p>
-                    </ion-label>   
-                </ion-item>
-            </ion-col>
-        </ion-row>
-        <ion-row class="Grid-desktopTitle-row ion-hide-xl-down">
-            <ion-col class="Grid-desktopTitle-row-col">
-                <ion-label class="Grid-desktopTitle-row-col-label">
-                    <h2 class="Grid-desktopTitle-row-col-label-h2">
+<ion-content  >
+    <ion-grid class="Grid">
+        <ion-row class="Grid-title-row">
+            <ion-col class="Grid-title-row-col">
+                <ion-label class="Grid-title-row-col-label">
+                    <h2 class="Grid-title-row-col-label-h2">
                         ¡Hola, bienvenido!
                     </h2>
-                    <h4 class="Grid-row-titulo-desktop-label-h4">
-                        <strong class="titulo-h4-strong">Completa tus datos ingresando a </strong> Tu Perfil
+                    <h4 class="Grid-title-row-col-label-h4">
+                        Completa tus datos ingresando a  <strong class="Grid-title-row-col-label-h4-strong">TU PERFIL</strong>
                     </h4>
                 </ion-label>
             </ion-col>
-        
         </ion-row>
-        <ion-row class="Grid-iconMobile-row ion-hide-xl-up">
-            <ion-col size="12" class="Grid-iconMobile-row-col">
-                <ion-icon class="Grid-iconMobile-row-col-icon" src="../../assets/icon/home-icon1.svg" ></ion-icon>
-            </ion-col>
-        </ion-row>   
         <ion-row class="Grid-options-row">
-            <ion-col class="Grid-options-row-col" sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3" *ngFor="let item of values">
-              <div class="Grid-options-row-col-container" (click)="redirect(item)">
+            <ion-col class="Grid-options-row-col" sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3"
+                *ngFor="let item of values">
+                <div class="Grid-options-row-col-container" (click)="redirect(item)">
                     <ion-thumbnail class="Grid-options-row-col-container-thumbnail">
-                        <ion-icon src="../../assets/icon/{{item.icon}}" class="Grid-options-row-col-container-thumbnail-icon">
+                        <ion-icon src="../../assets/icon/{{item.icon}}"
+                            class="Grid-options-row-col-container-thumbnail-icon">
                         </ion-icon>
                     </ion-thumbnail>
                     <ion-label class="Grid-options-row-col-container-label">
                         <p class="Grid-options-row-col-container-label-p">{{ item.text}}</p>
                     </ion-label>
-                </div>  
-          <!--   <ion-card class="Grid-row-col-card" (click)="redirect(item)">
-                <ion-card-header class="Grid-row-col-card-header ion-text-center">
-                    <div align="center" style="padding-bottom: 10px;">
-                    <ion-thumbnail class="ion-hide-xl-up" style="width:25px;height:25px;">
-                        <ion-icon src="../../assets/icon/{{item.icon}}" style="width: 25px;height: 25px;">
-                        </ion-icon>
-                    </ion-thumbnail>
-                    
                 </div>
-                </ion-card-header>
-                <ion-card-content class="Grid-row-col-card-content">
-                   {{ item.text}}
-                </ion-card-content>
-            </ion-card> -->
             </ion-col>
         </ion-row>
-        
     </ion-grid>
 </ion-content>

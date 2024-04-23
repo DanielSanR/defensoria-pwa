@@ -8,15 +8,15 @@ import { StorageService } from '../services/storage.service';
 import { ToastService } from '../services/toast.service';
 import { SendmailService } from '../services/sendmail.service';
 import { v4 as uuidv4 } from 'uuid';
-import { DeviceService } from '../services/device.service';
-import Swiper from 'swiper';
+import { DeviceService } from '../services/device.service'; 
+import { ScreensizeService } from '../services/screensize.service';
 @Component({
   selector: 'app-onboarding',
   templateUrl: './onboarding.page.html',
   styleUrls: ['./onboarding.page.scss'],
 })
 export class OnboardingPage implements OnInit {
-  private swiperInstance: any;
+  public swiperInstance: any;
 
   @ViewChild('swiper')
   set swiper(swiperRef: ElementRef) {
@@ -25,33 +25,35 @@ export class OnboardingPage implements OnInit {
       console.log(this.swiperInstance)
     }, 0);
   } 
-  didInit: boolean = false;
   public background = '';
-  key = 'AAPK895f48d83b5543ab80c5d058d510d5971uhYgfFtvdNCIB-no6TgvFEbUE-H-h6ZfPfs9GOWCpAtsp9cTGA8zFsd2DiPWwPf';
+  headerPixel = '56px'
   result: string= '';
   selected: string = '';
   latitude: any;
   longitude: any;
-  accuracy: any;
+  isDesktop: boolean = false;
   usuarioId = uuidv4();
   constructor(private router: Router, private cd: ChangeDetectorRef,
     private alertController: AlertController,private toastService: ToastService
     ,private storageService: StorageService,
     private loadingController: LoadingController, 
-    private sendMail: SendmailService, private deviceService: DeviceService
+    private sendMail: SendmailService, private deviceService: DeviceService,
+    private screenSize: ScreensizeService
 ) { }
 
   ngOnInit() { 
     this.background = '#fff';
+     this.screenSize.isDesktopView().subscribe(isDesktop => {
+       this.headerPixel = isDesktop ? '125px' : '71px';
+        this.isDesktop = isDesktop;
+      });
   }
  
   next(){ 
     this.swiperInstance.slideNext()
   }
 
-  end(){
-    console.log("end")
-  }
+  
   async getLocation(){
     const loading = await this.loadingController.create();
     await loading.present();
@@ -90,19 +92,10 @@ export class OnboardingPage implements OnInit {
     
         }
       }
-    
-      init(){
-        console.log("init")
-      }
-    
-      select(event: any,type: string){
+      select(event: any){
         this.selected = event;
-        if(type === 'desktop'){
           this.save();
-        }
-      }
-      skip(){
-        this.swiperInstance.slideNext()
+        
       }
     
       ionViewDidLeave(){

@@ -1,0 +1,21 @@
+.col{
+    padding-top: 19px;
+    padding-left: 15px;
+           
+            &-icon{
+                width: 32px;
+                height: 32px;
+            }
+        }
+ 
+@media (min-width: 1200px) {
+    .col{
+        padding-top: 5px;
+        min-height: 115px;
+        &-icon-onboarding{
+            padding-left: 126px;
+            width: 123px;
+            height: 96px;
+        }
+    }
+}

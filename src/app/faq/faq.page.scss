@@ -3,7 +3,6 @@ ion-content{
     --background:#fff;
     
 }
-
 .Grid{
     height: 100%; 
     width: 100%; 
@@ -44,12 +43,10 @@ ion-content{
     }
     
 }
-
 @media (min-width:1200px ) {
     .Grid{
         display: flex;
         flex-direction: column;
-        
         padding: 0px;
         justify-content: center; 
         width: fit-content;

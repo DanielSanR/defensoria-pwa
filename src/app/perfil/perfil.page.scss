@@ -5,7 +5,9 @@ ion-content{
 }
 
 .Grid{
-     
+    padding-top: 49px;
+    padding-left: 35px;
+    padding-right: 35px;
     height: 100%; 
     width: 100%;
     display: flex; 
@@ -24,8 +26,8 @@ ion-content{
 
     }
     &-row-perfil{
-     
-        border-radius: 15px;
+        padding-bottom: 15px;
+        border-radius: 25px;
         background: #5A4BB2;
         text-align: center;
         align-items: center;
@@ -35,10 +37,10 @@ ion-content{
                 width: 100%; 
                 &-image{
                     border-radius: 50%;
-                    margin-top: -50px;
+                    margin-top: -33px;
                     bottom: calc(-1*(80px + 4px));
-                    width: 115px;
-                    height: 115px;
+                    width: 88px;
+                    height: 88px;
                     border-radius: 50%;
                     background: #f4f4f4;
                     border:solid 2px #FE910E;
@@ -49,12 +51,16 @@ ion-content{
         &-label-col{
             margin-bottom: 16px;
             padding: 0px;
-            &-label-p{
-                padding-top: 6px;
-                color:#fff;
-                font-size: 18px;
-                font-weight: 700;
-                
+            &-label{
+                text-align: left;
+                &-p{
+                    padding-left: 14px;
+                    padding-top: 6px;
+                    color:#fff;
+                    font-size: 18px;
+                    font-weight: 700;
+                    
+                }
             }
              
         }
@@ -79,22 +85,47 @@ ion-content{
         &-col{
             padding: 8px;
             &-item{
-                width: 100%;
-                margin-top: 5px;
+                width: 100%; 
                 padding:0px;
                 --background: #ffff;
-                border-radius:15px;
-                border:1px solid #454545;
+                border-radius:8px;
+                border:1px solid rgba(69, 69, 69, 1);
                 &-label-input-p{
                     padding:0px;
                     color:#000;
-                    font-size: 14px;
+                    font-size: 12px;
+                    max-height: 25px;
                 }
                 &-datos-icon{
                     color:#000 !important; 
             }
         }
     }
+    }
+    &-row-title{ 
+        padding-top: 22px;
+        &-col{
+            padding: 0px;
+            &-text-h2{
+                font-size: 18px;
+                font-weight: 700;
+                color:#333333;
+            }
+        }
+        
+        
+    
+    }
+    &-row-form{
+        &-col-text{
+            margin: 0px;
+            &-h2{
+                padding-bottom: 12px;
+                margin: 0px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+        }
     }
     
 }
@@ -165,6 +196,10 @@ ion-content{
         width: fit-content;
         &-button-row{
             margin-bottom: -50px;
+            ion-icon{
+                width: 32px;
+                height: 32px;
+            }
            &-btn{
             --color:#fff;
             --background:#5A4BB2;
@@ -175,6 +210,7 @@ ion-content{
 
         }
         &-row-perfil{ 
+            
             &-img-col{
                 padding-top: 12px;
                 padding-bottom: 12px;
@@ -291,3 +327,8 @@ ion-popover#open-popover::part(content) {
     width: 100vw;
     border-radius: 8px;
   }
+  
+
+ion-item::part(native){
+    max-height: 40px;
+}
