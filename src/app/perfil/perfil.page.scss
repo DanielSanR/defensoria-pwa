@@ -4,6 +4,12 @@ ion-content{
     
 }
 
+ion-input{
+    --padding-bottom:2px;
+                    --padding-start:2px;
+                    --padding-top:2px;
+}
+ 
 .Grid{
     padding-top: 49px;
     padding-left: 35px;
@@ -18,7 +24,7 @@ ion-content{
         &-btn{ 
             --box-shadow:hidden;
             --background:#fff;
-            --color:#5A4BB2
+            --color:#5A4BB2;
         }
     }
     &-row-actualizar{
@@ -85,13 +91,19 @@ ion-content{
         &-col{
             padding: 8px;
             &-item{
-                width: 100%; 
+                height: 40px; 
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 padding:0px;
                 --background: #ffff;
                 border-radius:8px;
                 border:1px solid rgba(69, 69, 69, 1);
                 &-label-input-p{
-                    padding:0px;
+                    
+                    height: 35px; 
+                    min-height: 35px;
                     color:#000;
                     font-size: 12px;
                     max-height: 25px;
@@ -191,7 +203,7 @@ ion-content{
         --background:#ffff ;
     }
     .Grid{
-        padding: 0px;
+        padding: 0 30px;
         justify-content: center; 
         width: fit-content;
         &-button-row{
@@ -210,7 +222,7 @@ ion-content{
 
         }
         &-row-perfil{ 
-            
+            padding-bottom: 0px;
             &-img-col{
                 padding-top: 12px;
                 padding-bottom: 12px;
@@ -259,13 +271,19 @@ ion-content{
             &-col-text{
                 margin: 0px;
                 &-h2{
-                    padding-bottom: 6px;
+                    padding-bottom: 17px;
                     margin: 0px;
                     font-size: 20px;
                     font-weight: 600;
                 }
             }
             &-col-item{ 
+                height: 50px;
+                font-size: 16px;
+                font-weight: 400;
+               /*  ion-input{
+                    color:#454545;
+                } */
             }
         }
 
@@ -331,4 +349,5 @@ ion-popover#open-popover::part(content) {
 
 ion-item::part(native){
     max-height: 40px;
+    min-height: 40px;
 }

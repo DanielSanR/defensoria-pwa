@@ -1,6 +1,6 @@
- <ion-menu side="end" contentId="main-content">
-    <ion-content>
-        <ion-toolbar> 
+ <ion-menu  side="end" contentId="main-content">
+    <ion-content >
+        <ion-toolbar > 
                 <ion-button slot="end" fill="clear" (click)="close()">
                     <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
                 </ion-button>
@@ -13,7 +13,7 @@
     </ion-content>
   </ion-menu>
   <div class="ion-page" id="main-content">
-    <ion-header>
+    <ion-header class="Mobile">
       <ion-toolbar style="padding-left: 45px;padding-right: 12px;padding-bottom: 5px;padding-top: 5px;">
         <ion-img src="../../assets/icon/yocuento-desktop.svg" style="width: 58px;height: 46px;"></ion-img>
         <ion-buttons slot="end">
@@ -29,32 +29,32 @@
         <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-content>
   </div>
-<div *ngIf="isDesktop" class="desktop">
-    <ion-header>
-        <ion-toolbar style="border-bottom: 0px" >
-            <ion-row class="ion-justify-content-center" style="padding-top: 25px;padding-right: 163px;" >
-                <ion-col size="3" class="col">
-                    <img src="../../assets/icon/yocuento-desktop.svg" alt="logo" class="col-logo">
+<div *ngIf="isDesktop" class="Desktop">
+    <ion-header class="Desktop-header">
+        <ion-toolbar class="Desktop-header-toolbar">
+            <ion-row class="Desktop-header-toolbar-row">
+                <ion-col size="3" class="Desktop-header-toolbar-row-ImgCol">
+                    <img src="../../assets/icon/yocuento-desktop.svg" alt="logo" class="Desktop-header-toolbar-row-ImgCol-img">
                 </ion-col>
-                <ion-col size="9">
-                    <div class="navbar" class="ion-text-end">
-                        <ion-button fill="clear" routerLink="/principal/inicio" routerDirection="root" routerLinkActive="active-link" class="link">
+                <ion-col  offsetXl="3" size="6" class="Desktop-header-toolbar-row-MenuCol">
+            
+                        <ion-button fill="clear" routerLink="/principal/inicio" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
                             Inicio
                         </ion-button>
-                        <ion-button fill="clear" routerLink="/principal/formulario" routerDirection="root" routerLinkActive="active-link" class="link">
+                        <ion-button fill="clear" routerLink="/principal/formulario" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
                                 Formulario
                         </ion-button>
-                        <ion-button fill="clear" routerLink="/principal/mapa" routerDirection="root" routerLinkActive="active-link" class="link">
+                        <ion-button fill="clear" routerLink="/principal/mapa" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
                             Mapa
                         </ion-button>
-                        <ion-button fill="clear" routerLink="/principal/numeros-utiles" routerDirection="root" routerLinkActive="active-link" class="link">
+                        <ion-button fill="clear" routerLink="/principal/numeros-utiles" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
                             Teléfono
                         </ion-button>
-                        <ion-button fill="clear" routerLink="/principal/perfil" routerDirection="root" routerLinkActive="active-link" class="link">
+                        <ion-button fill="clear" routerLink="/principal/perfil" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
                             Perfil
                         </ion-button>
                         
-                    </div>
+                
                 </ion-col>
             </ion-row>
         </ion-toolbar>
