@@ -1,120 +1,176 @@
 
-.swiper {
-    width: auto;
-    height: auto;
-    
+swiper-container{
+
 }
-swiper-container {
-    width: 100%;
-    height: 100%;
-}	
-.Grid{ 
-    overflow-y: hidden;
-    padding:0px;
-    background: #FFF;
-    &-row{
-        padding:0px;
-        &-col{
-            padding:0px;
-            &-swiper{
-                &-template{
-                   &-container{
-                    &-header{
-                        width: 100%;
-                        height: 30vh;
-                        background: #5A4BB2;
-                        box-shadow: 0 1px 10px #5A4BB2;
-                        border-radius: 0 0 25px 25px;
-                        padding-top: 0px;
-                        &-span{
-                            color:#ffff;
-                        }
-                        &-titulo{
-                            font-family: 'Open Sans';
-                            font-style: normal;
-                            font-weight: 800;
-                            font-size: 18px;
-                            color: #FFFFFF;
-                        }
-                    }
-                    &-items{
-                        background: #FFF;
-                        &-list2{
-                            background: #FFF;
-                            margin-top:40px;
-                            margin-left: 55px;
-                            margin-right: 55px;
-                            &-item{
-                                --background: #fff;
-                                --color: #333;
-                                margin-bottom: 16px;
-                                margin-top: 16px;
-                                --border-color: #454545;
-                                --border-style: solid;
-                                --border-width: 1px;
-                                --border-radius: 8px;
-                                white-space: unset !important;
-                                &-label{
-                                    color:#333;
-                                    padding-left:0px;
-                                    padding-top: 6px;
-                                    padding-bottom: 7px;
-                                    white-space: unset !important;
+swiper-slide{
+    padding-bottom: 22px;
+
+}
+
+.input-container{
+ 
+    padding: 0; 
+    padding:0px 12px 0px 12px;
+}
+
+.item-input{
+    --padding-start:0px;
+    --padding-end:0px;
+    --padding-top:0px;
+    --padding-bottom:0px;
+}
+.item-input::part(native){
+    --inner-padding-start:0px;
+    --inner-padding-end:0px;
+    --inner-padding-top:0px;
+    --inner-padding-bottom:0px;
+
+}
+
+.input-label{
+    height: 35px; 
+    min-height: 35px !important;
+    text-align: left;
+    --padding-start:15px !important;
+    --padding-end:0px;
+    font-size: 12px;
+}
+.Grid { 
+    padding: 0px;   
+    background: #FFF; 
+    &-row { 
+        padding: 0px;
+        &-col {
+            padding: 0px;
+            &-swiper { 
+                &-template { 
+                    &-container {
+                        &-header {
+                            width: 100%; 
+                            background: #5A4BB2;
+                            box-shadow: 0 1px 10px #5A4BB2;
+                            border-radius: 0 0 25px 25px;
+                            padding-bottom: 23px;
+                            max-height: 168px;
+                            &-span {
+                                color: #ffff;
+                            }
+                            &-titulo {
+                                color: #FFFFFF;
+                                font-weight: 700;
+                                &-label-h1 {
+                                    margin: 16px 0;
+                                    font-size: 22px; 
                                 }
+                                &-label-p {
+                                    margin: 14px 0;
+                                    font-size: 18px; 
+                                }
+                            }
+                        }
+
+                        &-items {
+                            background: #FFF;
+                            height: fit-content;
+                            &-list2 {
+                              
+                                display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                                background: #FFF;
+                                width: 100%; 
+                                ion-item::part(native){
+                                    max-height: 40px;
+                                    min-height: 40px;
+                                }
+
+                                &-item {
+                                    
+                                    --background: #fff;
+                                    --color: #333;
+                                    margin-bottom: 12px;
+                                    margin-top: 12px;
+                                    --border-color: #454545;
+                                    --border-style: solid;
+                                    --border-width: 1px;
+                                    --border-radius: 8px;
+                                    white-space: unset !important;
+                                    width: 290px;
+                                    max-width: 290px;
+                                    &-label {
+                                        color: #333;
+                                        padding-left: 0px;
+                                        padding-top: 6px;
+                                        padding-bottom: 7px;
+                                        white-space: unset !important;
+                                    }
+                                }
+                                &-input{
+                                    width: 290px;
+                                    text-align: center;
+                                    --color:#fff;
+                                    padding-top: 15px; 
+                                    &-p{
+                                        background-color:#5A4BB2;
+                                        --color: #fff;
+                                        border-radius: 15px;
+                                        font-size: 12px;
+                                    }
+
+                                }
+                            }
                         }
                     }
-                   } 
                 }
             }
         }
     }
 }
-}
+
 .button-selected {
     --padding-top: 10px;
-    --padding-bottom:10px;
-    --padding-start:10px;
-    --padding-end:10px;
+    --padding-bottom: 10px;
+    --padding-start: 10px;
+    --padding-end: 10px;
     font-size: 32px;
-    --border-radius:50%;
+    --border-radius: 50%;
     --background: #5A4BB2;
-    --color: #fff; 
+    --color: #fff;
     --border-color: #fff;
-    --border-radius:50%;
-  }
-  
-  .button-unselected {
+    --border-radius: 50%;
+}
+
+.button-unselected {
     --padding-top: 10px;
-    --padding-bottom:10px;
-    --padding-start:10px;
-    --padding-end:10px;
-    --border-radius:50%;
+    --padding-bottom: 10px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --border-radius: 50%;
     font-size: 32px;
     --background: #fff;
     --color: black;
     --border-color: #5A4BB2;
-  }
- ion-content{
-    --background:#FFF;
- }
- 
+}
+
+ion-content {
+    --background: #FFF;
+}
+
 //Footer 
 ion-footer {
     background: #FFF;
     --border: #FFF;
 }
 
-.close-icon{
-    padding-top:15px;
+.close-icon {
+    padding-top: 15px;
     padding-right: 15px;
-    width: 35px;
-    height: 35px;
+    width: 24px;
+    height: 24px;
 }
 
-//Swiper Content Styles
-.swiper-slide{
-    overflow: visible !important;
-}
+ 
+
 .btn {
     --background: #5A4BB2;
     width: 101px;
@@ -126,7 +182,7 @@ ion-footer {
     --background: #FE910E;
     font-size: 17px;
     --border-radius: 15px;
-    --color:#fff;
+    --color: #fff;
     width: 100%;
     height: 100%;
     --padding-bottom: 0.7rem;
@@ -174,66 +230,79 @@ ion-range::part(bar-active) {
     background: #C7793C;
 }
 
-@media (min-width:1200px ) {
-    .Grid{
+@media (min-width:1200px) {
+    .Grid {
         padding-left: 125px;
         padding-right: 125px;
         padding-top: 55px;
-        &-row{ 
-            &-col{ 
-                &-swiper{
+
+        &-row {
+            &-col {
+                &-swiper {
                     height: 600px;
-                width: 1000px;
-                    &-template{
-                       &-container{
-                        &-header{
-                            height: auto;
-                            box-shadow:none;
-                            border-radius: 24px;
-                            padding-bottom: 25px;
-                            &-titulo{
-                                font-weight: 700;
-                                font-size: 36px;
-                                padding-top: 16px;
-                                padding-bottom: 18px;
-                                &-label-p{
+                    width: 1000px;
+
+                    &-template {
+                        &-container {
+                            &-header {
+                                height: auto;
+                                box-shadow: none;
+                                border-radius: 24px;
+                                padding-bottom: 25px;
+
+                                &-titulo {
+                                    font-weight: 700;
+                                    font-size: 36px;
+                                    padding-top: 16px;
+                                    padding-bottom: 18px;
+
+                                    &-label-p {
                                         margin: 0px;
-                                }
-                            }
-                        }
-                        &-items{ 
-                            text-align: center;
-                            padding-top: 0px;
-                            padding-left: 150px;
-                            padding-right: 150px;
-                            &-list2{
-                                margin-top:20px;
-                                margin-left: 245px;
-                                margin-right: 245px;
-                                &-item{
-                                    padding:5px;
-                                    &-label{
-                                        font-size: 16px;
-                                        font-weight: 600; 
-                                        text-align: center;
-                                }
-                            }
-                                &-item2{
-                                    padding:5px;
-                                    font-size: 12px;
-                                    &-input{ 
-                                        --background: #FE910E;
-                                        --color: #000;
-                                        --padding-start:12px;
                                     }
                                 }
+                            }
+
+                            &-items {
+                                text-align: center;
+                                padding-top: 0px;
+                                padding-left: 150px;
+                                padding-right: 150px;
+                                ion-item::part(native){
+                                    max-height: 50px;
+                                    min-height: 50px;
+                                }
+                                &-list2 {
+                                    margin-top: 20px;
+ 
+
+                                    &-item {
+                                        padding: 5px;
+                                        width: 688px;
+                                        max-width: 688px;
+                                        &-label {
+                                            font-size: 16px;
+                                            font-weight: 600;
+                                            text-align: center;
+                                        }
+                                    }
+
+                                    &-item2 {
+                                        padding: 5px;
+                                        font-size: 12px;
+
+                                        &-input {
+                                            --background: #FE910E;
+                                            --color: #000;
+                                            --padding-start: 12px;
+                                        }
+                                    }
+                                }
+                            }
                         }
-                       } 
                     }
                 }
             }
         }
-    }
     }
 
     ion-footer {
@@ -241,4 +310,4 @@ ion-range::part(bar-active) {
     }
 
 }
- 
+

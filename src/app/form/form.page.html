@@ -6,16 +6,17 @@
               #swiper
               [allowTouchMove]="false" 
               [autoHeight]="true"
+              (swiperslidechangetransitionend)="test($event)"
               speed="2000">
               <swiper-slide class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">
                   <div class="Grid-row-col-swiper-template-container"> 
                    <div class="Grid-row-col-swiper-template-container-header ion-hide-xl-up"  align="end">
                       <span class="Grid-row-col-swiper-template-container-header-span">
-                          <ion-icon name="close-circle-outline"  class="close-icon" (click)="close()"></ion-icon>
+                          <ion-icon  #icono  name="close-circle-outline"  class="close-icon" (click)="close()"></ion-icon>
                       </span>
                        <div class="Grid-row-col-swiper-template-container-header-titulo ion-text-center">
-                           <label class="Grid-row-col-swiper-template-container-header-titulo-label" >  
-                                <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{i+1}} / 7</p> 
+                           <label #titulo class="Grid-row-col-swiper-template-container-header-titulo-label" >  
+                                <p class="Grid-row-col-swiper-template-container-header-titulo-label-h1">{{i+1}} / 7</p> 
                                 <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{group.title}}</p>
                             </label>
                         </div>
@@ -29,18 +30,29 @@
                           </div>
                          </div>
                        <ion-col  class="Grid-row-col-swiper-template-container-items">
-                        <form [formGroup]="myForm" (ngSubmit)="submitForm()">
-                               <ion-list *ngIf="group.type==='item'" class="Grid-row-col-swiper-template-container-items-list2" lines="none">
-                                <ion-item lines="full" class="Grid-row-col-swiper-template-container-items-list2-item"
-                                  *ngFor="let pregunta of group.preguntas; let j = index"
-                                  [ngStyle]="{'--background': pregunta.isChecked ? backgroundChecked : background}"
-                                  button (click)="toggleSelection(group.key, pregunta.val)">
-                                  <ion-label [ngStyle]="{'color': pregunta?.isChecked===true ? '#FFF' : '#333'}">{{ pregunta.val }}</ion-label>
-                                  <ion-icon *ngIf="pregunta.icon" slot="end" [src]="pregunta.icon" style="width: 55px;height: 55px;"></ion-icon> 
-                                </ion-item>
-                              </ion-list>  
-                              <div *ngIf="group.type === 'range'">
-                                <ion-list class="Grid-row-col-swiper-template-container-items-list2">
+                        <form [formGroup]="myForm" (ngSubmit)="submitForm()" style="width: 100%;display: flex;
+                        flex-direction: column;
+                        align-items: center;">
+                              <ion-list *ngIf="group.type === 'item'" class="Grid-row-col-swiper-template-container-items-list2" lines="none">
+                                <ng-container *ngFor="let pregunta of group.preguntas; let j = index">
+                                  <div class="question-container" [attr.id]="'question-container-' + pregunta.id">
+                                    <ion-item #preguntasList lines="full" [attr.id]="'pregunta-' + pregunta.id"
+                                              class="Grid-row-col-swiper-template-container-items-list2-item"
+                                              [ngStyle]="{'--background': pregunta.isChecked ? backgroundChecked : background}"
+                                              (click)="toggleSelection(group.key, pregunta.val)">
+                                      <ion-label [ngStyle]="{'color': pregunta?.isChecked === true ? '#FFF' : '#333'}">{{ pregunta.val }}</ion-label>
+                                      <ion-icon *ngIf="pregunta.icon" slot="end" [src]="pregunta.icon" style="width: 55px;height: 55px;"></ion-icon>
+                                    </ion-item>
+                                    <div *ngIf="pregunta.isChecked && pregunta.inputs" class="input-container">
+                                      <ion-item *ngFor="let input of pregunta.inputs" class="item-input">
+                                        <ion-input *ngIf="myForm.contains(input.key)" [formControlName]="input.key" fill="outline"
+                                                   labelPlacement="stacked" [placeholder]="input.label" class="input-label"></ion-input>
+                                      </ion-item>
+                                    </div>
+                                  </div>
+                                </ng-container>
+                              </ion-list>
+                                <ion-list  *ngIf="group.type === 'range'" class="Grid-row-col-swiper-template-container-items-list2">
                                   <ion-grid>
                                     <ion-row>
                                       <ion-col size="auto" *ngFor="let edad of edadesDisponibles">
@@ -54,7 +66,9 @@
                                     </ion-row>
                                   </ion-grid>
                                 </ion-list>
-                              </div>
+                                <div>
+                                  
+                                </div>
                           </form>
                       </ion-col>
                  </div>
@@ -93,12 +107,12 @@
               </ion-button>
           </ion-col>
           <ion-col size="6" *ngIf="!bandera && !finalized" style="padding-right: 15px;"  class="ion-text-end">
-              <ion-button class="btn" (click)="prev()" [disabled]="selected">
+              <ion-button class="btn" (click)="prev()" [disabled]="selected ">
                   <ion-icon src="../../assets/icon/chevron-forward.svg" style="width:24px ;height:24px;position: absolute;transform: rotate(180deg);"></ion-icon>
               </ion-button>
           </ion-col>
           <ion-col size="6" *ngIf="!bandera && !finalized" style="padding-left: 15px" class="ion-text-start">
-              <ion-button class="btn" (click)="next()" [disabled]="!selected">
+              <ion-button class="btn" (click)="next()" [disabled]="!selected ">
                   <ion-icon src="../../assets/icon/chevron-forward.svg" style="width:24px ;height:24px;position: absolute;"></ion-icon>
               </ion-button>
           </ion-col>
