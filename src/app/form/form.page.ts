@@ -335,7 +335,7 @@ export class FormPage implements OnInit, AfterViewInit {
     this.swiperInstance.slideTo(0, 500, false);
     this.swiperInstance.update();
     this.resetForm()
-    this.router.navigateByUrl('/principal/inicio');
+    this.router.navigateByUrl('/inicio');
   }
 
 

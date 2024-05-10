@@ -1,12 +1,13 @@
 
-swiper-container{
-
-}
 swiper-slide{
     padding-bottom: 22px;
 
 }
 
+
+ion-content{
+    scrollbar-width: none;
+}
 .input-container{
  
     padding: 0; 
@@ -38,6 +39,7 @@ swiper-slide{
 .Grid { 
     padding: 0px;   
     background: #FFF; 
+    
     &-row { 
         padding: 0px;
         &-col {
@@ -235,7 +237,7 @@ ion-range::part(bar-active) {
         padding-left: 125px;
         padding-right: 125px;
         padding-top: 55px;
-
+        max-width: 1190px;
         &-row {
             &-col {
                 &-swiper {

@@ -1,38 +1,35 @@
-<ion-content> 
-
-    <ion-grid class="Grid">
-        <ion-row class="Grid-row main-header">
-            <ion-col class="Grid-row-col"  sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6">
-                <div class="titulo">
-                    <ion-label class="titulo-label">
-                        Contactate con quien necesites
-                    </ion-label></div>
-            </ion-col>
-            <ion-col class="Grid-row-col"   sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
-            <div class="Grid-row-col-container">
-                <ion-icon src="../../assets/icon/hospital.svg"></ion-icon>     
-                <div class="Grid-row-col-container-label">
-                <ion-label class="Grid-row-col-container-label-badge">
+<ion-grid class="Grid">
+    <ion-row class="Grid-header-row">
+        <ion-col class="Grid-header-row-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6">
+            <div class="Grid-header-row-col-titulo">
+                <ion-label class="Grid-header-row-col-titulo-label">
+                    Conéctate con quien necesites
+                </ion-label>
+            </div>
+        </ion-col>
+        <ion-col class="Grid-header-row-col"   sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
+            <div class="Grid-header-row-col-container">
+                <ion-icon class="Grid-header-row-col-container-icon" src="../../assets/icon/hospital.svg"></ion-icon>     
+                <div class="Grid-header-row-col-container-label">
+                <ion-label class="Grid-header-row-col-container-label-badge">
                     Hospitales
                 </ion-label></div>  
             </div> 
         </ion-col>
-            <ion-col class="Grid-row-col"   sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
-                <div class="Grid-row-col-container">
-                <ion-icon src="../../assets/icon/policia.svg"></ion-icon>        
-                <div class="Grid-row-col-container-label">
-                <ion-label class="Grid-row-col-container-label-badge">
+            <ion-col class="Grid-header-row-col"   sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
+                <div class="Grid-header-row-col-container">
+                <ion-icon class="Grid-header-row-col-container-icon" src="../../assets/icon/policia.svg"></ion-icon>        
+                <div class="Grid-header-row-col-container-label">
+                <ion-label class="Grid-header-row-col-container-label-badge">
                     Comisarías
                 </ion-label></div>   
             </div>
             </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    </ion-row>
+    <ion-row class="Grid-map-row">
+        <ion-col class="Grid-map-row-col">
+            <div class="Grid-map-row-col-map" id="map"></div>
+        </ion-col>
+    </ion-row>
+</ion-grid>
 
-    <div class="map" id="map"></div>
-</ion-content>

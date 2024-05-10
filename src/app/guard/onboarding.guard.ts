@@ -17,7 +17,7 @@ export class OnboardingGuard implements CanActivate,CanLoad {
         if(!valor){
           return true;
         }
-        this.router.navigateByUrl('/principal');
+        this.router.navigateByUrl('/');
         return false;
 
 

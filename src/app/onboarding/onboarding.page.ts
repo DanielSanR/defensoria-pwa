@@ -88,7 +88,7 @@ export class OnboardingPage implements OnInit {
           else{
             this.toastService.toast('Hubo un error al cargar tus datos :( ','danger');
           }
-            this.router.navigate(['/principal/inicio']);
+            this.router.navigate(['/inicio']);
     
         }
       }

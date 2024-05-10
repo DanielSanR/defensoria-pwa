@@ -1,63 +1,36 @@
- <ion-menu  side="end" contentId="main-content">
-    <ion-content >
-        <ion-toolbar > 
-                <ion-button slot="end" fill="clear" (click)="close()">
-                    <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
-                </ion-button>
-        </ion-toolbar>
-        <ion-menu-toggle *ngFor="let item of menu">
-            <ion-item lines="none" [routerLink]="item.url" routerDirection="root" routerLinkActive="active-link">
-                <ion-label>{{ item.title }}</ion-label>
-            </ion-item>
-        </ion-menu-toggle>
-    </ion-content>
-  </ion-menu>
-  <div class="ion-page" id="main-content">
-    <ion-header class="Mobile">
-      <ion-toolbar style="padding-left: 45px;padding-right: 12px;padding-bottom: 5px;padding-top: 5px;">
-        <ion-img src="../../assets/icon/yocuento-desktop.svg" style="width: 58px;height: 46px;"></ion-img>
-        <ion-buttons slot="end">
-          <ion-menu-button>
-            <ion-icon  
-          src="../../assets/icon/tabmenu/menuButton.svg"  
-        ></ion-icon>
-          </ion-menu-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-        <ion-router-outlet id="main-content"></ion-router-outlet>
-    </ion-content>
-  </div>
-<div *ngIf="isDesktop" class="Desktop">
-    <ion-header class="Desktop-header">
-        <ion-toolbar class="Desktop-header-toolbar">
-            <ion-row class="Desktop-header-toolbar-row">
-                <ion-col size="3" class="Desktop-header-toolbar-row-ImgCol">
-                    <img src="../../assets/icon/yocuento-desktop.svg" alt="logo" class="Desktop-header-toolbar-row-ImgCol-img">
-                </ion-col>
-                <ion-col  offsetXl="3" size="6" class="Desktop-header-toolbar-row-MenuCol">
-            
-                        <ion-button fill="clear" routerLink="/principal/inicio" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
-                            Inicio
-                        </ion-button>
-                        <ion-button fill="clear" routerLink="/principal/formulario" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
-                                Formulario
-                        </ion-button>
-                        <ion-button fill="clear" routerLink="/principal/mapa" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
-                            Mapa
-                        </ion-button>
-                        <ion-button fill="clear" routerLink="/principal/numeros-utiles" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
-                            Teléfono
-                        </ion-button>
-                        <ion-button fill="clear" routerLink="/principal/perfil" routerDirection="root" routerLinkActive="active-link" class="Desktop-header-toolbar-row-MenuCol-btn">
-                            Perfil
-                        </ion-button>
-                        
-                
-                </ion-col>
-            </ion-row>
-        </ion-toolbar>
-        </ion-header>
-    <ion-router-outlet class="desktop-wrapper"></ion-router-outlet>
+<ion-menu contentId="main-content"  menuId="myMenu"  side="end">
+  <ion-content>
+    <ion-toolbar> 
+      <ion-button slot="end" fill="clear" (click)="close()">
+          <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+</ion-toolbar>
+    <ion-menu-toggle *ngFor="let item of menu">
+      <ion-item lines="none" [routerLink]="item.url" routerDirection="root" routerLinkActive="active-link">
+          <ion-label>{{ item.title }}</ion-label>
+      </ion-item>
+  </ion-menu-toggle>
+  </ion-content>
+</ion-menu>
+<div id="main-content">
 </div>
+<div class="ion-page" id="main-content">
+  <ion-header class="Mobile ion-hide-xl-up">
+    <ion-toolbar style="padding-left: 45px;padding-right: 12px;padding-bottom: 5px;padding-top: 5px;">
+      <ion-img src="../../assets/icon/yocuento-desktop.svg" style="width: 58px;height: 46px;"></ion-img>
+      <ion-buttons slot="end" class="">
+        <ion-menu-button>
+          <ion-icon  
+        src="../../assets/icon/tabmenu/menuButton.svg"  
+      ></ion-icon>
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <app-header-desktop class="ion-hide-xl-down"></app-header-desktop>
+  <ion-content class="ion-padding">
+      <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-content>
+</div>
+ 
+

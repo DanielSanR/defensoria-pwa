@@ -1,171 +1,167 @@
-ion-content{
-    --ion-background-color: #fff;
-}
-.Grid{
-    height: auto !important; 
-    display: flex; 
-    flex-flow: column;
-    padding-left: 27px;
-    padding-right: 27px;
-    padding-bottom: 0px;
-    padding-top: 50px;
-    &-row{
-        &-col{
-            width: 100% !important;
+.Grid {
+    padding: 30px 26px 0;
+    &-row {
+        &-col {
             padding: 5px;
-            &-contact-item{
-                width: 100%;
-                height: 100%;
-                margin-top: 5px;
-                margin-right: 20px;
-                padding:0px; 
-                border-radius:15px;
-                border:2px solid #5A4BB2;
-                &-label{
-                    margin-top: 6px;
-                    margin-bottom: 6px;
-                    &-p{ 
-                        padding:0px;
-                        color:gba(0, 0, 0, 0.87);
-                        font-size: 14px;
-                    }
-                    &-correo{  
-            
-                        padding:0px;
-                        color:gba(0, 0, 0, 0.87);
-                        font-size: 12px;
-                        white-space: normal;
-                    }
-                }
-                
-                &-label-h4{  
-        
-                    padding:0px;
-                    color: #000;;
-                    font-size: 12px;
-                }
-                &-icon{
-                    margin-right:5px !important;
-                }
-                }
-                
-            &-item{
-                --background: #FE910E;
-                --border-radius: 15px; 
-                &-label-p{
-                    padding: 3px;
-                    font-size: 18px;
-                    color:#fff;
-                }
-            }
-            &-header{
-                border-radius: 0 0 15px 15px;
-                background-color: #fff;
-                padding-bottom: 5px;
-                
-                &-icon{
-                    width: 100%;
-                    height:max-content;
-                    display: contents;
-                }
-                }
-        }
-    }
-
-}
-@media (min-width:280px) and (max-width:380px) {
-.Grid{
-    height: calc(100% - 221px);
-    }
-}
-
-@media (min-width:1200px ) {
-.Grid{
-    padding-top: 0px;
-    padding-left: 115px;
-    padding-right: 115px;
-    &-row{
-        padding-top: 33px;
-        display: flex;
-        &-col{
-            padding:8px; 
-            &-contact-item{
-                --padding-start:0px
-                --pading-end:0px; 
-                --inner-padding-end: 0px;
- 
-                width: 100%; 
-                &-icon{
-                    width: 95px;
-                    height: 95px; 
-                }
-                &-label{ 
-                    align-content: center;
-                    width: 100%;
-                    padding:0px;
-                    margin: 0px;
-                    &-h4{
-                        margin: 0px;
-                        width: 100%;
-                        font-size: 20px;
-                        font-weight: 700;
-                    }
-                    &-p{
-                        margin: 0px;
-                        width: 100%;
-                        font-weight: 400;
-                        font-size: 18px;
-                    }
-                    &-correo{
-                        margin: 0px;
-                        width: 100%;
-                        font-weight: 400;
-                        font-size: 16px;
-                    }
-                }
-
-            }
-            &-contact-item::part(native){
-                display: flex;
-                flex-direction: column;
-                align-items: center;  
-                text-align: center; 
-            }
-            &-label-desktop{
-                &-h1{
-                    padding-left:72px; 
-                    font-size: 40px;
+            &-title {
+                &-h1 {
+                    font-size: 22px;
                     font-weight: 700;
                     color: #5A4BB2;
                 }
             }
-            &-header{
-                padding-top: 55px;
-                display: flex;
-                text-align: center;
-                align-items: center;
-                border-radius: 0 0 15px 15px; 
-                width: 100%; 
-                height: 356px;
-                &-icon{
-                    height: 296px;
-                    width: 476px;
-    
+            &-header {
+                border-radius: 0 0 15px 15px;
+                background-color: #fff;
+                padding-bottom: 30px;
+                &-icon {
+                    width: 100%;
+                    height: max-content;
+                    display: contents;
+                }
+            }
+        }
+    }
+    &-options-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+        &-col {
+            padding: 12px 6px;
+            margin: 0px;
+            &-card { 
+                margin: 0px;
+                padding: 0px;
+                min-height: 118px;
+                max-height: 118px;  
+                border:3px #5A4BB2 solid;
+                border-radius: 8px;
+                &-thumbnail {
+                    text-align: center;
+                    width: 100%;
+                    padding-top: 10px;
+                    ion-icon {
+                        font-size: 32px;
+                    }
+                }
+                &-header {
+                    padding: 0 4px;
+                    &-title {
+                        font-size: 10px;
+                        font-weight: 700;
+                        text-align: center;
+                    }
+                }
+                &-content {
+                    padding: 5px 15px;
+                    line-height: 0.7;
+                    text-align: center;
+                    &-label {
+                        font-size: 9px;
+                        font-weight: 500;
+                        color: #000;
+                    }
                 }
             }
         }
     }
 }
-.icon-padding{
-    padding-top: 30px;
-    padding-bottom: 6px;
-}        
-.label-padding{
-    padding-left: 27px;
-    padding-right: 27px;
-}
+  @media (max-width:376px){
+    .Grid{
+        padding-top: 20px;
+        &-row{
+            &-col{
+                &-header{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding-bottom: 0px;
+                    &-icon {
+                        width: 160px;
+                        height: 140px;
+                        display: block; 
+                    }
+                }
+            }
+        }
+    }
+}   
 
-.limite-height{
-    max-height: 320px;
-}
+
+@media (min-width:1200px) {
+ 
+    .Grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0px;
+        &-row {
+            padding-top: 5px;
+            display: flex; 
+            max-width: 1254px;
+            width: 100%;
+            &-col {
+                padding: 8px;
+                &-title {
+                    &-h1 {
+                        font-size: 40px;
+                    }
+                }
+                &-header {
+                    padding-top: 0px;
+                    padding-bottom: 10px;
+                    display: flex;
+                    place-content: center;
+                    width: 100%;
+                    &-icon {
+                        height: 296px;
+                        width: 476px;
+                        display: block;
+                    }
+                }
+            }
+        }
+        &-options-row {
+            max-width: 1254px;
+            &-col {  
+                &-card { 
+                    min-width: 290px;
+                    min-height: 195px;
+                    max-height: 230px;
+                    &-thumbnail {
+                        display: inline-block;
+                        ion-icon {
+                            font-size: 95px;
+                        }
+                    }
+                    &-header {
+                        padding: 4px;
+                        &-title {
+                            font-size: 18px;
+                        }
+                    }
+                    &-content {
+                        padding: 8px 15px;
+                        &-label {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .icon-padding {
+        padding-top: 30px;
+        padding-bottom: 6px;
+    }
+
+    .label-padding {
+        padding-left: 27px;
+        padding-right: 27px;
+    }
+
+    .limite-height {
+        max-height: 320px;
+    }
 }

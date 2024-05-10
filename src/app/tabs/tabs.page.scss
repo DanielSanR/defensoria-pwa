@@ -1,47 +1,6 @@
 :host{
     background: #fff;
 }
-.Desktop{
-    ion-router-outlet{
-        margin-top: 115px; 
-    }
-    &-header{
-       
-        &-toolbar{
-            margin: 0 auto;
-            width: fit-content;
-      
-            &-row{
-                max-width: 1240px;
-                width: 1240px; 
-                padding: 0 30px;
-                display: flex; 
-                &-ImgCol{
-                    text-align: start;
-                    &-img{
-                        width: 123px;
-                        height: 96px;
-                    }
-                }
-                &-MenuCol{
-                    align-content: center;
-                    text-align: start;
-                    align-self: center;
-
-                    &-btn{
-                        --color:#000;
-                        font-size: 18px;
-                        text-transform: capitalize;
-                        font-weight: 700;
-                    }
-
-                }
-            }
-        }
-    }
-}
-
-
  
 @media (max-width:360px) {
     ion-tab-bar{
@@ -52,22 +11,10 @@ ion-tab-button {
     min-width: 56px;
 }
 
+
+ 
 }
-
-
-@media (min-width:1200px){
-    .active-link{
-        --color:#FE910E;
-        font-size: 18px;
-        font-weight: 700;
-    }
-    .Mobile{
-        display: none;
-    }
-    
-} 
-
-ion-menu{
+ ion-menu{
     --height:305px;
     --width: 196px;
     --background: #5A4BB2 !important;
@@ -81,6 +28,7 @@ ion-menu{
             ion-button{
                 color: #fff;
                 ion-icon{
+                    font-size: 24px;
                     color: #fff;
                 }
 
@@ -100,13 +48,19 @@ ion-menu{
         
     
     }
-}
-/*  ion-menu::part(backdrop) { 
+} 
+  ion-menu::part(backdrop) { 
     opacity: 0;
-  } */
+  }  
   
-  ion-menu::part(container) {  
+    ion-menu::part(container) {  
     border-radius: 15px 0 0 15px;
     
   }
-   
+  
+  
+ @media (max-width:1199px){ 
+.desktop-wrapper{
+    display: hidden;
+}
+}  

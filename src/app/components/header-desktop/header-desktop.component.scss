@@ -1,0 +1,37 @@
+.header{
+        &-toolbar{
+            margin: 0 auto;
+            width: fit-content;
+            &-row{
+                max-width: 1240px;
+                width: 1240px; 
+                padding: 0 30px;
+                display: flex; 
+                &-ImgCol{
+                    text-align: start;
+                    &-img{
+                        width: 123px;
+                        height: 96px;
+                    }
+                }
+                &-MenuCol{
+                    align-content: center;
+                    text-align: start;
+                    align-self: center;
+                    &-btn{
+                        --color:#000;
+                        font-size: 18px;
+                        text-transform: capitalize;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+
+.active-link{
+    --color:#FE910E;
+    font-size: 18px;
+    font-weight: 700;
+}
+ 

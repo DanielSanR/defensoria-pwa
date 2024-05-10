@@ -7,60 +7,29 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row class="Grid-row ion-hide-xl-up" >
-      <ion-col class="Grid-row-col " size="12">
-        <ion-item class="Grid-row-col-item ion-text-center" > 
-          <ion-label class="Grid-row-col-item-label" ><p class="Grid-row-col-item-label-p">Números utiles</p></ion-label>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row class="Grid-row ion-hide-xl-down" >
+    <ion-row class="Grid-row title">
       <ion-col class="Grid-row-col" size="12">
-        <ion-label class="Grid-row-col-label-desktop">
-          <h1 class="Grid-row-col-label-desktop-h1">Números útiles</h1>
+        <ion-label class="Grid-row-col-title">
+          <h1 class="Grid-row-col-title-h1">Números útiles</h1>
         </ion-label>
       </ion-col>
     </ion-row>
-    <ion-row class="Grid-row">
-      <ion-col class="Grid-row-col limite-height" size-xs="12" size-sm="12" size-md="12" size-lg="12" size-xl="3">
-        <ion-item class="Grid-row-col-contact-item" lines="none" >
-          <ion-icon class="Grid-row-col-contact-item-icon icon-padding"  src="../../assets/icon/comisaria-numeros.svg" lot="start"></ion-icon>
-          <ion-label class="Grid-row-col-contact-item-label">
-            <h4 class="Grid-row-col-contact-item-label-h4">Línea de Emergencia 911</h4>
-            <p class="Grid-row-col-contact-item-label-p">3764 - 345421</p>
-          </ion-label>
-        </ion-item>
+     <ion-row class="Grid-options-row">
+      <ion-col class="Grid-options-row-col" *ngFor="let item of values" sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
+        <ion-card class="Grid-options-row-col-card">
+          <ion-thumbnail class="Grid-options-row-col-card-thumbnail">
+            <ion-icon [src]="'../../assets/icon/' + item.icon"></ion-icon>
+          </ion-thumbnail>
+          <ion-card-header class="Grid-options-row-col-card-header">
+            <ion-card-title class="Grid-options-row-col-card-header-title">{{ item.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="Grid-options-row-col-card-content">
+            <ion-label class="Grid-options-row-col-card-content-label">
+               {{item.detail}}
+            </ion-label>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
-  <ion-col class="Grid-row-col limite-height"sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="3">  
-    <ion-item  class="Grid-row-col-contact-item" lines="none" >
-      <ion-icon class="Grid-row-col-contact-item-icon" src="../../assets/icon/secretaria-numeros.svg"slot="start"></ion-icon>
-      <ion-label class="Grid-row-col-contact-item-label">
-        <h4 class="Grid-row-col-contact-item-label-h4 label-padding" > Defensoría de los Derechos de Niños, Niñas y Adolescentes</h4>
-        <p class="Grid-row-col-contact-item-label-p">3764 - 345421  
-        </p>
-      </ion-label>
-  </ion-item>
-  </ion-col>
-  <ion-col class="Grid-row-col limite-height" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="3">
-    <ion-item  class="Grid-row-col-contact-item" lines="none" >
-      <ion-icon class="Grid-row-col-contact-item-icon" src="../../assets/icon/secretaria-numeros.svg"slot="start"></ion-icon>
-      <ion-label class="Grid-row-col-contact-item-label">
-        <h4 class="Grid-row-col-contact-item-label-h4 label-padding">Secretaría Nacional Linea 102</h4>
-        <p class="Grid-row-col-contact-item-label-p label-padding" style="white-space: normal;">Para contención y orientación ante casos de vulneración
-        </p>
-      </ion-label>
-  </ion-item>
-  </ion-col>
-  <ion-col class="Grid-row-col limite-height" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="3">
-    <ion-item  class="Grid-row-col-contact-item" lines="none" >
-      <ion-icon class="Grid-row-col-contact-item-icon icon-padding" src="../../assets/icon/mail-numeros.svg"slot="start"></ion-icon>
-      <ion-label class="Grid-row-col-contact-item-label">
-        <h4 class="Grid-row-col-contact-item-label-h4">Correo electrónico</h4>
-        <p class="Grid-row-col-contact-item-label-correo">defensoriadennya.misiones&#64;gmail.com
-        </p>
-      </ion-label>
-  </ion-item>
-  </ion-col>
-    </ion-row>
-  </ion-grid>
+    </ion-row>  
+</ion-grid>
 </ion-content>

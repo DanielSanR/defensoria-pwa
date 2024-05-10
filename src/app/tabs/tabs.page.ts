@@ -13,27 +13,27 @@ export class TabsPage implements OnInit {
    menu = [
     {
       title: 'Formulario',
-      url: '/principal/formulario',
+      url: '/formulario',
       icon: '../../assets/icon/tabmenu/formulario.svg'
     },
     {
       title: 'Mapa',
-      url: '/principal/mapa',
+      url: '/mapa',
       icon: '../../assets/icon/tabmenu/mapa.svg'
     },
     {
       title: 'Inicio',
-      url: '/principal/inicio',
+      url: '/inicio',
       icon: '../../assets/icon/tabmenu/menu.svg'
     },
     {
       title: 'Telefono',
-      url: '/principal/numeros-utiles',
+      url: '/numeros-utiles',
       icon: '../../assets/icon/tabmenu/telefono.svg'
     },
     {
       title: 'Perfil',
-      url: '/principal/perfil',
+      url: '/perfil',
       icon: '../../assets/icon/tabmenu/perfil.svg'
     }
 ]

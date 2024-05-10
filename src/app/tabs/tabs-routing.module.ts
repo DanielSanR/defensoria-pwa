@@ -5,7 +5,7 @@ import { OnboardingGuard } from '../guard/onboarding.guard';
 
 const routes: Routes = [
   {
-    path: 'principal',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -45,16 +45,16 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/principal/inicio',
+        redirectTo: 'inicio',
         pathMatch: 'full'
       }
     ],
   },
-  {
+ /*  {
     path: '',
     redirectTo: '/principal/inicio',
     pathMatch: 'full',
-  }
+  } */
 ];
 
 @NgModule({

@@ -8,6 +8,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
 
+  },
+  {
+    path: 'onboarding',
+    loadChildren: () => import('./onboarding/onboarding.module').then( m => m.OnboardingPageModule),
+    canActivate: [OnboardingGuard]
   }/* ,
   {
     path: 'formulario',
@@ -26,7 +31,7 @@ const routes: Routes = [
     data: {
       expectedSelected: 'kid'
     }
-  } */,
+  } *//* ,
   {
     path: 'onboarding',
     loadChildren: () => import('./onboarding/onboarding.module').then( m => m.OnboardingPageModule),
@@ -49,7 +54,7 @@ const routes: Routes = [
   {
     path: 'sobre-nosotros',
     loadChildren: () => import('./sobre-nosotros/sobre-nosotros.module').then( m => m.SobreNosotrosPageModule)
-  }
+  } */
 ];
 @NgModule({
   imports: [
