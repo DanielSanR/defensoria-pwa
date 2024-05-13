@@ -61,6 +61,36 @@ ion-content::part(scroll) {
     border-bottom-right-radius: 13px;
     border-top-right-radius: 13px;
   }
-  
+
+
+
+.toast{
+  --background: #F2C7A1;  
+  --border-radius: 24px;  
+  --border-color: #FE910E;
+  --border-style:solid;
+  --border-width:5px;
+  &::part(button){
+    height: auto;
+    width: auto;
+    font-size: 2rem;
+  }
+  &::part(message){
+    font-size: 1rem;
+  }
+}
+
+.toast-reverse{
+    &::part(container){ 
+      flex-direction: column !important;
+    }
+}
  
+.top{
+  margin-top: 90px;
+}
+.bottom{
+  position: relative;
+  margin-bottom: 150px !important;
+}
  

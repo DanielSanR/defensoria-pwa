@@ -37,7 +37,13 @@
             {"key": "dni", "label": "¿Sabes su número de  documento (DNI)?", "type": "text"}
           ]
         }
-      ]
+      ],
+      "popup": {
+        "message":"Tu denuncia es como un secreto especial que nos ayuda a cuidarte mejor.Estamos aquí para proteger ese secreto y asegurarnos de que crezcas en un ambiente seguro y feliz.",
+        "position":"bottom",
+        "icon":"heart-outline.svg",
+        "side":"start"
+      } 
     },
     {
       "key": "motivo",
@@ -187,14 +193,27 @@
 
           ]
         }
-      ]
+      ],
+      "popup": {
+        "message":"Tu voz es como un tesoro, y con la Defensoría, es seguro compartirla.",
+        "position":"bottom",
+        "icon":"start.svg",
+        "side":"end",
+        "direction":"column-reverse"
+      } 
     },
     {
       "key": "edad",
       "type": "range",
       "multiple": false,
       "title": "Cuantos años tenes?",
-      "value": 0
+      "value": 0,
+      "popup": {
+        "message":"“Tu denuncia es como una lucecita que nos ayuda a estar seguros y felices. Con la Defensoría, tu secreto está a salvo y juntos te cuidaremos mucho.",
+        "position":"bottom",
+        "icon":"like.svg",
+        "side":"end"
+      } 
     },
     {
       "key": "genero",
@@ -224,7 +243,13 @@
             {"key": "genero", "label": "¿Cuál es tu genero?", "type": "text"}
           ]
         }
-      ]
+      ],
+      "popup": {
+        "message":"La Defensoría es tu aliado en la lucha contra el miedo y la injusticia. Haz una denuncia anónima y deja que nosotros te ayudemos a construir un futuro lleno de paz y oportunidades.",
+        "position":"bottom",
+        "icon":"heart.svg",
+        "side":"end"
+      } 
     },
     {
       "key": "lugar",

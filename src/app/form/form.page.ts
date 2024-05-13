@@ -10,13 +10,21 @@ import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, FormA
 import type { Animation } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 import type { IonLabel } from '@ionic/angular';
+import { ToastService } from '../services/toast.service';
 export interface PreguntasForm {
   key: string;
   title: string;
   type: string;
   multiple: boolean;
   preguntas?: Array<OpcForm>;
-  icon?: boolean
+  popup?: Popup;
+}
+interface Popup{
+  message:string;
+  position:string;
+  icon:string;
+  side:string;
+  direction?:string;
 }
 interface OpcForm {
   id: number;
@@ -43,7 +51,6 @@ export class FormPage implements OnInit, AfterViewInit {
   set swiper(swiperRef: ElementRef) {
     setTimeout(() => {
       this.swiperInstance = swiperRef.nativeElement.swiper;
-
     }, 0);
   }
   @ViewChildren('preguntasList', { read: ElementRef }) preguntasListRef: QueryList<ElementRef>
@@ -66,7 +73,7 @@ export class FormPage implements OnInit, AfterViewInit {
   animation: Animation;
   constructor(private router: Router, private formService: FormService,
     private loadingController: LoadingController,
-    private fb: FormBuilder, private animationCtrl: AnimationController) {
+    private fb: FormBuilder, private animationCtrl: AnimationController, private toastService: ToastService) {
     this.inicializarEdades(4, 18);
     this.myForm = this.fb.group({});
   }
@@ -78,7 +85,25 @@ export class FormPage implements OnInit, AfterViewInit {
       this.dinamicForm = PreguntasformArr
     });
     this.createControls(this.dinamicForm);
+    this.findAndTriggerPopup(this.dinamicForm[0].key)
   }
+
+  findAndTriggerPopup(key: string){
+    const groupIndex = this.dinamicForm.findIndex(group => group.key === key);
+    if(this.dinamicForm[groupIndex].popup){
+      setTimeout(() => {
+        if(this.swiperInstance.activeIndex === groupIndex){
+          this.toastService.toastForm(this.dinamicForm[groupIndex].popup.message,
+            this.dinamicForm[groupIndex].popup.position,
+            this.dinamicForm[groupIndex].popup.icon,
+            this.dinamicForm[groupIndex].popup.side,
+            this.dinamicForm[groupIndex].popup.direction);
+        }
+      }, 3000);
+    }
+  }
+
+
   inicializarEdades(edadMinima: number, edadMaxima: number) {
     for (let edad = edadMinima; edad <= edadMaxima; edad++) {
       this.edadesDisponibles.push(edad);
@@ -89,7 +114,7 @@ export class FormPage implements OnInit, AfterViewInit {
     this.myForm.get('edad').setValue(edad);
     this.selected = true
   }
-
+  
   createControls(controls: Array<PreguntasForm>) {
     controls.forEach(control => {
       if (control.key === 'edad') {
@@ -171,7 +196,6 @@ export class FormPage implements OnInit, AfterViewInit {
       });
     }
     if (wasDeselected) {
-      console.log("fue true")
       this.resetAllElementsVisibility(group);
     }
     if (this.swiperInstance.activeIndex === 6) {
@@ -321,6 +345,7 @@ export class FormPage implements OnInit, AfterViewInit {
     }
     else {
       this.swiperInstance.slideNext(500);
+      this.findAndTriggerPopup(this.dinamicForm[this.swiperInstance.activeIndex].key)
     }
   }
   prev() {

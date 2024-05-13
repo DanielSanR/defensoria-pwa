@@ -1,4 +1,4 @@
-<ion-content padding   [style.--background]="background">
+<ion-content padding   [style.--background]="background" >
      <ion-grid class="Grid">
       <ion-row class="Grid-row">
           <ion-col class="Grid-row-col" size="12">
@@ -53,10 +53,11 @@
                                 </ng-container>
                               </ion-list>
                                 <ion-list  *ngIf="group.type === 'range'" class="Grid-row-col-swiper-template-container-items-list2">
-                                  <ion-grid>
-                                    <ion-row>
-                                      <ion-col size="auto" *ngFor="let edad of edadesDisponibles">
-                                        <ion-button  style="min-height: 60px;min-width: 60px;max-width: 60px;max-height: 60px;font-weight: 700;"  [class.button-selected]="edad === edadSeleccionada"
+                                  <ion-grid style="text-align: center;">
+                                    <ion-row style="display: flex;
+                                    flex-direction: row;">
+                                      <ion-col  sizeXs="3" sizeMd="2"  sizLg="1" sizeXl="1" *ngFor="let edad of edadesDisponibles">
+                                        <ion-button  style="min-height: 40px;min-width: 40px;max-width: 40px;max-height: 40px;font-weight: 700;"  [class.button-selected]="edad === edadSeleccionada"
                                                      [class.button-unselected]="edad !== edadSeleccionada"
                                           [fill]="edad === edadSeleccionada ? 'solid' : 'outline'"
                                           (click)="seleccionarEdad(edad)">

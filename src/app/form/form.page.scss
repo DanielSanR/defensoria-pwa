@@ -130,11 +130,11 @@ ion-content{
 }
 
 .button-selected {
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-    --padding-start: 10px;
-    --padding-end: 10px;
-    font-size: 32px;
+    --padding-top: 5px;
+    --padding-bottom: 5px;
+    --padding-start: 5px;
+    --padding-end: 5px; 
+    font-size: 23px;
     --border-radius: 50%;
     --background: #5A4BB2;
     --color: #fff;
@@ -143,12 +143,12 @@ ion-content{
 }
 
 .button-unselected {
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-    --padding-start: 10px;
-    --padding-end: 10px;
+    --padding-top: 5px;
+    --padding-bottom: 5px;
+    --padding-start: 5px;
+    --padding-end: 5px;
     --border-radius: 50%;
-    font-size: 32px;
+    font-size: 23px;
     --background: #fff;
     --color: black;
     --border-color: #5A4BB2;
