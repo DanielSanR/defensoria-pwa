@@ -71,6 +71,7 @@ export class FormPage implements OnInit, AfterViewInit {
   public rangoEtario: string;
   isckecked: boolean = false;
   animation: Animation;
+  currentTimer: any = null;
   constructor(private router: Router, private formService: FormService,
     private loadingController: LoadingController,
     private fb: FormBuilder, private animationCtrl: AnimationController, private toastService: ToastService) {
@@ -88,16 +89,22 @@ export class FormPage implements OnInit, AfterViewInit {
     this.findAndTriggerPopup(this.dinamicForm[0].key)
   }
 
-  findAndTriggerPopup(key: string){
+  findAndTriggerPopup(key: string) {
     const groupIndex = this.dinamicForm.findIndex(group => group.key === key);
-    if(this.dinamicForm[groupIndex].popup){
-      setTimeout(() => {
-        if(this.swiperInstance.activeIndex === groupIndex){
-          this.toastService.toastForm(this.dinamicForm[groupIndex].popup.message,
+    if (this.dinamicForm[groupIndex].popup) {
+      if (this.currentTimer) {
+        clearTimeout(this.currentTimer);
+      }
+      this.currentTimer = setTimeout(() => {
+        console.log('popup')
+        if (this.swiperInstance.activeIndex === groupIndex) {
+          this.toastService.toastForm(
+            this.dinamicForm[groupIndex].popup.message,
             this.dinamicForm[groupIndex].popup.position,
             this.dinamicForm[groupIndex].popup.icon,
             this.dinamicForm[groupIndex].popup.side,
-            this.dinamicForm[groupIndex].popup.direction);
+            this.dinamicForm[groupIndex].popup.direction
+          );
         }
       }, 3000);
     }
@@ -221,10 +228,10 @@ export class FormPage implements OnInit, AfterViewInit {
       .addElement(element)
       .duration(300)
       .fromTo('opacity', '1', '0')
-      .afterStyles({
+   /*    .afterStyles({
         'display': 'none',
         'pointer-events': 'none'
-       }) 
+       })  */
       .play();
   }
 
@@ -234,10 +241,10 @@ export class FormPage implements OnInit, AfterViewInit {
       .duration(300)
       .easing('ease-in')
       .fromTo('opacity', '0', '1')
-      .afterStyles({
+     /*  .afterStyles({
         'display': 'block', 
         'pointer-events': 'auto'   
-      })
+      }) */
       .play();
   }
   
@@ -344,6 +351,10 @@ export class FormPage implements OnInit, AfterViewInit {
     if (this.swiperInstance.activeIndex === this.swiperInstance.slides.length - 1) {
     }
     else {
+      if (this.currentTimer) {
+        clearTimeout(this.currentTimer);
+        this.currentTimer = null;
+      }
       this.swiperInstance.slideNext(500);
       this.findAndTriggerPopup(this.dinamicForm[this.swiperInstance.activeIndex].key)
     }
@@ -353,6 +364,10 @@ export class FormPage implements OnInit, AfterViewInit {
       this.close();
     }
     this.swiperInstance.slidePrev(500);;
+    if (this.currentTimer) {
+      clearTimeout(this.currentTimer);
+      this.currentTimer = null;
+    }
   }
 
   close() {
