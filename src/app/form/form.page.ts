@@ -381,16 +381,26 @@ export class FormPage implements OnInit, AfterViewInit {
   }); 
   const quizResult = {};
   const formValue = this.myForm.value;
+  console.log(this.myForm.value)
   this.dinamicForm.forEach(group => {
         if(group.preguntas){
+          console.log(group.preguntas)
           group.preguntas.forEach(pregunta =>{
-            if (group.multiple) { 
+            if (group.multiple) {
               quizResult[group.key] = formValue[group.key];
-            } else { 
-              quizResult[group.key] = formValue[group.key].length > 0 ? formValue[group.key][0] : '';
+            } else {
+              console.log(group.key)
+              if (group.key !== 'age') {
+              quizResult[group.key] = formValue[group.key].length > 0 ? formValue[group.key][0] : '';}
             }
           });
         }
+        //asignamos age al quizresult
+        if (group.key === 'age') {
+          quizResult[group.key] = formValue[group.key];
+        }
+
+
   })
   return quizResult;
   } 
