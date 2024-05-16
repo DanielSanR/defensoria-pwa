@@ -109,7 +109,7 @@ export class PerfilPage implements OnInit {
             text: 'Si',
             cssClass: 'alert-button-confirm',
             handler: async () => {
-            /*     await this.deviceService.changeForm(); */
+            /*     await this.formService.changeForm(); */
             },
           },
         ],

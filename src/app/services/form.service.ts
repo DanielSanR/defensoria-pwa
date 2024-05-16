@@ -3,13 +3,14 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { environment } from 'src/environments/environment';
+import { DeviceService } from './device.service';
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
   public optionChosed: BehaviorSubject<any> = new BehaviorSubject(null);
   private url= environment.urlApi;
-  constructor(public  http: HttpClient,private storageService: StorageService) {
+  constructor(public  http: HttpClient,private storageService: StorageService,private deviceService: DeviceService) {
     this.loadSelected();
   }
   async loadSelected(){
@@ -44,10 +45,23 @@ async getSelected(): Promise<boolean>{
       }
   }
 async updateForm(form: any){
-   console.log(form)
+  await this.deviceService.updateDeviceForm(form);
+  const device = JSON.parse(await this.storageService.getStorage2('device'));
    return new Promise((resolve) => {
-
+    this.http.post(`${this.url}`,device).subscribe((res: any) => {
+     console.log(res)
+    });
     resolve(true);
-   });
+  });
 }
+
+ async changeForm(){
+  const selected =  await this.storageService.getStorage('selected')
+  const newSelected = selected == 'teen'? 'kid' : 'teen';
+  const rangoEtario  = newSelected == 'teen'? 'Adolescente' : ' Niño/Niña'; 
+  await this.storageService.setStorage('selected', newSelected);
+  let currentDevice = this.deviceService.getCurrentDevice()
+  this.deviceService.deviceSubject.next(currentDevice)
+
+ }
 }

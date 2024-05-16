@@ -378,8 +378,7 @@ export class FormPage implements OnInit, AfterViewInit {
               }
           });
       }
-  });
-  console.log(this.myForm.value)
+  }); 
   } 
   prev() {
     if (this.swiperInstance.activeIndex === 0) {

@@ -11,7 +11,7 @@ import { FormService } from './form.service';
 export class DeviceService {
   public selectedeSubject = new BehaviorSubject<string>('');
   public deviceSubject  = new BehaviorSubject(new Device);
-  constructor(private storage : StorageService,private formService: FormService) {
+  constructor(private storage : StorageService) {
     this.loadBehaviorData();
   }
   async loadBehaviorData() {
@@ -65,15 +65,6 @@ export class DeviceService {
     
   }
 
-  async changeForm(){
-    const selected =  await this.storage.getStorage('selected')
-    const newSelected = selected == 'teen'? 'kid' : 'teen';
-    const rangoEtario  = newSelected == 'teen'? 'Adolescente' : ' Niño/Niña'; 
-    let currentDevice = this.getCurrentDevice()
-    currentDevice.user.rangoEtario = rangoEtario;
-    await this.storage.setStorage('selected', newSelected);
-    this.formService.optionChosed.next(newSelected);
-    this.deviceSubject.next(currentDevice)
-  }
+  
 
 }
