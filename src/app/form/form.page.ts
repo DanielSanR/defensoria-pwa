@@ -117,7 +117,7 @@ export class FormPage implements OnInit, AfterViewInit {
   }
   seleccionarEdad(edad: number) {
     this.edadSeleccionada = edad;
-    this.myForm.get('edad').setValue(edad);
+    this.myForm.get('age').setValue(edad);
     this.selected = true
   }
   

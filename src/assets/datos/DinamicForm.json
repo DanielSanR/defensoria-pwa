@@ -1,6 +1,6 @@
   [
     {
-      "key": "victima",
+      "key": "victim",
       "title": "¿Para quién estas pidiendo ayuda?",
       "type": "item",
       "multiple": false,
@@ -46,7 +46,7 @@
       } 
     },
     {
-      "key": "motivo",
+      "key": "reason",
       "title": "Indicá el motivo por el cuál está pidiendo ayuda",
       "type": "item",
       "multiple": true,
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "key": "agresor",
+      "key": "aggressor",
       "type": "item",
       "multiple": true,
       "title": "¿Quién es la persona agresora?",
@@ -174,7 +174,7 @@
       ]
     },
     {
-      "key": "genero_agresor",
+      "key": "aggressorGender",
       "title": " Género de la persona agresora",
       "type": "item",
       "multiple": false,
@@ -203,7 +203,7 @@
       } 
     },
     {
-      "key": "edad",
+      "key": "age",
       "type": "range",
       "multiple": false,
       "title": "Cuantos años tenes?",
@@ -216,7 +216,7 @@
       } 
     },
     {
-      "key": "genero",
+      "key": "gender",
       "type": "item",
       "multiple": false,
       "title": "Indica tu genero",
@@ -252,7 +252,7 @@
       } 
     },
     {
-      "key": "lugar",
+      "key": "place",
       "title": "Lugar en que ocurre la violencia",
       "type": "item",
       "multiple": true,
