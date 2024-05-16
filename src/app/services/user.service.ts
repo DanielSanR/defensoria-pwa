@@ -36,9 +36,10 @@ async getUser(): Promise<boolean>{
   async updateUser(data: any){
     this.user.next(data);
     await this.deviceService.updateDeviceUser(data);
+
     const device = JSON.parse(await this.storageService.getStorage2('device'));
     return new Promise((resolve) => {
-      this.http.post(`${this.url}`, data).subscribe((res: any) => {
+      this.http.post(`${this.url}`, device).subscribe((res: any) => {
        console.log(res)
       });
       resolve(true);
