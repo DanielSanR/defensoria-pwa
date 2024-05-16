@@ -10,6 +10,7 @@ import { SendmailService } from '../services/sendmail.service';
 import { v4 as uuidv4 } from 'uuid';
 import { DeviceService } from '../services/device.service'; 
 import { ScreensizeService } from '../services/screensize.service';
+import { OnboardingService } from '../services/onboarding.service';
 @Component({
   selector: 'app-onboarding',
   templateUrl: './onboarding.page.html',
@@ -36,8 +37,8 @@ export class OnboardingPage implements OnInit {
   constructor(private router: Router, private cd: ChangeDetectorRef,
     private alertController: AlertController,private toastService: ToastService
     ,private storageService: StorageService,
-    private loadingController: LoadingController, 
-    private sendMail: SendmailService, private deviceService: DeviceService,
+    private loadingController: LoadingController,
+    private onboardingService: OnboardingService,
     private screenSize: ScreensizeService
 ) { }
 
@@ -80,9 +81,7 @@ export class OnboardingPage implements OnInit {
 
       async save(){
         if(this.selected!== null){
-          await this.storageService.setStorage('selected',this.selected) ;
-          await this.storageService.setOnboarding();
-          const result = await this.sendMail.sendOnboarding(this.selected, [this.latitude, this.longitude],this.usuarioId);
+          const result = await this.onboardingService.saveOnboarding(this.selected,[this.latitude, this.longitude],this.usuarioId); 
           if(result){
             this.toastService.toast('Datos guardados ! :)','success');}
           else{

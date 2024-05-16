@@ -5,17 +5,20 @@ import { HeaderOnboardingComponent } from './header-onboarding/header-onboarding
 import { IonicModule } from '@ionic/angular';
 import { HeaderDesktopComponent } from './header-desktop/header-desktop.component';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-  declarations: [HeaderOnboardingComponent,HeaderDesktopComponent],
+  declarations: [HeaderOnboardingComponent,HeaderDesktopComponent,FooterComponent],
   imports: [
     CommonModule,
     IonicModule,
     RouterModule
   ],
   exports: [HeaderOnboardingComponent,
-            HeaderDesktopComponent
+            HeaderDesktopComponent,
+            FooterComponent
+             
   ]
 })
 export class SharedComponentsModule { }

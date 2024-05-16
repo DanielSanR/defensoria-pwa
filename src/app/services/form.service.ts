@@ -43,4 +43,11 @@ async getSelected(): Promise<boolean>{
          return Promise.resolve(false);
       }
   }
+async updateForm(form: any){
+   console.log(form)
+   return new Promise((resolve) => {
+
+    resolve(true);
+   });
+}
 }

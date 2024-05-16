@@ -4,18 +4,14 @@ import {User} from '../Interfaces/User';
 import {Quiz} from '../Interfaces/Quiz';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { StorageService } from './storage.service';
-import { Form } from '@angular/forms';
-import { FormService } from './form.service';
-import { UserService } from './user.service';
-
+import { FormService } from './form.service'; 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviceService {
   public selectedeSubject = new BehaviorSubject<string>('');
   public deviceSubject  = new BehaviorSubject(new Device);
-  constructor(private storage : StorageService,private formService: FormService,
-    private userService: UserService) {
+  constructor(private storage : StorageService,private formService: FormService) {
     this.loadBehaviorData();
   }
   async loadBehaviorData() {
@@ -56,7 +52,6 @@ export class DeviceService {
     currentDevice.user = {...user};
     currentDevice.user_update = true;
     this.deviceSubject.next(currentDevice)
-    this.userService.user.next(user);
     this.storage.saveStorage('device', JSON.stringify(currentDevice));
     
   }

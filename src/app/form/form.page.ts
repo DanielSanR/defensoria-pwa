@@ -86,7 +86,7 @@ export class FormPage implements OnInit, AfterViewInit {
       this.dinamicForm = PreguntasformArr
     });
     this.createControls(this.dinamicForm);
-    this.findAndTriggerPopup(this.dinamicForm[0].key)
+    /* this.findAndTriggerPopup(this.dinamicForm[0].key) */
   }
 
   findAndTriggerPopup(key: string) {
@@ -172,7 +172,7 @@ export class FormPage implements OnInit, AfterViewInit {
     const groupIndex = this.dinamicForm.findIndex(group => group.key === key);
     const group = this.dinamicForm[groupIndex];
     let wasDeselected = false;
-    if (group.multiple) {
+    if (group.multiple) { 
       const preguntaIndex = group.preguntas.findIndex(pregunta => pregunta.val === val);
       const pregunta = group.preguntas[preguntaIndex]
       group.preguntas[preguntaIndex].isChecked = !group.preguntas[preguntaIndex].isChecked;
@@ -180,13 +180,16 @@ export class FormPage implements OnInit, AfterViewInit {
         this.manageInputs(pregunta,key)
       }
     } else {
-      
       group.preguntas.forEach(pregunta => {
         if (pregunta.val === val && pregunta.isChecked) {
+          console.log('deseleccionado', pregunta)
           wasDeselected = true; 
           pregunta.isChecked = false;
         } else {
-          pregunta.isChecked = (pregunta.val === val);
+          if (pregunta.val === val) {
+            pregunta.isChecked = true;
+            console.log('seleccionado', pregunta)
+          }
         } 
         const preguntaContainer = document.getElementById(`question-container-${pregunta.id}`);
         if (preguntaContainer) { 
@@ -209,7 +212,7 @@ export class FormPage implements OnInit, AfterViewInit {
       this.enableBandera(key, val);
     }
     this.selected = this.filterItems(group.preguntas);
-    this.updateFormControl(key, group.preguntas);
+    this.updateFormControl(key, group.preguntas,group.multiple);
   }
   animateAndShow(element: HTMLElement) {
     this.animationCtrl.create()
@@ -228,10 +231,10 @@ export class FormPage implements OnInit, AfterViewInit {
       .addElement(element)
       .duration(300)
       .fromTo('opacity', '1', '0')
-   /*    .afterStyles({
-        'display': 'none',
+      .afterStyles({
+       /*  'display': 'none', */
         'pointer-events': 'none'
-       })  */
+       })  
       .play();
   }
 
@@ -241,10 +244,10 @@ export class FormPage implements OnInit, AfterViewInit {
       .duration(300)
       .easing('ease-in')
       .fromTo('opacity', '0', '1')
-     /*  .afterStyles({
-        'display': 'block', 
+        .afterStyles({
+   /*      'display': 'block',  */
         'pointer-events': 'auto'   
-      }) */
+      })  
       .play();
   }
   
@@ -257,10 +260,10 @@ export class FormPage implements OnInit, AfterViewInit {
     });
   }
   
-  manageInputs(pregunta, key) {
+  manageInputs(pregunta,key) { 
     if (pregunta.isChecked && pregunta.inputs.length > 0) {
       pregunta.inputs.forEach(input => {
-        if (!this.myForm.contains(input.key)) {
+        if (!this.myForm.contains(input.key)) { 
           this.myForm.addControl(input.key, this.fb.control(''));
         }
       });
@@ -271,23 +274,25 @@ export class FormPage implements OnInit, AfterViewInit {
           this.myForm.get(input.key).reset();
         }
       });
-    }
-    console.log("form actual:", this.myForm.value)
+    } 
   }
 
-  updateFormControl(key: string, preguntas: any[]) {
+  updateFormControl(key: string, preguntas: any[],multiple:boolean) {
     const selectedValues = preguntas.filter(pregunta => pregunta.isChecked).map(pregunta => {
-      if (pregunta.inputs && pregunta.inputs.length > 0 && this.myForm.get(pregunta.inputs[0].key)) {
-        return this.myForm.get(pregunta.inputs[0].key).value;
+      // Si la pregunta tiene inputs condicionales, usar el valor del primer input si está disponible
+      if (pregunta.inputs && pregunta.inputs.length > 0 && this.myForm.get(pregunta.inputs[0].key) && multiple) { 
+          return this.myForm.get(pregunta.inputs[0].key).value;
       }
+      // De lo contrario, usar el valor de la pregunta
       return pregunta.val;
-    });
-    if (this.myForm.contains(key)) {
-      this.myForm.get(key).setValue(selectedValues);
-    } else {
-      console.error(`El control con la clave '${key}' no existe en el FormGroup.`);
-    }
-
+  });
+  // Asegurarte de que el FormControl existe antes de intentar usar setValue
+  if (this.myForm.contains(key)) {
+    // Si es una selección múltiple, unir los valores con comas o como prefieras manejarlo
+    this.myForm.get(key).setValue(selectedValues);
+} else {
+    console.error(`El control con la clave '${key}' no existe en el FormGroup.`);
+}
   }
 
   ionViewDidEnter() {
@@ -329,7 +334,7 @@ export class FormPage implements OnInit, AfterViewInit {
     } */
   }
 
-  //ANIMACION PARA VICTIMA ITEM OPCIONAL 
+  
 
   initAnimationVictima(toggle: boolean) {
     const visibility = toggle ? 'visible' : 'hidden';
@@ -355,8 +360,9 @@ export class FormPage implements OnInit, AfterViewInit {
         clearTimeout(this.currentTimer);
         this.currentTimer = null;
       }
+      console.log(this.myForm.value)
       this.swiperInstance.slideNext(500);
-      this.findAndTriggerPopup(this.dinamicForm[this.swiperInstance.activeIndex].key)
+      /* this.findAndTriggerPopup(this.dinamicForm[this.swiperInstance.activeIndex].key) */
     }
   }
   prev() {
@@ -412,10 +418,11 @@ export class FormPage implements OnInit, AfterViewInit {
   }
 
   async enviar() {
+    console.log(this.myForm.value)
     this.bandera = false;
-    console.log(this.myForm.value);
-    const t = true;
-    if (t) {
+    const result = await this.formService.updateForm(this.myForm.value);
+    console.log(this.myForm.value)
+    if (result) {
       this.swiperInstance.slideNext(500);
       this.swiperInstance.update();
       this.finalized = true;
@@ -424,7 +431,6 @@ export class FormPage implements OnInit, AfterViewInit {
       this.finalized = false;
     }
   }
-
   async ionViewWillLeave() {
     const loading = await this.loadingController.create({
       message: 'Cerrando Formulario...',
@@ -448,6 +454,8 @@ export class FormPage implements OnInit, AfterViewInit {
       }
     });
   }
+
+
 
   test(e: Event) {
     /*      this.initListAnimation();  */

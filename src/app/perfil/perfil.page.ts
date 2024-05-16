@@ -6,10 +6,7 @@ import { UserService } from '../services/user.service';
 import { ToastService } from '../services/toast.service';
 import { ModalController, PopoverController, AlertController } from '@ionic/angular';
 import { SobreNosotrosPage } from '../sobre-nosotros/sobre-nosotros.page';
-import { Route, Router } from '@angular/router';
-import { SendmailService } from '../services/sendmail.service';
-import { DeviceService } from '../services/device.service';
-import { ScreensizeService } from '../services/screensize.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -27,10 +24,7 @@ export class PerfilPage implements OnInit {
     private toastService: ToastService,
     private modalCtrl: ModalController,
     private alertController: AlertController,
-    private router: Router,
-    private sendmail: SendmailService,
-    private deviceService: DeviceService,
-    private screensizeService: ScreensizeService
+    private router: Router
      ) { }
 
      async ngOnInit() {
@@ -52,7 +46,7 @@ export class PerfilPage implements OnInit {
         return;
       }
       else{
-        const result = await this.sendmail.sendForm('user',this.myForm.value);
+        const result = await this.userService.updateUser(this.myForm.value);
         if(result){
           this.toastService.toast('Tus datos se guardaron correctamente','success');
         }
@@ -93,7 +87,7 @@ export class PerfilPage implements OnInit {
             text: 'Si',
             cssClass: 'alert-button-confirm',
             handler: () => {
-              this.deviceService.clearDevice();
+          /*     this.deviceService.clearDevice(); */
               this.router.navigateByUrl('/onboarding',{replaceUrl: true})
             },
           },
@@ -115,7 +109,7 @@ export class PerfilPage implements OnInit {
             text: 'Si',
             cssClass: 'alert-button-confirm',
             handler: async () => {
-                await this.deviceService.changeForm();
+            /*     await this.deviceService.changeForm(); */
             },
           },
         ],

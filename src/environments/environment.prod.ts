@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'https://yocuento.org/api'
+  urlApi: 'https://defensoria-api.stagemnes.net.ar/api/Auth/denuncias/guardar'
 };

@@ -9,35 +9,7 @@ export class SendmailService {
 
   constructor(public http: HttpClient,private storageService: StorageService, public deviceService: DeviceService) { }
 
-  async sendOnboarding(selected : string, latlng : any, uuid : string){
-     const rangoEtario  = selected == 'teen'? 'Adolescente' : ' Niño/Niña'; 
-     this.deviceService.updateDeviceUuid(uuid, rangoEtario, latlng);
-     const datos  = {
-      uuid,
-      latlng,
-      rangoEtario : rangoEtario
-     }
-    /*  try{
-       const response : any  = await this.http.post('http://localhost:9000/api/send-onboarding',{datos}).toPromise();
-       if(response){
-          return Promise.resolve(true);
-        }
-      
-     }
-      catch{
-        return Promise.resolve(false);
-      } */
-      return Promise.resolve(true);
-  }
   async sendForm(type: string, data: any){
-    if(type == 'user'){
-      await this.deviceService.updateDeviceUser(data);
-      this.storageService.getStorage2('device').then(value => {
-        //aca "enviaria" a la API, la idea es integrarlo tambien a envio de mails, por eso este service de sendmail
-        console.log(value);
-        return Promise.resolve(true);
-      }); 
-    }
     if(type =='form'){
       await this.deviceService.updateDeviceForm(data);
       this.storageService.getStorage2('device').then(value =>{
