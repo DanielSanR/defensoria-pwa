@@ -7,7 +7,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class OnboardingService {
-  private url = environment.url;
+  private url = environment.urlApi;
   constructor(private storageService: StorageService, private deviceService: DeviceService, private http: HttpClient) { }
 
  // Para guardar el onboarding en el storage y en la base de datos

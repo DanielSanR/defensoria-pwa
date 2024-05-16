@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FormService {
   public optionChosed: BehaviorSubject<any> = new BehaviorSubject(null);
-  private url= environment.url;
+  private url= environment.urlApi;
   constructor(public  http: HttpClient,private storageService: StorageService) {
     this.loadSelected();
   }

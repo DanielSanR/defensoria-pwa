@@ -12,7 +12,7 @@ export class UserService {
 
   public user = new BehaviorSubject<any>(null);
   public optionChosed: BehaviorSubject<any> = new BehaviorSubject(null);
-  private url = environment.url;
+  private url = environment.urlApi;
   constructor(public  http: HttpClient,
     private storageService: StorageService,
     private deviceService: DeviceService) {
