@@ -23,6 +23,7 @@ export class OnboardingService {
      }
      return new Promise((resolve) => {
        this.http.post(`${this.url}`, datos).subscribe((res: any) => {
+        //no capturamos errores ya que luego implementaremos un interceptor para manejarlos, tampoco catcheamos el formato json xq devuelve un text
         console.log(res)
        });
        resolve(true);
