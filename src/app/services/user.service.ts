@@ -39,11 +39,24 @@ async getUser(): Promise<boolean>{
 
     const device = JSON.parse(await this.storageService.getStorage2('device'));
     return new Promise((resolve) => {
-      this.http.post(`${this.url}`, device).subscribe((res: any) => {
+      this.http.post(`${this.url}`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
        console.log(res)
       });
       resolve(true);
     });
+  }
+
+  replaceEmptyArraysWithObjects(obj: any): any {
+    if (Array.isArray(obj) && obj.length === 0) {
+      return {};
+    } else if (typeof obj === 'object' && obj !== null) {
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          obj[key] = this.replaceEmptyArraysWithObjects(obj[key]);
+        }
+      }
+    }
+    return obj;
   }
 
 }
