@@ -379,6 +379,20 @@ export class FormPage implements OnInit, AfterViewInit {
           });
       }
   }); 
+  const quizResult = {};
+  const formValue = this.myForm.value;
+  this.dinamicForm.forEach(group => {
+        if(group.preguntas){
+          group.preguntas.forEach(pregunta =>{
+            if (group.multiple) { 
+              quizResult[group.key] = formValue[group.key];
+            } else { 
+              quizResult[group.key] = formValue[group.key].length > 0 ? formValue[group.key][0] : '';
+            }
+          });
+        }
+  })
+  return quizResult;
   } 
   prev() {
     if (this.swiperInstance.activeIndex === 0) {
@@ -433,9 +447,9 @@ export class FormPage implements OnInit, AfterViewInit {
   }
 
   async enviar() {
-    this.checkOthers(); 
+    const form = this.checkOthers(); 
     this.bandera = false;
-    const result = await this.formService.updateForm(this.myForm.value);
+    const result = await this.formService.updateForm(form);
     if (result) {
       this.swiperInstance.slideNext(500);
       this.swiperInstance.update();
