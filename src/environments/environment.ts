@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://yocuento.org/api'
+  url: 'https://defensoria-api.stagemnes.net.ar/api/Auth/denuncias/guardar'
 };
 /*
  * For easier debugging in development mode, you can import the following file

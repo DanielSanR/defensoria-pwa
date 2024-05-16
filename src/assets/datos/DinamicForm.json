@@ -31,7 +31,7 @@
         },
         {
           "id": 4,
-          "val": "Otro",
+          "val": "Otro motivo. Especificar",
           "inputs": [
             {"key": "name", "label": "¿Cómo se llama?", "type": "text"},
             {"key": "dni", "label": "¿Sabes su número de  documento (DNI)?", "type": "text"}
@@ -238,9 +238,9 @@
         },
         {
           "id": 26,
-          "val": "Otro. especificar",
+          "val": "Otro motivo. Especificar",
           "inputs":[
-            {"key": "genero", "label": "¿Cuál es tu genero?", "type": "text"}
+            {"key": "other_gender", "label": "¿Cuál es tu genero?", "type": "text"}
           ]
         }
       ],
@@ -284,7 +284,7 @@
         },
         {
           "id": 32,
-          "val": "Otro. Especificar",
+          "val": "Otro motivo. Especificar",
           "inputs": [
             {"key": "locale_other", "label": "¿Dónde ocurre la violencia?", "type": "text"}
           ]

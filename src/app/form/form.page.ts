@@ -9,7 +9,6 @@ import { FormService } from '../services/form.service';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, FormArray } from '@angular/forms';
 import type { Animation } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
-import type { IonLabel } from '@ionic/angular';
 import { ToastService } from '../services/toast.service';
 export interface PreguntasForm {
   key: string;
@@ -214,6 +213,36 @@ export class FormPage implements OnInit, AfterViewInit {
     this.selected = this.filterItems(group.preguntas);
     this.updateFormControl(key, group.preguntas,group.multiple);
   }
+
+  manageInputs(pregunta,key) { 
+    if (pregunta.isChecked && pregunta.inputs.length > 0) {
+      pregunta.inputs.forEach(input => {
+        if (!this.myForm.contains(input.key)) {
+          console.log(input.key) 
+          console.log()
+          this.myForm.addControl(input.key, this.fb.control(''));
+        }
+      });
+    } else {
+      pregunta.inputs.forEach(input => {
+        if (this.myForm.contains(input.key)) {
+          this.myForm.removeControl(input.key);
+          this.myForm.get(input.key).reset();
+        }
+      });
+    } 
+  }
+
+  updateFormControl(key: string, preguntas: any[], multiple: boolean) {
+    const selectedValues = preguntas.filter(pregunta => pregunta.isChecked).map(pregunta => pregunta.val);
+    if (this.myForm.contains(key)) {
+      // Si es una selección múltiple, asignar el array de valores seleccionados
+      this.myForm.get(key).setValue(selectedValues);
+    } else {
+      console.error(`El control con la clave '${key}' no existe en el FormGroup.`);
+    }
+  }
+
   animateAndShow(element: HTMLElement) {
     this.animationCtrl.create()
       .addElement(element)
@@ -260,40 +289,8 @@ export class FormPage implements OnInit, AfterViewInit {
     });
   }
   
-  manageInputs(pregunta,key) { 
-    if (pregunta.isChecked && pregunta.inputs.length > 0) {
-      pregunta.inputs.forEach(input => {
-        if (!this.myForm.contains(input.key)) { 
-          this.myForm.addControl(input.key, this.fb.control(''));
-        }
-      });
-    } else {
-      pregunta.inputs.forEach(input => {
-        if (this.myForm.contains(input.key)) {
-          this.myForm.removeControl(input.key);
-          this.myForm.get(input.key).reset();
-        }
-      });
-    } 
-  }
-
-  updateFormControl(key: string, preguntas: any[],multiple:boolean) {
-    const selectedValues = preguntas.filter(pregunta => pregunta.isChecked).map(pregunta => {
-      // Si la pregunta tiene inputs condicionales, usar el valor del primer input si está disponible
-      if (pregunta.inputs && pregunta.inputs.length > 0 && this.myForm.get(pregunta.inputs[0].key) && multiple) { 
-          return this.myForm.get(pregunta.inputs[0].key).value;
-      }
-      // De lo contrario, usar el valor de la pregunta
-      return pregunta.val;
-  });
-  // Asegurarte de que el FormControl existe antes de intentar usar setValue
-  if (this.myForm.contains(key)) {
-    // Si es una selección múltiple, unir los valores con comas o como prefieras manejarlo
-    this.myForm.get(key).setValue(selectedValues);
-} else {
-    console.error(`El control con la clave '${key}' no existe en el FormGroup.`);
-}
-  }
+ 
+ 
 
   ionViewDidEnter() {
     this.initListAnimation();
@@ -333,9 +330,6 @@ export class FormPage implements OnInit, AfterViewInit {
         .play();
     } */
   }
-
-  
-
   initAnimationVictima(toggle: boolean) {
     const visibility = toggle ? 'visible' : 'hidden';
     const opacity = toggle ? '1' : '0';
@@ -360,11 +354,33 @@ export class FormPage implements OnInit, AfterViewInit {
         clearTimeout(this.currentTimer);
         this.currentTimer = null;
       }
-      console.log(this.myForm.value)
       this.swiperInstance.slideNext(500);
-      /* this.findAndTriggerPopup(this.dinamicForm[this.swiperInstance.activeIndex].key) */
+      this.findAndTriggerPopup(this.dinamicForm[this.swiperInstance.activeIndex].key)
     }
   }
+   checkOthers(){
+    this.dinamicForm.forEach(group => {
+      if (group.preguntas) {
+          group.preguntas.forEach(pregunta => {
+              if (pregunta.isChecked && pregunta.inputs && pregunta.inputs.length > 0) {
+                  const inputValues = [];
+                  pregunta.inputs.forEach(input => {
+                      const control = this.myForm.get(input.key);
+                      if (control && !['dni', 'name'].includes(input.key)) {
+                          inputValues.push(control.value);
+                          this.myForm.removeControl(input.key);
+                      }
+                  });
+
+                  let finalValues = (this.myForm.get(group.key).value || []).filter(val => val !== 'Otro motivo. Especificar');
+                  finalValues = [...finalValues, ...inputValues.filter(val => !!val)];
+                  this.myForm.get(group.key).setValue(finalValues);
+              }
+          });
+      }
+  });
+  console.log(this.myForm.value)
+  } 
   prev() {
     if (this.swiperInstance.activeIndex === 0) {
       this.close();
@@ -418,10 +434,9 @@ export class FormPage implements OnInit, AfterViewInit {
   }
 
   async enviar() {
-    console.log(this.myForm.value)
+    this.checkOthers(); 
     this.bandera = false;
     const result = await this.formService.updateForm(this.myForm.value);
-    console.log(this.myForm.value)
     if (result) {
       this.swiperInstance.slideNext(500);
       this.swiperInstance.update();
