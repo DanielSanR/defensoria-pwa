@@ -85,7 +85,7 @@ export class FormPage implements OnInit, AfterViewInit {
       this.dinamicForm = PreguntasformArr
     });
     this.createControls(this.dinamicForm);
-    /* this.findAndTriggerPopup(this.dinamicForm[0].key) */
+    this.findAndTriggerPopup(this.dinamicForm[0].key) 
   }
 
   findAndTriggerPopup(key: string) {
@@ -137,6 +137,7 @@ export class FormPage implements OnInit, AfterViewInit {
         this.myForm.addControl(control.key, formControl);
       }
     });
+    console.log(this.myForm.value)
   }
   minSelectedCheckboxes(min = 1) {
     const validator: ValidatorFn = (formArray: AbstractControl) => {
@@ -147,24 +148,6 @@ export class FormPage implements OnInit, AfterViewInit {
   }
 
   submitForm() {
-    /* this.dinamicForm.forEach(group => {
-      if (group.multiple) {
-        const control = this.myForm.get(group.key) as FormArray;
-        group.preguntas.forEach(pregunta => {
-          if (pregunta.isChecked) {
-            control.push(this.fb.control(pregunta.val)); 
-            if (pregunta.inputs && pregunta.inputs.length > 0) {
-              pregunta.inputs.forEach(input => {
-                const inputControl = this.myForm.get(input.key);
-                if (inputControl && inputControl.value) { 
-                  control.push(this.fb.control(inputControl.value));
-                }
-              });
-            }
-          }
-        });
-      }
-    }); */
   }
 
   toggleSelection(key: string, val: string) {
@@ -212,6 +195,7 @@ export class FormPage implements OnInit, AfterViewInit {
     }
     this.selected = this.filterItems(group.preguntas);
     this.updateFormControl(key, group.preguntas,group.multiple);
+    console.log(this.myForm.value)
   }
 
   manageInputs(pregunta,key) { 
@@ -235,9 +219,13 @@ export class FormPage implements OnInit, AfterViewInit {
 
   updateFormControl(key: string, preguntas: any[], multiple: boolean) {
     const selectedValues = preguntas.filter(pregunta => pregunta.isChecked).map(pregunta => pregunta.val);
+    console.log(selectedValues)
     if (this.myForm.contains(key)) {
-      // Si es una selección múltiple, asignar el array de valores seleccionados
-      this.myForm.get(key).setValue(selectedValues);
+      if (multiple) {
+        this.myForm.get(key).setValue(selectedValues);
+      } else {
+        this.myForm.get(key).setValue(selectedValues.length > 0 ? selectedValues[0] : '');
+      }
     } else {
       console.error(`El control con la clave '${key}' no existe en el FormGroup.`);
     }
@@ -358,20 +346,20 @@ export class FormPage implements OnInit, AfterViewInit {
       this.findAndTriggerPopup(this.dinamicForm[this.swiperInstance.activeIndex].key)
     }
   }
+   // si hay inputs con "valores" correspondientes a la pregunta, se agregan al formGroup de esa pregunta exceptuando dni y name
    checkOthers(){
     this.dinamicForm.forEach(group => {
       if (group.preguntas) {
           group.preguntas.forEach(pregunta => {
-              if (pregunta.isChecked && pregunta.inputs && pregunta.inputs.length > 0) {
+              if (pregunta.isChecked && pregunta.inputs && pregunta.inputs.length > 0 && group.multiple) {
                   const inputValues = [];
                   pregunta.inputs.forEach(input => {
                       const control = this.myForm.get(input.key);
-                      if (control && !['dni', 'name'].includes(input.key)) {
+                      if (control && !['dniVictim', 'nameVictim'].includes(input.key)) {
                           inputValues.push(control.value);
                           this.myForm.removeControl(input.key);
                       }
                   });
-
                   let finalValues = (this.myForm.get(group.key).value || []).filter(val => val !== 'Otro motivo. Especificar');
                   finalValues = [...finalValues, ...inputValues.filter(val => !!val)];
                   this.myForm.get(group.key).setValue(finalValues);
@@ -379,30 +367,7 @@ export class FormPage implements OnInit, AfterViewInit {
           });
       }
   }); 
-  const quizResult = {};
-  const formValue = this.myForm.value;
-  console.log(this.myForm.value)
-  this.dinamicForm.forEach(group => {
-        if(group.preguntas){
-          console.log(group.preguntas)
-          group.preguntas.forEach(pregunta =>{
-            if (group.multiple) {
-              quizResult[group.key] = formValue[group.key];
-            } else {
-              console.log(group.key)
-              if (group.key !== 'age') {
-              quizResult[group.key] = formValue[group.key].length > 0 ? formValue[group.key][0] : '';}
-            }
-          });
-        }
-        //asignamos age al quizresult
-        if (group.key === 'age') {
-          quizResult[group.key] = formValue[group.key];
-        }
-
-
-  })
-  return quizResult;
+  return this.myForm.value;
   } 
   prev() {
     if (this.swiperInstance.activeIndex === 0) {

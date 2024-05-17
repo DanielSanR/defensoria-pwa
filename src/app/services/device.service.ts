@@ -37,11 +37,12 @@ export class DeviceService {
     return this.deviceSubject.asObservable();
   }
 
-  updateDeviceUuid(uuid: string, rangoEtario: string, latlng: any) {
+  updateDeviceUuid(uuid: string, ageRange: string, latlng: any, date: string) {
     let currentDevice = this.getCurrentDevice()
     currentDevice.uuid = uuid;
     currentDevice.latlng = latlng;
-    currentDevice.user.rangoEtario = rangoEtario;
+    currentDevice.user.ageRange = ageRange;
+    currentDevice.date = date;
     this.deviceSubject.next(currentDevice)
     this.storage.saveStorage('device', JSON.stringify(currentDevice));
 

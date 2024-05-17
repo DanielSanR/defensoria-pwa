@@ -30,12 +30,7 @@ export class ToastService {
         {
           side,
           icon: '/../../assets/icon/form/'+icon
-        },
-        {
-          side: 'end',
-          icon: 'close-outline',
-          role: 'cancel'
-        },
+        }
       ],
     });
     await toast.present();

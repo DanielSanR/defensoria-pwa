@@ -9,32 +9,32 @@
           "id": 1,
           "val": "Para mi",
           "inputs": [
-            {"key": "name", "label": "¿Cómo te llamas?", "type": "text"},
-            {"key": "dni", "label": "¿Cuál es tu número de DNI?", "type": "text"}
+            {"key": "nameVictim", "label": "¿Cómo te llamas?", "type": "text"},
+            {"key": "dniVictim", "label": "¿Cuál es tu número de DNI?", "type": "text"}
           ]
         },
         {
           "id": 2,
           "val": "Para mi hermano/a",
           "inputs": [
-            {"key": "name", "label": "¿Cómo se llama?", "type": "text"},
-            {"key": "dni", "label": "¿Sabes su número de documento (DNI) ?", "type": "text"}
+            {"key": "nameVictim", "label": "¿Cómo se llama?", "type": "text"},
+            {"key": "dniVictim", "label": "¿Sabes su número de documento (DNI) ?", "type": "text"}
           ]
         },
         {
           "id": 3,
           "val": "Para mi vecino/a",
           "inputs": [
-            {"key": "name", "label": "¿Cómo se llama?", "type": "text"},
-            {"key": "dni", "label": "¿Sabes su número de documento (DNI)?", "type": "text"}
+            {"key": "nameVictim", "label": "¿Cómo se llama?", "type": "text"},
+            {"key": "dniVictim", "label": "¿Sabes su número de documento (DNI)?", "type": "text"}
           ]
         },
         {
           "id": 4,
           "val": "Otro motivo. Especificar",
           "inputs": [
-            {"key": "name", "label": "¿Cómo se llama?", "type": "text"},
-            {"key": "dni", "label": "¿Sabes su número de  documento (DNI)?", "type": "text"}
+            {"key": "nameVictim", "label": "¿Cómo se llama?", "type": "text"},
+            {"key": "dniVictim", "label": "¿Sabes su número de  documento (DNI)?", "type": "text"}
           ]
         }
       ],
