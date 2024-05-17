@@ -51,7 +51,7 @@ export class DeviceService {
   updateDeviceUser(user: User) {
     let currentDevice = this.getCurrentDevice()
     currentDevice.user = {...user};
-    currentDevice.user_update = true;
+    currentDevice.userUpdate = true;
     this.deviceSubject.next(currentDevice)
     this.storage.saveStorage('device', JSON.stringify(currentDevice));
     
@@ -60,7 +60,7 @@ export class DeviceService {
   updateDeviceForm(form : any){
     let currentDevice = this.getCurrentDevice()
     currentDevice.quiz = {...form};
-    currentDevice.form_update = true;
+    currentDevice.formUpdate = true;
     this.deviceSubject.next(currentDevice)
     this.storage.saveStorage('device', JSON.stringify(currentDevice));
     
