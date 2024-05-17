@@ -21,7 +21,8 @@ export class UserService {
 
 async getUser(): Promise<boolean>{
       const device = JSON.parse(await this.storageService.getStorage2('device'));
-      if(device.user_update){
+      if(device.userUpdate){
+        
         this.user.next(device.user); 
         return Promise.resolve(true);
       }

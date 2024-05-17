@@ -35,6 +35,7 @@ export class PerfilPage implements OnInit {
          address: ['',[Validators.required]],
         });
         this.loaded = await this.userService.getUser();
+        console.log(this.loaded);
         if(this.loaded){
           const sub =  this.userService.getData().subscribe( res=> {this.patchForm(res);});
           this.$obs.add(sub);
