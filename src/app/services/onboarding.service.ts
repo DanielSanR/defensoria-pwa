@@ -19,7 +19,7 @@ export class OnboardingService {
     await this.deviceService.updateDeviceUuid(uuid, ageRange, latlng,date);
     const device = JSON.parse(await this.storageService.getStorage2('device'));
      return new Promise((resolve) => {
-       this.http.post(`${this.url}`, device).subscribe((res: any) => {
+       this.http.post(`${this.url}`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
         //no capturamos errores ya que luego implementaremos un interceptor para manejarlos, tampoco catcheamos el formato json xq devuelve un text
         console.log(res)
        });
@@ -37,6 +37,19 @@ export class OnboardingService {
   const formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}`;
   return formattedDateTime;
  }
+
+ replaceEmptyArraysWithObjects(obj: any): any {
+  if (Array.isArray(obj) && obj.length === 0) {
+    return {};
+  } else if (typeof obj === 'object' && obj !== null) {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        obj[key] = this.replaceEmptyArraysWithObjects(obj[key]);
+      }
+    }
+  }
+  return obj;
+}
 
   }
 
