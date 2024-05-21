@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlApi: 'https://defensoria-api.stagemnes.net.ar/api/Auth/denuncias/guardar'
+  urlApi: 'https://cors-ionic-c41296faa443.herokuapp.com/https://defensoria-api.stagemnes.net.ar/api/Auth/denuncias/guardar'
 };
 /*
  * For easier debugging in development mode, you can import the following file

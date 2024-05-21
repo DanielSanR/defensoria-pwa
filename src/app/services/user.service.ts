@@ -40,7 +40,6 @@ async getUser(): Promise<boolean>{
     const device = JSON.parse(await this.storageService.getStorage2('device'));
     return new Promise((resolve) => {
       this.http.post(`${this.url}`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
-       console.log(res)
       });
       resolve(true);
     });
