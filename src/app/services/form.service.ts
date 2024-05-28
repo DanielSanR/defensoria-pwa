@@ -44,24 +44,24 @@ async getSelected(): Promise<boolean>{
          return Promise.resolve(false);
       }
   }
-async updateForm(form: any){
+async updateForm(form: any){ 
   await this.deviceService.updateDeviceForm(form);
   const device = JSON.parse(await this.storageService.getStorage2('device'));
-   return new Promise((resolve) => {
-    this.http.post(`${this.url}`,device).subscribe((res: any) => {
-     console.log(res)
-    });
-    resolve(true);
-  });
+  let request = this.http.post(`${this.url}/Auth/denuncias/guardar`,device).toPromise().then((res: any) => {
+    if (res.status === 200) {
+      return true;
+    }
+  }).catch(err => {
+     return false;
+   });
+   return request 
 }
 
  async changeForm(){
-  const selected =  await this.storageService.getStorage('selected')
-  const newSelected = selected == 'teen'? 'kid' : 'teen';
-  const rangoEtario  = newSelected == 'teen'? 'Adolescente' : ' Niño/Niña'; 
-  await this.storageService.setStorage('selected', newSelected);
-  let currentDevice = this.deviceService.getCurrentDevice()
-  this.deviceService.deviceSubject.next(currentDevice)
+  //cambiamos el estado de onboarding
+  await this.storageService.setStorage('onboarding',false);
+  
+  return Promise.resolve(true);
 
  }
 }

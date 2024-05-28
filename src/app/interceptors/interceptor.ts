@@ -5,19 +5,16 @@ import { Observable,throwError,BehaviorSubject,of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
+import { ToastService } from '../services/toast.service';
 
 @Injectable()
-export class JwtInterceptor implements HttpInterceptor{
+export class Interceptor implements HttpInterceptor{
     tokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);  
-    constructor(private toastCtrl: ToastController){}
-
-
+    constructor(private toastCtrl: ToastController,private toastService: ToastService){}
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('Interceptor')
         return next.handle(request).pipe(
                 catchError(err =>{
-                    if(err instanceof HttpErrorResponse){
-                        console.log(err)
+                    if(err instanceof HttpErrorResponse){ 
                         switch(err.status){
                             case 400:
                                     return this.handle400Error(err);
@@ -37,12 +34,8 @@ export class JwtInterceptor implements HttpInterceptor{
     }
 
  private async otherError(err){
-    const toast = await this.toastCtrl.create({
-        message: 'Error del lado del Servidor, intente nuevamente',
-        duration: 2000,
-        color:'danger'
-    });
-    toast.present();
+    await this.toastService.toastError(); 
+    return of(false);
  }
 
  private async handle500Error(err){

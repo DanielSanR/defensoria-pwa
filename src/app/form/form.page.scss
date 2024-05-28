@@ -4,6 +4,12 @@ swiper-slide{
 
 }
 
+ion-spiner{
+    --color: #5A4BB2;
+    width: 100px;
+    height: 100px;
+
+}
 
 ion-content{
     scrollbar-width: none;
@@ -181,15 +187,16 @@ ion-footer {
 }
 
 .btn-enviar {
-    --background: #FE910E;
-    font-size: 17px;
-    --border-radius: 15px;
-    --color: #fff;
+    font-weight: 100;
+    text-transform: none;
+    --background:#5A4BB2 !important;
+    --color:#fff;
     width: 100%;
+    max-width: 454px;
     height: 100%;
-    --padding-bottom: 0.7rem;
-    --padding-top: 0.7rem;
-    font-size: 16px;
+    --border-radius: 0.2rem;
+    font-size: 1rem;
+   --border-radius:8px;
 }
 
 

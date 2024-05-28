@@ -22,12 +22,10 @@ export class UserService {
 async getUser(): Promise<boolean>{
       const device = JSON.parse(await this.storageService.getStorage2('device'));
       if(device.userUpdate){
-        
         this.user.next(device.user); 
         return Promise.resolve(true);
       }
       return Promise.resolve(false);
-     
   }
   
    getData(){
@@ -38,11 +36,14 @@ async getUser(): Promise<boolean>{
     this.user.next(data);
     this.deviceService.updateDeviceUser(data);
     const device = JSON.parse(await this.storageService.getStorage2('device'));
-    return new Promise((resolve) => {
-      this.http.post(`${this.url}`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
+     let request = this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).toPromise().then((res: any) => {
+       if (res.status === 200) {
+         return true;
+       }
+     }).catch(err => {
+        return false;
       });
-      resolve(true);
-    });
+      return request
   }
 
   replaceEmptyArraysWithObjects(obj: any): any {
@@ -56,6 +57,13 @@ async getUser(): Promise<boolean>{
       }
     }
     return obj;
+  }
+
+  async clearData(){
+    this.user.next(null);
+    this.deviceService.clearDevice();
+    
+    
   }
 
 }

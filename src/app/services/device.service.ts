@@ -48,8 +48,7 @@ export class DeviceService {
 
   }
 
-  updateDeviceUser(user: User) {
-    console.log(user)
+  updateDeviceUser(user: User) { 
     let currentDevice = this.getCurrentDevice()
     currentDevice.user = {...user};
     currentDevice.userUpdate = true;

@@ -1,13 +1,14 @@
-<ion-content padding   [style.--background]="background" >
+<ion-content padding   [style.--background]="background">
      <ion-grid class="Grid">
       <ion-row class="Grid-row">
           <ion-col class="Grid-row-col" size="12">
-            <swiper-container 
+            <swiper-container
               #swiper
               [allowTouchMove]="false" 
               [autoHeight]="true"
-              (swiperslidechangetransitionend)="test($event)"
               speed="2000">
+              <!-- (swiperslidechangetransitionend)="test($event)"
+              (swiperafterinit)="swiperReady(swiper)" -->
               <swiper-slide class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">
                   <div class="Grid-row-col-swiper-template-container"> 
                    <div class="Grid-row-col-swiper-template-container-header ion-hide-xl-up"  align="end">
@@ -74,7 +75,7 @@
                       </ion-col>
                  </div>
               </swiper-slide>
-               <swiper-slide class="Grid-row-col-swiper-template">
+               <swiper-slide  class="Grid-row-col-swiper-template" style="height: 100dvh;align-content: center;">
                 <div>
                   <div class="ion-text-center" style="height: 50%;">
                       <ion-label class="ion-text-center">
@@ -97,7 +98,7 @@
   <ion-grid style="padding-left: 35px;
                    padding-right: 35px;" >
     <ion-row>
-          <ion-col size="12" *ngIf="bandera" class="ion-text-center" >
+          <ion-col size="12" *ngIf="bandera" class="ion-text-center" style="padding: 0px;">
               <ion-button class="btn-enviar" (click)="enviar()">
                   ENVIAR FORMULARIO
               </ion-button>
@@ -119,4 +120,5 @@
           </ion-col>
       </ion-row>
   </ion-grid>
+  
 </ion-footer>  

@@ -19,7 +19,7 @@ export class OnboardingService {
     await this.deviceService.updateDeviceUuid(uuid, ageRange, latlng,date);
     const device = JSON.parse(await this.storageService.getStorage2('device'));
      return new Promise((resolve) => {
-       this.http.post(`${this.url}`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
+       this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
         //no capturamos errores ya que luego implementaremos un interceptor para manejarlos, tampoco catcheamos el formato json xq devuelve un text
         console.log(res)
        });

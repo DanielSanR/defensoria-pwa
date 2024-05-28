@@ -16,8 +16,7 @@ export class PerfilPage implements OnInit {
    
   myForm!: FormGroup;
   title: string= '';
-  $obs = new  Subscription();
-  loaded: boolean = false;
+  $obs = new  Subscription(); 
 
   constructor(private formBuilder: FormBuilder,private formService: FormService,
     private userService: UserService,
@@ -29,17 +28,15 @@ export class PerfilPage implements OnInit {
 
      async ngOnInit() {
        this.myForm = this.formBuilder.group({
-         name: ['', [Validators.required, Validators.minLength(3)]],
-         phone: ['', [Validators.required, Validators.minLength(3)]],
-         email: ['', [Validators.required,]],
+         name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-Z ]*$')]],
+         phone: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
+         email: ['', [Validators.required,Validators.email]],
          address: ['',[Validators.required]],
         });
-        this.loaded = await this.userService.getUser();
-        console.log(this.loaded);
-        if(this.loaded){
-          const sub =  this.userService.getData().subscribe( res=> {this.patchForm(res);});
-          this.$obs.add(sub);
-        }
+        await this.userService.getUser();
+        const sub =  this.userService.getData().subscribe( res=> {this.patchForm(res);});
+        this.$obs.add(sub);
+      
     }
     async onSubmit(){
       if(this.myForm.invalid){
@@ -48,12 +45,10 @@ export class PerfilPage implements OnInit {
       }
       else{
         const result = await this.userService.updateUser(this.myForm.value);
+        console.log(result)
         if(result){
-          this.toastService.toast('Tus datos se guardaron correctamente','success');
+          this.toastService.toastSucess();
         }
-        else{
-          this.toastService.toast('Hubo un error al guardar tus datos :(','danger');
-        }  
       }
      
     }
@@ -62,12 +57,12 @@ export class PerfilPage implements OnInit {
     }
     patchForm(res: any){
       this.myForm.patchValue({
-           name: res.name,
-           phone: res.phone,
-           email: res.email,
-           address: res.address
+           name: res?.name,
+           phone: res?.phone,
+           email: res?.email,
+           address: res?.address
       });
-      this.title = res.name;
+      this.title = res?.name ? res.name: 'Queremos conocerte más';
     }
     async modalAboutUs(){
       const modal = await this.modalCtrl.create({
@@ -88,7 +83,7 @@ export class PerfilPage implements OnInit {
             text: 'Si',
             cssClass: 'alert-button-confirm',
             handler: () => {
-          /*     this.deviceService.clearDevice(); */
+              this.userService.clearData();
               this.router.navigateByUrl('/onboarding',{replaceUrl: true})
             },
           },
@@ -110,7 +105,8 @@ export class PerfilPage implements OnInit {
             text: 'Si',
             cssClass: 'alert-button-confirm',
             handler: async () => {
-            /*     await this.formService.changeForm(); */
+                 await this.formService.changeForm();
+                  this.router.navigateByUrl('/onboarding',{replaceUrl: true})
             },
           },
         ],

@@ -83,9 +83,12 @@ export class OnboardingPage implements OnInit {
         if(this.selected!== null){
           const result = await this.onboardingService.saveOnboarding(this.selected,[this.latitude, this.longitude],this.usuarioId); 
           if(result){
-            this.toastService.toast('Datos guardados ! :)','success');}
+   /*          this.toastService.toast('Datos guardados ! :)','success');} */
+              console.log('Datos guardados ! :)');
+            }
           else{
-            this.toastService.toast('Hubo un error al enviar tus datos  ','danger');
+            /* this.toastService.toast('Hubo un error al enviar tus datos  ','danger'); */
+             console.log('Hubo un error al enviar tus datos  ');
           }
             this.router.navigate(['/inicio']);
     

@@ -3,10 +3,11 @@ import { OnInit, ChangeDetectorRef, Component, ViewChild, ElementRef, QueryList,
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import PreguntasformArrKid from '../../assets/datos/DinamicFormKid.json';
-import PreguntasformArr from '../../assets/datos/DinamicForm.json';
+import PreguntasformArr from '../../assets/datos/DinamicForm.json'; // adolescentes
+import PreguntasFormAdult from '../../assets/datos/DinamicFormAdult.json';
 import { Help } from '../models/Help';
 import { FormService } from '../services/form.service';
-import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import type { Animation } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 import { ToastService } from '../services/toast.service';
@@ -81,11 +82,23 @@ export class FormPage implements OnInit, AfterViewInit {
   ngOnInit() {
 
     this.formService.getSelectedData().subscribe((data) => {
+ 
+      if(data){
+      if (data === 'adult') {
+        this.dinamicForm = PreguntasFormAdult;
+      } else if (data === 'kid') {
+        this.dinamicForm = PreguntasformArrKid;
+      } else {
+        this.dinamicForm = PreguntasformArr;
+      }
       this.rangoEtario = data;
-      this.dinamicForm = PreguntasformArr
+      this.createControls(this.dinamicForm);
+      this.findAndTriggerPopup(this.dinamicForm[0].key) 
+      console.log(this.dinamicForm[0].preguntas[0])
+      }
     });
-    this.createControls(this.dinamicForm);
-    this.findAndTriggerPopup(this.dinamicForm[0].key) 
+
+    
   }
 
   findAndTriggerPopup(key: string) {
@@ -95,7 +108,6 @@ export class FormPage implements OnInit, AfterViewInit {
         clearTimeout(this.currentTimer);
       }
       this.currentTimer = setTimeout(() => {
-        console.log('popup')
         if (this.swiperInstance.activeIndex === groupIndex) {
           this.toastService.toastForm(
             this.dinamicForm[groupIndex].popup.message,
@@ -137,7 +149,6 @@ export class FormPage implements OnInit, AfterViewInit {
         this.myForm.addControl(control.key, formControl);
       }
     });
-    console.log(this.myForm.value)
   }
   minSelectedCheckboxes(min = 1) {
     const validator: ValidatorFn = (formArray: AbstractControl) => {
@@ -164,13 +175,11 @@ export class FormPage implements OnInit, AfterViewInit {
     } else {
       group.preguntas.forEach(pregunta => {
         if (pregunta.val === val && pregunta.isChecked) {
-          console.log('deseleccionado', pregunta)
           wasDeselected = true; 
           pregunta.isChecked = false;
         } else {
           if (pregunta.val === val) {
             pregunta.isChecked = true;
-            console.log('seleccionado', pregunta)
           }
         } 
         const preguntaContainer = document.getElementById(`question-container-${pregunta.id}`);
@@ -195,15 +204,13 @@ export class FormPage implements OnInit, AfterViewInit {
     }
     this.selected = this.filterItems(group.preguntas);
     this.updateFormControl(key, group.preguntas,group.multiple);
-    console.log(this.myForm.value)
   }
 
   manageInputs(pregunta,key) { 
     if (pregunta.isChecked && pregunta.inputs.length > 0) {
       pregunta.inputs.forEach(input => {
         if (!this.myForm.contains(input.key)) {
-          console.log(input.key) 
-          console.log()
+
           this.myForm.addControl(input.key, this.fb.control(''));
         }
       });
@@ -219,7 +226,6 @@ export class FormPage implements OnInit, AfterViewInit {
 
   updateFormControl(key: string, preguntas: any[], multiple: boolean) {
     const selectedValues = preguntas.filter(pregunta => pregunta.isChecked).map(pregunta => pregunta.val);
-    console.log(selectedValues)
     if (this.myForm.contains(key)) {
       if (multiple) {
         this.myForm.get(key).setValue(selectedValues);
@@ -424,6 +430,7 @@ export class FormPage implements OnInit, AfterViewInit {
   async enviar() {
     const form = this.checkOthers(); 
     this.bandera = false;
+    console.log("antes")
     const result = await this.formService.updateForm(form);
     if (result) {
       this.swiperInstance.slideNext(500);
@@ -431,8 +438,19 @@ export class FormPage implements OnInit, AfterViewInit {
       this.finalized = true;
     }
     else {
+      console.log("error")
+      const loading = await this.loadingController.create({
+        message: 'Cerrando Formulario...',
+        spinner: 'circles',
+      });
+      await loading.present();
       this.finalized = false;
+      this.swiperInstance.slideTo(0, 500, false);
+      this.resetForm()
+      loading.dismiss();
+      this.router.navigateByUrl('/inicio', { replaceUrl: true });
     }
+ 
   }
   async ionViewWillLeave() {
     const loading = await this.loadingController.create({

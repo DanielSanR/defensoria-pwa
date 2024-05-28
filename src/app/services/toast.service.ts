@@ -35,4 +35,35 @@ export class ToastService {
     });
     await toast.present();
   }
+
+  async toastSucess(){
+    const toast = await this.toastController.create({
+      message: 'Tus datos se guardaron correctamente',
+      duration: 5000,
+      position: 'bottom',
+      cssClass: 'toast-sucess',
+      buttons: [
+        {
+          side:'end',
+          icon: '/../../assets/icon/form/smile.svg'
+        }
+      ],
+    });
+    await toast.present();
+  }
+  async toastError(){
+    const toast = await this.toastController.create({
+      message: 'Hubo un problema, lo intentaremos de nuevo más tarde.',
+      duration: 5000,
+      position: 'bottom',
+      cssClass: 'toast-error',
+      buttons: [
+        {
+          side:'end',
+          icon: '/../../assets/icon/form/smile.svg'
+        }
+      ],
+    });
+    await toast.present();
+  }
 }
