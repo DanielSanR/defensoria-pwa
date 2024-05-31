@@ -4,9 +4,10 @@ import { FormService } from '../services/form.service';
 import { Subscription } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { ToastService } from '../services/toast.service';
-import { ModalController, PopoverController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { SobreNosotrosPage } from '../sobre-nosotros/sobre-nosotros.page';
 import { Router } from '@angular/router';
+import { AlertService } from '../services/alert.service';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -18,12 +19,10 @@ export class PerfilPage implements OnInit {
   title: string= '';
   $obs = new  Subscription(); 
 
-  constructor(private formBuilder: FormBuilder,private formService: FormService,
-    private userService: UserService,
-    private toastService: ToastService,
-    private modalCtrl: ModalController,
-    private alertController: AlertController,
-    private router: Router
+  constructor(private formBuilder: FormBuilder,private formService: FormService,private router:Router,
+    private userService: UserService, private toastService: ToastService,
+    private modalCtrl: ModalController,private alertService: AlertService
+    
      ) { }
 
      async ngOnInit() {
@@ -72,47 +71,19 @@ export class PerfilPage implements OnInit {
       await modal.onWillDismiss();
     }
     async deleteData(){
-      const alert = await this.alertController.create({
-        header: 'Estás seguro de eliminar tus datos?',
-        buttons: [
-          {
-            text: 'No',
-            cssClass: 'alert-button-cancel',
-          },
-          {
-            text: 'Si',
-            cssClass: 'alert-button-confirm',
-            handler: () => {
-              this.userService.clearData();
-              this.router.navigateByUrl('/onboarding',{replaceUrl: true})
-            },
-          },
-        ],
-      });
-  
-      await alert.present();
+      await this.alertService.deleteData(this.handleConfirmDelete.bind(this));
     }
 
      async changeForm(){
-      const alert = await this.alertController.create({
-        header: 'Estás seguro de cambiar el formulario?',
-        buttons: [
-          {
-            text: 'No',
-            cssClass: 'alert-button-cancel',
-          },
-          {
-            text: 'Si',
-            cssClass: 'alert-button-confirm',
-            handler: async () => {
-                 await this.formService.changeForm();
-                  this.router.navigateByUrl('/onboarding',{replaceUrl: true})
-            },
-          },
-        ],
-      });
-  
-      await alert.present();
+      await this.alertService.changeForm(this.handleConfirmChangeForm.bind(this));
      }
-    
+     async handleConfirmDelete() {
+      await this.userService.clearData();
+       this.router.navigateByUrl('/onboarding', { replaceUrl: true });
+    }
+
+    async handleConfirmChangeForm() {
+      await this.formService.changeForm();
+      this.router.navigateByUrl('/onboarding', { replaceUrl: true });
+    }
 }

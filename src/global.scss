@@ -124,4 +124,18 @@ ion-content::part(scroll) {
     font-size: 1rem;
   }
 }
- 
+.alert{
+  .alert-head{
+    text-align: center;
+    border-bottom: 1px solid #5A4BB2 !important;
+  }
+  .alert-button-group{
+    justify-content: center;
+    .alert-button{ 
+      width: 45%;
+      .alert-button-inner{
+        place-content: center;
+      }
+    }
+  }
+}

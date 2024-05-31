@@ -6,7 +6,7 @@ export class Device {
     uuid: string = '';
     latlng: string= [] as any;
     user: User = new User();
-    quiz: Quiz[] = new Array<Quiz>();
+    quiz?: Quiz[] = new Array<Quiz>() ;
     formUpdate: boolean = false;
     userUpdate: boolean = false;
   }

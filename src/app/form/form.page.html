@@ -6,7 +6,8 @@
               #swiper
               [allowTouchMove]="false" 
               [autoHeight]="true"
-              speed="2000">
+              speed="2000"
+              (swiperslidechangetransitionstart)="swiperChange()">
               <!-- (swiperslidechangetransitionend)="test($event)"
               (swiperafterinit)="swiperReady(swiper)" -->
               <swiper-slide class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">

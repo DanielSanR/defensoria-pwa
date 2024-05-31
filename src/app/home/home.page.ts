@@ -1,7 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormService } from '../services/form.service';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +12,7 @@ export class HomePage  {
     {id:2,text:'Consejos',icon:'faq.svg',page:'preguntas-frecuentes',externalURL:false},
     {id:3,text:'Sitio Web',icon:'globe-outline.svg',page:'https://defensoriadennya.misiones.gob.ar/',externalURL:true},
     {id:4,text:'Mapa',icon:'map.svg',page:'mapa',externalURL:false}];
-  formRoute: string;
-  $obs= new Subscription();
-  constructor(public formService: FormService,public router: Router) {}
+  constructor(public router: Router) {}
    
   redirect(item: any){  
     if(item.externalURL){

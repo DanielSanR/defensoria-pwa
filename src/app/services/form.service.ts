@@ -58,9 +58,8 @@ async updateForm(form: any){
 }
 
  async changeForm(){
-  //cambiamos el estado de onboarding
   await this.storageService.setStorage('onboarding',false);
-  
+  this.optionChosed.next(null);
   return Promise.resolve(true);
 
  }

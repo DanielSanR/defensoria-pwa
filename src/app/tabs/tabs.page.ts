@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IonTabs, MenuController, Platform } from '@ionic/angular';
-import { FormService } from '../services/form.service';
-import { Subscription } from 'rxjs';
 import { ScreensizeService } from '../services/screensize.service';
 
 @Component({
@@ -40,7 +38,7 @@ export class TabsPage implements OnInit {
   isDesktop: boolean;
   public width: number;
   private activeTab?: HTMLElement;
-  constructor(public platform: Platform,public formService: FormService,
+  constructor(public platform: Platform,
     private screenSizeService: ScreensizeService, private menuCtrol: MenuController) {
       this.screenSizeService.isDesktopView().subscribe(isDesktop => {
         if (this.isDesktop && !isDesktop) {

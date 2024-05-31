@@ -12,6 +12,7 @@ export class DeviceService {
   public selectedeSubject = new BehaviorSubject<string>('');
   public deviceSubject  = new BehaviorSubject(new Device);
   constructor(private storage : StorageService) {
+    console.log(this.deviceSubject.value)
     this.loadBehaviorData();
   }
   async loadBehaviorData() {

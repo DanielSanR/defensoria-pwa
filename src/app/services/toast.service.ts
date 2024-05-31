@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class ToastService {
+  toastFormPopUp: any;
   constructor( private toastController: ToastController) {
 
   }
@@ -20,9 +21,9 @@ export class ToastService {
   }
 
   async toastForm(message: string,position:any,icon:string,side:any,direction?: string){
-    const toast = await this.toastController.create({
+    this.toastFormPopUp = await this.toastController.create({
       message: '"'+message+'"',
-      duration: 5000,
+      duration: 10000,
       position,
       cssClass: 'toast '+ position + ' ' + (direction? direction : ''),
       
@@ -33,7 +34,7 @@ export class ToastService {
         }
       ],
     });
-    await toast.present();
+    await this.toastFormPopUp.present();
   }
 
   async toastSucess(){

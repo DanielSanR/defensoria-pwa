@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from
 import type { Animation } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 import { ToastService } from '../services/toast.service';
+import { Subscription } from 'rxjs';
 export interface PreguntasForm {
   key: string;
   title: string;
@@ -72,6 +73,7 @@ export class FormPage implements OnInit, AfterViewInit {
   isckecked: boolean = false;
   animation: Animation;
   currentTimer: any = null;
+  sub$: Subscription;
   constructor(private router: Router, private formService: FormService,
     private loadingController: LoadingController,
     private fb: FormBuilder, private animationCtrl: AnimationController, private toastService: ToastService) {
@@ -80,9 +82,7 @@ export class FormPage implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
-    this.formService.getSelectedData().subscribe((data) => {
- 
+    this.sub$ = this.formService.getSelectedData().subscribe((data) => {
       if(data){
       if (data === 'adult') {
         this.dinamicForm = PreguntasFormAdult;
@@ -93,21 +93,23 @@ export class FormPage implements OnInit, AfterViewInit {
       }
       this.rangoEtario = data;
       this.createControls(this.dinamicForm);
-      this.findAndTriggerPopup(this.dinamicForm[0].key) 
-      console.log(this.dinamicForm[0].preguntas[0])
+      this.handlePopup(this.dinamicForm[0].key);
+       
       }
     });
 
     
   }
 
-  findAndTriggerPopup(key: string) {
+  async handlePopup(key: string) {
+    await this.findAndTriggerPopup(key);
+  }
+
+  async findAndTriggerPopup(key: string) {
     const groupIndex = this.dinamicForm.findIndex(group => group.key === key);
     if (this.dinamicForm[groupIndex].popup) {
-      if (this.currentTimer) {
-        clearTimeout(this.currentTimer);
-      }
-      this.currentTimer = setTimeout(() => {
+      this.clearPopups()
+      this.currentTimer = setTimeout(async () => {
         if (this.swiperInstance.activeIndex === groupIndex) {
           this.toastService.toastForm(
             this.dinamicForm[groupIndex].popup.message,
@@ -118,10 +120,9 @@ export class FormPage implements OnInit, AfterViewInit {
           );
         }
       }, 3000);
+      
     }
   }
-
-
   inicializarEdades(edadMinima: number, edadMaxima: number) {
     for (let edad = edadMinima; edad <= edadMaxima; edad++) {
       this.edadesDisponibles.push(edad);
@@ -339,17 +340,14 @@ export class FormPage implements OnInit, AfterViewInit {
       .play();
   }
 
-  next() {
+  async next() {
     this.selected = false;
     if (this.swiperInstance.activeIndex === this.swiperInstance.slides.length - 1) {
     }
     else {
-      if (this.currentTimer) {
-        clearTimeout(this.currentTimer);
-        this.currentTimer = null;
-      }
+       
       this.swiperInstance.slideNext(500);
-      this.findAndTriggerPopup(this.dinamicForm[this.swiperInstance.activeIndex].key)
+      this.handlePopup(this.dinamicForm[this.swiperInstance.activeIndex].key);
     }
   }
    // si hay inputs con "valores" correspondientes a la pregunta, se agregan al formGroup de esa pregunta exceptuando dni y name
@@ -379,18 +377,14 @@ export class FormPage implements OnInit, AfterViewInit {
     if (this.swiperInstance.activeIndex === 0) {
       this.close();
     }
-    this.swiperInstance.slidePrev(500);;
-    if (this.currentTimer) {
-      clearTimeout(this.currentTimer);
-      this.currentTimer = null;
-    }
+    this.swiperInstance.slidePrev(500);
   }
 
-  close() {
+  async close() {
     this.selected = false;
     this.swiperInstance.slideTo(0, 500, false);
     this.swiperInstance.update();
-    this.resetForm()
+    await this.resetForm()
     this.router.navigateByUrl('/inicio');
   }
 
@@ -423,14 +417,13 @@ export class FormPage implements OnInit, AfterViewInit {
     this.finalized = false;
     this.swiperInstance.slideTo(0, 500, false);
     this.swiperInstance.update();
-    this.resetForm()
+    await this.resetForm()
     loading.dismiss();
   }
 
   async enviar() {
     const form = this.checkOthers(); 
     this.bandera = false;
-    console.log("antes")
     const result = await this.formService.updateForm(form);
     if (result) {
       this.swiperInstance.slideNext(500);
@@ -446,7 +439,7 @@ export class FormPage implements OnInit, AfterViewInit {
       await loading.present();
       this.finalized = false;
       this.swiperInstance.slideTo(0, 500, false);
-      this.resetForm()
+      await this.resetForm()
       loading.dismiss();
       this.router.navigateByUrl('/inicio', { replaceUrl: true });
     }
@@ -460,11 +453,21 @@ export class FormPage implements OnInit, AfterViewInit {
     await loading.present();
     this.finalized = false;
     this.swiperInstance.slideTo(0, 500, false);
-    this.resetForm()
+    this.dinamicForm = [];
+    await this.resetForm()
     loading.dismiss();
+    this.sub$.unsubscribe();
   }
 
-  resetForm() {
+  clearPopups() {
+    if (this.currentTimer) {
+      clearTimeout(this.currentTimer);
+      this.currentTimer = null;
+    }
+  }
+
+
+  async resetForm() {
     this.myForm.reset();
     this.dinamicForm.forEach(group => {
       if (group.type === 'item') {
@@ -474,11 +477,17 @@ export class FormPage implements OnInit, AfterViewInit {
         });
       }
     });
+    await this.hidePopup()
   }
 
+  async hidePopup() {
+    if(this.toastService.toastFormPopUp){
+      await this.toastService.toastFormPopUp.dismiss();
+    }
+  }
 
-
-  test(e: Event) {
-    /*      this.initListAnimation();  */
+  async swiperChange() {
+        await this.hidePopup();  
+        this.clearPopups();
   }
 }
