@@ -16,7 +16,6 @@ export class UserService {
   constructor(public  http: HttpClient,
     private storageService: StorageService,
     private deviceService: DeviceService) {
-      console.log("construct user" )
 
   }
 

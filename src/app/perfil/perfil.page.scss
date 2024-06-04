@@ -61,7 +61,7 @@ ion-input{
             margin-bottom: 16px;
             padding: 0px;
             &-label{
-                text-align: left;
+                text-align: center;
                 &-p{
                     padding-left: 14px;
                     padding-top: 6px;
@@ -245,10 +245,12 @@ ion-input{
             }
             &-label-col{
                 margin-bottom: 0px;
-                text-align: left;
-                &-label-p{
-                    font-size: 30px;
+                &-label{
+                    text-align: left;
+                    &-p{
+                        font-size: 30px;
                     font-weight: 700;
+                    }
                 }
             }
 

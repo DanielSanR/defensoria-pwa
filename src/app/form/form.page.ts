@@ -20,12 +20,12 @@ export interface PreguntasForm {
   preguntas?: Array<OpcForm>;
   popup?: Popup;
 }
-interface Popup{
-  message:string;
-  position:string;
-  icon:string;
-  side:string;
-  direction?:string;
+interface Popup {
+  message: string;
+  position: string;
+  icon: string;
+  side: string;
+  direction?: string;
 }
 interface OpcForm {
   id: number;
@@ -46,7 +46,7 @@ interface Inputs {
   templateUrl: './form.page.html',
   styleUrls: ['./form.page.scss'],
 })
-export class FormPage implements OnInit, AfterViewInit {
+export class FormPage implements OnInit {
   private swiperInstance: any;
   @ViewChild('swiper')
   set swiper(swiperRef: ElementRef) {
@@ -65,6 +65,7 @@ export class FormPage implements OnInit, AfterViewInit {
   public help: Help = new Help();
   public bandera = false;
   public selected: boolean = false;
+  public disablePrev: boolean = false;
   public selectedAge: any;
   public background = '#ffff';
   public finalized: boolean = false;
@@ -83,46 +84,23 @@ export class FormPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.sub$ = this.formService.getSelectedData().subscribe((data) => {
-      if(data){
-      if (data === 'adult') {
-        this.dinamicForm = PreguntasFormAdult;
-      } else if (data === 'kid') {
-        this.dinamicForm = PreguntasformArrKid;
-      } else {
-        this.dinamicForm = PreguntasformArr;
-      }
-      this.rangoEtario = data;
-      this.createControls(this.dinamicForm);
-      this.handlePopup(this.dinamicForm[0].key);
-       
+      if (data) {
+        if (data === 'adult') {
+          this.dinamicForm = PreguntasFormAdult;
+        } else if (data === 'kid') {
+          this.dinamicForm = PreguntasformArrKid;
+        } else {
+          this.dinamicForm = PreguntasformArr;
+        }
+        this.rangoEtario = data;
+        this.createControls(this.dinamicForm);
+        this.handlePopup(this.dinamicForm[0].key);
+
       }
     });
-
-    
   }
 
-  async handlePopup(key: string) {
-    await this.findAndTriggerPopup(key);
-  }
 
-  async findAndTriggerPopup(key: string) {
-    const groupIndex = this.dinamicForm.findIndex(group => group.key === key);
-    if (this.dinamicForm[groupIndex].popup) {
-      this.clearPopups()
-      this.currentTimer = setTimeout(async () => {
-        if (this.swiperInstance.activeIndex === groupIndex) {
-          this.toastService.toastForm(
-            this.dinamicForm[groupIndex].popup.message,
-            this.dinamicForm[groupIndex].popup.position,
-            this.dinamicForm[groupIndex].popup.icon,
-            this.dinamicForm[groupIndex].popup.side,
-            this.dinamicForm[groupIndex].popup.direction
-          );
-        }
-      }, 3000);
-      
-    }
-  }
   inicializarEdades(edadMinima: number, edadMaxima: number) {
     for (let edad = edadMinima; edad <= edadMaxima; edad++) {
       this.edadesDisponibles.push(edad);
@@ -133,7 +111,7 @@ export class FormPage implements OnInit, AfterViewInit {
     this.myForm.get('age').setValue(edad);
     this.selected = true
   }
-  
+
   createControls(controls: Array<PreguntasForm>) {
     controls.forEach(control => {
       if (control.key === 'edad') {
@@ -166,33 +144,33 @@ export class FormPage implements OnInit, AfterViewInit {
     const groupIndex = this.dinamicForm.findIndex(group => group.key === key);
     const group = this.dinamicForm[groupIndex];
     let wasDeselected = false;
-    if (group.multiple) { 
+    if (group.multiple) {
       const preguntaIndex = group.preguntas.findIndex(pregunta => pregunta.val === val);
       const pregunta = group.preguntas[preguntaIndex]
       group.preguntas[preguntaIndex].isChecked = !group.preguntas[preguntaIndex].isChecked;
-      if(pregunta.isChecked){
-        this.manageInputs(pregunta,key)
+      if (pregunta.isChecked) {
+        this.manageInputs(pregunta)
       }
     } else {
       group.preguntas.forEach(pregunta => {
         if (pregunta.val === val && pregunta.isChecked) {
-          wasDeselected = true; 
+          wasDeselected = true;
           pregunta.isChecked = false;
         } else {
           if (pregunta.val === val) {
             pregunta.isChecked = true;
           }
-        } 
+        }
         const preguntaContainer = document.getElementById(`question-container-${pregunta.id}`);
-        if (preguntaContainer) { 
+        if (preguntaContainer) {
           if (pregunta.isChecked) {
             this.animateAndShow(preguntaContainer);
-            this.manageInputs(pregunta,key)
+            this.manageInputs(pregunta)
           } else {
-            if( wasDeselected){ 
-                  this.resetVisibility(preguntaContainer);
+            if (wasDeselected) {
+              this.resetVisibility(preguntaContainer);
             }
-            else {this.hideElement(preguntaContainer);}
+            else { this.hideElement(preguntaContainer); }
           }
         }
       });
@@ -204,10 +182,10 @@ export class FormPage implements OnInit, AfterViewInit {
       this.enableBandera(key, val);
     }
     this.selected = this.filterItems(group.preguntas);
-    this.updateFormControl(key, group.preguntas,group.multiple);
+    this.updateFormControl(key, group.preguntas, group.multiple);
   }
 
-  manageInputs(pregunta,key) { 
+  manageInputs(pregunta) {
     if (pregunta.isChecked && pregunta.inputs.length > 0) {
       pregunta.inputs.forEach(input => {
         if (!this.myForm.contains(input.key)) {
@@ -222,7 +200,7 @@ export class FormPage implements OnInit, AfterViewInit {
           this.myForm.get(input.key).reset();
         }
       });
-    } 
+    }
   }
 
   updateFormControl(key: string, preguntas: any[], multiple: boolean) {
@@ -238,27 +216,134 @@ export class FormPage implements OnInit, AfterViewInit {
     }
   }
 
+
+  // si hay inputs con "valores" correspondientes a la pregunta, se agregan al formGroup de esa pregunta exceptuando dni y name
+  checkOthers() {
+    this.dinamicForm.forEach(group => {
+      if (group.preguntas) {
+        group.preguntas.forEach(pregunta => {
+          if (pregunta.isChecked && pregunta.inputs && pregunta.inputs.length > 0 && group.multiple) {
+            const inputValues = [];
+            pregunta.inputs.forEach(input => {
+              const control = this.myForm.get(input.key);
+              if (control && !['dniVictim', 'nameVictim'].includes(input.key)) {
+                inputValues.push(control.value);
+                this.myForm.removeControl(input.key);
+              }
+            });
+            let finalValues = (this.myForm.get(group.key).value || []).filter(val => val !== 'Otro motivo. Especificar');
+            finalValues = [...finalValues, ...inputValues.filter(val => !!val)];
+            this.myForm.get(group.key).setValue(finalValues);
+          }
+        });
+      }
+    });
+    return this.myForm.value;
+  }
+
+  filterItems(arr: any) {
+    if (!arr) {
+      const age = this.myForm.get('age').value;
+      if(age) return true;else false
+    }
+    else{
+    return arr.filter((el: any) => el).map((e: any) => e.isChecked).includes(true);
+    }
+  }
+
+  enableBandera(key: string, val: string) {
+    const groupIndex = this.dinamicForm.findIndex(group => group.key === key);
+    const group = this.dinamicForm[groupIndex];
+    const isSelected = this.filterItems(group.preguntas);
+    if (isSelected) {
+      this.bandera = true;
+      this.selected = true;
+    }
+    else {
+      this.bandera = false;
+    }
+
+  }
+
+  async enviar() {
+    const form = this.checkOthers();
+    this.bandera = false;
+    const result = await this.formService.updateForm(form);
+    if (result) {
+      this.swiperInstance.slideNext(500);
+      this.swiperInstance.update();
+      this.finalized = true;
+    }
+    else {
+      this.router.navigateByUrl('/inicio', { replaceUrl: true });
+    }
+
+  }
+
+  async resetForm() {
+    this.myForm.reset();
+    this.dinamicForm.forEach(group => {
+      if (group.type === 'item') {
+        this.resetAllElementsVisibility(group)
+        group.preguntas.forEach(pregunta => {
+          pregunta.isChecked = false;
+        });
+      }
+    });
+    await this.hidePopup()
+  }
+
+  ///////////////////////////////////////////ACCIONES NEXT PREV Y CLOSE///////////////////////////////////////////
+  async next() {
+    this.selected = false;
+    if (this.swiperInstance.activeIndex === this.swiperInstance.slides.length - 1) {
+    }
+    else {
+      this.swiperInstance.slideNext(500);
+      setTimeout(() => {
+        this.handlePopup(this.dinamicForm[this.swiperInstance.activeIndex].key);
+      }, 500);
+    }
+  }
+
+  prev() {
+    if (this.swiperInstance.activeIndex === 0) {
+      this.close();
+    }
+    this.swiperInstance.slidePrev(500);
+  }
+
+  async close() {
+    this.router.navigateByUrl('/inicio', { replaceUrl: true });
+  }
+
+  async backHome() {
+    this.router.navigateByUrl('/inicio', { replaceUrl: true });
+  }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////// ANIMACIONES /////////////////////////////////////////////////
   animateAndShow(element: HTMLElement) {
     this.animationCtrl.create()
       .addElement(element)
       .duration(700)
-      .easing('ease-in')
-      /* .fromTo('transform', 'translateY(0)', 'translateY(-50px)') */
-     /*   .afterStyles({
-        'z-index': -1
-       }) */
+      .easing('cubic-bezier(0.4, 0.0, 0.2, 1.0)')
+        /* .fromTo('transform', 'translateY(0)', 'translateY(-50px)')   */
+         .afterStyles({
+         'z-index': -1
+        })  
       .play();
   }
-  
+
   hideElement(element: HTMLElement) {
     this.animationCtrl.create()
       .addElement(element)
       .duration(300)
-      .fromTo('opacity', '1', '0')
-      .afterStyles({
-       /*  'display': 'none', */
+        .fromTo('opacity', '1', '0')  
+      /* .afterStyles({
+           'display': 'none', 
         'pointer-events': 'none'
-       })  
+      }) */
       .play();
   }
 
@@ -268,13 +353,13 @@ export class FormPage implements OnInit, AfterViewInit {
       .duration(300)
       .easing('ease-in')
       .fromTo('opacity', '0', '1')
-        .afterStyles({
-   /*      'display': 'block',  */
-        'pointer-events': 'auto'   
-      })  
+      .afterStyles({
+               'display': 'block',  
+        'pointer-events': 'auto'
+      })
       .play();
   }
-  
+
   resetAllElementsVisibility(group: any) {
     group.preguntas.forEach(pregunta => {
       const container = document.getElementById(`question-container-${pregunta.id}`);
@@ -283,18 +368,7 @@ export class FormPage implements OnInit, AfterViewInit {
       }
     });
   }
-  
- 
- 
 
-  ionViewDidEnter() {
-    this.initListAnimation();
-    this.background = '#FFF';
-    this.finalized = false;
-  }
-  ngAfterViewInit() {
-
-  }
   initListAnimation() {
     const itemRefArray = this.preguntasListRef.toArray();
     for (let i = 0; i < itemRefArray.length; i++) {
@@ -304,17 +378,17 @@ export class FormPage implements OnInit, AfterViewInit {
         .create()
         .addElement(element)
         .duration(900)
-        .delay(i * (50 / 3))
+        .delay(i * (400 / 3))
         .easing('cubic-bezier(0.4, 0.0, 0.2, 1.0)')
-        .fromTo('transform', 'translateY(50px)', 'translateY(0px)')
-        .fromTo('visibility', 'hidden', 'visible')
-        .fromTo('opacity', '0', '1')
+        .fromTo('transform', 'translateY(100px)', 'translateY(0px)') 
+          .fromTo('visibility', 'hidden', 'visible')
+        .fromTo('opacity', '0', '1') 
         .play();
     }
     /* const itemRefArray = this.preguntasListRef.toArray();
     for (let i = 0; i < itemRefArray.length; i++) {
       const element = itemRefArray[i].nativeElement;
-
+  
       this.animationCtrl
         .create()
         .addElement(element)
@@ -334,117 +408,60 @@ export class FormPage implements OnInit, AfterViewInit {
       .addElement(itemRefArray)
       .duration(900)
       .easing('cubic-bezier(0.4, 0.0, 0.2, 1.0)')
-      .fromTo('transform', 'translateY(50px)', 'translateY(0px)')
+      /* .fromTo('transform', 'translateY(50px)', 'translateY(0px)') */
       .fromTo('visibility', visibility, visibility === 'visible' ? 'hidden' : 'visible')
       .fromTo('opacity', opacity, opacity === '1' ? '0' : '1')
       .play();
   }
 
-  async next() {
-    this.selected = false;
-    if (this.swiperInstance.activeIndex === this.swiperInstance.slides.length - 1) {
-    }
-    else {
-       
-      this.swiperInstance.slideNext(500);
-      this.handlePopup(this.dinamicForm[this.swiperInstance.activeIndex].key);
-    }
-  }
-   // si hay inputs con "valores" correspondientes a la pregunta, se agregan al formGroup de esa pregunta exceptuando dni y name
-   checkOthers(){
-    this.dinamicForm.forEach(group => {
-      if (group.preguntas) {
-          group.preguntas.forEach(pregunta => {
-              if (pregunta.isChecked && pregunta.inputs && pregunta.inputs.length > 0 && group.multiple) {
-                  const inputValues = [];
-                  pregunta.inputs.forEach(input => {
-                      const control = this.myForm.get(input.key);
-                      if (control && !['dniVictim', 'nameVictim'].includes(input.key)) {
-                          inputValues.push(control.value);
-                          this.myForm.removeControl(input.key);
-                      }
-                  });
-                  let finalValues = (this.myForm.get(group.key).value || []).filter(val => val !== 'Otro motivo. Especificar');
-                  finalValues = [...finalValues, ...inputValues.filter(val => !!val)];
-                  this.myForm.get(group.key).setValue(finalValues);
-              }
-          });
-      }
-  }); 
-  return this.myForm.value;
-  } 
-  prev() {
-    if (this.swiperInstance.activeIndex === 0) {
-      this.close();
-    }
-    this.swiperInstance.slidePrev(500);
+
+  //////////////////////////////////////////////////// POPUPS ///////////////////////////////////////////////////////
+  async handlePopup(key: string) {
+    await this.findAndTriggerPopup(key);
   }
 
-  async close() {
-    this.selected = false;
-    this.swiperInstance.slideTo(0, 500, false);
-    this.swiperInstance.update();
-    await this.resetForm()
-    this.router.navigateByUrl('/inicio');
-  }
-
-
-
-  filterItems(arr: any) {
-    return arr.filter((el: any) => el).map((e: any) => e.isChecked).includes(true);
-  }
-
-  enableBandera(key: string, val: string) {
+  async findAndTriggerPopup(key: string) {
     const groupIndex = this.dinamicForm.findIndex(group => group.key === key);
-    const group = this.dinamicForm[groupIndex];
-    const isSelected = this.filterItems(group.preguntas);
-    if (isSelected) {
-      this.bandera = true;
-      this.selected = true;
+    if (this.dinamicForm[groupIndex].popup) {
+      await this.clearPopups()
+      this.currentTimer = setTimeout(async () => {
+        if (this.swiperInstance.activeIndex === groupIndex) {
+          
+          await this.toastService.toastForm(
+            this.dinamicForm[groupIndex].popup.message,
+            this.dinamicForm[groupIndex].popup.position,
+            this.dinamicForm[groupIndex].popup.icon,
+            this.dinamicForm[groupIndex].popup.side,
+            this.dinamicForm[groupIndex].popup.direction
+          );
+        }
+      }, 2000);
     }
-    else {
-      this.bandera = false;
-    }
-
   }
 
-  async backHome() {
-    const loading = await this.loadingController.create({
-      message: 'Cerrando Formulario...',
-      spinner: 'circles',
-    });
-    await loading.present();
+  async hidePopup() {
+    if (this.toastService.toastFormPopUp) {
+      await this.toastService.toastFormPopUp.dismiss();
+    }
+  }
+
+  async clearPopups() {
+    if (this.currentTimer) {
+      clearTimeout(this.currentTimer);
+    }
+  }
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  /////////////////////////////////////////////// ionViewWillLeave DidEnter ///////////////////////////////////////////
+  ionViewDidEnter() {
+    this.initListAnimation();
+    this.background = '#FFF';
     this.finalized = false;
-    this.swiperInstance.slideTo(0, 500, false);
-    this.swiperInstance.update();
-    await this.resetForm()
-    loading.dismiss();
   }
 
-  async enviar() {
-    const form = this.checkOthers(); 
-    this.bandera = false;
-    const result = await this.formService.updateForm(form);
-    if (result) {
-      this.swiperInstance.slideNext(500);
-      this.swiperInstance.update();
-      this.finalized = true;
-    }
-    else {
-      console.log("error")
-      const loading = await this.loadingController.create({
-        message: 'Cerrando Formulario...',
-        spinner: 'circles',
-      });
-      await loading.present();
-      this.finalized = false;
-      this.swiperInstance.slideTo(0, 500, false);
-      await this.resetForm()
-      loading.dismiss();
-      this.router.navigateByUrl('/inicio', { replaceUrl: true });
-    }
- 
-  }
+   
+
   async ionViewWillLeave() {
     const loading = await this.loadingController.create({
       message: 'Cerrando Formulario...',
@@ -453,41 +470,17 @@ export class FormPage implements OnInit, AfterViewInit {
     await loading.present();
     this.finalized = false;
     this.swiperInstance.slideTo(0, 500, false);
-    this.dinamicForm = [];
+    await this.clearPopups();
     await this.resetForm()
     loading.dismiss();
     this.sub$.unsubscribe();
   }
 
-  clearPopups() {
-    if (this.currentTimer) {
-      clearTimeout(this.currentTimer);
-      this.currentTimer = null;
-    }
+  async swiperChange() { 
+     
+    this.selected = this.filterItems(this.dinamicForm[this.swiperInstance.activeIndex].preguntas);
+    await this.hidePopup();
   }
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-  async resetForm() {
-    this.myForm.reset();
-    this.dinamicForm.forEach(group => {
-      if (group.type === 'item') {
-        this.resetAllElementsVisibility(group)
-        group.preguntas.forEach(pregunta => {
-          pregunta.isChecked = false;
-        });
-      }
-    });
-    await this.hidePopup()
-  }
-
-  async hidePopup() {
-    if(this.toastService.toastFormPopUp){
-      await this.toastService.toastFormPopUp.dismiss();
-    }
-  }
-
-  async swiperChange() {
-        await this.hidePopup();  
-        this.clearPopups();
-  }
 }

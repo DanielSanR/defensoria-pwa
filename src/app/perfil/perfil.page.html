@@ -34,7 +34,7 @@
     <ion-item  class="Grid-row-form-col-item" lines="none">
       <ion-input class="Grid-row-form-col-item-label-input-p"  labelPlacement="stacked"  formControlName="name" placeholder="Mi nombre es ...">
       </ion-input>
-      <ion-icon src="../../assets/icon/nameForm.svg" slot="start"></ion-icon>
+      <ion-icon src="../../assets/icon/perfil/nameForm.svg" slot="start"></ion-icon>
   </ion-item>
   <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('name').invalid && (myForm.get('name').dirty || myForm.get('name').touched)" color="danger">
     <span *ngIf="myForm.get('name').errors?.['required']">
@@ -58,7 +58,7 @@
       
       <ion-input labelPlacement="stacked"  class="Grid-row-form-col-item-label-input-p" formControlName="email" placeholder="Mi correo  es ...">
       </ion-input>
-      <ion-icon src="../../assets/icon/mailForm.svg"slot="start"></ion-icon>
+      <ion-icon src="../../assets/icon/perfil/mailForm.svg"slot="start"></ion-icon>
   </ion-item>
   <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" color="danger">
     <span *ngIf="myForm.get('email').errors?.['required']">
@@ -77,7 +77,7 @@
     <ion-item  class="Grid-row-form-col-item ion-invalid" lines="none" >
       <ion-input   labelPlacement="stacked"  class="Grid-row-form-col-item-label-input-p" formControlName="phone" placeholder="Mi telefono es ...">
       </ion-input>
-      <ion-icon src="../../assets/icon/phoneForm.svg" slot="start"></ion-icon>
+      <ion-icon src="../../assets/icon/perfil/phoneForm.svg" slot="start"></ion-icon>
   </ion-item>
   <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('phone').invalid && (myForm.get('phone').dirty || myForm.get('phone').touched)" color="danger">
     <span *ngIf="myForm.get('phone').errors?.['required']">
@@ -101,7 +101,7 @@
     <ion-item  class="Grid-row-form-col-item" lines="none" >
       <ion-input  labelPlacement="stacked"   class="Grid-row-form-col-item-label-input-p" formControlName="address" placeholder="Mi dirección es ...">
       </ion-input>
-      <ion-icon src="../../assets/icon/locationForm.svg"slot="start"></ion-icon>
+      <ion-icon src="../../assets/icon/perfil/locationForm.svg"slot="start"></ion-icon>
   </ion-item>
   <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('address').invalid && (myForm.get('address').dirty || myForm.get('address').touched)" color="danger">
     <span *ngIf="myForm.get('address').errors?.['required']">

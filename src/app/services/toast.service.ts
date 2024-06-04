@@ -23,7 +23,7 @@ export class ToastService {
   async toastForm(message: string,position:any,icon:string,side:any,direction?: string){
     this.toastFormPopUp = await this.toastController.create({
       message: '"'+message+'"',
-      duration: 10000,
+      duration: 3000,
       position,
       cssClass: 'toast '+ position + ' ' + (direction? direction : ''),
       
@@ -52,9 +52,9 @@ export class ToastService {
     });
     await toast.present();
   }
-  async toastError(){
+  async toastError(message: string){
     const toast = await this.toastController.create({
-      message: 'Hubo un problema, lo intentaremos de nuevo más tarde.',
+      message,
       duration: 5000,
       position: 'bottom',
       cssClass: 'toast-error',

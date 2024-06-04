@@ -1,4 +1,3 @@
-
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,throwError,BehaviorSubject,of } from 'rxjs';
@@ -34,46 +33,27 @@ export class Interceptor implements HttpInterceptor{
     }
 
  private async otherError(err){
-    await this.toastService.toastError(); 
+    await this.toastService.toastError('Hubo un problema, lo intentaremos de nuevo más tarde.'); 
     return of(false);
  }
 
  private async handle500Error(err){
-    const toast = await this.toastCtrl.create({
-        message: 'Error del lado del Servidor, intente nuevamente más tarde.',
-        duration: 2000,
-        color:'danger'
-    });
-    toast.present();
+    await this.toastService.toastError('Sin conexión a internet, por favor revisa tu conexión.'); 
+    return of(false);
  }
 
  private async handle400Error(err){
-    const toast = await this.toastCtrl.create({
-        message: 'Sesion finalizada dado errores de Autenticación (400)',
-        duration: 2000,
-        color:'danger'
-    });
-    toast.present();
-    return of(null);
+    await this.toastService.toastError('Al parecer hubo un error en la solicitud, por favor revisa tus datos.'); 
+    return of(false);
  }
 
  private async handle404Error(request: HttpRequest<any>, next: HttpHandler): Promise<any>{
-    const toast = await this.toastCtrl.create({
-        message: 'Ocurrio un error en la solicitud, vuelve a intentar nuevamente',
-        duration: 2000,
-        color:'danger'
-    });
-    toast.present();
-    return of(null);
+    await this.toastService.toastError('No se encontró la ruta solicitada.'); 
+    return of(false);
  }
 
  private async handle401Error(request: HttpRequest<any>, next: HttpHandler): Promise<any> {
-    const  toast = await this.toastCtrl.create({
-        message: 'Su Sesión expiró, favor de volver a iniciar sesión',
-        duration: 2000,
-        color:'danger'
-    });
-    toast.present();
-    return of(null);
+    await this.toastService.toastError('Error de Autenticación (401)'); 
+    return of(false);
  }
 }
