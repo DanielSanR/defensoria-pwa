@@ -1,16 +1,21 @@
 <ion-content padding   [style.--background]="background">
+ 
      <ion-grid class="Grid">
       <ion-row class="Grid-row">
           <ion-col class="Grid-row-col" size="12">
-            <swiper-container
+            <ion-spinner *ngIf="!loaded"  class="spinner"></ion-spinner>
+            <ng-container  *ngIf="loaded">
+              <swiper-container
               #swiper
               [allowTouchMove]="false" 
               [autoHeight]="true"
               speed="2000"
-              (swiperslidechangetransitionstart)="swiperChange()">
-              <!-- (swiperslidechangetransitionend)="test($event)"
-              (swiperafterinit)="swiperReady(swiper)" -->
-              <swiper-slide class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">
+              (swiperslidechangetransitionstart)="swiperChange()"
+              [observer]="true"
+              (swiperafterinit)="swiperReady(swiper)" 
+              [observeParents]="true"><!-- 
+               (swiperslidechangetransitionend)="test($event)" -->
+              <swiper-slide  class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">
                   <div class="Grid-row-col-swiper-template-container"> 
                    <div class="Grid-row-col-swiper-template-container-header ion-hide-xl-up"  align="end">
                       <span class="Grid-row-col-swiper-template-container-header-span">
@@ -91,6 +96,8 @@
                   </div>
                </swiper-slide>
             </swiper-container>
+            </ng-container>
+            
           </ion-col>
       </ion-row>
   </ion-grid>   

@@ -8,6 +8,7 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { SobreNosotrosPage } from '../sobre-nosotros/sobre-nosotros.page';
 import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
+import { DenunciasPage } from '../denuncias/denuncias.page';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -18,7 +19,7 @@ export class PerfilPage implements OnInit {
   myForm!: FormGroup;
   title: string= '';
   $obs = new  Subscription(); 
-
+  
   constructor(private formBuilder: FormBuilder,private formService: FormService,private router:Router,
     private userService: UserService, private toastService: ToastService,
     private modalCtrl: ModalController,private alertService: AlertService
@@ -86,4 +87,14 @@ export class PerfilPage implements OnInit {
       await this.formService.changeForm();
       this.router.navigateByUrl('/onboarding', { replaceUrl: true });
     }
+
+    /* async openModalDenuncias(){
+      const modal = await this.modalCtrl.create({
+        component: DenunciasPage,
+        breakpoints: [0.5, 0.8, 1],
+        initialBreakpoint: 0.8
+      });
+      modal.present();
+      } */
 }
+

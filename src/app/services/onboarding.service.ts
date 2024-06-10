@@ -22,9 +22,9 @@ export class OnboardingService {
     const device = JSON.parse(await this.storageService.getStorage2('device'));
     this.formService.optionChosed.next(selected);
      return new Promise((resolve) => {
-       this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
+       /* this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
         console.log(res)
-       });
+       }); */
        resolve(true);
      });
      }

@@ -43,6 +43,11 @@ const routes: Routes = [
         loadChildren: () => import('../form/form.module').then(m => m.FormPageModule),
         canLoad: [OnboardingGuard]
       },
+     {
+        path: 'denuncias',
+        loadChildren: () => import('../denuncias/denuncias.module').then(m => m.DenunciasPageModule),
+        canLoad: [OnboardingGuard]
+     },
       {
         path: '',
         redirectTo: 'inicio',

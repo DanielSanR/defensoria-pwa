@@ -12,6 +12,8 @@ import type { Animation } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 import { ToastService } from '../services/toast.service';
 import { Subscription } from 'rxjs';
+import Swiper from 'swiper';
+import { SwiperContainer } from 'swiper/element';
 export interface PreguntasForm {
   key: string;
   title: string;
@@ -48,16 +50,11 @@ interface Inputs {
 })
 export class FormPage implements OnInit {
   private swiperInstance: any;
-  @ViewChild('swiper')
-  set swiper(swiperRef: ElementRef) {
-    setTimeout(() => {
-      this.swiperInstance = swiperRef.nativeElement.swiper;
-    }, 0);
-  }
   @ViewChildren('preguntasList', { read: ElementRef }) preguntasListRef: QueryList<ElementRef>
   @ViewChild('titulo', { read: ElementRef }) tituloRef: ElementRef<HTMLIonLabelElement>;
   @ViewChild('icono', { read: ElementRef }) iconoRef: ElementRef<HTMLIonIconElement>;
   @ViewChild('itemVictimaOpcionalParaMi', { read: ElementRef }) itemVictimaOpcionalRef: ElementRef<HTMLIonItemElement>;
+  swiper : Swiper;
   edadesDisponibles: number[] = [];
   edadSeleccionada: number = 0;
   public myForm: FormGroup;
@@ -75,6 +72,7 @@ export class FormPage implements OnInit {
   animation: Animation;
   currentTimer: any = null;
   sub$: Subscription;
+  public loaded = false;
   constructor(private router: Router, private formService: FormService,
     private loadingController: LoadingController,
     private fb: FormBuilder, private animationCtrl: AnimationController, private toastService: ToastService) {
@@ -83,7 +81,8 @@ export class FormPage implements OnInit {
   }
 
   ngOnInit() {
-    this.sub$ = this.formService.getSelectedData().subscribe((data) => {
+     setTimeout(() => {  
+      this.sub$ = this.formService.getSelectedData().subscribe((data) => {
       if (data) {
         if (data === 'adult') {
           this.dinamicForm = PreguntasFormAdult;
@@ -98,6 +97,9 @@ export class FormPage implements OnInit {
 
       }
     });
+      this.loaded = true;
+     }, 1000); 
+     
   }
 
 
@@ -112,6 +114,14 @@ export class FormPage implements OnInit {
     this.selected = true
   }
 
+
+  swiperReady(swiperContainer: SwiperContainer){
+    setTimeout(() => {
+      this.swiperInstance = swiperContainer.swiper;
+      this.swiperInstance.update();
+    }, 0);
+     
+  }
   createControls(controls: Array<PreguntasForm>) {
     controls.forEach(control => {
       if (control.key === 'edad') {
@@ -296,7 +306,7 @@ export class FormPage implements OnInit {
   ///////////////////////////////////////////ACCIONES NEXT PREV Y CLOSE///////////////////////////////////////////
   async next() {
     this.selected = false;
-    if (this.swiperInstance.activeIndex === this.swiperInstance.slides.length - 1) {
+    if (this.swiperInstance.activeIndex === this.swiperInstance.length - 1) {
     }
     else {
       this.swiperInstance.slideNext(500);

@@ -36,14 +36,15 @@ async getUser(): Promise<boolean>{
     this.user.next(data);
     this.deviceService.updateDeviceUser(data);
     const device = JSON.parse(await this.storageService.getStorage2('device'));
-     let request = this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).toPromise().then((res: any) => {
+     /* let request = this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).toPromise().then((res: any) => {
        if (res.status === 200) {
          return true;
        }
      }).catch(err => {
         return false;
       });
-      return request
+      return request */
+      return true;
   }
 
   replaceEmptyArraysWithObjects(obj: any): any {

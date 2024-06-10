@@ -1,0 +1,85 @@
+.Grid{
+        padding-top: 49px;
+        padding-left: 35px;
+        padding-right: 35px; 
+        
+        &-row{
+        background-color:#5A4BB2;
+        padding: 24px 0px;
+        border-radius: 15px 15px 15px 15px ;
+        border: 1px solid #5A4BB2;
+        &-col{
+            &-label{
+                &-h2{
+                    font-size: 1.5em;
+                    font-weight: bold;
+                    color: #fff;
+                    text-align: center;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        
+    }
+    &-detail-row{
+        padding-top: 48px;
+         &-item{
+            padding: 6px 0;
+            &-thumbnail{
+                background: #5A4BB2;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                img{
+                    width:32px ;height: 32px;
+                }
+            }
+            &-label{
+                margin: 0px; 
+                &-p-date{
+                    font-size: 10px;
+                    font-weight: 300;
+                }
+                &-p-victim{
+                    font-size: 14px;
+                    color: #000;
+                    font-weight: 500;
+                }
+            }
+            &-note{
+                padding:0px;align-self: center;
+                ion-chip{
+                   ion-label{
+                    font-size: 12px;
+                   }
+                }
+            }
+         }
+    }
+}
+
+@media (min-width:1200px ) {
+    .Grid{
+        padding-left: 0px;
+        padding-right: 0px; 
+        max-width: 1189px;
+    }
+}
+
+
+ion-thumbnail{
+    margin: 0 10px 0 0;
+}
+
+ion-item { 
+  --color: #fff;
+  --border-color: #5A4BB2; 
+  --border-width: 2px;
+  --border-radius: 15px;
+}
+
+ion-item::part(native){
+    padding-left: 0px;
+    padding-right: 0px;
+}

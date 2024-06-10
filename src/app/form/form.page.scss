@@ -4,10 +4,13 @@ swiper-slide{
 
 }
 
-ion-spiner{
-    --color: #5A4BB2;
-    width: 100px;
-    height: 100px;
+.spinner{
+    width: 54px;
+    height: 54px;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    --color:#5A4BB2;
 
 }
 
@@ -45,10 +48,12 @@ ion-content{
 .Grid { 
     padding: 0px;   
     background: #FFF; 
-    
+    height: 100%;
     &-row { 
+        height: 100%;
         padding: 0px;
         &-col {
+            height: 100%;
             padding: 0px;
             &-swiper { 
                 &-template { 
@@ -314,6 +319,11 @@ ion-range::part(bar-active) {
 
     ion-footer {
         padding-bottom: 5px;
+    }
+
+    ion-spinner{
+        width: 100px;
+        height: 100px;
     }
 
 }

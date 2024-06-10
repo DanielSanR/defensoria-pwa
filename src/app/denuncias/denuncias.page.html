@@ -1,0 +1,29 @@
+ 
+
+<ion-content [fullscreen]="true">
+ <ion-grid class="Grid">
+  <ion-row class="Grid-row">
+    <ion-col class="Grid-row-col">
+      <ion-label class="Grid-row-col-label">
+        <h2 class="Grid-row-col-label-h2">Denuncias</h2>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="Grid-detail-row">
+    <ion-col  size="12" class="Grid-detail-row-col" *ngFor="let denuncia of denunciasArray">
+        <ion-item lines="none" class="Grid-detail-row-item">
+          <ion-thumbnail  class="Grid-detail-row-item-thumbnail"  slot="start">
+            <img alt="" src="../../assets/icon/home/microfono.svg" />
+          </ion-thumbnail>
+        <ion-label class="Grid-detail-row-item-label">
+          <p class="Grid-detail-row-item-label-p-date">{{denuncia.fecha}}</p>
+          <p class="Grid-detail-row-item-label-p-victim">{{denuncia.victima}}</p>
+        </ion-label>
+      <ion-note slot="end" class="Grid-detail-row-item-note">
+        <ion-chip  [style.--color]="denuncia.chip_color" [style.--background]="denuncia.chip"><ion-label>{{denuncia.estado}}</ion-label></ion-chip></ion-note>
+        </ion-item>
+    </ion-col>
+  </ion-row>
+ </ion-grid>
+ 
+</ion-content>
