@@ -11,7 +11,7 @@
   </ion-row>
   <ion-row class="Grid-detail-row">
     <ion-col  size="12" class="Grid-detail-row-col" *ngFor="let denuncia of denunciasArray">
-        <ion-item lines="none" class="Grid-detail-row-item">
+        <ion-item lines="none" class="Grid-detail-row-item" button (click)="details(denuncia)">
           <ion-thumbnail  class="Grid-detail-row-item-thumbnail"  slot="start">
             <img alt="" src="../../assets/icon/home/microfono.svg" />
           </ion-thumbnail>

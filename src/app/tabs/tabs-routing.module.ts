@@ -48,6 +48,11 @@ const routes: Routes = [
         loadChildren: () => import('../denuncias/denuncias.module').then(m => m.DenunciasPageModule),
         canLoad: [OnboardingGuard]
      },
+     {
+      path: 'denuncias/:id',
+      loadChildren: () => import('../denuncias/detalle/detalle-routing.module').then(m => m.DetallePageRoutingModule),
+      canLoad: [OnboardingGuard]
+     },
       {
         path: '',
         redirectTo: 'inicio',

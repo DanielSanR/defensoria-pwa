@@ -62,10 +62,11 @@ export class MapService {
   }
 
    loadCoordenates(){
-    this.storageService.getStorage('latlng').then(
-      (data) => {
-      if(data){
-        this.ltlng.next(data);
+    this.storageService.getStorage2('device').then(
+      (device) => {
+       const latlng = JSON.parse(device).latlng
+      if(latlng){
+        this.ltlng.next(latlng);
       }
       else {
         this.ltlng.next(false);
@@ -76,6 +77,9 @@ export class MapService {
   getCoord(){
     return this.ltlng.asObservable();
   }
+
+
+
    generateMap(cords: any){
      if(!cords){(cords = [-27.366667, -55.896944]);}
     if (this.map !== undefined) {this.map.remove();}
@@ -133,5 +137,25 @@ export class MapService {
     }
 
 }
+
+generateUserMap(cords){
+  if(!cords){(cords = [-27.366667, -55.896944]);}
+    if (this.map !== undefined) {this.map.remove();}
+    this.map = new Leaflet.Map('map').setView([Number(cords[0]),Number(cords[1])], 16);
+  Leaflet.tileLayer('https://api.mapbox.com/styles/v1/danielsanr/cl7s448ej004i15lqz3hudwgv/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZGFuaWVsc2FuciIsImEiOiJjbDdzNGJ3MTcwbHQyM3ZvODg5NHhxeTdzIn0.9FGfq9AypFMgmFR6gWjlFw', {
+    maxZoom: 19,
+    attribution: "<a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
+  }).addTo(this.map);
+    if (this.map) {
+      let circle = Leaflet.circleMarker(cords, {
+        radius: 50,
+        color: 'cornflowerblue',
+        fillOpacity: 0.2,
+        opacity: 0.5
+      }).addTo(this.map);
+    }
+
+}
+
 }
 

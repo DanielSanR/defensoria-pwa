@@ -139,3 +139,32 @@ ion-content::part(scroll) {
     }
   }
 }
+
+ion-accordion-group{
+  ion-accordion {
+      .ion-accordion-toggle-icon {
+          font-size: 16px;
+          color: #000;
+      }
+  }
+}
+
+
+ion-accordion.accordion-collapsing ion-item[slot='header'],
+ion-accordion.accordion-collapsed ion-item[slot='header'] {
+  .ion-accordion-toggle-icon{
+    color: #000 !important;
+  }
+  --background: #fff;
+  --color: #000;
+}
+
+
+ion-accordion.accordion-expanding ion-item[slot='header'],
+  ion-accordion.accordion-expanded ion-item[slot='header']{
+    --background: #5A4BB2;
+    --color: #fff;
+    .ion-accordion-toggle-icon{
+      color: #fff !important;
+    }
+}

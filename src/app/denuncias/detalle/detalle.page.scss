@@ -1,0 +1,73 @@
+.Grid{
+    padding:0px;
+    &-row{
+    background-color:#5A4BB2;
+    padding:8px;
+    border-radius: 0 0 15px 15px ;
+    border: 1px solid #5A4BB2;
+    &-col{
+        &-label{
+            &-h2{
+                font-size: 18px;
+                font-weight: bold;
+                color: #fff;
+                text-align: left;
+                margin-bottom: 10px;
+            }
+            &-h4{
+                font-size: 14px;
+                font-weight: 400;
+                color: #fff;
+                text-align: left;
+                margin-bottom: 10px;
+            
+            }
+        }
+    }
+    
+}
+&-detail-row{
+    padding-top: 16px;
+    padding-left: 13px;
+    padding-right: 13px;
+    &-col{
+        &-label{
+            font-size: 16px;
+            font-weight: 700;
+        }
+    }
+    &-col-2{
+        &-label{
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+
+}
+&-map-row{
+    padding-top: 18px;
+    width: 360px;
+    height: 320px; 
+    margin: 0 auto;
+
+}
+
+}
+
+.map{
+    width: 100%;
+                height: 100%;
+                border-radius:15px;
+}
+
+ion-accordion {
+    margin: 0 auto; 
+  }
+  
+  ion-accordion.accordion-expanding,
+  ion-accordion.accordion-expanded {
+    width: calc(100% - 8px);
+    margin: 4px auto;
+  }
+
+
