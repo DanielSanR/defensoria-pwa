@@ -1,4 +1,4 @@
-export class User {
+export class Profile {
     address: string = '';
     name: string= '';
     email: string= '';

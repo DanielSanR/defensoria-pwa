@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Device } from '../Interfaces/Device';
-import {User} from '../Interfaces/User';
+import {Profile} from '../Interfaces/Profile';
 import {Quiz} from '../Interfaces/Quiz';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { StorageService } from './storage.service';

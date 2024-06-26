@@ -105,7 +105,7 @@
     {
       "key": "aggressor",
       "type": "item",
-      "multiple": true,
+      "multiple": false,
       "title": "¿Quién es la persona agresora?",
       "preguntas": [
         {

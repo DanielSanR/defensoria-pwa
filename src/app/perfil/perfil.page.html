@@ -112,7 +112,7 @@
     </ion-row> 
     <ion-row  class="Grid-row-actualizar">
       <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12" style="text-align: center;padding-bottom:18px;padding-top:22px">
-        <ion-button mode="md" class="save" type="submit" [disabled]="!this.myForm.valid">Actualizar mis datos</ion-button>
+        <ion-button mode="md" class="save" type="submit" [disabled]="!this.myForm.valid">{{updateProfile ? 'Actualizar' : 'Guardar'}} mis datos</ion-button>
       </ion-col>
     </ion-row> 
 </ion-grid>

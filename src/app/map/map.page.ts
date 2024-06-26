@@ -19,8 +19,7 @@ export class MapPage{
   cords: any;
   $obs = new Subscription();
 
-  constructor(private _mapService: MapService,public loadingController: LoadingController,
-    private formService: FormService) { 
+  constructor(private _mapService: MapService,public loadingController: LoadingController) { 
       }
 
   async ionViewDidEnter(){

@@ -14,12 +14,11 @@ export class OnboardingService {
 
 
   async saveOnboarding(selected: any, latlng: any, uuid: any){
-    const date = this.formatDate();
     await this.storageService.setStorage('selected',selected) ;
     await this.storageService.setOnboarding();
-    const ageRange  = selected == 'teen'? 'Adolescente' : ' Niño/Niña';
-    await this.deviceService.updateDeviceUuid(uuid, ageRange, latlng,date);
+    await this.deviceService.updateDeviceUuid(uuid, selected, latlng);
     const device = JSON.parse(await this.storageService.getStorage2('device'));
+    console.log("POST para Onboarding( USER )",device)
     this.formService.optionChosed.next(selected);
      return new Promise((resolve) => {
        /* this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {

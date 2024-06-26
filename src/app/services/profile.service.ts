@@ -8,9 +8,9 @@ import { DeviceService } from './device.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class ProfileService {
 
-  public user = new BehaviorSubject<any>(null);
+  public profile = new BehaviorSubject<any>(null);
   public optionChosed: BehaviorSubject<any> = new BehaviorSubject(null);
   private url = environment.urlApi;
   constructor(public  http: HttpClient,
@@ -19,23 +19,30 @@ export class UserService {
 
   }
 
-async getUser(): Promise<boolean>{
+async getProfile(): Promise<boolean>{
       const device = JSON.parse(await this.storageService.getStorage2('device'));
-      if(device.userUpdate){
-        this.user.next(device.user); 
+      if(device.profile){
+        this.profile.next(device.profile); 
         return Promise.resolve(true);
       }
       return Promise.resolve(false);
   }
   
    getData(){
-      return this.user.asObservable();
+      return this.profile.asObservable();
   }
   
-  async updateUser(data: any){
-    this.user.next(data);
-    this.deviceService.updateDeviceUser(data);
+  async updateProfile(data: any){
+    this.profile.next(data);
+    await this.deviceService.updateDeviceProfile(data);
     const device = JSON.parse(await this.storageService.getStorage2('device'));
+    let deviceProfile = {device: {uuid: device.uuid,profile: data}};
+    if(device.profile){
+      console.log("PUT para Perfil",deviceProfile);
+    }
+    else {
+      console.log("POST para Perfil",deviceProfile);
+    }
      /* let request = this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).toPromise().then((res: any) => {
        if (res.status === 200) {
          return true;
@@ -61,7 +68,7 @@ async getUser(): Promise<boolean>{
   }
 
   async clearData(){
-    this.user.next(null);
+    this.profile.next(null);
     this.deviceService.clearDevice();
     
     

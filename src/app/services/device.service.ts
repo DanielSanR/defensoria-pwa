@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Device } from '../Interfaces/Device';
-import {User} from '../Interfaces/User';
-import {Quiz} from '../Interfaces/Quiz';
+import {Profile} from '../Interfaces/Profile';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { StorageService } from './storage.service';
-import { FormService } from './form.service'; 
 @Injectable({
   providedIn: 'root'
 })
@@ -37,32 +35,29 @@ export class DeviceService {
     return this.deviceSubject.asObservable();
   }
 
-  updateDeviceUuid(uuid: string, ageRange: string, latlng: any, date: string) {
+  async updateDeviceUuid(uuid: string, ageRange: string, latlng: any) {
     let currentDevice = this.getCurrentDevice()
     currentDevice.uuid = uuid;
     currentDevice.latlng = latlng;
-    currentDevice.user.ageRange = ageRange;
-    currentDevice.date = date;
-    this.deviceSubject.next(currentDevice)
-    this.storage.saveStorage('device', JSON.stringify(currentDevice));
+    currentDevice.ageRange = ageRange;
+    this.deviceSubject.next(currentDevice) 
+    await this.storage.saveStorage('device', JSON.stringify(currentDevice));
 
   }
 
-  updateDeviceUser(user: User) { 
+   async updateDeviceProfile(profile: Profile) { 
     let currentDevice = this.getCurrentDevice()
-    currentDevice.user = {...user};
-    currentDevice.userUpdate = true;
+    currentDevice.profile = {...profile}; 
     this.deviceSubject.next(currentDevice)
-    this.storage.saveStorage('device', JSON.stringify(currentDevice));
+    await this.storage.saveStorage('device', JSON.stringify(currentDevice)); 
     
   }
  
-  updateDeviceForm(form : any){
+  async updateDeviceForm(form : any){
     let currentDevice = this.getCurrentDevice()
     currentDevice.quiz = {...form};
-    currentDevice.formUpdate = true;
     this.deviceSubject.next(currentDevice)
-    this.storage.saveStorage('device', JSON.stringify(currentDevice));
+    await this.storage.saveStorage('device', JSON.stringify(currentDevice));
     
   }
 

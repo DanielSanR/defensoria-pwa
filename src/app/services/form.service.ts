@@ -47,14 +47,17 @@ async getSelected(): Promise<boolean>{
 async updateForm(form: any){ 
   await this.deviceService.updateDeviceForm(form);
   const device = JSON.parse(await this.storageService.getStorage2('device'));
-  let request = this.http.post(`${this.url}/Auth/denuncias/guardar`,device).toPromise().then((res: any) => {
+  let deviceForm = {device: {uuid: device.uuid,form: form}};
+  console.log("POST para Formulario",deviceForm);
+  /* let request = this.http.post(`${this.url}/Auth/denuncias/guardar`,device).toPromise().then((res: any) => {
     if (res.status === 200) {
       return true;
     }
   }).catch(err => {
      return false;
    });
-   return request 
+   return request  */
+    return true;
 }
 
  async changeForm(){

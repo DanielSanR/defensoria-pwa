@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormService } from '../services/form.service';
 import { Subscription } from 'rxjs';
-import { UserService } from '../services/user.service';
+import { ProfileService } from '../services/profile.service';
 import { ToastService } from '../services/toast.service';
 import { ModalController, AlertController } from '@ionic/angular';
 import { SobreNosotrosPage } from '../sobre-nosotros/sobre-nosotros.page';
@@ -19,9 +19,9 @@ export class PerfilPage implements OnInit {
   myForm!: FormGroup;
   title: string= '';
   $obs = new  Subscription(); 
-  
+  updateProfile: boolean = false;
   constructor(private formBuilder: FormBuilder,private formService: FormService,private router:Router,
-    private userService: UserService, private toastService: ToastService,
+    private profileService: ProfileService, private toastService: ToastService,
     private modalCtrl: ModalController,private alertService: AlertService
     
      ) { }
@@ -33,8 +33,8 @@ export class PerfilPage implements OnInit {
          email: ['', [Validators.required,Validators.email]],
          address: ['',[Validators.required]],
         });
-        await this.userService.getUser();
-        const sub =  this.userService.getData().subscribe( res=> {this.patchForm(res);});
+        await this.profileService.getProfile();
+        const sub =  this.profileService.getData().subscribe( res=> {this.patchForm(res);});
         this.$obs.add(sub);
       
     }
@@ -44,7 +44,7 @@ export class PerfilPage implements OnInit {
         return;
       }
       else{
-        const result = await this.userService.updateUser(this.myForm.value);
+        const result = await this.profileService.updateProfile(this.myForm.value);
         console.log(result)
         if(result){
           this.toastService.toastSucess();
@@ -56,13 +56,20 @@ export class PerfilPage implements OnInit {
       this.$obs.unsubscribe();
     }
     patchForm(res: any){
-      this.myForm.patchValue({
-           name: res?.name,
-           phone: res?.phone,
-           email: res?.email,
-           address: res?.address
-      });
-      this.title = res?.name ? res.name: 'Queremos conocerte más';
+      if(res){
+        this.myForm.patchValue({
+          name: res?.name,
+          phone: res?.phone,
+          email: res?.email,
+          address: res?.address
+     });
+        this.title = res?.name;
+        this.updateProfile = true;
+      }
+     else {
+        this.title = 'Queremos conocerte más';
+        this.updateProfile = false;
+     } 
     }
     async modalAboutUs(){
       const modal = await this.modalCtrl.create({
@@ -79,7 +86,7 @@ export class PerfilPage implements OnInit {
       await this.alertService.changeForm(this.handleConfirmChangeForm.bind(this));
      }
      async handleConfirmDelete() {
-      await this.userService.clearData();
+      await this.profileService.clearData();
        this.router.navigateByUrl('/onboarding', { replaceUrl: true });
     }
 

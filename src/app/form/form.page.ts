@@ -84,9 +84,9 @@ export class FormPage implements OnInit {
      setTimeout(() => {  
       this.sub$ = this.formService.getSelectedData().subscribe((data) => {
       if (data) {
-        if (data === 'adult') {
+        if (data === 'Adulto') {
           this.dinamicForm = PreguntasFormAdult;
-        } else if (data === 'kid') {
+        } else if (data === 'Niño/Niña') {
           this.dinamicForm = PreguntasformArrKid;
         } else {
           this.dinamicForm = PreguntasformArr;
@@ -350,10 +350,10 @@ export class FormPage implements OnInit {
       .addElement(element)
       .duration(300)
         .fromTo('opacity', '1', '0')  
-      /* .afterStyles({
+       .afterStyles({
            'display': 'none', 
         'pointer-events': 'none'
-      }) */
+      })  
       .play();
   }
 
@@ -436,7 +436,6 @@ export class FormPage implements OnInit {
       await this.clearPopups()
       this.currentTimer = setTimeout(async () => {
         if (this.swiperInstance.activeIndex === groupIndex) {
-          
           await this.toastService.toastForm(
             this.dinamicForm[groupIndex].popup.message,
             this.dinamicForm[groupIndex].popup.position,
@@ -487,8 +486,10 @@ export class FormPage implements OnInit {
   }
 
   async swiperChange() { 
-     
-    this.selected = this.filterItems(this.dinamicForm[this.swiperInstance.activeIndex].preguntas);
+    
+    
+    this.selected = this.filterItems(this.dinamicForm[this.swiperInstance.activeIndex]?.preguntas);
+    console.log(this.selected);
     await this.hidePopup();
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

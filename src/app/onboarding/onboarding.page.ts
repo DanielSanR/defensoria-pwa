@@ -6,7 +6,6 @@ import { Geolocation } from '@capacitor/geolocation';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { StorageService } from '../services/storage.service';
 import { ToastService } from '../services/toast.service';
-import { SendmailService } from '../services/sendmail.service';
 import { v4 as uuidv4 } from 'uuid';
 import { DeviceService } from '../services/device.service'; 
 import { ScreensizeService } from '../services/screensize.service';
@@ -23,7 +22,6 @@ export class OnboardingPage implements OnInit {
   set swiper(swiperRef: ElementRef) {
     setTimeout(() => {
       this.swiperInstance = swiperRef.nativeElement.swiper;
-      console.log(this.swiperInstance)
     }, 0);
   } 
   public background = '';
@@ -65,8 +63,10 @@ export class OnboardingPage implements OnInit {
     });
 
     await Geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((resp: any ) => {
+      console.log(resp)
         this.latitude = resp.coords.latitude;
         this.longitude = resp.coords.longitude;
+        console.log('Ubicación',this.latitude,this.longitude);
         setTimeout(() => {
           this.swiperInstance.slideNext()
         }, 500);
@@ -83,7 +83,7 @@ export class OnboardingPage implements OnInit {
         if(this.selected!== null){
           const result = await this.onboardingService.saveOnboarding(this.selected,[this.latitude, this.longitude],this.usuarioId); 
           if(result){
-              console.log('Datos guardados ! :)');
+              /* console.log('Datos guardados ! :)'); */
             }
           else{
              console.log('Hubo un error al enviar tus datos  ');

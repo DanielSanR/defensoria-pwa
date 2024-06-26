@@ -66,6 +66,7 @@ export class MapService {
       (device) => {
        const latlng = JSON.parse(device).latlng
       if(latlng){
+        console.log(latlng)
         this.ltlng.next(latlng);
       }
       else {
