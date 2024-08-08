@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import PreguntasformArrKid from '../../assets/datos/DinamicFormKid.json';
 import PreguntasformArr from '../../assets/datos/DinamicForm.json'; // adolescentes
-import PreguntasFormAdult from '../../assets/datos/DinamicFormAdult.json';
 import { Help } from '../models/Help';
 import { FormService } from '../services/form.service';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
@@ -84,9 +83,7 @@ export class FormPage implements OnInit {
      setTimeout(() => {  
       this.sub$ = this.formService.getSelectedData().subscribe((data) => {
       if (data) {
-        if (data === 'Adulto') {
-          this.dinamicForm = PreguntasFormAdult;
-        } else if (data === 'Niño/Niña') {
+        if (data === 'kid') {
           this.dinamicForm = PreguntasformArrKid;
           this.inicializarEdades(6, 11);
         } else {
