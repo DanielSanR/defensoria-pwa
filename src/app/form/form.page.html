@@ -7,9 +7,7 @@
             <ng-container  *ngIf="loaded">
               <swiper-container
               #swiper
-              [allowTouchMove]="false" 
-              [autoHeight]="true"
-              speed="2000"
+              [allowTouchMove]="false"  
               (swiperslidechangetransitionstart)="swiperChange()"
               [observer]="true"
               (swiperafterinit)="swiperReady(swiper)" 
@@ -37,18 +35,18 @@
                           </div>
                          </div>
                        <ion-col  class="Grid-row-col-swiper-template-container-items">
-                        <form [formGroup]="myForm" (ngSubmit)="submitForm()" style="width: 100%;display: flex;
+                        <form [formGroup]="myForm" (ngSubmit)="submitForm()" style="width: 100%;height:100%;display: flex;
                         flex-direction: column;
                         align-items: center;">
                               <ion-list *ngIf="group.type === 'item'" class="Grid-row-col-swiper-template-container-items-list2" lines="none">
                                 <ng-container *ngFor="let pregunta of group.preguntas; let j = index">
                                   <div class="question-container" [attr.id]="'question-container-' + pregunta.id">
                                     <ion-item #preguntasList lines="full" [attr.id]="'pregunta-' + pregunta.id"
-                                              class="Grid-row-col-swiper-template-container-items-list2-item"
+                                              class="Grid-row-col-swiper-template-container-items-list2-item" 
                                               [ngStyle]="{'--background': pregunta.isChecked ? backgroundChecked : background}"
                                               (click)="toggleSelection(group.key, pregunta.val)">
                                       <ion-label [ngStyle]="{'color': pregunta?.isChecked === true ? '#FFF' : '#333'}">{{ pregunta.val }}</ion-label>
-                                      <ion-icon *ngIf="pregunta.icon" slot="end" [src]="pregunta.icon" style="width: 55px;height: 55px;"></ion-icon>
+                                        <ion-icon *ngIf="pregunta.icon"  [ngStyle]="{'color': pregunta?.isChecked === true ? '#fff' : '#000'}" slot="end" [src]="pregunta.icon" style="width: 55px;height: 55px;"></ion-icon>  
                                     </ion-item>
                                     <div *ngIf="pregunta.isChecked && pregunta.inputs" class="input-container">
                                       <ion-item *ngFor="let input of pregunta.inputs" class="item-input">
@@ -63,7 +61,7 @@
                                   <ion-grid style="text-align: center;">
                                     <ion-row style="display: flex;
                                     flex-direction: row;">
-                                      <ion-col  sizeXs="3" sizeMd="2"  sizLg="1" sizeXl="1" *ngFor="let edad of edadesDisponibles">
+                                      <ion-col  sizeXs="3" sizeMd="2"  sizLg="2" sizeXl="2" *ngFor="let edad of edadesDisponibles" >
                                         <ion-button  style="min-height: 40px;min-width: 40px;max-width: 40px;max-height: 40px;font-weight: 700;"  [class.button-selected]="edad === edadSeleccionada"
                                                      [class.button-unselected]="edad !== edadSeleccionada"
                                           [fill]="edad === edadSeleccionada ? 'solid' : 'outline'"

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -12,7 +12,9 @@ import { Interceptor } from './interceptors/interceptor';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot(),HttpClientModule,FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot(),HttpClientModule,FormsModule,
+    IonicModule.forRoot({ innerHTMLTemplatesEnabled: true }),
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {provide : HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}
   ],

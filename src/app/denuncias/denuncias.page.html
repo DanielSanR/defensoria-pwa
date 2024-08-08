@@ -5,7 +5,7 @@
   <ion-row class="Grid-row">
     <ion-col class="Grid-row-col">
       <ion-label class="Grid-row-col-label">
-        <h2 class="Grid-row-col-label-h2">Denuncias</h2>
+        <h2 class="Grid-row-col-label-h2">Pedido de Ayuda</h2>
       </ion-label>
     </ion-col>
   </ion-row>
@@ -16,12 +16,12 @@
             <img alt="" src="../../assets/icon/home/microfono.svg" />
           </ion-thumbnail>
         <ion-label class="Grid-detail-row-item-label">
-          <p class="Grid-detail-row-item-label-p-date">{{denuncia.fecha}}</p>
           <p class="Grid-detail-row-item-label-p-victim">{{denuncia.victima}}</p>
+          <p class="Grid-detail-row-item-label-p-date">{{denuncia.fecha}}</p>
         </ion-label>
-      <ion-note slot="end" class="Grid-detail-row-item-note">
+      <!-- <ion-note slot="end" class="Grid-detail-row-item-note">
         <ion-chip  [style.--color]="denuncia.chip_color" [style.--background]="denuncia.chip"><ion-label>{{denuncia.estado}}</ion-label></ion-chip></ion-note>
-        </ion-item>
+         --></ion-item>
     </ion-col>
   </ion-row>
  </ion-grid>

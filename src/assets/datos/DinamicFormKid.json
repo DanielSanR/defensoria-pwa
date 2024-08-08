@@ -56,56 +56,63 @@
         "val": "Amenazas",
         "inputs": [
           
-        ]
+        ],
+        "icon" : "../../assets/icon/form/insultos.svg"
       },
       {
         "id": 6,
         "val": "Insultos diarios",
         "inputs": [
           
-        ]
+        ],
+        "icon" : "../../assets/icon/form/insultos.svg"
       },
       {
         "id": 7,
         "val": "Castigos prohibiendo comida",
         "inputs": [
           
-        ]
+        ],
+        "icon" : "../../assets/icon/form/comida.svg"
       },
       {
         "id": 8,
         "val": "Encierros por mucho tiempo",
         "inputs": [
           
-        ]
+        ],
+        "icon" : "../../assets/icon/form/encierros.svg"
       },
       {
         "id": 9,
         "val": "Tocamientos, manoseos, abrazos indeseados",
         "inputs": [
           
-        ]
+        ],
+        "icon" : "../../assets/icon/form/tocamientos.svg"
       },
       {
         "id": 10,
         "val": "Hacer o ver cosas de manera obligada",
         "inputs": [
           
-        ]
+        ],
+        "icon" : "../../assets/icon/form/obligar.svg"
       },
       {
         "id": 11,
         "val": "Otro motivo. Especificar",
         "inputs": [
           {"key": "reason_other", "label": "¿Cuál es tu motivo?", "type": "text"}
-        ]
+        ],
+        "icon" : "../../assets/icon/form/insultos.svg"
       }
     ]
   },
   {
     "key": "aggressor",
     "type": "item",
-    "multiple": false,
+    "multiple": true,
     "title": "¿Quién es la persona agresora?",
     "preguntas": [
       {
@@ -177,7 +184,7 @@
     "key": "aggressorGender",
     "title": " Género de la persona agresora",
     "type": "item",
-    "multiple": false,
+    "multiple": true,
     "preguntas": [
       {
         "id": 21,

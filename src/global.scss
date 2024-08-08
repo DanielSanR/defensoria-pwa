@@ -23,13 +23,13 @@ ion-alert.custom-alert {
     --border-radius: 10px;
     --backdrop-opacity: 0.7;
   }
-  ion-content::part(scroll)::-webkit-scrollbar {
+    ion-content::part(scroll)::-webkit-scrollbar {
     display: none;
-  }
-ion-content::part(scroll) {
+  }  
+  ion-content::part(scroll) {
     scrollbar-width: none;
 
-  }
+  }  
   
   .custom-alert .alert-button-group {
     padding: 8px;
@@ -159,7 +159,11 @@ ion-accordion.accordion-collapsed ion-item[slot='header'] {
   --color: #000;
 }
 
-
+.alert-wrapper { 
+  .alert-message{
+    white-space: pre-line;
+  }
+}
 ion-accordion.accordion-expanding ion-item[slot='header'],
   ion-accordion.accordion-expanded ion-item[slot='header']{
     --background: #5A4BB2;

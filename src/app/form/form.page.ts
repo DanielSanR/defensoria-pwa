@@ -76,7 +76,7 @@ export class FormPage implements OnInit {
   constructor(private router: Router, private formService: FormService,
     private loadingController: LoadingController,
     private fb: FormBuilder, private animationCtrl: AnimationController, private toastService: ToastService) {
-    this.inicializarEdades(4, 18);
+ 
     this.myForm = this.fb.group({});
   }
 
@@ -88,8 +88,10 @@ export class FormPage implements OnInit {
           this.dinamicForm = PreguntasFormAdult;
         } else if (data === 'Niño/Niña') {
           this.dinamicForm = PreguntasformArrKid;
+          this.inicializarEdades(6, 11);
         } else {
           this.dinamicForm = PreguntasformArr;
+          this.inicializarEdades(12, 17);
         }
         this.rangoEtario = data;
         this.createControls(this.dinamicForm);

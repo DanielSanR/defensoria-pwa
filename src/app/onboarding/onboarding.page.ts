@@ -53,31 +53,61 @@ export class OnboardingPage implements OnInit {
   }
 
   
-  async getLocation(){
-    const loading = await this.loadingController.create();
-    await loading.present();
-    const alert = await this.alertController.create({
-      header: 'Ubicaciónn rechazada',
-      message: 'Debido a que no se tienen los permisos necesarios, tendras una ubicación anonima.',
-      buttons: ['OK'],
-    });
-
-    await Geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((resp: any ) => {
-      console.log(resp)
-        this.latitude = resp.coords.latitude;
-        this.longitude = resp.coords.longitude;
-        console.log('Ubicación',this.latitude,this.longitude);
-        setTimeout(() => {
-          this.swiperInstance.slideNext()
-        }, 500);
-    }).catch((error) => {
-        (async ()=>{
-          await alert.present();
-        })();
-    });
-    
-    await loading.dismiss();
-      }
+  async getLocation() {
+    const permissionStatus = await navigator.permissions.query({ name: 'geolocation' });
+  
+    if (permissionStatus.state === 'denied') {
+      const alert = await this.alertController.create({
+        header: 'Permiso de ubicación denegado',
+        message: `Parece que el permiso para acceder a la ubicación está desactivado. Por favor, sigue estos pasos para habilitar el acceso a la ubicación: \n
+               1. Abre la configuración de tu navegador.\n
+               2. Busca la sección de "Privacidad" o "Permisos".\n
+               3. Encuentra los permisos de ubicación y permite el acceso para este sitio.\n
+               Una vez hecho esto, vuelve y presiona "Reintentar".`,
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+          },
+          {
+            text: 'Reintentar',
+            handler: () => {
+              this.getLocation();  // Revisar permisos nuevamente
+            }
+          }
+        ]
+      });
+      await alert.present();
+    } else if (permissionStatus.state === 'granted') {
+      this.getGeoLocation();
+    } else {
+      this.requestLocationPermission();
+    }
+  }
+  
+  async requestLocationPermission() {
+    try {
+      await Geolocation.getCurrentPosition({ enableHighAccuracy: true });
+      // Si el permiso fue concedido y la ubicación obtenida con éxito
+      this.getGeoLocation();
+    } catch (error) {
+      console.log('Solicitud de ubicación rechazada por el usuario', error);
+    }
+  }
+  
+  async getGeoLocation() {
+    try {
+      const resp = await Geolocation.getCurrentPosition({ enableHighAccuracy: true });
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+      console.log('Ubicación', this.latitude, this.longitude);
+      setTimeout(() => {
+        this.swiperInstance.slideNext();
+      }, 500);
+    } catch (error) {
+      console.log('Error al obtener ubicación:', error);
+    }
+  }
 
       async save(){
         if(this.selected!== null){
