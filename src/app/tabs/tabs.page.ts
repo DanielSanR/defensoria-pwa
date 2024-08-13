@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { IonTabs, MenuController, Platform } from '@ionic/angular';
 import { ScreensizeService } from '../services/screensize.service';
 
@@ -41,16 +41,16 @@ export class TabsPage implements OnInit {
   constructor(public platform: Platform,
     private screenSizeService: ScreensizeService, private menuCtrol: MenuController) {
       this.screenSizeService.isDesktopView().subscribe(isDesktop => {
-        if (this.isDesktop && !isDesktop) {
+          if (this.isDesktop && !isDesktop) {
           window.location.reload();
-        }
-        this.isDesktop = isDesktop;  
+        }  
+        this.isDesktop = isDesktop;   
       });
         
     }
 
-  ngOnInit() {
-   this.width= this.platform.width();
+  ngOnInit() { 
+    this.updateMenuBasedOnWidth(window.innerWidth);
   }
 
   close(){
@@ -61,6 +61,15 @@ export class TabsPage implements OnInit {
     this.activeTab = tabsRef.outlet.activatedView.element;
   }
 
+  toggleMenu(width: number) {
+    if (width > 1200) { 
+      setTimeout(() => {
+        this.menuCtrol.enable(false, 'myMenu');
+      }, 1000);  
+    } else {
+      this.menuCtrol.enable(true, 'myMenu');
+    }  
+  }
     ionViewWillLeave() {
     this.propagateToActiveTab('ionViewWillLeave');
   }
@@ -82,4 +91,12 @@ export class TabsPage implements OnInit {
       this.activeTab.dispatchEvent(new CustomEvent(eventName));
     }
   }
+@HostListener('window:resize', ['$event'])
+  onResize(event){
+    const width = event.target.innerWidth;
+    this.toggleMenu(width);
+}
+updateMenuBasedOnWidth(width: number) {
+  this.toggleMenu(width);
+}   
 }

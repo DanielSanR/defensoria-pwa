@@ -11,8 +11,6 @@ ion-tab-button {
     min-width: 56px;
 }
 
-
- 
 }
  ion-menu{
     --height:305px;
@@ -50,7 +48,7 @@ ion-tab-button {
     }
 } 
   ion-menu::part(backdrop) { 
-    opacity: 0;
+    visibility: hidden;
   }  
   
     ion-menu::part(container) {  
@@ -59,9 +57,11 @@ ion-tab-button {
   }
   
   
- @media (max-width:1199px){ 
-.desktop-wrapper{
-    display: hidden;
-}
-}  
+ 
+
+@media (min-width: 1201px) {
+    ion-menu-button {
+      display: none;  
+    }
+  }
 

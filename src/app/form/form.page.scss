@@ -1,10 +1,8 @@
 swiper-container {
-    padding-bottom: 80px;
+   /*  padding-bottom: 80px; */
   }
   
-  swiper-slide { 
-    padding-bottom: 80px;
-  }
+ 
   swiper-wrapper {
     position: relative;  
   }
@@ -60,8 +58,10 @@ ion-content{
             height: 100%;
             padding: 0px;
             &-swiper { 
-                &-template { 
+                &-template {  
                     &-container {
+                        width: 100%;
+                        height: 100%;
                         &-header {
                             width: 100%; 
                             background: #5A4BB2;
@@ -134,6 +134,68 @@ ion-content{
                                         font-size: 12px;
                                     }
 
+                                }
+                            }
+                        }
+                    }
+                }
+                &-template-confirmation{
+                    height: auto;
+                    width: 100%;
+                    padding: 52px 30px 0;
+                    &-container{
+                        display: flex;
+                        flex-direction: column;
+                        border-radius: 24px;
+                        background-color: #5A4BB2;
+                        margin-top: 52px;
+                        padding-top: 30px;
+ 
+                        &-img{
+                            &-col{
+                                padding-bottom: 15px;
+                                border-radius: 25px; 
+                                text-align: center;
+                                align-items: center;
+                                align-content: center;
+                                &-div{
+                                    width: 100%; 
+                                    &-image{
+                                        border-radius: 50%;
+                                        bottom: calc(-1*(96px + 12px));
+                                        width: 120px;
+                                        height: 120px;
+                                        background: #fff; 
+                                        padding-bottom: 6px;
+                                    }
+                                }
+                            }
+                        }
+                        &-text{
+                            padding: 24px 32px 32px;
+                            &-col{
+                                &-label{
+                                     display: flex;
+                                     flex-direction: column;
+                                     justify-content: center;
+                                     text-align: center;
+                                     &-titulo{
+                                        font-size: 14px;
+                                        font-weight: 600;
+                                        color: #fff;
+
+                                     }
+                                     &-p{
+                                        margin-top: 12px;
+                                        font-size: 14px;
+                                        color: #fff;
+                                        font-weight: 400;
+                                     }
+                                     &-icon{
+                                            margin-top: 16px;
+                                            width: 100%;
+                                            height: 46px;
+                                        }
                                 }
                             }
                         }
@@ -260,8 +322,8 @@ ion-range::part(bar-active) {
         &-row {
             &-col {
                 &-swiper {
-                    height: 600px;
-                    width: 1000px;
+                    /* height: 600px;
+                    width: 1000px; */
 
                     &-template {
                         &-container {

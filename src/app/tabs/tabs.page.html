@@ -1,37 +1,32 @@
-<ion-menu contentId="main-content"  menuId="myMenu"  side="end">
+<ion-menu contentId="main-content" menuId="myMenu" side="end">
   <ion-content>
     <ion-toolbar> 
       <ion-button slot="end" fill="clear" (click)="close()">
           <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
       </ion-button>
-</ion-toolbar>
+    </ion-toolbar>
     <ion-menu-toggle *ngFor="let item of menu">
-      <ion-item lines="none" [routerLink]="item.url" routerDirection="root" routerLinkActive="active-link">
+      <ion-item lines="none" [routerLink]="item.url" routerDirection="root" routerLinkActive="active-link" mode="md">
           <ion-label>{{ item.title }}</ion-label>
       </ion-item>
-  </ion-menu-toggle>
+    </ion-menu-toggle>
   </ion-content>
 </ion-menu>
-<div id="main-content">
-</div>
+
 <div class="ion-page" id="main-content">
-  <ion-header class="Mobile ion-hide-xl-up">
+  <ion-header class="ion-hide-xl-up">
     <ion-toolbar style="padding-left: 45px;padding-right: 12px;padding-bottom: 5px;padding-top: 5px;">
       <ion-img src="../../assets/icon/yocuento-desktop.svg" style="width: 58px;height: 46px;"></ion-img>
-      <ion-buttons slot="end" class="">
+      <ion-buttons slot="end">
         <ion-menu-button>
-          <ion-icon  
-        src="../../assets/icon/tabmenu/menuButton.svg"  
-      ></ion-icon>
+          <ion-icon src="../../assets/icon/tabmenu/menuButton.svg"></ion-icon>
         </ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
-  </ion-header>
-  <app-header-desktop class="ion-hide-xl-down"></app-header-desktop>
+  </ion-header> 
+  <app-header-desktop class="ion-hide-xl-down"></app-header-desktop>  
   <ion-content class="ion-padding">
-      <ion-router-outlet id="main-content"></ion-router-outlet>
+      <ion-router-outlet></ion-router-outlet>
   </ion-content>
   <app-footer class="ion-hide-xl-down"></app-footer>
 </div>
- 
-

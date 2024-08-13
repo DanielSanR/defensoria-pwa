@@ -6,14 +6,15 @@
             <ion-spinner *ngIf="!loaded"  class="spinner"></ion-spinner>
             <ng-container  *ngIf="loaded">
               <swiper-container
-              #swiper
+              #swiper 
+              
               [allowTouchMove]="false"  
               (swiperslidechangetransitionstart)="swiperChange()"
               [observer]="true"
               (swiperafterinit)="swiperReady(swiper)" 
               [observeParents]="true"><!-- 
                (swiperslidechangetransitionend)="test($event)" -->
-              <swiper-slide  class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">
+            <swiper-slide  class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">
                   <div class="Grid-row-col-swiper-template-container"> 
                    <div class="Grid-row-col-swiper-template-container-header ion-hide-xl-up"  align="end">
                       <span class="Grid-row-col-swiper-template-container-header-span">
@@ -37,8 +38,8 @@
                        <ion-col  class="Grid-row-col-swiper-template-container-items">
                         <form [formGroup]="myForm" (ngSubmit)="submitForm()" style="width: 100%;height:100%;display: flex;
                         flex-direction: column;
-                        align-items: center;">
-                              <ion-list *ngIf="group.type === 'item'" class="Grid-row-col-swiper-template-container-items-list2" lines="none">
+                        align-items: center;"> 
+                            <ion-list *ngIf="group.type === 'item'" class="Grid-row-col-swiper-template-container-items-list2" lines="none">
                                 <ng-container *ngFor="let pregunta of group.preguntas; let j = index">
                                   <div class="question-container" [attr.id]="'question-container-' + pregunta.id">
                                     <ion-item #preguntasList lines="full" [attr.id]="'pregunta-' + pregunta.id"
@@ -71,27 +72,37 @@
                                       </ion-col>
                                     </ion-row>
                                   </ion-grid>
-                                </ion-list>
+                                </ion-list> 
                                 <div>
                                   
                                 </div>
                           </form>
                       </ion-col>
                  </div>
-              </swiper-slide>
-               <swiper-slide  class="Grid-row-col-swiper-template" style="height: 100dvh;align-content: center;">
-                <div>
-                  <div class="ion-text-center" style="height: 50%;">
-                      <ion-label class="ion-text-center">
-                          <ion-icon src="../../assets/icon/text.svg" style="width:300px;height:178px;"></ion-icon>         
+              </swiper-slide>  
+               <swiper-slide  class="Grid-row-col-swiper-template-confirmation">
+                <ion-grid class="Grid-row-col-swiper-template-confirmation-container">
+                  <ion-row class="Grid-row-col-swiper-template-confirmation-container-img">
+                    <ion-col class="Grid-row-col-swiper-template-confirmation-container-img-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12">
+                      <div class="Grid-row-col-swiper-template-confirmation-container-img-col-div">
+                      <img src="../../assets/icon/form/support.svg" class="Grid-row-col-swiper-template-confirmation-container-img-col-div-image">
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="Grid-row-col-swiper-template-confirmation-container-text">
+                    <ion-col class="Grid-row-col-swiper-template-confirmation-container-text-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12">
+                      <ion-label class="Grid-row-col-swiper-template-confirmation-container-text-col-label">
+                        <h4 class="Grid-row-col-swiper-template-confirmation-container-text-col-label-titulo">
+                          Hemos Recibido tu pedido de ayuda</h4>
+                        <p class="Grid-row-col-swiper-template-confirmation-container-text-col-label-p">
+                          Queremos hacerte saber que nuestro equipo ya esta trabajando en tu caso, en breve nos pondremos en contacto contigo.
+                        </p>
+                        <ion-icon src="../../assets/icon/form/checkmark.svg" class="Grid-row-col-swiper-template-confirmation-container-text-col-label-icon"></ion-icon>
                       </ion-label>
-                  </div>
-                  <div class="ion-text-center" style="padding-top: 20px;">
-                   <ion-thumbnail style="display: contents;">
-                          <ion-icon src="../../assets/icon/send.svg" style="width:300px;height:250px;"></ion-icon>         
-                      </ion-thumbnail>
-                  </div>
-                  </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              
                </swiper-slide>
             </swiper-container>
             </ng-container>
