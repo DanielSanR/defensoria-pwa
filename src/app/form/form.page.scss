@@ -1,9 +1,4 @@
-swiper-container {
-   /*  padding-bottom: 80px; */
-  }
-  
- 
-  swiper-wrapper {
+ swiper-wrapper {
     position: relative;  
   }
 
@@ -20,8 +15,6 @@ ion-content{
     scrollbar-width: none;
 }  
 .input-container{
- 
-    padding: 0; 
     padding:0px 12px 0px 12px;
 }
 
@@ -85,7 +78,6 @@ ion-content{
                                 }
                             }
                         }
-
                         &-items {
                             background: #FFF;
                             height: fit-content;
@@ -121,7 +113,6 @@ ion-content{
                                         white-space: unset !important;
                                     }
                                 }
-                                 
                                 &-input{
                                     width: 290px;
                                     text-align: center;
@@ -236,8 +227,6 @@ swiper-slide{
 ion-content {
     --background: #FFF;
 }
-
-//Footer 
 ion-footer {
     background: #FFF;
     --border: #FFF;
@@ -318,13 +307,9 @@ ion-range::part(bar-active) {
         padding-right: 125px;
         padding-top: 55px;
         max-width: 1190px;
-        
         &-row {
             &-col {
                 &-swiper {
-                    /* height: 600px;
-                    width: 1000px; */
-
                     &-template {
                         &-container {
                             &-header {
@@ -338,13 +323,11 @@ ion-range::part(bar-active) {
                                     font-size: 36px;
                                     padding-top: 16px;
                                     padding-bottom: 18px;
-
                                     &-label-p {
                                         margin: 0px;
                                     }
                                 }
                             }
-
                             &-items {
                                 text-align: center;
                                 padding-top: 0px;
@@ -355,7 +338,6 @@ ion-range::part(bar-active) {
                                     min-height: 50px;
                                 }
                                 &-list2 {
-                                
                                     &-item {
                                         padding: 5px;
                                         width: 688px;
@@ -366,11 +348,9 @@ ion-range::part(bar-active) {
                                             text-align: center;
                                         }
                                     }
-
                                     &-item2 {
                                         padding: 5px;
                                         font-size: 12px;
-
                                         &-input {
                                             --background: #FE910E;
                                             --color: #000;
@@ -389,11 +369,9 @@ ion-range::part(bar-active) {
     ion-footer {
         padding-bottom: 5px;
     }
-
     ion-spinner{
         width: 100px;
         height: 100px;
     }
-
 }
 
