@@ -10,7 +10,7 @@
     </ion-col>
   </ion-row>
   <ion-row class="Grid-detail-row">
-    <ion-col  size="12" class="Grid-detail-row-col" *ngFor="let denuncia of denunciasArray">
+    <!-- <ion-col  size="12" class="Grid-detail-row-col" *ngFor="let denuncia of denunciasArray">
         <ion-item lines="none" class="Grid-detail-row-item" button (click)="details(denuncia)">
           <ion-thumbnail  class="Grid-detail-row-item-thumbnail"  slot="start">
             <img alt="" src="../../assets/icon/home/microfono.svg" />
@@ -19,9 +19,22 @@
           <p class="Grid-detail-row-item-label-p-victim">{{denuncia.victima}}</p>
           <p class="Grid-detail-row-item-label-p-date">{{denuncia.fecha}}</p>
         </ion-label>
-      <!-- <ion-note slot="end" class="Grid-detail-row-item-note">
+       <ion-note slot="end" class="Grid-detail-row-item-note">
         <ion-chip  [style.--color]="denuncia.chip_color" [style.--background]="denuncia.chip"><ion-label>{{denuncia.estado}}</ion-label></ion-chip></ion-note>
-         --></ion-item>
+        </ion-item>
+    </ion-col> -->
+      <ion-col  size="12" class="Grid-detail-row-col" *ngFor="let denuncia of denunciasArray">
+        <ion-item lines="none" class="Grid-detail-row-item" button (click)="details(denuncia)">
+          <ion-thumbnail  class="Grid-detail-row-item-thumbnail"  slot="start">
+            <img alt="" src="../../assets/icon/home/microfono.svg" />
+          </ion-thumbnail>
+        <ion-label class="Grid-detail-row-item-label">
+          <p class="Grid-detail-row-item-label-p-victim">{{denuncia.victima}}</p>
+          <p class="Grid-detail-row-item-label-p-date">{{denuncia.fecha}}</p>
+        </ion-label>
+       <ion-note slot="end" class="Grid-detail-row-item-note">
+        <ion-chip  [style.--color]="denuncia.chip_color" [style.--background]="denuncia.chip"><ion-label>{{denuncia.estado}}</ion-label></ion-chip></ion-note>
+        </ion-item>
     </ion-col>
   </ion-row>
  </ion-grid>

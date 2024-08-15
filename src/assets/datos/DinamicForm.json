@@ -177,7 +177,7 @@
       "key": "aggressorGender",
       "title": " Género de la persona agresora",
       "type": "item",
-      "multiple": true,
+      "multiple": false,
       "preguntas": [
         {
           "id": 21,
