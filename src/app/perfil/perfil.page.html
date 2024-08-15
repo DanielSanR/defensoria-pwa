@@ -56,15 +56,15 @@
     </ion-text>
     <ion-item  class="Grid-row-form-col-item" lines="none" >
       
-      <ion-input labelPlacement="stacked"  class="Grid-row-form-col-item-label-input-p" formControlName="email" placeholder="Mi correo  es ...">
+      <ion-input labelPlacement="stacked"  class="Grid-row-form-col-item-label-input-p" formControlName="mail" placeholder="Mi correo  es ...">
       </ion-input>
       <ion-icon src="../../assets/icon/perfil/mailForm.svg"slot="start"></ion-icon>
   </ion-item>
-  <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" color="danger">
-    <span *ngIf="myForm.get('email').errors?.['required']">
+  <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('mail').invalid && (myForm.get('mail').dirty || myForm.get('mail').touched)" color="danger">
+    <span *ngIf="myForm.get('mail').errors?.['required']">
       <ion-icon name="information-circle-outline"></ion-icon>  Este campo es requerido
     </span>
-    <span *ngIf="myForm.get('email').errors?.['email']">
+    <span *ngIf="myForm.get('mail').errors?.['mail']">
       <ion-icon name="information-circle-outline"></ion-icon>
       El formato del correo no es válido.
     </span>

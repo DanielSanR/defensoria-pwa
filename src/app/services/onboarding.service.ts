@@ -13,17 +13,25 @@ export class OnboardingService {
     private formService: FormService) { }
 
 
-  async saveOnboarding(selected: any, latlng: any, uuid: any){
+  async saveOnboarding(selected: any, latlong: any, uuid: any){
     await this.storageService.setStorage('selected',selected) ;
-    await this.storageService.setOnboarding();
-    await this.deviceService.updateDeviceUuid(uuid, selected, latlng);
+    await this.deviceService.updateDeviceUuid(uuid, selected, latlong);
     const device = JSON.parse(await this.storageService.getStorage2('device'));
-    console.log("POST para Onboarding( USER )",device)
     this.formService.optionChosed.next(selected);
-     return new Promise((resolve) => {
-       /* this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).subscribe((res: any) => {
-        console.log(res)
-       }); */
+    //EN CASO DE QUE LA REQUEST A LA API SEA EXITOSA, SE GUARDAN LOS DATOS, SINO NO SE DEJA AVANZAR
+    //eliminar const onboarding una vez se descomente la request a la api
+    const onboarding = await this.storageService.setOnboarding()
+    return new Promise((resolve) => {
+                  //DESCOMENTAR TODA LA LINEA DE ABAJO PARA QUE FUNCIONE LA REQUEST A LA API
+      /* this.http.post(`${this.url}/Auth/yoCuento/saveUser`, device).subscribe((res: any) => {
+         if(res){
+          const onboarding = this.storageService.setOnboarding()
+          resolve(true);
+         }
+         else{
+          resolve(false);
+         }
+       });  */
        resolve(true);
      });
      }

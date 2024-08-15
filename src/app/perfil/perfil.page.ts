@@ -30,7 +30,7 @@ export class PerfilPage implements OnInit {
        this.myForm = this.formBuilder.group({
          name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[a-zA-Z ]*$')]],
          phone: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]*$')]],
-         email: ['', [Validators.required,Validators.email]],
+         mail: ['', [Validators.required,Validators.email]],
          address: ['',[Validators.required]],
         });
         await this.profileService.getProfile();
@@ -39,18 +39,26 @@ export class PerfilPage implements OnInit {
       
     }
     async onSubmit(){
-      if(this.myForm.invalid){
-        this.toastService.toast('Por favor, complete los campos requeridos','red');
-        return;
-      }
-      else{
-        const result = await this.profileService.updateProfile(this.myForm.value);
-        console.log(result)
-        if(result){
-          this.toastService.toastSucess();
+      var result;
+      // Aca validamos, si el formulario es valido, si es un update o un nuevo perfil
+      //ya que si es un update solamente debemos enviar los datos que se han modificado
+      if(this.myForm.valid){
+        if(this.updateProfile && !this.myForm.pristine){
+          const dirty = this.getDirtyValues(this.myForm);
+          result = await this.profileService.updateProfile(this.myForm.value,dirty)
+          this.myForm.markAsPristine();
         }
+        else if(!this.updateProfile){
+          result =  await this.profileService.saveNewProfile(this.myForm.value);
+          this.myForm.markAsPristine();
       }
-     
+        else {
+        this.toastService.toastError('No hay cambios en tus datos para ser guardados ');
+      }  
+      if(result){
+        this.toastService.toastSucess();
+      }
+    }
     }
     ionViewWillLeave(){
       this.$obs.unsubscribe();
@@ -60,7 +68,7 @@ export class PerfilPage implements OnInit {
         this.myForm.patchValue({
           name: res?.name,
           phone: res?.phone,
-          email: res?.email,
+          mail: res?.mail,
           address: res?.address
      });
         this.title = res?.name;
@@ -70,6 +78,7 @@ export class PerfilPage implements OnInit {
         this.title = 'Queremos conocerte más';
         this.updateProfile = false;
      } 
+     console.log(this.updateProfile)
     }
     async modalAboutUs(){
       const modal = await this.modalCtrl.create({
@@ -93,6 +102,18 @@ export class PerfilPage implements OnInit {
     async handleConfirmChangeForm() {
       await this.formService.changeForm();
       this.router.navigateByUrl('/onboarding', { replaceUrl: true });
+    }
+
+    getDirtyValues(form: any) {
+      const dirtyValues = {};
+      Object.keys(form.controls).forEach(key => {
+        const currentControl = form.controls[key];
+  
+        if (currentControl.dirty) {
+          dirtyValues[key] = currentControl.value;
+        }
+      });
+      return dirtyValues;
     }
 
     /* async openModalDenuncias(){

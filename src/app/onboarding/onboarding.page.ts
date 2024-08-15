@@ -113,12 +113,14 @@ export class OnboardingPage implements OnInit {
         if(this.selected!== null){
           const result = await this.onboardingService.saveOnboarding(this.selected,[this.latitude, this.longitude],this.usuarioId); 
           if(result){
-              /* console.log('Datos guardados ! :)'); */
-            }
-          else{
-             console.log('Hubo un error al enviar tus datos  ');
+            this.router.navigate(['/inicio'])
           }
-            this.router.navigate(['/inicio']);
+          else{
+            // no avanza, se va a mostrar mensaje de error por medio del interceptor
+            console.log('Hubo un error al enviar tus datos  ');
+          }
+          
+            
     
         }
       }

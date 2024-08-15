@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { environment } from 'src/environments/environment';
 import { DeviceService } from './device.service';
+import { Profile } from '../Interfaces/Profile';
+import { Device } from '../Interfaces/Device';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +23,16 @@ export class ProfileService {
 
 async getProfile(): Promise<boolean>{
       const device = JSON.parse(await this.storageService.getStorage2('device'));
+      const hasSavedProfile = await this.storageService.getStorage2('hasSavedProfile');
       if(device.profile){
         this.profile.next(device.profile); 
         return Promise.resolve(true);
+      }
+      else if (hasSavedProfile){ 
+        console.log("Has saved Profile",hasSavedProfile);
+        // aca consultariamos a la API para traer nuevamente el perfil
+        await this.getProfileDataAPI();
+        
       }
       return Promise.resolve(false);
   }
@@ -32,40 +41,60 @@ async getProfile(): Promise<boolean>{
       return this.profile.asObservable();
   }
   
-  async updateProfile(data: any){
+  async updateProfile(data: Profile,dirty: Profile){
+    const device =  await this.updateBehaviorAndReturnUUID(data);
+    return new Promise((resolve) => {
+      console.log("PUT para Update Perfil",dirty);
+      //DESCOMENTAR PARA PROBAR EN LA API
+        /*  this.http.put(`${this.url}/Auth/profile/${device.uuid}/`, dirty).subscribe((res: any) => {
+        if (res.status === 200) {
+          resolve(true);
+      
+        }else resolve(false);}); */
+
+        resolve(true);
+      });
+  }
+  async saveNewProfile(data: Profile){
+    const device =  await this.updateBehaviorAndReturnUUID(data);
+    console.log("PUT para New Perfil",device.profile); 
+    return new Promise((resolve) => {
+      //DESCOMENTAR PARA PROBAR EN LA API
+    /*   this.http.put(`${this.url}/Auth/profile/${device.uuid}/save`, device.profile).subscribe((res: any) => {
+        if (res.status === 200) {
+          resolve(true);
+      
+       }else resolve(false);}); */
+        resolve(true);
+        //Mover esto adentro para guardarlo en local si el response es ok
+        const saveProfile = this.storageService.saveStorage('hasSavedProfile', true);
+      });
+  }
+
+  async updateBehaviorAndReturnUUID(data: Profile) : Promise<Device>{
     this.profile.next(data);
     await this.deviceService.updateDeviceProfile(data);
     const device = JSON.parse(await this.storageService.getStorage2('device'));
-    let deviceProfile = {device: {uuid: device.uuid,profile: data}};
-    if(device.profile){
-      console.log("PUT para Perfil",deviceProfile);
-    }
-    else {
-      console.log("POST para Perfil",deviceProfile);
-    }
-     /* let request = this.http.post(`${this.url}/Auth/denuncias/guardar`, this.replaceEmptyArraysWithObjects(device)).toPromise().then((res: any) => {
-       if (res.status === 200) {
-         return true;
-       }
-     }).catch(err => {
-        return false;
-      });
-      return request */
-      return true;
+    return device;
+
   }
 
-  replaceEmptyArraysWithObjects(obj: any): any {
-    if (Array.isArray(obj) && obj.length === 0) {
-      return {};
-    } else if (typeof obj === 'object' && obj !== null) {
-      for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          obj[key] = this.replaceEmptyArraysWithObjects(obj[key]);
-        }
-      }
-    }
-    return obj;
+  async getProfileDataAPI(){
+    const device = JSON.parse(await this.storageService.getStorage2('device'));
+    return new Promise((resolve) => {
+      //DESCOMENTAR PARA PROBAR EN LA API
+       /*  this.http.get(`${this.url}/Auth/profile/${device.uuid}`).subscribe((res: any) => {
+        if (res) {
+          this.profile.next(res);
+          resolve(true);
+        } else resolve(false);
+      });   */
+      resolve(true)});
+
   }
+  
+
+
 
   async clearData(){
     this.profile.next(null);
