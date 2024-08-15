@@ -78,7 +78,6 @@ export class PerfilPage implements OnInit {
         this.title = 'Queremos conocerte más';
         this.updateProfile = false;
      } 
-     console.log(this.updateProfile)
     }
     async modalAboutUs(){
       const modal = await this.modalCtrl.create({
