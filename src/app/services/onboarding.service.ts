@@ -23,7 +23,7 @@ export class OnboardingService {
     const onboarding = await this.storageService.setOnboarding()
     return new Promise((resolve) => {
                   //DESCOMENTAR TODA LA LINEA DE ABAJO PARA QUE FUNCIONE LA REQUEST A LA API
-      /* this.http.post(`${this.url}/Auth/yoCuento/saveUser`, device).subscribe((res: any) => {
+      /*  this.http.post(`${this.url}/Auth/yoCuento/saveUser`, device).subscribe((res: any) => {
          if(res){
           const onboarding = this.storageService.setOnboarding()
           resolve(true);
@@ -31,7 +31,7 @@ export class OnboardingService {
          else{
           resolve(false);
          }
-       });  */
+       });  */ 
        resolve(true);
      });
      }

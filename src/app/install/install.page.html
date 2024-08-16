@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="Grid">
+    <ion-row class="Grid-row">
+      <ion-col class="Grid-row-col">
+        <ion-card class="Grid-row-col-card">
+          <ion-card-header class="Grid-row-col-card-header">
+            <ion-card-title class="Grid-row-col-card-header-title">Instalá nuestra aplicación</ion-card-title>
+            <ion-card-subtitle class="Grid-row-col-card-header-subtitle">
+              Puedes usar nuestra aplicación directamente en el navegador o instalarla en tu dispositivo móvil.
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content class="Grid-row-col-card-content">
+            <ion-button  class="Grid-row-col-card-content-btn__install" *ngIf="deferredPrompt" (click)="installPwa()">Instalar</ion-button>
+            <ion-button class="Grid-row-col-card-content-btn__next" routerLink="/onboarding"> Continuar a la web</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

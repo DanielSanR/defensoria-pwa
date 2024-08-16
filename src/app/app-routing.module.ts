@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'onboarding',
     loadChildren: () => import('./onboarding/onboarding.module').then( m => m.OnboardingPageModule),
     canActivate: [OnboardingGuard]
+  },
+  {
+    path: 'install',
+    loadChildren: () => import('./install/install.module').then( m => m.InstallPageModule)
   }
 ];
 @NgModule({
