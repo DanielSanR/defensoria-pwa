@@ -8,6 +8,7 @@ import packageInfo from '../../../package.json';
 })
 export class SobreNosotrosPage  {
   v = packageInfo.version;
+  t = packageInfo.description;
 
   constructor(public modalController: ModalController) { }
 
