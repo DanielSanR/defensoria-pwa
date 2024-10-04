@@ -46,11 +46,11 @@ async getProfile(): Promise<boolean>{
     return new Promise((resolve) => {
       console.log("PUT para Update Perfil",dirty);
       //DESCOMENTAR PARA PROBAR EN LA API
-        /*  this.http.put(`${this.url}/Auth/profile/${device.uuid}/`, dirty).subscribe((res: any) => {
-        if (res.status === 200) {
+          this.http.patch(`${this.url}/Auth/profile/${device.uuid}`, dirty).subscribe((res: any) => {
+        if (res) {
           resolve(true);
       
-        }else resolve(false);}); */
+        }else resolve(false);}); 
 
         resolve(true);
       });
@@ -60,11 +60,11 @@ async getProfile(): Promise<boolean>{
     console.log("PUT para New Perfil",device.profile); 
     return new Promise((resolve) => {
       //DESCOMENTAR PARA PROBAR EN LA API
-    /*   this.http.put(`${this.url}/Auth/profile/${device.uuid}/save`, device.profile).subscribe((res: any) => {
-        if (res.status === 200) {
+     this.http.post(`${this.url}/Auth/profile/${device.uuid}/save`, device.profile).subscribe((res: any) => {
+        if (res) {
           resolve(true);
       
-       }else resolve(false);}); */
+       }else resolve(false);}); 
         resolve(true);
         //Mover esto adentro para guardarlo en local si el response es ok
         const saveProfile = this.storageService.saveStorage('hasSavedProfile', true);
@@ -83,12 +83,12 @@ async getProfile(): Promise<boolean>{
     const device = JSON.parse(await this.storageService.getStorage2('device'));
     return new Promise((resolve) => {
       //DESCOMENTAR PARA PROBAR EN LA API
-       /*  this.http.get(`${this.url}/Auth/profile/${device.uuid}`).subscribe((res: any) => {
+        this.http.get(`${this.url}/Auth/profile/${device.uuid}`).subscribe((res: any) => {
         if (res) {
           this.profile.next(res);
           resolve(true);
         } else resolve(false);
-      });   */
+      });   
       resolve(true)});
 
   }

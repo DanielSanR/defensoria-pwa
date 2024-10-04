@@ -82,9 +82,11 @@ export class FormPage implements OnInit {
   ngOnInit() {
      setTimeout(() => {  
       this.sub$ = this.formService.getSelectedData().subscribe((data) => {
-      if (data) {
-        if (data === 'kid') {
-          this.dinamicForm = PreguntasformArrKid;
+       console.log(data)
+       console.log(PreguntasformArrKid);
+       if (data) {
+         if (data === 'Niño/Niña') {
+           this.dinamicForm = PreguntasformArrKid;
           this.inicializarEdades(6, 11);
         } else {
           this.dinamicForm = PreguntasformArr;
@@ -93,7 +95,6 @@ export class FormPage implements OnInit {
         this.rangoEtario = data;
         this.createControls(this.dinamicForm);
         this.handlePopup(this.dinamicForm[0].key);
-
       }
     });
       this.loaded = true;
@@ -468,8 +469,6 @@ export class FormPage implements OnInit {
     this.finalized = false;
   }
 
-   
-
   async ionViewWillLeave() {
     const loading = await this.loadingController.create({
       message: 'Cerrando Formulario...',
@@ -491,6 +490,5 @@ export class FormPage implements OnInit {
     console.log(this.selected);
     await this.hidePopup();
   }
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

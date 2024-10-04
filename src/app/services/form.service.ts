@@ -50,13 +50,14 @@ async updateForm(form: any){
 /*   let deviceForm = {device: {uuid: device.uuid,form: form}}; */
   let deviceForm = {userYoCuento: { uuid: device.uuid,"latlong": device.latlng,"ageRange": device.ageRange},"quiz" : device.quiz}
   console.log("POST para Formulario",deviceForm);
-   let request = this.http.post(`${this.url}Auth/denuncias/guardar`,deviceForm).toPromise().then((res: any) => {
+   let request = this.http.post(`${this.url}/Auth/denuncias/guardar`,deviceForm).toPromise().then((res: any) => {
     if (res.status === 200) {
       return true;
     }
   }).catch(err => {
      return false;
    });
+   return request
    return request
     return true;
 }

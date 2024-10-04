@@ -59,7 +59,8 @@ ion-content {
             }
                 ion-img{  
                     height: 100%;
-                    width: 100%;
+                    width: 100%; 
+                    aspect-ratio: 2;
                 }
         }
     }
@@ -159,6 +160,7 @@ ion-content {
             &-col{
                 ion-img{  
                     max-height: 140px;
+                    
                 }
             }
         }
