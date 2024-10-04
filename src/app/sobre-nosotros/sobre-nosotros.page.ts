@@ -7,8 +7,7 @@ import packageInfo from '../../../package.json';
   styleUrls: ['./sobre-nosotros.page.scss'],
 })
 export class SobreNosotrosPage  {
-  v = packageInfo.version;
-  t = packageInfo.description;
+  v = packageInfo.version; 
 
   constructor(public modalController: ModalController) { }
 
