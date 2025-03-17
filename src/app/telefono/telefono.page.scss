@@ -1,167 +1,370 @@
-.Grid {
-    padding: 30px 26px 0;
-    &-row {
-        &-col {
-            padding: 5px;
-            &-title {
-                &-h1 {
-                    font-size: 22px;
-                    font-weight: 700;
-                    color: #5A4BB2;
-                }
-            }
-            &-header {
-                border-radius: 0 0 15px 15px;
-                background-color: #fff;
-                padding-bottom: 30px;
-                &-icon {
-                    width: 100%;
-                    height: max-content;
-                    display: contents;
-                }
-            }
-        }
+// telefono.page.scss
+ion-content {
+    --background: #F5F3FF;
+  }
+  
+  .phone {
+    padding: 16px;
+    max-width: 1280px;
+    margin: 0 auto;
+    
+    @media (min-width: 768px) {
+      padding: 24px;
     }
-    &-options-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-        &-col {
-            padding: 12px 6px;
-            margin: 0px;
-            &-card { 
-                margin: 0px;
-                padding: 0px;
-                min-height: 118px;
-                max-height: 118px;  
-                border:3px #5A4BB2 solid;
-                border-radius: 8px;
-                &-thumbnail {
-                    text-align: center;
-                    width: 100%;
-                    padding-top: 10px;
-                    ion-icon {
-                        font-size: 32px;
-                    }
-                }
-                &-header {
-                    padding: 0 4px;
-                    &-title {
-                        font-size: 10px;
-                        font-weight: 700;
-                        text-align: center;
-                    }
-                }
-                &-content {
-                    padding: 5px 15px;
-                    line-height: 0.7;
-                    text-align: center;
-                    &-label {
-                        font-size: 9px;
-                        font-weight: 500;
-                        color: #000;
-                    }
-                }
-            }
-        }
+    
+    @media (min-width: 1024px) {
+      padding: 32px;
     }
-}
-  @media (max-width:376px){
-    .Grid{
-        padding-top: 20px;
-        &-row{
-            &-col{
-                &-header{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding-bottom: 0px;
-                    &-icon {
-                        width: 160px;
-                        height: 140px;
-                        display: block; 
-                    }
-                }
-            }
-        }
-    }
-}   
-
-
-@media (min-width:1200px) {
- 
-    .Grid {
+    
+    &__hero {
+        background: linear-gradient(to right, #6B4EE6, #8F7FF7);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 48px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding-top: 0px;
-        &-row {
-            padding-top: 5px;
-            display: flex; 
-            max-width: 1254px;
-            width: 100%;
-            &-col {
-                padding: 8px;
-                &-title {
-                    &-h1 {
-                        font-size: 40px;
-                    }
-                }
-                &-header {
-                    padding-top: 0px;
-                    padding-bottom: 10px;
-                    display: flex;
-                    place-content: center;
-                    width: 100%;
-                    &-icon {
-                        height: 296px;
-                        width: 476px;
-                        display: block;
-                    }
-                }
-            }
+        
+        @media (min-width: 768px) {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: 32px;
+          border-radius: 24px;
         }
-        &-options-row {
-            max-width: 1254px;
-            &-col {  
-                &-card { 
-                    min-width: 290px;
-                    min-height: 195px;
-                    max-height: 230px;
-                    &-thumbnail {
-                        display: inline-block;
-                        ion-icon {
-                            font-size: 95px;
-                        }
-                    }
-                    &-header {
-                        padding: 4px;
-                        &-title {
-                            font-size: 18px;
-                        }
-                    }
-                    &-content {
-                        padding: 8px 15px;
-                        &-label {
-                            font-size: 18px;
-                        }
-                    }
-                }
-            }
+        
+        &-content {
+          flex: 1;
         }
+        
+        &-title {
+          color: white;
+          font-size: 28px;
+          font-weight: 700;
+          margin-bottom: 16px;
+          line-height: 1.2;
+          
+          @media (min-width: 768px) {
+            font-size: 36px;
+          }
+          
+          @media (min-width: 1024px) {
+            font-size: 40px;
+          }
+        }
+        
+        &-text {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 16px;
+          margin-bottom: 24px;
+          max-width: 500px;
+          
+          @media (min-width: 768px) {
+            font-size: 18px;
+          }
+        }
+        &-clock {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            
+            ion-icon {
+              font-size: 16px;
+            }
+            
+            @media (min-width: 768px) {
+              font-size: 16px;
+              
+              ion-icon {
+                font-size: 18px;
+              }
+            }
+          }
+        
+        
+        
+        &-button {
+          --border-radius: 12px;
+          --padding-start: 24px;
+          --padding-end: 24px;
+          --padding-top: 16px;
+          --padding-bottom: 16px;
+          font-weight: 500;
+          font-size: 18px;
+          letter-spacing: -0.02em;
+          text-transform: none;
+          width: 100%;
+          @media (min-width: 576px) {
+            width: auto;
+          }
+          
+          &--primary {
+            --background: #fff;
+            --color: #6B4EE6;
+            &:hover {
+              transform: translateY(-1px);
+              --background: #F5F3FF;
+            }
+    
+          }
+          
+          &--secondary {
+            --background: #FF8A00;
+            --color: white; 
+            &:hover {
+              transform: translateY(-1px);
+            }
+          }
+        }
+        
+        &-image {
+          display: flex;
+          justify-content: center;
+          margin-top: 24px;
+          flex: 1;
+          img {
+            width: 200px;
+            height: auto;
+            
+            @media (min-width: 768px) {
+              width: 250px;
+            }
+            
+            @media (min-width: 1024px) {
+              width: 300px;
+            }
+          }
+          
+          @media (min-width: 768px) {
+            margin-top: 0;
+          }
+        }
+      }
+    
+    &__section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 16px;
+      
+      @media (min-width: 768px) {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
     }
-    .icon-padding {
-        padding-top: 30px;
-        padding-bottom: 6px;
+    
+    &__emergency-contacts,
+    &__other-contacts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+      
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
     }
-
-    .label-padding {
-        padding-left: 27px;
-        padding-right: 27px;
+    
+    &__contact-card {
+      background-color: white;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      @media (min-width: 768px) {
+        padding: 24px;
+      }
     }
-
-    .limite-height {
-        max-height: 320px;
+    
+    &__contact-icon {
+      background-color: #f5f5f5;
+      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      
+      ion-icon {
+        font-size: 36px;
+        color: #6B4EE6;
+      }
+      
+      @media (min-width: 768px) {
+        width: 56px;
+        height: 56px;
+        
+        ion-icon {
+          font-size: 36px;
+        }
+      }
     }
-}
+    
+    &__contact-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    &__contact-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    &__contact-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: white;
+      margin-bottom: 8px;
+      
+      &--emergency {
+        background-color: #dc2626;
+      }
+      
+      &--primary {
+        background-color: #6B4EE6;
+      }
+    }
+    
+    &__contact-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin: 0 0 4px 0;
+      
+      @media (min-width: 768px) {
+        font-size: 20px;
+      }
+    }
+    
+    &__contact-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 8px 0;
+    }
+    
+    &__contact-number {
+      font-size: 20px;
+      font-weight: 700;
+      color: #6B4EE6;
+      margin: 0 0 8px 0;
+      overflow-wrap: anywhere;
+      @media (min-width: 768px) {
+        font-size: 22px;
+      }
+    }
+    
+    &__contact-description {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 16px;
+      color: #666;
+      margin: 0 0 12px 0;
+      
+      ion-icon {
+        color: #666;
+        font-size: 16px;
+      }
+    }
+    
+    &__contact-call-btn {
+      --background: #FF8A00;
+      --color: white;
+      --border-radius: 8px;
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --padding-top: 8px;
+      --padding-bottom: 8px;
+      --box-shadow:none;
+      font-weight: 500;
+      height: 40px;
+      font-size: 16px;
+      text-transform: capitalize;
+      ion-icon{
+        font-size: 18px;
+      }
+    }
+    
+    &__contact-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+    
+    &__contact-feature {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background-color: #F5F3FF;
+      color: #6B4EE6;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      
+      ion-icon {
+        font-size: 12px;
+      }
+    }
+    
+    &__help-box {
+      background-color: white;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      
+      @media (min-width: 768px) {
+        padding: 32px;
+      }
+    }
+    
+    &__help-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 16px;
+      
+      @media (min-width: 768px) {
+        font-size: 24px;
+      }
+    }
+    
+    &__help-text {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 24px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    &__help-button {
+      --background: #6B4EE6;
+      --color: white;
+      --border-radius: 12px;
+      --padding-top: 12px;
+      --padding-bottom: 12px;
+      --padding-start: 20px;
+      --padding-end: 20px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }

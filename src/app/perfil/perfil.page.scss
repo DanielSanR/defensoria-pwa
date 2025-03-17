@@ -1,359 +1,300 @@
- 
-
-ion-input{
-    --padding-bottom:2px;
-                    --padding-start:2px;
-                    --padding-top:2px;
-}
- 
-.Grid{ 
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    padding-top: 49px;
-    padding-left: 35px;
-    padding-right: 35px;
-    &-button-row{
-        width: 100%;
-        justify-content: right;
-        &-btn{ 
-            top: 0;
-            right: 0;
-            z-index: 1;
-            position: absolute;
-            padding-right: 10px;
-            padding-top: 0px;
-   
-            --box-shadow:hidden;
-            --background:#5A4BB2;
-            --color:#fff;
-        }
-    }
-    &-row-actualizar{
-        margin-top: auto;
-
-    }
-    &-row-perfil{
-        padding-bottom: 15px;
-        border-radius: 25px;
-        background: #5A4BB2;
-        text-align: center;
-        align-items: center;
-        align-content: center;
-        position: relative;
-        &-img   {
-            &-div{
-                width: 100%; 
-                &-image{
-                    border-radius: 50%;
-                    margin-top: -33px;
-                    bottom: calc(-1*(80px + 4px));
-                    width: 88px;
-                    height: 88px;
-                    border-radius: 50%;
-                    background: #f4f4f4;
-                    border:solid 2px #FE910E;
-                    margin-bottom: 24px;
-                }
-            }
-        }
-        &-label-col{
-            margin-bottom: 16px;
-            padding: 0px;
-            &-label{
-                text-align: center;
-                &-p{
-                    padding-left: 14px;
-                    padding-top: 6px;
-                    color:#fff;
-                    font-size: 18px;
-                    font-weight: 700;
-                    
-                }
-            }
-             
-        }
-        
-
-    }
-    &-row-tips{
-    &-datos{ 
-        border-radius: 15px;
-        padding:5px;
-        --background: #F4F4F4;
-        --border-radius: 15px;
-            &-label-p{
-                padding:6px;
-                color:#455A64;
-                font-size: 18px;
-            }
-    }
-}
-    &-row-form{
-        &-col{
-            padding: 5px 0;
-            &-item{
-                height: 40px; 
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding:0px;
-                --background: #ffff;
-                border-radius:8px;
-                border:1px solid rgba(69, 69, 69, 1);
-                &-label-input-p{
-                    height: 35px; 
-                    min-height: 35px;
-                    color:#000;
-                    font-size: 12px;
-                    max-height: 25px;
-                }
-                &-datos-icon{
-                    color:#000 !important; 
-            }
-        }
-        &-errors{
-            display: flex;
-            flex-direction: column;
-            padding: 5px;
-        }
-    }
-    }
-    &-row-title{ 
-        padding-top: 18px;
-        &-col{
-            padding: 0px;
-            &-text-h2{
-                font-size: 18px;
-                font-weight: 700;
-                color:#333333;
-            }
-        }
-        
-        
-    
-    }
-    &-row-form{
-        &-col-text{
-            margin: 0px;
-            &-h2{
-                padding-bottom: 6px;
-                margin: 0px;
-                font-size: 12px;
-                font-weight: 600;
-            }
-        }
-    }
-    
-}
-
- .save{
-    font-weight: 100;
-            text-transform: none;
-            --background:#FE910E !important;
-            --color:#fff;
-            width: 100%;
-            height: 100%;
-            --padding-bottom: 0.5rem;
-            --border-radius: 0.2rem;
-            --padding-top: 0.5rem;
-            font-size: 1rem;
-           --border-radius:8px;
- }
-
-
-   .form{
-    height: 100%;
- 
- }  
-.lista{
-    --inner-padding-end: 0;
-    border-radius:8px;
-    --border-radius:8px;
-    --background: #f4f4f4;
-}
- 
-@media(max-width:376px){
-    .Grid-row-form-col-item-label-input-p{
-        font-size: 12px;
-    }
-    .Grid-row-perfil{
-        &-img-col-div{
-            &-image{
-                width: 95px;
-                height: 95px;
-                margin-bottom: 0px;
-                margin-top: -45px;
-            }
-        }
-        &-label-col{
-            padding-bottom: 0px;
-            &-label-p{
-                color:#fff;
-                font-size: 14px;
-                font-weight: 700;
-                margin-bottom: 0px;
-            }
-        }
-    }
-}
-
-
-
-@media (min-width:1200px ) {
- 
-    ion-content{
-        --background:#ffff ;
-    }
-    .Grid{
-        padding: 49px 0 0;
-        width: fit-content; 
-        &-button-row{
-            margin-bottom: -50px;
-            ion-icon{
-                width: 32px;
-                height: 32px;
-            }
-           &-btn{
-            --color:#fff;
-            --background:#5A4BB2;
-           }
-        }
-        &-row-actualizar{
-            margin-top: 0;
-
-        }
-        &-row-perfil{ 
-            padding-bottom: 0px;
-            &-img-col{
-                padding-top: 12px;
-                padding-bottom: 12px;
-                &-div{
-                    width: 100%;
-                    margin-bottom: 0px;
-                    &-image{
-                        border-radius: 50%;
-                        margin: 0px; 
-                        width: 125px;
-                        height: 125px;
-                        border-radius: 50%;
-                        background: #f4f4f4;
-                        border:solid 2px #FE910E; 
-                    }
-                }
-            }
-            &-label-col{
-                margin-bottom: 0px;
-                &-label{
-                    text-align: left;
-                    &-p{
-                        font-size: 30px;
-                    font-weight: 700;
-                    }
-                }
-            }
-
-        }
-        &-row-title{
-            padding-left: 16px;
-            padding-top: 10px;
-            &-col{
-                padding: 0px;
-                &-text-h2{
-                    font-size: 26px;
-                    font-weight: 700;
-                }
-            }
-            
-            
-        
-        }
-        &-row-form{
-            min-width: 1190px;
-            padding-top: 13px; 
-            padding-left: 8px;
-            height: fit-content;
-            &-col{
-                padding:8px;
-            }
-            &-col-text{
-                margin: 0px;
-                &-h2{
-                    padding-bottom: 12px;
-                    margin: 0px;
-                    font-size: 20px;
-                    font-weight: 600;
-                }
-            }
-            &-col-item{ 
-                height: 50px;
-                font-size: 16px;
-                font-weight: 400;
-            }
-        }
-
-        &-row-tips{
-            padding-top: 69px;
-            padding-left: 16px;
-            padding-right: 16px;
-            
-            &-col{
-                &-label{
-                &-h2{
-                    padding-left: 10px;
-                    font-size: 26px;
-                    font-weight: 700;
-                    &-strong{
-                        font-weight: 500;
-                        color:#5A4BB2;
-                    
-                    }
-                }
-                &-h4{
-                    padding-left: 10px;
-                    padding-top: 18px;
-                    font-size: 22px;
-                    font-weight: 600;
-                    padding-bottom: 16px;
-                }
-                
-            }
-            &-item{ 
-                &-icon{ 
-                    font-size: 6px;
-                    color: #000; 
-                     
-                     
-
-                }
-                &-label{
-                    font-size: 16px;
-                    margin: 0px;
-                    padding-left: 16px;
-                }
-            }
-        }
-        }
-      
-         
-    }
-
-    .save{
-        text-align: center;
-        max-width: 454px;
-    }
-} 
-ion-popover#open-popover::part(content) {
-    top: unset !important;
-    left: 0 !important;
-    bottom: 0;
-    width: 100vw;
-    border-radius: 8px;
+ion-content {
+    --background: #F5F3FF;
   }
   
-
-ion-item::part(native){
-    max-height: 40px;
-    min-height: 40px;
-}
+  .profile {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 16px;
+    
+    @media (min-width: 768px) {
+      padding: 24px;
+    }
+    
+    &__header {
+      position: relative;
+      height: 120px;
+      background: linear-gradient(to right, #6B4EE6, #8F7FF7);
+      border-radius: 16px 16px 0 0;
+      overflow: hidden;
+      
+      @media (min-width: 768px) {
+        height: 140px;
+      }
+    }
+    
+    &__avatar-wrapper {
+        position: relative;
+        z-index: 20;
+        height: 0;
+      }
+      
+      .profile__avatar-container {
+        position: absolute;
+        bottom: -50%;
+        z-index: 10;
+        transform: translate(50%, 50%);
+    }
+      
+      &__avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: white;
+        padding: 3px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Sombra más pronunciada
+        
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        
+        @media (min-width: 768px) {
+          width: 100px;
+          height: 100px;
+        }
+    }
+     
+    
+    &__menu-button {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      z-index: 5;
+      
+      ion-icon {
+        color: white;
+        font-size: 24px;
+      }
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+    
+    &__form-container {
+        background-color: white;
+        padding: 16px;
+        padding-top: 48px; // Espacio para la imagen
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        position: relative;
+        z-index: 10; // Un z-index menor que el avatar
+      
+      @media (min-width: 768px) {
+        padding: 24px;
+        padding-top: 56px;
+      }
+    }
+    
+    &__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 24px;
+      
+      @media (min-width: 768px) {
+        font-size: 24px;
+      }
+    }
+    
+    &__form {
+      width: 100%;
+    }
+    
+    &__form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+      
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+    
+    &__form-group {
+      width: 100%;
+    }
+    
+    &__form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    
+    &__input-container {
+      position: relative;
+      width: 100%;
+    }
+    
+    &__input-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #999;
+      z-index: 10;
+    }
+    
+    &__input {
+      width: 100%;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px 12px 12px 40px; 
+      font-size: 16px;
+      color: #333;
+      --padding-start: 40px; 
+    --padding-end: 12px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --placeholder-color: #aaa;
+    --placeholder-opacity: 1;
+    --placeholder-font-weight: 400;
+      &:focus {
+        border-color: #6B4EE6;
+        box-shadow: 0 0 0 2px rgba(107, 78, 230, 0.1);
+      }
+      
+      &::placeholder {
+        color: #aaa;
+        padding-left: 5px;
+      }
+    }
+    
+    &__error {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #d32f2f;
+      
+      ion-icon {
+        vertical-align: middle;
+        margin-right: 4px;
+      }
+      
+      span {
+        display: block;
+        margin-bottom: 4px;
+      }
+    }
+    
+    &__submit-button {
+      width: 100%;
+      background-color: #FF8A00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      
+      &:hover:not(:disabled) {
+        background-color: #F07800;
+      }
+      
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      
+      ion-icon {
+        font-size: 18px;
+      }
+    }
+  }
+  
+  // Estilos para el popover
+  .popover-content {
+    --background: #fff;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+  }
+  
+  .popover-list {
+    padding: 0;
+  }
+  
+  .popover-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --background: transparent;
+    
+    &:hover {
+      --background: #f5f5f5;
+    }
+  }
+  
+  .popover-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin-right: 12px;
+    
+    ion-icon {
+      font-size: 20px;
+      color: #666;
+    }
+    
+    .popover-item:hover & {
+      background-color: rgba(107, 78, 230, 0.1);
+      
+      ion-icon {
+        color: #6B4EE6;
+      }
+    }
+  }
+  
+  .popover-text {
+    flex: 1;
+  }
+  
+  .popover-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 2px;
+    
+    .popover-item:hover & {
+      color: #6B4EE6;
+    }
+  }
+  
+  .popover-description {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  ion-popover::part(content) {
+    width: 300px;
+    max-width: 90vw;
+    border-radius: 12px;
+  }
+  
+ 

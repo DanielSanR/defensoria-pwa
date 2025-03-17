@@ -1,35 +1,140 @@
-<ion-content> 
-  <ion-grid class="Grid">
-    <ion-row class="Grid-row">
-      <ion-col class="Grid-row-col" size="12">
-        <div class="Grid-row-col-header">
-          <ion-icon src="../../assets/icon/numeros-utiles/numeros-utiles-header.svg" class="Grid-row-col-header-icon"> </ion-icon>
+<ion-content>
+  <div class="phone">
+    <div class="phone__hero">
+      <div class="phone__hero-content">
+        <h1 class="phone__hero-title">
+          Estamos aquí para ti, <br>
+          24 horas al día
+        </h1>
+        <p class="phone__hero-text">
+          No estás solo. Nuestro equipo está listo para escucharte y
+          ayudarte en cualquier momento que lo necesites.
+        </p>
+        <div class="phone__hero-clock">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Atención disponible las 24 horas, los 365 días</span>
         </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="Grid-row title">
-      <ion-col class="Grid-row-col" size="12">
-        <ion-label class="Grid-row-col-title">
-          <h1 class="Grid-row-col-title-h1">Números útiles</h1>
-        </ion-label>
-      </ion-col>
-    </ion-row>
-     <ion-row class="Grid-options-row">
-      <ion-col class="Grid-options-row-col" *ngFor="let item of values" sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
-        <ion-card class="Grid-options-row-col-card">
-          <ion-thumbnail class="Grid-options-row-col-card-thumbnail">
-            <ion-icon [src]="'../../assets/icon/numeros-utiles/' + item.icon"></ion-icon>
-          </ion-thumbnail>
-          <ion-card-header class="Grid-options-row-col-card-header">
-            <ion-card-title class="Grid-options-row-col-card-header-title">{{ item.title }}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content class="Grid-options-row-col-card-content">
-            <ion-label class="Grid-options-row-col-card-content-label">
-               {{item.detail}}
-            </ion-label>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>  
-</ion-grid>
+      </div>
+      <div class="phone__hero-image">
+        <img src="../../assets/icon/home/ninos.svg" alt="">
+      </div>
+    </div>
+    <h2 class="phone__section-title">Números de Emergencia</h2>
+    <div class="phone__emergency-contacts">
+      <div class="phone__contact-card">
+        <div class="phone__contact-icon">
+          <ion-icon src="../../assets/icon/numeros-utiles/911-new.svg"></ion-icon>
+        </div>
+        <div class="phone__contact-content">
+          <div class="phone__contact-header">
+            <div>
+              <span class="phone__contact-badge phone__contact-badge--emergency">Emergencia</span>
+              <h3 class="phone__contact-title">Línea de Emergencia 911</h3>
+            </div>
+            <ion-button class="phone__contact-call-btn" (click)="callNumber('911')">
+              <ion-icon slot="start" name="call-outline" ></ion-icon>
+              Llamar
+            </ion-button>
+          </div>
+          <p class="phone__contact-number">911</p>
+          <p class="phone__contact-description">
+            <ion-icon name="time-outline"></ion-icon>
+            Atención inmediata las 24 horas
+          </p>
+        </div>
+      </div>
+      <div class="phone__contact-card">
+        <div class="phone__contact-icon">
+          <ion-img src="../../assets/icon/numeros-utiles/defe.jpg" style="border-radius: 8px;width: 36px;height: 36px;"></ion-img>
+        </div>
+        <div class="phone__contact-content">
+          <div class="phone__contact-header">
+            <div>
+              <span class="phone__contact-badge phone__contact-badge--primary">Principal</span>
+              <h3 class="phone__contact-title">Defensoría de los Derechos</h3>
+            </div>
+            <ion-button class="phone__contact-call-btn" (click)="callNumber('3764345421')">
+              <ion-icon slot="start" name="call-outline"></ion-icon>
+              Llamar
+            </ion-button>
+          </div>
+          <p class="phone__contact-number">3764-345421</p>
+          <p class="phone__contact-description">
+            <ion-icon name="time-outline"></ion-icon>
+            Lunes a viernes de 8:00 a 20:00 hs
+          </p>
+        </div>
+      </div>
+    </div>
+    <h2 class="phone__section-title">Otros Canales de Ayuda</h2>
+    <div class="phone__other-contacts">
+      <div class="phone__contact-card">
+        <div class="phone__contact-icon">
+          <ion-icon src="../../assets/icon/numeros-utiles/102.svg"></ion-icon>
+        </div>
+        <div class="phone__contact-content">
+          <h3 class="phone__contact-title">Secretaría Nacional</h3>
+          <p class="phone__contact-subtitle">Línea 102 y 137</p>
+          <p class="phone__contact-number">3764-433019</p>
+          <p class="phone__contact-description">
+            <ion-icon name="time-outline"></ion-icon>
+            Atención y asistencia las 24 horas
+          </p>
+          <div class="phone__contact-features">
+            <span class="phone__contact-feature">
+              <ion-icon name="heart"></ion-icon>
+              Asistencia Psicológica
+            </span>
+            <span class="phone__contact-feature">
+              <ion-icon name="heart"></ion-icon>
+              Orientación Legal
+            </span>
+            <span class="phone__contact-feature">
+              <ion-icon name="heart"></ion-icon>
+              Apoyo Emocional
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="phone__contact-card">
+        <div class="phone__contact-icon">
+          <ion-icon src="../../assets/icon/numeros-utiles/mail-numeros.svg"></ion-icon>
+        </div>
+        <div class="phone__contact-content">
+          <h3 class="phone__contact-title">Correo Electrónico</h3>
+          <p class="phone__contact-subtitle">Escríbenos en cualquier momento</p>
+          <p class="phone__contact-number">defensoriadennya.misiones&#64;gmail.com</p>
+          <p class="phone__contact-description">
+            <ion-icon name="time-outline"></ion-icon>
+            Respuesta en 6-12 horas hábiles
+          </p>
+          <div class="phone__contact-features">
+            <span class="phone__contact-feature">
+              <ion-icon name="heart"></ion-icon>
+              Consultas Generales
+            </span>
+            <span class="phone__contact-feature">
+              <ion-icon name="heart"></ion-icon>
+              Seguimiento de Casos
+            </span>
+            <span class="phone__contact-feature">
+              <ion-icon name="heart"></ion-icon>
+              Documentación
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone__help-box">
+      <h3 class="phone__help-title">¿Necesitas ayuda para decidir a quién contactar?</h3>
+      <p class="phone__help-text">
+        Si no estás seguro de qué número usar, siempre puedes llamar al 911 para emergencias
+        o completar nuestro formulario y te ayudaremos a encontrar el mejor canal de ayuda.
+      </p>
+      <ion-button class="phone__help-button" routerLink="/formulario">
+        Completar Formulario
+        <ion-icon slot="end" name="open-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

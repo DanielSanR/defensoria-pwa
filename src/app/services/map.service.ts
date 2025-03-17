@@ -40,7 +40,7 @@ export class MapService {
   hospitales = [] as Properties[];
   coord: Observable<any> | undefined;
   ltlng: BehaviorSubject<any> = new BehaviorSubject(null);
-   private comisariaIcon = new Leaflet.Icon({
+   public comisariaIcon = new Leaflet.Icon({
     iconUrl: '../../assets/icon/policia.svg',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [42, 42],
@@ -48,7 +48,7 @@ export class MapService {
     popupAnchor: [1, -34],
     shadowSize: [32, 32]
   });
-  private hospitalIcon = new Leaflet.Icon({
+  public hospitalIcon = new Leaflet.Icon({
     iconUrl: '../../assets/icon/hospital.svg',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [42, 42],

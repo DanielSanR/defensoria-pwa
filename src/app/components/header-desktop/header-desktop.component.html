@@ -1,28 +1,43 @@
 <ion-header class="header">
-  <ion-toolbar class="header-toolbar">
-      <ion-row class="header-toolbar-row">
-          <ion-col size="3" class="header-toolbar-row-ImgCol">
-              <img src="../../assets/icon/yocuento-desktop.svg" alt="logo" class="header-toolbar-row-ImgCol-img">
-          </ion-col>
-          <ion-col  offsetXl="3" size="6" class="header-toolbar-row-MenuCol">
-      
-                  <ion-button fill="clear" routerLink="/inicio" routerDirection="root" routerLinkActive="active-link" class="header-toolbar-row-MenuCol-btn">
-                      Inicio
-                  </ion-button>
-                  <ion-button fill="clear" routerLink="/formulario" routerDirection="root" routerLinkActive="active-link" class="header-toolbar-row-MenuCol-btn">
-                          Formulario
-                  </ion-button>
-                  <ion-button fill="clear" routerLink="/mapa" routerDirection="root" routerLinkActive="active-link" class="header-toolbar-row-MenuCol-btn">
-                      Mapa
-                  </ion-button>
-                  <ion-button fill="clear" routerLink="/numeros-utiles" routerDirection="root" routerLinkActive="active-link" class="header-toolbar-row-MenuCol-btn">
-                      Teléfono
-                  </ion-button>
-                  <ion-button fill="clear" routerLink="/perfil" routerDirection="root" routerLinkActive="active-link" class="header-toolbar-row-MenuCol-btn">
-                      Perfil
-                  </ion-button> 
-          </ion-col>
-      </ion-row>
-  </ion-toolbar>
-  </ion-header>
+    <ion-toolbar class="header__toolbar">
+      <div class="header__container">
+        <div class="header__logo">
+          <a routerLink="/">
+            <img src="../../assets/icon/yocuento-desktop.svg" alt="YoCuento" class="header__logo-img">
+          </a>
+        </div>
   
+        <nav class="header__nav">
+          <ion-button fill="clear" routerLink="/inicio" routerDirection="root" 
+                     routerLinkActive="active-link header__nav-link--active" 
+                     class="header__nav-link">
+            Inicio
+          </ion-button>
+          <ion-button fill="clear" routerLink="/formulario" routerDirection="root" 
+                     routerLinkActive="active-link header__nav-link--active" 
+                     class="header__nav-link">
+            <ion-icon  slot="start" src="../../../assets/icon/header/formulario.svg" alt="" class="header__nav-icon"></ion-icon>
+            Formulario
+          </ion-button>
+          <ion-button fill="clear" routerLink="/mapa" routerDirection="root" 
+                     routerLinkActive="active-link header__nav-link--active" 
+                     class="header__nav-link">
+            <ion-icon slot="start" src="../../../assets/icon/header/mapa.svg" alt="" class="header__nav-icon"></ion-icon>
+           Mapa
+          </ion-button>
+          <ion-button fill="clear" routerLink="/numeros-utiles" routerDirection="root" 
+                     routerLinkActive="active-link header__nav-link--active" 
+                     class="header__nav-link">
+            <ion-icon slot="start" src="../../../assets/icon/header/telefono.svg" alt="" class="header__nav-icon"></ion-icon>
+           Teléfono
+          </ion-button>
+          <ion-button fill="clear" routerLink="/perfil" routerDirection="root" 
+                     routerLinkActive="active-link header__nav-link--active" 
+                     class="header__nav-link">
+            <ion-icon slot="start" src="../../../assets/icon/header/perfil.svg" alt="" class="header__nav-icon"></ion-icon>
+            Perfil
+          </ion-button>
+        </nav>
+      </div>
+    </ion-toolbar>
+  </ion-header>

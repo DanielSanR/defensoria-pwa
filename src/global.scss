@@ -12,12 +12,12 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-@font-face {
-    font-family: 'OpenSans'; 
+/* @font-face {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     src: url('assets/fonts/OpenSans-Regular.ttf');
-}
+} */
 * {
-    font-family: 'Open Sans';
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 ion-alert.custom-alert {
     --border-radius: 10px;
@@ -62,7 +62,9 @@ ion-alert.custom-alert {
     border-top-right-radius: 13px;
   }
 
-
+.ion-valid.sc-ion-input-md-h {
+     --highlight-color: #5A4BB2 !important;   
+}
 
 .toast{
   --background: #5A4BB2;  

@@ -1,43 +1,104 @@
 <ion-content>
-  <ion-grid class="Grid">
-    <ion-row class="Grid-row-tips">
-      <ion-col class="Grid-row-tips-col">
-        <ion-label class="Grid-row-tips-col-label">
-          <h2 class="Grid-row-tips-col-label-h2">Sobre tus derechos - <strong class="Grid-row-tips-col-label-h2-strong">Sobre tus derechos</strong></h2>
-          <h4 class="Grid-row-tips-col-label-h4">¿Cuáles son los derechos de los Niños, Niñas y Adolescentes?</h4>
-        </ion-label>
-        <ion-item lines="none" class="Grid-row-tips-col-item">
-            <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
-            <ion-label class="Grid-row-tips-col-item-label">Identidad: tienen derecho a una identidad; es decir, tienen derecho a una inscripción oficial de quiénes son, que incluya su nombre, nacionalidad y relaciones familiares.</ion-label>
-        </ion-item>
-        <ion-item lines="none" class="Grid-row-tips-col-item">
-          <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
-          <ion-label class="Grid-row-tips-col-item-label">Vivir en familia: no se debe separar a los niños, niñas y adolescentes de su padre y su madre, a menos que estos no los cuiden como es debido (por ejemplo, si el padre o la madre hacen daño al niño o le descuidan). Cuando el padre y la madre no vivan juntos, el niño debería permanecer en contacto con los dos, salvo que esto le perjudique.</ion-label>
-        </ion-item>
-        <ion-item lines="none" class="Grid-row-tips-col-item">
-            <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
-            <ion-label class="Grid-row-tips-col-item-label">A ser escuchados: tienen derecho a expresar su opinión sobre los asuntos que les afectan. Los adultos deben escuchar a los niños y tomarles en serio.</ion-label>
-        </ion-item>
-        <ion-item lines="none" class="Grid-row-tips-col-item">
-          <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
-          <ion-label class="Grid-row-tips-col-item-label">A tener buena salud: tienen derecho a la mejor atención de la salud que se les pueda brindar, al agua limpia para beber, a una alimentación sana y a un entorno limpio y seguro en el que vivir.</ion-label>
-        </ion-item>
-        <ion-item lines="none" class="Grid-row-tips-col-item">
-            <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
-            <ion-label class="Grid-row-tips-col-item-label">A la educación: tienen derecho a recibir una educación. La educación primaria debería ser gratuita. La educación secundaria y superior deben estar al alcance de todos los niños. Se debería apoyar a los niños para que asistan a la escuela hasta completar el grado más alto posible.</ion-label>
-        </ion-item>
-        <ion-item lines="none" class="Grid-row-tips-col-item">
-          <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
-          <ion-label class="Grid-row-tips-col-item-label">A una alimentación saludable, vestimenta y vivienda digna: tienen derecho a la alimentación, al vestido y a un lugar seguro donde vivir, para que puedan crecer del mejor modo posible.</ion-label>
-       </ion-item>
-       <ion-item lines="none" class="Grid-row-tips-col-item">
-        <ion-icon name="ellipse" class="Grid-row-tips-col-item-icon"></ion-icon>
-        <ion-label class="Grid-row-tips-col-item-label">Podés conocer más derechos aquí <a target="_blank" href="https://www.unicef.org/es/convencion-derechos-nino/convencion-version-ninos">  https://www.unicef.org/es/convencion-derechos-nino/convencion-version-ninos </a></ion-label>
-       </ion-item>
- 
-      </ion-col>
-    </ion-row>  
-  </ion-grid>
+  <div class="rights">
+    <div class="rights__hero">
+      <div class="rights__hero-content">
+        <h1 class="rights__hero-title">
+          Conoce tus derechos,<br>
+          ¡son muy importantes!
+        </h1>
+        <p class="rights__hero-text">
+          Todos los niños, niñas y adolescentes tienen derechos especiales que los protegen y ayudan a crecer felices y seguros.
+        </p>
+        <a href="https://www.unicef.org/es/convencion-derechos-nino/convencion-version-ninos" 
+           target="_blank" 
+           class="rights__hero-button">
+          Conocer más en UNICEF
+          <ion-icon name="open-outline"></ion-icon>
+        </a>
+      </div>
+      <div class="rights__hero-image">
+        <img src="../../assets/icon/home/ninos.svg" alt="">
+      </div>
+    </div>
+    <div class="rights__grid">
+      <div class="rights__card">
+        <div class="rights__card-icon rights__card-icon--pink">
+          <ion-icon name="heart-outline"></ion-icon>
+        </div>
+        <h3 class="rights__card-title">Identidad</h3>
+        <p class="rights__card-description">
+          Tienes derecho a una identidad, un nombre y una nacionalidad. Eres único y especial.
+        </p>
+      </div>
+      <div class="rights__card">
+        <div class="rights__card-icon rights__card-icon--purple">
+          <ion-icon name="home-outline"></ion-icon>
+        </div>
+        <h3 class="rights__card-title">Vivir en Familia</h3>
+        <p class="rights__card-description">
+          Tienes derecho a vivir con tu familia y recibir su amor y protección.
+        </p>
+      </div>
+      <div class="rights__card">
+        <div class="rights__card-icon rights__card-icon--blue">
+          <ion-icon name="book-outline"></ion-icon>
+        </div>
+        <h3 class="rights__card-title">Ser Escuchado</h3>
+        <p class="rights__card-description">
+          Tu opinión es importante. Tienes derecho a expresar lo que piensas y sientes.
+        </p>
+      </div>
+      <div class="rights__card">
+        <div class="rights__card-icon rights__card-icon--green">
+          <ion-icon name="medkit-outline"></ion-icon>
+        </div>
+        <h3 class="rights__card-title">Buena Salud</h3>
+        <p class="rights__card-description">
+          Tienes derecho a recibir atención médica, agua limpia y alimentación saludable.
+        </p>
+      </div>
+      <div class="rights__card">
+        <div class="rights__card-icon rights__card-icon--yellow">
+          <ion-icon name="school-outline"></ion-icon>
+        </div>
+        <h3 class="rights__card-title">Educación</h3>
+        <p class="rights__card-description">
+          Tienes derecho a ir a la escuela y aprender todo lo que te ayude a crecer.
+        </p>
+      </div>
+      <div class="rights__card">
+        <div class="rights__card-icon rights__card-icon--orange">
+          <ion-icon name="restaurant-outline"></ion-icon>
+        </div>
+        <h3 class="rights__card-title">Vida Digna</h3>
+        <p class="rights__card-description">
+          Tienes derecho a una alimentación saludable, ropa y un hogar seguro.
+        </p>
+      </div>
+    </div>
+    <div class="rights__help">
+      <div class="rights__help-image">
+        <img src="../../assets/icon/help.png" alt="">
+      </div>
+      <div class="rights__help-content">
+        <h2 class="rights__help-title">
+          ¿Necesitas ayuda para entender tus derechos?
+        </h2>
+        <p class="rights__help-text">
+          Si tienes dudas sobre tus derechos o sientes que no se están respetando, 
+          podemos ayudarte. Hay personas preparadas para escucharte y protegerte.
+        </p>
+        <div class="rights__help-buttons">
+          <ion-button class="rights__help-button rights__help-button--primary" routerLink="/formulario">
+            Pedir ayuda
+            <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+          </ion-button>
+          <ion-button class="rights__help-button rights__help-button--secondary" routerLink="/numeros-utiles">
+            Llamar ahora
+            <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
-
-

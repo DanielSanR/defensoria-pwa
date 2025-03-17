@@ -57,7 +57,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/insultos.svg"
+        "icon" : "../../assets/icon/form/test.svg"
       },
       {
         "id": 6,
@@ -65,7 +65,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/insultos.svg"
+        "icon" : "../../assets/icon/form/test.svg"
       },
       {
         "id": 7,
@@ -73,7 +73,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/comida.svg"
+        "icon" : "../../assets/icon/form/test.svg"
       },
       {
         "id": 8,
@@ -81,7 +81,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/encierros.svg"
+        "icon" : "../../assets/icon/form/test.svg"
       },
       {
         "id": 9,
@@ -89,7 +89,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/tocamientos.svg"
+        "icon" : "../../assets/icon/form/test.svg"
       },
       {
         "id": 10,
@@ -97,7 +97,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/obligar.svg"
+        "icon" : "../../assets/icon/form/test.svg"
       },
       {
         "id": 11,
@@ -105,7 +105,7 @@
         "inputs": [
           {"key": "reason_other", "label": "¿Cuál es tu motivo?", "type": "text"}
         ],
-        "icon" : "../../assets/icon/form/insultos.svg"
+        "icon" : "../../assets/icon/form/test.svg"
       }
     ]
   },

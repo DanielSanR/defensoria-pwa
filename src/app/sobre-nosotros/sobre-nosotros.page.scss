@@ -1,82 +1,158 @@
-.Grid{
-    height: 100%; 
-    display: flex; 
-    flex-flow: column;
-    &-card{
-        max-height: 100%;
-        display: flex;
-        flex-direction: column;
-        border-radius: 24px;
-        border: #5A4BB2 3px solid;
-        &-header{
-            padding-left: 24px;
-            padding-top: 35px;
-            padding-bottom: 38px;
-            background-color: #5A4BB2;
-            &-title{
-                
-                font-size: 20px;
-                font-weight: 600;
-                color: #fff;
-            }
-        }
-        &-content{
-            max-height: calc(100% - #{50px});
-            position: relative;
-            overflow: hidden;
-            overflow-y: auto;
-            ::-webkit-scrollbar {
-                display: none;
-            }
-            &-icon{
-                height:160px;
-                width: 160px;
-            }
-            &-label{
-                &-p{
-                    font-size: 12px;
-                    font-weight: 400; 
-                }	
-            
-            }
-        }
-    }
-
+// sobre-nosotros.page.scss
+ion-content {
+    --background: #F5F3FF;
+  }
+  
+  .about {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px;
     
-}
-
-
-@media (min-width:1200px){
-
-    .Grid{
-        padding-left: 118px;
-        padding-right: 102px;
-        &-card{
-            &-header{
-                &-title{
-                    padding:16px;
-                    font-size: 40px;
-                    font-weight: 700;
-                    color: #fff;
-                }
-            }
-            &-content{
-                &-icon{
-                    height:270px;
-                    width: 346px;
-                }
-                &-label{
-                    &-p{ 
-                        padding-left: 20px;
-                        padding-right: 8px;
-                        padding-top:12px;
-                        font-size: 20px;
-                        font-weight: 600; 
-                    }	
-                
-                }
-            }
-        }
-
+    @media (min-width: 768px) {
+      padding: 24px;
     }
-}
+    
+    &__hero {
+      background: linear-gradient(to right, #6B4EE6, #8F7FF7);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      
+      @media (min-width: 768px) {
+        padding: 32px;
+        border-radius: 24px;
+      }
+      
+      &-title {
+        color: white;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        
+        @media (min-width: 768px) {
+          font-size: 36px;
+        }
+      }
+      
+      &-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        margin: 0 auto;
+        max-width: 600px;
+        
+        @media (min-width: 768px) {
+          font-size: 18px;
+        }
+      }
+    }
+    
+    &__logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+      
+      img {
+        width: 150px;
+        height: auto;
+        
+        @media (min-width: 768px) {
+          width: 200px;
+        }
+      }
+    }
+    
+    &__content {
+      background-color: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      
+      @media (min-width: 768px) {
+        padding: 32px;
+      }
+    }
+    
+    &__text {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    &__features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+      
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    &__feature {
+      background-color: white;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all 0.2s;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      &-icon {
+        background-color: #F5F3FF;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        
+        ion-icon {
+          font-size: 24px;
+          color: #6B4EE6;
+        }
+      }
+      
+      &-content {
+        flex: 1;
+      }
+      
+      &-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        margin-top: 12px;
+      }
+      
+      &-description {
+        font-size: 14px;
+        color: #666;
+        margin: 0;
+      }
+    }
+    
+    &__version {
+      text-align: right;
+      
+      p {
+        font-size: 12px;
+        color: #999;
+        margin: 0;
+      }
+    }
+  }

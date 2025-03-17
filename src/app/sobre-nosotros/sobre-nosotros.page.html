@@ -1,41 +1,90 @@
+<!-- sobre-nosotros.page.html -->
 <ion-content>
-  <ion-grid class="Grid"> 
-    <ion-card class="Grid-card">
-      <ion-card-header class="Grid-card-header">
-        <ion-card-title class="Grid-card-header-title">Sobre nosotros</ion-card-title> 
-      </ion-card-header>
-      <ion-card-content  class="Grid-card-content ion-tex-center">
-        <div style="width: 100%;display: flex;justify-content: center;">
-          <ion-icon src="../../assets/icon/sobre-nosotros.svg" class="Grid-card-content-icon"></ion-icon>
-        </div>
-        <ion-label class="Grid-card-content-label">
-          <p class="Grid-card-content-label-p">Nuestra aplicación se ha creado con el propósito de proporcionar una plataforma segura y fácil de usar para hacer denuncias de abuso sexual y acoso infantil. Sabemos que estos temas son sensibles y difíciles de abordar, y nuestro objetivo es proporcionar un medio para que las víctimas y testigos puedan hacer denuncias de manera anónima y segura.</p>
-          <p class="Grid-card-content-label-p">Todas las denuncias que recibimos son manejadas de manera confidencial y se envían a las autoridades competentes para su procesamiento y investigación. Hemos implementado medidas de seguridad para proteger la privacidad y la seguridad de los denunciantes, y nos tomamos muy en serio nuestra responsabilidad de garantizar que estas denuncias se manejen de manera adecuada.</p>
-          <p class="Grid-card-content-label-p">Si necesitas más ayuda o asesoramiento después de hacer una denuncia a través de nuestra aplicación, no dudes en ponerte en contacto con nosotros. Estaremos encantados de proporcionar más información o apoyo. Puedes contactarnos a través de nuestra sección de "Contacto" en la aplicación o enviando un correo electrónico a nuestro equipo de soporte. Estamos aquí para ayudarte.</p>
-        </ion-label>
-        <ion-label class="ion-text-end" >
-            <p style="font-size: 0.6rem;"> Version de la aplicación :  {{ v }}</p>
-        </ion-label>
-      </ion-card-content>
-    </ion-card>
+  <div class="about">
+    <!-- Hero Section -->
+    <div class="about__hero">
+      <h1 class="about__hero-title">Sobre Nosotros</h1>
+      <p class="about__hero-text">
+        Trabajamos para proporcionar un espacio seguro donde puedas expresarte y recibir la ayuda que necesitas.
+      </p>
+    </div>
 
-  <!--  <ion-row class="Grid-row">
-     <ion-col class="Grid-row-col" size="12">
-       <ion-icon src="../../assets/icon/sobre-nosotros.svg" class="Grid-row-col-icon"></ion-icon>
-     </ion-col>
-     <ion-col size="12" class="Grid-col-tyc">
-       <ion-text class="Grid-col-tyc-text"> 
-           <p> Nuestra aplicación se ha creado con el propósito de proporcionar una plataforma segura y fácil de usar para hacer denuncias de abuso sexual, acoso infantil u otra vulneración de los derechos. Sabemos que estos temas son sensibles y difíciles de abordar, y nuestro objetivo es proporcionar un medio para que las víctimas y testigos puedan hacer denuncias de manera anónima y segura. <br>
-            Todas las denuncias que recibimos son manejadas de manera confidencial y se envían a las autoridades competentes para su procesamiento e investigación. Hemos implementado medidas de seguridad para proteger la privacidad y la seguridad de los denunciantes, y nos tomamos muy en serio nuestra responsabilidad de garantizar que estas denuncias se manejen de manera adecuada. <br>
-            Si necesitas más ayuda o asesoramiento después de hacer una denuncia a través de nuestra aplicación, no dudes en ponerte en contacto con nosotros. Estaremos encantados de proporcionar más información o apoyo. Puedes contactarnos a través de nuestra sección de "Telefono" en la aplicación o enviando un correo electrónico a nuestro equipo de soporte. Estamos aquí para ayudarte.
-           </p>
-     </ion-text>
-     </ion-col>
-    </ion-row>
-     <ion-row class="Grid-button-row">
-       <ion-col size="12" class="Grid-button-row-col">
-         <ion-button class="Grid-button-row-col-nextBtn" (click)="volver()">Volver</ion-button>
-       </ion-col>
-      </ion-row> -->
-   </ion-grid>
+    <!-- Logo Section -->
+    <div class="about__logo">
+      <img src="../../assets/icon/yocuento-desktop.svg" alt="YoCuento">
+    </div>
+
+    <!-- Main Content -->
+    <div class="about__content">
+      <p class="about__text">
+        Nuestra aplicación ha sido diseñada como un espacio seguro donde niños, niñas y adolescentes pueden expresarse y buscar ayuda. Entendemos que a veces es difícil hablar sobre situaciones incómodas o preocupantes, y queremos ofrecerte un lugar donde puedas compartir lo que te está pasando con total confianza.
+      </p>
+      <p class="about__text">
+        Todo lo que nos cuentes será tratado con el mayor cuidado y respeto. Solo las personas que pueden ayudarte tendrán acceso a esta información, y siempre protegeremos tu privacidad. Nos comprometemos a escucharte y a tomar en serio cada mensaje que recibimos.
+      </p>
+      <p class="about__text">
+        Recuerda que no estás solo. Si necesitas hablar con alguien después de usar nuestra aplicación, siempre puedes contactarnos. Hay un equipo de personas preparadas para escucharte, responder tus preguntas y acompañarte en todo momento. Puedes comunicarte con nosotros a través de la sección "Teléfono" o enviando un mensaje por correo electrónico. Estamos aquí para ti, cuando nos necesites.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="about__features">
+      <!-- Feature 1 -->
+      <div class="about__feature">
+        <div class="about__feature-icon">
+          <ion-icon name="shield-outline"></ion-icon>
+        </div>
+        <div class="about__feature-content">
+          <h3 class="about__feature-title">Plataforma Segura</h3>
+          <p class="about__feature-description">
+            Implementamos las más altas medidas de seguridad para proteger tu privacidad.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="about__feature">
+        <div class="about__feature-icon">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+        </div>
+        <div class="about__feature-content">
+          <h3 class="about__feature-title">Confidencialidad</h3>
+          <p class="about__feature-description">
+            Todas las denuncias son manejadas de manera estrictamente confidencial.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="about__feature">
+        <div class="about__feature-icon">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        </div>
+        <div class="about__feature-content">
+          <h3 class="about__feature-title">Apoyo Continuo</h3>
+          <p class="about__feature-description">
+            Estamos aquí para escucharte y brindarte el apoyo que necesitas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="about__feature">
+        <div class="about__feature-icon">
+          <ion-icon name="heart-outline"></ion-icon>
+        </div>
+        <div class="about__feature-content">
+          <h3 class="about__feature-title">Compromiso</h3>
+          <p class="about__feature-description">
+            Trabajamos incansablemente para proteger tus derechos y bienestar.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Version Info -->
+    <div class="about__version">
+      <p>Versión de la aplicación: {{ v }}</p>
+    </div>
+  </div>
 </ion-content>

@@ -1,141 +1,118 @@
-<ion-content padding   [style.--background]="background">
- 
-     <ion-grid class="Grid">
-      <ion-row class="Grid-row">
-          <ion-col class="Grid-row-col" size="12">
-            <ion-spinner *ngIf="!loaded"  class="spinner"></ion-spinner>
-            <ng-container  *ngIf="loaded">
-              <swiper-container
-              #swiper 
-              
-              [allowTouchMove]="false"  
+<ion-content padding [style.--background]="background">
+  <div class="form-container">
+    <ion-spinner *ngIf="!loaded" class="spinner"></ion-spinner>
+    <ng-container *ngIf="loaded">
+      <div class="content-wrapper">
+        <div class="form-card">
+          <form [formGroup]="myForm">
+            <swiper-container 
+              #swiper
+              [allowTouchMove]="false"
               (swiperslidechangetransitionstart)="swiperChange()"
               [observer]="true"
-              (swiperafterinit)="swiperReady(swiper)" 
-              [observeParents]="true"><!-- 
-               (swiperslidechangetransitionend)="test($event)" -->
-            <swiper-slide  class="Grid-row-col-swiper-template" *ngFor="let group of dinamicForm;index as i">
-                  <div class="Grid-row-col-swiper-template-container"> 
-                   <div class="Grid-row-col-swiper-template-container-header ion-hide-xl-up"  align="end">
-                      <span class="Grid-row-col-swiper-template-container-header-span">
-                          <ion-icon  #icono  name="close-circle-outline"  class="close-icon" (click)="close()"></ion-icon>
-                      </span>
-                       <div class="Grid-row-col-swiper-template-container-header-titulo ion-text-center">
-                           <label #titulo class="Grid-row-col-swiper-template-container-header-titulo-label" >  
-                                <p class="Grid-row-col-swiper-template-container-header-titulo-label-h1">{{i+1}} / 7</p> 
-                                <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{group.title}}</p>
-                            </label>
+              (swiperafterinit)="swiperReady(swiper)"
+              [observeParents]="true">
+              <swiper-slide class="form-card-slide" *ngFor="let group of dinamicForm; index as i">
+                <div class="step-counter">
+                  {{i+1}} / {{dinamicForm.length}}
+                </div>
+                
+                <h2 class="form-title">{{group.title}}</h2>
+                <div class="options-grid" *ngIf="group.type === 'item'">
+                  <ng-container *ngFor="let pregunta of group.preguntas; let j = index">
+                    <div class="question-container" [attr.id]="'question-container-' + pregunta.id">
+                      <div 
+                        class="option-card" 
+                        [class.selected]="pregunta.isChecked"
+                        (click)="toggleSelection(group.key, pregunta.val)">
+                        <div class="icon" *ngIf="pregunta.icon">
+                          <ion-icon [src]="pregunta.icon"></ion-icon>
                         </div>
-                       </div>
-                       <div class="Grid-row-col-swiper-template-container-header ion-hide-xl-down">
-                         <div class="Grid-row-col-swiper-template-container-header-titulo ion-text-center">
-                             <label class="Grid-row-col-swiper-template-container-header-titulo-label" >  
-                                  <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{i+1}} / 7</p> 
-                                  <p class="Grid-row-col-swiper-template-container-header-titulo-label-p">{{group.title}}</p>
-                              </label>
-                          </div>
-                         </div>
-                       <ion-col  class="Grid-row-col-swiper-template-container-items">
-                        <form [formGroup]="myForm" (ngSubmit)="submitForm()" style="width: 100%;height:100%;display: flex;
-                        flex-direction: column;
-                        align-items: center;"> 
-                            <ion-list *ngIf="group.type === 'item'" class="Grid-row-col-swiper-template-container-items-list2" lines="none">
-                                <ng-container *ngFor="let pregunta of group.preguntas; let j = index">
-                                  <div class="question-container" [attr.id]="'question-container-' + pregunta.id">
-                                    <ion-item #preguntasList lines="full" [attr.id]="'pregunta-' + pregunta.id"
-                                              class="Grid-row-col-swiper-template-container-items-list2-item" 
-                                              [ngStyle]="{'--background': pregunta.isChecked ? backgroundChecked : background}"
-                                              (click)="toggleSelection(group.key, pregunta.val)">
-                                      <ion-label [ngStyle]="{'color': pregunta?.isChecked === true ? '#FFF' : '#333'}">{{ pregunta.val }}</ion-label>
-                                        <ion-icon *ngIf="pregunta.icon"  [ngStyle]="{'color': pregunta?.isChecked === true ? '#fff' : '#000'}" slot="end" [src]="pregunta.icon" style="width: 55px;height: 55px;"></ion-icon>  
-                                    </ion-item>
-                                    <div *ngIf="pregunta.isChecked && pregunta.inputs" class="input-container">
-                                      <ion-item *ngFor="let input of pregunta.inputs" class="item-input">
-                                        <ion-input *ngIf="myForm.contains(input.key)" [formControlName]="input.key" fill="outline"
-                                                   labelPlacement="stacked" [placeholder]="input.label" class="input-label"></ion-input>
-                                      </ion-item>
-                                    </div>
-                                  </div>
-                                </ng-container>
-                              </ion-list>
-                                <ion-list  *ngIf="group.type === 'range'" class="Grid-row-col-swiper-template-container-items-list2">
-                                  <ion-grid style="text-align: center;">
-                                    <ion-row style="display: flex;
-                                    flex-direction: row;">
-                                      <ion-col  sizeXs="3" sizeMd="2"  sizLg="2" sizeXl="2" *ngFor="let edad of edadesDisponibles" >
-                                        <ion-button  style="min-height: 40px;min-width: 40px;max-width: 40px;max-height: 40px;font-weight: 700;"  [class.button-selected]="edad === edadSeleccionada"
-                                                     [class.button-unselected]="edad !== edadSeleccionada"
-                                          [fill]="edad === edadSeleccionada ? 'solid' : 'outline'"
-                                          (click)="seleccionarEdad(edad)">
-                                          {{ edad }}
-                                        </ion-button>
-                                      </ion-col>
-                                    </ion-row>
-                                  </ion-grid>
-                                </ion-list> 
-                                <div>
-                                  
-                                </div>
-                          </form>
-                      </ion-col>
-                 </div>
-              </swiper-slide>  
-               <swiper-slide  class="Grid-row-col-swiper-template-confirmation">
-                <ion-grid class="Grid-row-col-swiper-template-confirmation-container">
-                  <ion-row class="Grid-row-col-swiper-template-confirmation-container-img">
-                    <ion-col class="Grid-row-col-swiper-template-confirmation-container-img-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12">
-                      <div class="Grid-row-col-swiper-template-confirmation-container-img-col-div">
-                      <img src="../../assets/icon/form/support.svg" class="Grid-row-col-swiper-template-confirmation-container-img-col-div-image">
+                        <div class="icon" *ngIf="!pregunta.icon">
+                          <ion-icon name="chatbubble-outline"></ion-icon>
+                        </div>
+                        <span class="label">{{ pregunta.val }}</span>
                       </div>
-                    </ion-col>
-                  </ion-row>
-                  <ion-row class="Grid-row-col-swiper-template-confirmation-container-text">
-                    <ion-col class="Grid-row-col-swiper-template-confirmation-container-text-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12">
-                      <ion-label class="Grid-row-col-swiper-template-confirmation-container-text-col-label">
-                        <h4 class="Grid-row-col-swiper-template-confirmation-container-text-col-label-titulo">
-                          Hemos Recibido tu pedido de ayuda</h4>
-                        <p class="Grid-row-col-swiper-template-confirmation-container-text-col-label-p">
-                          Queremos hacerte saber que nuestro equipo ya esta trabajando en tu caso, en breve nos pondremos en contacto contigo.
-                        </p>
-                        <ion-icon src="../../assets/icon/form/checkmark.svg" class="Grid-row-col-swiper-template-confirmation-container-text-col-label-icon"></ion-icon>
-                      </ion-label>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-              
-               </swiper-slide>
+                    </div>
+                  </ng-container>
+                </div>
+                <div *ngIf="group.type === 'range'" class="age-selection">
+                  <div class="age-grid">
+                    <div *ngFor="let edad of edadesDisponibles" class="age-option">
+                      <button 
+                        type="button"
+                        [class.selected]="edad === edadSeleccionada"
+                        (click)="seleccionarEdad(edad)">
+                        {{ edad }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="inputs-container">
+                  <ng-container *ngFor="let pregunta of group.preguntas">
+                    <div class="input-group" *ngIf="pregunta.isChecked && pregunta.inputs?.length > 0">
+                      <div *ngFor="let input of pregunta.inputs">
+                        <label>{{input.label}}</label>
+                        <ion-input
+                          *ngIf="myForm.contains(input.key)"
+                          [formControlName]="input.key"
+                          [type]="input.type"
+                          >
+                        </ion-input>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </swiper-slide>
+              <swiper-slide class="confirmation-slide">
+                <div class="confirmation-container">
+                  <div class="confirmation-image">
+                    <img src="../../assets/icon/form/support.svg">
+                  </div>
+                  <div class="confirmation-text">
+                    <h4>Hemos Recibido tu pedido de ayuda</h4>
+                    <p>Queremos hacerte saber que nuestro equipo ya esta trabajando en tu caso, en breve nos pondremos en contacto contigo.</p>
+                    <ion-icon src="../../assets/icon/form/checkmark.svg"></ion-icon>
+                  </div>
+                </div>
+              </swiper-slide>
             </swiper-container>
-            </ng-container>
-            
-          </ion-col>
-      </ion-row>
-  </ion-grid>   
+          </form>
+        </div>
+      </div>
+      
+      <div class="popup" *ngIf="showPopup && currentSection?.popup">
+        <div class="icon">
+          <ion-icon [src]="'../../assets/icon/form/' + currentSection?.popup?.icon" *ngIf="currentSection?.popup?.icon"></ion-icon>
+          <ion-icon name="information-circle" *ngIf="!currentSection?.popup?.icon"></ion-icon>
+        </div>
+        <div class="message">{{currentSection?.popup?.message}}</div>
+      </div>
+      <div class="page-footer" *ngIf="!bandera && !finalized">
+        <button 
+          type="button"
+          class="prev" 
+          (click)="prev()">
+          <ion-icon name="chevron-back-outline"></ion-icon> Anterior
+        </button>
+        <button 
+          type="button"
+          class="next" 
+          (click)="next()" 
+          [disabled]="!selected">
+          Siguiente <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+      </div>
+      <div class="page-footer" *ngIf="bandera">
+        <button type="button" class="submit-button" (click)="enviar()">
+          ENVIAR FORMULARIO
+        </button>
+      </div>
+      <div class="page-footer" *ngIf="finalized">
+        <button type="button" class="submit-button" (click)="backHome()" [routerLink]="['/inicio']">
+          VOLVER AL MENU
+        </button>
+      </div>
+    </ng-container>
+  </div>
 </ion-content>
-<ion-footer class="ion-no-border" [style.background]="background">
-  <ion-grid style="padding-left: 35px;
-                   padding-right: 35px;" >
-    <ion-row>
-          <ion-col size="12" *ngIf="bandera" class="ion-text-center" style="padding: 0px;">
-              <ion-button class="btn-enviar" (click)="enviar()">
-                  ENVIAR FORMULARIO
-              </ion-button>
-          </ion-col>
-          <ion-col size="12" *ngIf="finalized" class="ion-text-center" >
-              <ion-button class="btn-enviar" (click)="backHome()"  [routerLink]="['/inicio']">
-                  VOLVER AL MENU
-              </ion-button>
-          </ion-col>
-          <ion-col size="6" *ngIf="!bandera && !finalized" style="padding-right: 15px;"  class="ion-text-end">
-              <ion-button class="btn" (click)="prev()" >
-                  <ion-icon src="../../assets/icon/chevron-forward.svg" style="width:24px ;height:24px;position: absolute;transform: rotate(180deg);"></ion-icon>
-              </ion-button>
-          </ion-col>
-          <ion-col size="6" *ngIf="!bandera && !finalized" style="padding-left: 15px" class="ion-text-start">
-              <ion-button class="btn" (click)="next()" [disabled]="!selected ">
-                  <ion-icon src="../../assets/icon/chevron-forward.svg" style="width:24px ;height:24px;position: absolute;"></ion-icon>
-              </ion-button>
-          </ion-col>
-      </ion-row>
-  </ion-grid>
-  
-</ion-footer>  
