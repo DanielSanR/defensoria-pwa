@@ -32,7 +32,8 @@
               },
               "src/manifest.webmanifest"
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
+            "styles": ["src/theme/variables.scss", "src/global.scss",
+              "src/theme/main.scss"],
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
@@ -42,13 +43,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "6mb",
+                  "maximumWarning": "4mb",
                   "maximumError": "8mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "12kb",
-                  "maximumError": "24kb"
+                  "maximumWarning": "14kb",
+                  "maximumError": "16kb"
                 }
               ],
               "fileReplacements": [
@@ -140,7 +141,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": "c904f584-c414-4729-a2f5-ed6ccad957bf"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
