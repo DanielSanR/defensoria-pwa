@@ -5,6 +5,8 @@ import { Component} from '@angular/core';
   templateUrl: './header-onboarding.component.html',
   styleUrls: ['./header-onboarding.component.scss'],
 })
-export class HeaderOnboardingComponent {
-  constructor() { }
+export class HeaderOnboardingComponent { 
+  constructor() {
+
+  }
 }

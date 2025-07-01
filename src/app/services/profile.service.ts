@@ -94,7 +94,17 @@ async getProfile(): Promise<boolean>{
   }
   
 
+ setAvatar(path: string){
+  this.storageService.saveStorage('avatar', path);
 
+ }
+
+  async getAvatar(){
+    const avatar = await this.storageService.getStorage2('avatar');
+    if(avatar){
+      return avatar;
+    }else return null;
+  }
 
   async clearData(){
     this.profile.next(null);

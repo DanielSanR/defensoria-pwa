@@ -1,165 +1,197 @@
+<ion-content [fullscreen]="true">
+  <div class="profile">
+    <div class="profile__header">
+      <button class="profile__menu-button" id="open-popover">
+        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="profile__avatar-wrapper">
+      <div class="profile__avatar-container">
+        <div class="profile__avatar">
+          <div  id="open-modal" class="profile__avatar-button">
+            <ion-icon name="camera-outline"></ion-icon></div>
 
+          <img [src]="avatar" alt="">
+        </div>
  
-<ion-content [fullscreen]="true">  
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate  class="form"  >
-<ion-grid class="Grid">
-  <ion-row class="Grid-row-perfil">
-    <ion-button class="Grid-button-row-btn" button   fill="clear" id="open-popover" ><ion-icon slot="icon-only"  name="ellipsis-horizontal"></ion-icon></ion-button>
-    <ion-col class="Grid-row-perfil-img-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="2">
-      <div class="Grid-row-perfil-img-col-div">
-      <img src="../../assets/images/perfil.png" class="Grid-row-perfil-img-col-div-image">
       </div>
-    </ion-col>
-    <ion-col class="Grid-row-perfil-label-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="10">
-        <ion-label class="Grid-row-perfil-label-col-label ion-hide-xl-up">
-          <p class="Grid-row-perfil-label-col-label-p">¡ Hola , {{ title }} !</p> 
-        </ion-label>
-        <ion-label class="Grid-row-perfil-label-col-label ion-hide-xl-down">
-          <p class="Grid-row-perfil-label-col-label-p">¡Hola , {{ title }} !</p>
-        </ion-label>
-    </ion-col>
-  </ion-row>
-  <ion-row class="Grid-row-title">
-    <ion-col class="Grid-row-title-col">
-      <ion-text class="Grid-row-title-col-text">
-        <h2 class="Grid-row-title-col-text-h2">Completa tus datos </h2>
-      </ion-text>
-    </ion-col>
-  </ion-row>
-  <ion-row class="Grid-row-form"> 
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-row-form-col">
-    <ion-text class="Grid-row-form-col-text " >
-      <h2 class="Grid-row-form-col-text-h2">Nombre</h2>
-    </ion-text>
-    <ion-item  class="Grid-row-form-col-item" lines="none">
-      <ion-input class="Grid-row-form-col-item-label-input-p"  labelPlacement="stacked"  formControlName="name" placeholder="Mi nombre es ...">
-      </ion-input>
-      <ion-icon src="../../assets/icon/perfil/nameForm.svg" slot="start"></ion-icon>
-  </ion-item>
-  <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('name').invalid && (myForm.get('name').dirty || myForm.get('name').touched)" color="danger">
-    <span *ngIf="myForm.get('name').errors?.['required']">
-      <ion-icon name="information-circle-outline"></ion-icon>  Este campo es requerido
-    </span>
-    <span *ngIf="myForm.get('name').errors?.['minlength']">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      El Nombre debe tener al menos 2 caracteres.
-    </span>
-    <span *ngIf="myForm.get('name').errors?.['pattern']">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      El Nombre debe tener solo letras.
-    </span>
-  </ion-note>
-  </ion-col>
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-row-form-col">
-    <ion-text class="Grid-row-form-col-text ">
-      <h2 class="Grid-row-form-col-text-h2">Correo electrónico</h2>
-    </ion-text>
-    <ion-item  class="Grid-row-form-col-item" lines="none" >
+    </div>
+    <div class="profile__form-container">
+      <h2 class="profile__title">Información Personal</h2>
       
-      <ion-input labelPlacement="stacked"  class="Grid-row-form-col-item-label-input-p" formControlName="mail" placeholder="Mi correo  es ...">
-      </ion-input>
-      <ion-icon src="../../assets/icon/perfil/mailForm.svg"slot="start"></ion-icon>
-  </ion-item>
-  <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('mail').invalid && (myForm.get('mail').dirty || myForm.get('mail').touched)" color="danger">
-    <span *ngIf="myForm.get('mail').errors?.['required']">
-      <ion-icon name="information-circle-outline"></ion-icon>  Este campo es requerido
-    </span>
-    <span *ngIf="myForm.get('mail').errors?.['mail']">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      El formato del correo no es válido.
-    </span>
-  </ion-note>
-  </ion-col>
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-row-form-col">
-    <ion-text class="Grid-row-form-col-text ">
-      <h2 class="Grid-row-form-col-text-h2">Teléfono</h2>
-    </ion-text>
-    <ion-item  class="Grid-row-form-col-item ion-invalid" lines="none" >
-      <ion-input   labelPlacement="stacked"  class="Grid-row-form-col-item-label-input-p" formControlName="phone" placeholder="Mi telefono es ...">
-      </ion-input>
-      <ion-icon src="../../assets/icon/perfil/phoneForm.svg" slot="start"></ion-icon>
-  </ion-item>
-  <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('phone').invalid && (myForm.get('phone').dirty || myForm.get('phone').touched)" color="danger">
-    <span *ngIf="myForm.get('phone').errors?.['required']">
-      <ion-icon name="information-circle-outline"></ion-icon>  Este campo es requerido
-    </span>
-    <span *ngIf="myForm.get('phone').errors?.['minlength']">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      El teléfono debe tener al menos 10 caracteres.
-    </span>
-    <span *ngIf="myForm.get('phone').errors?.['pattern']">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      El teléfono debe tener solo números.
-    </span>
-  </ion-note>
-  </ion-col>
- 
-  <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6" class="Grid-row-form-col">
-    <ion-text class="Grid-row-form-col-text ">
-      <h2 class="Grid-row-form-col-text-h2">Dirección</h2>
-    </ion-text>
-    <ion-item  class="Grid-row-form-col-item" lines="none" >
-      <ion-input  labelPlacement="stacked"   class="Grid-row-form-col-item-label-input-p" formControlName="address" placeholder="Mi dirección es ...">
-      </ion-input>
-      <ion-icon src="../../assets/icon/perfil/locationForm.svg"slot="start"></ion-icon>
-  </ion-item>
-  <ion-note class="Grid-row-form-col-errors" *ngIf="myForm.get('address').invalid && (myForm.get('address').dirty || myForm.get('address').touched)" color="danger">
-    <span *ngIf="myForm.get('address').errors?.['required']">
-      <ion-icon name="information-circle-outline"></ion-icon>  Este campo es requerido
-    </span>
-  </ion-note>
-  </ion-col>
-    </ion-row> 
-    <ion-row  class="Grid-row-actualizar">
-      <ion-col sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="12" style="text-align: center;padding-bottom:18px;padding-top:22px">
-        <ion-button mode="md" class="save" type="submit" [disabled]="!this.myForm.valid">{{updateProfile ? 'Actualizar' : 'Guardar'}} mis datos</ion-button>
-      </ion-col>
-    </ion-row> 
-</ion-grid>
-</form>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="profile__form">
+        <div class="profile__form-grid">
+          <div class="profile__form-group">
+            <label class="profile__form-label">Nombre</label>
+            <div class="profile__input-container">
+              <ion-icon src="../../assets/icon/perfil/nameForm.svg" class="profile__input-icon"></ion-icon>
+              <ion-input 
+                class="profile__input" 
+                formControlName="name" 
+                placeholder="Mi nombre es..."
+              ></ion-input>
+            </div>
+            <div class="profile__error" *ngIf="myForm.get('name').invalid && (myForm.get('name').dirty || myForm.get('name').touched)">
+              <span *ngIf="myForm.get('name').errors?.['required']">
+                <ion-icon name="information-circle-outline"></ion-icon> Este campo es requerido
+              </span>
+              <span *ngIf="myForm.get('name').errors?.['minlength']">
+                <ion-icon name="information-circle-outline"></ion-icon> El nombre debe tener al menos 2 caracteres
+              </span>
+              <span *ngIf="myForm.get('name').errors?.['pattern']">
+                <ion-icon name="information-circle-outline"></ion-icon> El nombre debe tener solo letras
+              </span>
+            </div>
+          </div>
+          <div class="profile__form-group">
+            <label class="profile__form-label">Correo electrónico</label>
+            <div class="profile__input-container">
+              <ion-icon src="../../assets/icon/perfil/mailForm.svg" class="profile__input-icon"></ion-icon>
+              <ion-input 
+                class="profile__input" 
+                formControlName="mail" 
+                placeholder="Mi correo es..."
+              ></ion-input>
+            </div>
+            <div class="profile__error" *ngIf="myForm.get('mail').invalid && (myForm.get('mail').dirty || myForm.get('mail').touched)">
+              <span *ngIf="myForm.get('mail').errors?.['required']">
+                <ion-icon name="information-circle-outline"></ion-icon> Este campo es requerido
+              </span>
+              <span *ngIf="myForm.get('mail').errors?.['email']">
+                <ion-icon name="information-circle-outline"></ion-icon> El formato del correo no es válido
+              </span>
+            </div>
+          </div>
+          <div class="profile__form-group">
+            <label class="profile__form-label">Teléfono</label>
+            <div class="profile__input-container">
+              <ion-icon src="../../assets/icon/perfil/phoneForm.svg" class="profile__input-icon"></ion-icon>
+              <ion-input 
+                class="profile__input" 
+                formControlName="phone" 
+                placeholder="Mi teléfono es..."
+              ></ion-input>
+            </div>
+            <div class="profile__error" *ngIf="myForm.get('phone').invalid && (myForm.get('phone').dirty || myForm.get('phone').touched)">
+              <span *ngIf="myForm.get('phone').errors?.['required']">
+                <ion-icon name="information-circle-outline"></ion-icon> Este campo es requerido
+              </span>
+              <span *ngIf="myForm.get('phone').errors?.['minlength']">
+                <ion-icon name="information-circle-outline"></ion-icon> El teléfono debe tener al menos 10 caracteres
+              </span>
+              <span *ngIf="myForm.get('phone').errors?.['pattern']">
+                <ion-icon name="information-circle-outline"></ion-icon> El teléfono debe tener solo números
+              </span>
+            </div>
+          </div>
+          <div class="profile__form-group">
+            <label class="profile__form-label">Dirección</label>
+            <div class="profile__input-container">
+              <ion-icon src="../../assets/icon/perfil/locationForm.svg" class="profile__input-icon"></ion-icon>
+              <ion-input 
+                class="profile__input" 
+                formControlName="address" 
+                placeholder="Mi dirección es..."
+              ></ion-input>
+            </div>
+            <div class="profile__error" *ngIf="myForm.get('address').invalid && (myForm.get('address').dirty || myForm.get('address').touched)">
+              <span *ngIf="myForm.get('address').errors?.['required']">
+                <ion-icon name="information-circle-outline"></ion-icon> Este campo es requerido
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="profile__submit-button" 
+          [disabled]="!myForm.valid">
+          {{updateProfile ? 'Actualizar' : 'Guardar'}} mis datos
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+      </form>
+    </div>
+<ion-modal #modal trigger="open-modal"  [isOpen]="showImageModal" cssClass="auto-height">
+  <ng-template>
+    <div class="inner-content">
+      <div class="ion-padding" style="height: 100%;">
+        <div class="header-container">
+          <ion-text color="dark">
+            <h2 class="ion-no-margin">Elegir avatar</h2>
+          </ion-text>
+          <ion-button fill="clear" (click)="closeModal()">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </div>
+        <div class="avatar-grid">
+         <div *ngFor="let avatar of avatarOptions; let i = index" 
+               class="avatar-item" 
+               [ngClass]="{'selected': selectedImage === avatar.src}"
+               (click)="handleSelectImage(avatar.src)">
+            <img [src]="avatar.src" [alt]="avatar.label">
+            <div *ngIf="selectedImage === avatar.src" class="check-icon">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+          </div>  
+        </div>
+        <div class="action-buttons">
+          <ion-button class="cancel" (click)="closeModal()">
+            Cancelar
+          </ion-button>
+          <ion-button class="save" (click)="handleSaveImage()">
+            Guardar
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>
+  </div>
 </ion-content>
-  <ion-popover [dismissOnSelect]="true" [keepContentsMounted]="true" id="open-popover" trigger="open-popover">
-  <ng-template >
-    <ion-content class="ion-padding"  style="--background: #f4f4f4;">
-     <ion-list  style="background: #f4f4f4;padding:0px;">
-      <ion-list-header style="--background: #5A4BB2;border-radius: 8px;">
-          <ion-label align="center">
-            <h2 style="font-size: 16px;font-weight: 500;color:#fff">Configuración</h2>
-          </ion-label>
-      </ion-list-header>
-      <!-- <ion-item class="lista" detail='false' [routerLink]="['/denuncias']" lines="none">
-        <ion-label>
-          <p>Mis denuncias</p>
-        </ion-label>
-        <ion-icon style="color:#5A4BB2;" name="chevron-forward-outline"></ion-icon>
-      </ion-item> -->
-      <ion-item class="lista" detail='false' [routerLink]="['/preguntas-frecuentes']" lines="none">
-        <ion-label>
-          <p>Tips y Consejos</p>
-        </ion-label>
-        <ion-icon style="color:#5A4BB2;" name="chevron-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item class="lista" detail='false' button  (click)="changeForm()" lines="none">
-        <ion-label>
-          <p>Elegír otro Formulario</p>
-        </ion-label>
-        <ion-icon style="color:#5A4BB2;" name="chevron-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item class="lista" detail='false' button (click)="deleteData()"  lines="none">
-        <ion-label>
-          <p>Eliminar mis datos 
-        </ion-label>
-        <ion-icon style="color:#5A4BB2;" name="chevron-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item  class="lista" detail='false' [routerLink]="['/sobre-nosotros']"
-        lines="none">
-        <ion-label>
-          <p>Sobre nosotros</p>
-        </ion-label>
-        <ion-icon style="color:#5A4BB2;" name="chevron-forward-outline"></ion-icon>
-      </ion-item>
-     </ion-list>
+<ion-popover [dismissOnSelect]="true" id="open-popover" trigger="open-popover" side="left" alignment="start">
+  <ng-template>
+    <ion-content class="popover-content">
+      <ion-list class="popover-list">
+        <ion-item lines="none" class="popover-item" detail="false" [routerLink]="['/preguntas-frecuentes']" (click)="closePopover()">
+          <div class="popover-icon-container">
+            <ion-icon name="book-outline"></ion-icon>
+          </div>
+          <div class="popover-text">
+            <div class="popover-title">Tips y Consejos</div>
+            <div class="popover-description">Aprende a mantenerte seguro</div>
+          </div>
+        </ion-item>
+        
+        <ion-item lines="none" class="popover-item" detail="false" (click)="changeForm(); closePopover()">
+          <div class="popover-icon-container">
+            <ion-icon name="document-text-outline"></ion-icon>
+          </div>
+          <div class="popover-text">
+            <div class="popover-title">Elegir otro Formulario</div>
+            <div class="popover-description">Completa un nuevo formulario</div>
+          </div>
+        </ion-item>
+        
+        <ion-item lines="none" class="popover-item" detail="false" (click)="deleteData(); closePopover()">
+          <div class="popover-icon-container">
+            <ion-icon name="trash-outline"></ion-icon>
+          </div>
+          <div class="popover-text">
+            <div class="popover-title">Eliminar mis datos</div>
+            <div class="popover-description">Elimina tu información personal</div>
+          </div>
+        </ion-item>
+        
+        <ion-item lines="none" class="popover-item" detail="false" [routerLink]="['/sobre-nosotros']" (click)="closePopover()">
+          <div class="popover-icon-container">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </div>
+          <div class="popover-text">
+            <div class="popover-title">Sobre nosotros</div>
+            <div class="popover-description">Conoce más sobre YoCuento</div>
+          </div>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ng-template>
-</ion-popover>   
-
+</ion-popover>

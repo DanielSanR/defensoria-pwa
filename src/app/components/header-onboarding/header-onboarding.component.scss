@@ -1,21 +1,14 @@
-.col{
-    padding-top: 19px;
-    padding-left: 15px;
-           
-            &-icon{
-                width: 32px;
-                height: 32px;
-            }
-        }
+
  
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
     .col{
         padding-top: 5px;
-        min-height: 115px;
+        min-height: 90px;
+        max-height: 90px;
         &-icon-onboarding{
             padding-left: 126px;
-            width: 123px;
-            height: 96px;
+            width: 80px;
+            height: 80px;
         }
     }
 }

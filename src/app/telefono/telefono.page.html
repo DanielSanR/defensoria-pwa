@@ -1,35 +1,92 @@
-<ion-content> 
-  <ion-grid class="Grid">
-    <ion-row class="Grid-row">
-      <ion-col class="Grid-row-col" size="12">
-        <div class="Grid-row-col-header">
-          <ion-icon src="../../assets/icon/numeros-utiles/numeros-utiles-header.svg" class="Grid-row-col-header-icon"> </ion-icon>
+<ion-content>
+  <div class="mainStructure">
+    <div class="Hero">
+      <div class="Hero-content">
+        <h1 class="Hero-content-title">
+          Estamos aquí para ti, <br>
+          24 horas al día
+        </h1>
+        <p class="Hero-content-text">
+          No estás solo. Nuestro equipo está listo para escucharte y
+          ayudarte en cualquier momento que lo necesites.
+        </p>
+        <div class="Hero-content-clock">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Atención disponible las 24 horas, los 365 días</span>
         </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="Grid-row title">
-      <ion-col class="Grid-row-col" size="12">
-        <ion-label class="Grid-row-col-title">
-          <h1 class="Grid-row-col-title-h1">Números útiles</h1>
-        </ion-label>
-      </ion-col>
-    </ion-row>
-     <ion-row class="Grid-options-row">
-      <ion-col class="Grid-options-row-col" *ngFor="let item of values" sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
-        <ion-card class="Grid-options-row-col-card">
-          <ion-thumbnail class="Grid-options-row-col-card-thumbnail">
-            <ion-icon [src]="'../../assets/icon/numeros-utiles/' + item.icon"></ion-icon>
-          </ion-thumbnail>
-          <ion-card-header class="Grid-options-row-col-card-header">
-            <ion-card-title class="Grid-options-row-col-card-header-title">{{ item.title }}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content class="Grid-options-row-col-card-content">
-            <ion-label class="Grid-options-row-col-card-content-label">
-               {{item.detail}}
-            </ion-label>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>  
-</ion-grid>
+      </div>
+      <div class="Hero-image ion-hide-md-down">
+        <img src="../../assets/icon/numeros-utiles/Hero-Telefono.png" alt="">
+      </div>
+    </div>
+    <h2 class="h2-black-title">Números de Emergencia</h2>
+    <div class="simple-grid">
+      <div class="phone-card" *ngFor="let contact of emergencyContacts">
+        <div class="phone-card-icon">
+          <ion-icon [src]="contact.iconSrc"></ion-icon>
+        </div>
+        <div class="phone-card-content">
+          <div class="phone-card-content-header">
+            <div>
+              <h3 class="phone-card-content-header-title">{{ contact.title }}</h3>
+              <p *ngIf="contact.subtitle" class="phone-card-content-header-subtitle">{{ contact.subtitle }}</p>
+            </div>
+          </div>
+          <a [href]="'tel:' + contact.phoneNumber" class="phone-card-content-number" (click)="callNumber(contact.phoneNumber)">
+            {{ contact.displayNumber }}
+          </a>
+          <p class="phone-card-content-description">
+            <ion-icon name="time-outline"></ion-icon>
+            {{ contact.hours }}
+          </p>
+          <div class="phone-card-content-features" *ngIf="contact.features && contact.features.length > 0">
+            <span class="phone-card-content-features-item" *ngFor="let feature of contact.features">
+              <ion-icon [name]="feature.icon"></ion-icon>
+              {{ feature.text }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="h2-black-title">Otros Canales de Ayuda</h2>
+    <div class="simple-grid">
+      <div class="phone-card" *ngFor="let contact of otherContacts">
+        <div class="phone-card-icon">
+          <ion-icon [src]="contact.iconSrc"></ion-icon>
+        </div>
+        <div class="phone-card-content">
+          <div class="phone-card-content-header">
+            <h3 class="phone-card-content-header-title">{{ contact.title }}</h3>
+            <p *ngIf="contact.subtitle" class="phone-card-content-header-subtitle">{{ contact.subtitle }}</p>
+          </div>
+          <a [href]="contact.isEmail ? 'mailto:' + contact.contactInfo : 'tel:' + contact.contactInfo" 
+             class="phone-card-content-number"
+             [attr.click]="!contact.isEmail ? 'callNumber(' + contact.contactInfo + ')' : null">
+            {{ contact.displayInfo }}
+          </a>
+          <p class="phone-card-content-description">
+            <ion-icon name="time-outline"></ion-icon>
+            {{ contact.responseTime }}
+          </p>
+          <div class="phone-card-content-features" *ngIf="contact.features && contact.features.length > 0">
+            <span class="phone-card-content-features-item" *ngFor="let feature of contact.features">
+              <ion-icon [name]="feature.icon"></ion-icon>
+              {{ feature.text }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="helpCard">
+      <h3 class="helpCard-title">¿Necesitas ayuda para decidir a quién contactar?</h3>
+      <p class="helpCard-text">
+        Si no estás seguro de qué número usar, siempre puedes llamar al 911 para emergencias
+        o completar nuestro formulario y te ayudaremos a encontrar el mejor canal de ayuda.
+      </p>
+      <ion-button class="helpCard-button" routerLink="/formulario">
+        Completar Formulario
+        <ion-icon slot="end" name="open-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

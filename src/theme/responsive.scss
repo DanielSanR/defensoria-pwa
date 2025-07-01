@@ -1,0 +1,117 @@
+
+
+@include respond-min(768px) {
+    .mainStructure {
+        padding: 24px;
+    }
+    .HomeCards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .Hero {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 32px;
+        border-radius: 24px;
+        &-title {
+            font-size: 36px;
+        }
+        &-text{
+            font-size: 18px;
+        }
+        &-clock{
+            font-size: 16px;
+            ion-icon {
+                font-size: 18px;
+            }
+        }
+        &-image{
+            margin-top: 0;
+            img{
+                width: 250px;
+            }
+        }
+        &-content{
+           &-buttons{
+                flex-direction: row;
+            }
+        }
+    }
+    .h2-black-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .simple-grid{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .phone-card{
+        padding: 24px;
+        &-icon{
+            width: 56px;
+            height: 56px; 
+        }
+        &-content{
+            &-header{
+                &-title{
+                    font-size: 20px;
+                }
+            }
+            &-number{
+                font-size: 16px;
+            }
+        }
+    }
+    .homeTrust-items{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@include respond-min(992px){
+    .homeTrust-items{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@include respond-min(1024px) {
+    .mainStructure {
+        padding: 32px;
+    }
+    .Hero {
+        &-title {
+            font-size: 40px;
+        }
+        &-image{
+            img{
+                width: 300px;
+            }
+        }
+    }
+    .HomeCards{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .helpCard{
+        &-title{
+            font-size: 24px;
+        }
+    }
+}
+
+
+@include between-min-max(576px, 991px){
+    .HomeCards{
+        grid-template-columns: repeat(2, 1fr);
+        &-card{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .homeTrust-items{
+            grid-template-columns: repeat(2, 1fr);
+            .homeTrust-items-item:last-child{
+                grid-column: span 2;
+                max-width: 400px;
+                margin: 0 auto; 
+            }
+        }
+}

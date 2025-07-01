@@ -1,40 +1,52 @@
 <ion-content [style.--background]="background">
-  <app-header-onboarding [isDesktop]="isDesktop" [index]="swiperInstance?.activeIndex"></app-header-onboarding>
-  <swiper-container [ngStyle]="{ 'height': (swiperInstance?.activeIndex ===2) && (!isDesktop)  ? '100%' : 'calc(100% - ' + headerPixel + ')' }" #swiper
+  <app-header-onboarding></app-header-onboarding>
+  <swiper-container  [ngStyle]="{ 'height': (typeScreen.type === 'mobile' || typeScreen.type === 'tablet')  ? '100%' : 'calc(100% - ' + headerPixel + ')' }" #swiper
     (swiperslidechange)="slideWillChange()" [allowTouchMove]="false" [allowSlidePrev]="false" speed="500" [autoHeight]="false">
     <!-- Start Slider 1 -->
      <swiper-slide>
-      <ion-grid class="Grid">
+      <ion-grid class="Grid" [ngStyle]="{ 'max-height': (typeScreen.type === 'tablet' || typeScreen.type === 'mobile')  ? '100%' : '50vh' }">
         <ion-row class="Grid-row-principal">
-          <ion-col sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="12" sizeXl="6" pushXl="6"
-            class="Grid-row-principal-col col-padding">
+          <ion-col sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="6" sizeXl="6" pushLg="6" pushXl="6"
+            class="Grid-row-principal-col">
             <ion-text class="Grid-row-principal-col-title">
-              <h1 class="Grid-row-principal-col-title-h1">¡Hola, bienvenido!</h1>
+              <h1 class="Grid-row-principal-col-title-h1">Bienvenido a YoCuento</h1>
               <p class="Grid-row-principal-col-title-p">
                 “Yo Cuento” es una aplicación que te permitirá realizar un pedido de ayuda en el caso que estés pasando
-                por alguna situación de violencia. Tené en cuenta que toda la información que brindes es confidencial y
-                será utilizada solamente por las personas que procederán a ayudarte (ley 25326). A continuación, tendrás
-                que responder unas breves preguntas para que podamos ayudarte.
+                por alguna situación de violencia.</p>
+              <p class="Grid-row-principal-col-title-p">
+                 Tené en cuenta que toda la información que brindes es confidencial y
+                será utilizada solamente por las personas que procederán a ayudarte (ley 25326).
               </p>
-              <p class="Grid-row-principal-col-title-disclaimer  ion-hide-xl-down"> Apretando el boton “Continuar”, aceptas nuestros “Terminos y Condiciones & Politicas de Privacidad”.
+               <p class="Grid-row-principal-col-title-p"> 
+                 A continuación, tendrás que responder unas breves preguntas para que podamos ayudarte.
               </p>
-            </ion-text>
-          </ion-col>
-          <ion-col sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="12" sizeXl="6" pullXl="6" class="Grid-row-principal-col">
-            <ion-img class="Grid-row-principal-col-img" src="../../assets/icon/onboarding/family-onboarding.svg"></ion-img>
-          </ion-col>
-          <ion-col class="Grid-row-tyc-col ion-hide-xl-up" sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="12" sizeXl="6">
-            <ion-text class="Grid-row-tyc-col-text">
-              <p class="Grid-row-tyc-col-text-p"> Apretando el boton “Continuar”, aceptas nuestros
+              <div class="Grid-row-tyc-col-container ion-hide-lg-down">
+              <ion-text class="Grid-row-tyc-col-container-text">
+              <p class="Grid-row-tyc-col-container-text-p"> Apretando el boton “Continuar”, aceptas nuestros
                 “Terminos y Condiciones & Politicas de Privacidad”.
               </p>
-
             </ion-text>
+              </div>
+             
+            </ion-text>
+          </ion-col>
+          <ion-col style="align-content: center;"  sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="6" sizeXl="6" pullLg="6" pullXl="6" class="Grid-row-principal-col">
+            <ion-img class="Grid-row-principal-col-img" src="../../assets/icon/onboarding/new-bienvenido.svg"></ion-img>
+          </ion-col>
+          <ion-col class="Grid-row-tyc-col ion-hide-lg-up" sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="6" sizeXl="6">
+            <div class="Grid-row-tyc-col-container">
+              <ion-text class="Grid-row-tyc-col-container-text">
+              <p class="Grid-row-tyc-col-container-text-p"> Apretando el boton “Continuar”, aceptas nuestros
+                “Terminos y Condiciones & Politicas de Privacidad”.
+              </p>
+            </ion-text>
+            </div>
+            
           </ion-col>
         </ion-row>
         <ion-row class="Grid-row-button">
-          <ion-col sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="12" sizeXl="6" pushXl="6" class="Grid-row-button-col">
-            <ion-button class="Grid-row-button-col-nextBtn" (click)="next()">Continuar</ion-button>
+          <ion-col sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="6" sizeXl="6" pushLg="6" pushXl="6" class="Grid-row-button-col">
+            <ion-button class="next w-100" (click)="next()">Continuar</ion-button>
           </ion-col>
            
         </ion-row>
@@ -42,61 +54,71 @@
     </swiper-slide>  
     <!-- End Slider 1 -->
     <!-- Start Slider 2 --> 
- <swiper-slide>
-      <ion-grid class="Grid">
-        <ion-row class="Grid-row-principal fixed">
-          <ion-col sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="12" sizeXl="6" pushXl="6"
-            class="Grid-row-principal-col col-padding">
+     <swiper-slide>
+      <ion-grid class="Grid" [ngStyle]="{ 'max-height': (typeScreen.type === 'tablet' || typeScreen.type === 'mobile')  ? '100%' : '50vh' }">
+        <ion-row class="Grid-row-principal">
+          <ion-col sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="6" sizeXl="6" pushLg="6" pushXl="6"
+            class="Grid-row-principal-col">
             <ion-text class="Grid-row-principal-col-title">
               <h1 class="Grid-row-principal-col-title-h1">Habilita tu ubicación.</h1>
               <p class="Grid-row-principal-col-title-p">
                 Este sitio utilizará tu ubicación para poder ayudarte.
               </p>
-              <p  class="Grid-row-principal-col-title-disclaimer ion-hide-xl-down"> Este
+              <p class="Grid-row-principal-col-title-p">
+                Tu ubicación será utilizada únicamente para poder brindarte la ayuda que necesitas y no será compartida con terceros.
+              </p>
+              <div class="Grid-row-tyc-col-container ion-hide-lg-down">
+              <ion-text class="Grid-row-tyc-col-container-text">
+              <p class="Grid-row-tyc-col-container-text-p"> Este
                 sitio web utiliza tu ubicación para poder brindarte una mejor experiencia y poder proceder correctamente
                 con tu solicitud.
               </p>
             </ion-text>
+              </div>
+            </ion-text>
           </ion-col>
-          <ion-col sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="12" sizeXl="6" pullXl="6" class="Grid-row-principal-col">
-            <ion-img class="Grid-row-principal-col-img" src="../../assets/icon/onboarding/location-desktop.svg"></ion-img>
+          <ion-col style="align-content: center;"  sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="6" sizeXl="6" pullLg="6" pullXl="6" class="Grid-row-principal-col">
+            <ion-img class="Grid-row-principal-col-img" src="../../assets/icon/onboarding/location.png"></ion-img>
           </ion-col>
-          <ion-col class="Grid-row-tyc-col ion-hide-xl-up" sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="12" sizeXl="6"
-            style="align-self: center;">
-            <ion-text class="Grid-row-tyc-col-text">
-              <p class="Grid-row-tyc-col-text-p ion-hide-xl-up"> Este sitio web utiliza tu ubicación para poder
+          <ion-col class="Grid-row-tyc-col ion-hide-lg-up" sizeXs="12" sizeSm="12" SizeMd="6" sizeLg="12" sizeXl="6"
+          >
+           <div class="Grid-row-tyc-col-container">
+              <ion-text class="Grid-row-tyc-col-container-text">
+              <p class="Grid-row-tyc-col-text-p ion-hide-lg-up"> Este sitio web utiliza tu ubicación para poder
                 brindarte una mejor experiencia y poder proceder correctamente con tu solicitud.
               </p>
             </ion-text>
+            </div> 
           </ion-col>
         </ion-row>
         <ion-row class="Grid-row-button">
           <ion-col sizeXs="12" sizeSm="12" SizeMd="12" sizeLg="12" sizeXl="6" offsetXl="6" class="Grid-row-button-col">
-            <ion-button class="Grid-row-button-col-nextBtn" (click)="getLocation()">Habilitar ubicación</ion-button>
+            <ion-button class="next w-100" (click)="getLocation()">Habilitar ubicación</ion-button>
           </ion-col>
-          <!--  <ion-col sizeXs="12" sizeSm="12" SizeMd="12" sizeLg="12" sizeXl="6" offsetXl="6" class="Grid-row-button-col">
-            <ion-button class="Grid-row-button-col-nextBtn" (click)="next()">test</ion-button>
-          </ion-col>   -->
         </ion-row>
       </ion-grid>
-    </swiper-slide>  
+    </swiper-slide>   
     <!-- End Slider 2 -->
     <!-- Start Slider 3 -->
     <swiper-slide>
-      <ion-grid class="Grid-choice">
-        <ion-row class="Grid-choice-row-selection">
-          <ion-col sizeXs="12" sizeSm="12" SizeMd="12" sizeLg="12" sizeXl="6"  class="Grid-choice-row-selection-col">
-            <ion-icon src="../../assets/icon/onboarding/kid-desktop.svg"></ion-icon>
-            <ion-button class="Grid-choice-row-selection-col-Btn" (click)="select('Niño/Niña')"> SOY NIÑO/NIÑA</ion-button>
+      <ion-grid class="Grid" [ngStyle]="{ 'max-height': (typeScreen.type === 'tablet' || typeScreen.type === 'mobile')  ? '100%' : '50vh' }">
+        <ion-row class="Grid-row-choice">
+          <ion-col sizeXs="12" sizeSm="12" SizeMd="12" sizeLg="12" sizeXl="12"
+            class="Grid-row-choice-col-title">
+            <ion-text class="Grid-row-choice-col-title">
+              <h1 class="Grid-row-choice-col-title-h1 ">Selecciona tu edad</h1>
+              <p class="Grid-row-choice-col-title-p">
+                Esto nos ayudará a brindarte la mejor atención</p>
+            </ion-text>
           </ion-col>
-          <ion-col sizeXs="12" sizeSm="12" SizeMd="12" sizeLg="12" sizeXl="6" class="Grid-choice-row-selection-col">
-            <ion-icon  src="../../assets/icon/onboarding/teen-desktop.svg"></ion-icon>
-            <ion-button class="Grid-choice-row-selection-col-Btn" (click)="select('Adolescente')"> SOY ADOLESCENTE</ion-button>
+          <ion-col sizeXs="12" sizeSm="12" SizeMd="12" sizeLg="5" sizeXl="5"  class="Grid-row-choice-col-selection" (click)="select('Niño/Niña')">
+            <ion-img class="Grid-row-choice-col-selection-img" src="../../assets/icon/onboarding/teen.png"></ion-img>
+            <ion-button class="next w-100" > SOY NIÑO/NIÑA</ion-button>
           </ion-col>
-<!--           <ion-col sizeXs="12" sizeSm="12" SizeMd="12" sizeXl="12" sizeLg="12" class="Grid-choice-row-selection-col">
-            <ion-icon  src="../../assets/icon/onboarding/adult-desktop.svg"></ion-icon>
-            <ion-button class="Grid-choice-row-selection-col-Btn" (click)="select('Adulto')"> SOY ADULTO</ion-button>
-          </ion-col> -->
+          <ion-col sizeXs="12" sizeSm="12" SizeMd="12" sizeLg="5" sizeXl="5" class="Grid-row-choice-col-selection" (click)="select('Adolescente')">
+            <ion-img class="Grid-row-choice-col-selection-img" src="../../assets/icon/onboarding/adult.png"></ion-img>
+            <ion-button class="next w-100" > SOY ADOLESCENTE</ion-button>
+          </ion-col> 
         </ion-row>
       </ion-grid>
     </swiper-slide>

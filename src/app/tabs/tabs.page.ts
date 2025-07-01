@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { IonTabs, MenuController, Platform } from '@ionic/angular';
-import { ScreensizeService } from '../services/screensize.service';
 
 @Component({
   selector: 'app-tabs',
@@ -10,6 +9,11 @@ import { ScreensizeService } from '../services/screensize.service';
 export class TabsPage implements OnInit {
    menu = [
     {
+      title: 'Inicio',
+      url: '/inicio',
+      icon: '../../assets/icon/tabmenu/menu.svg'
+    },
+    {
       title: 'Formulario',
       url: '/formulario',
       icon: '../../assets/icon/tabmenu/formulario.svg'
@@ -18,11 +22,6 @@ export class TabsPage implements OnInit {
       title: 'Mapa',
       url: '/mapa',
       icon: '../../assets/icon/tabmenu/mapa.svg'
-    },
-    {
-      title: 'Inicio',
-      url: '/inicio',
-      icon: '../../assets/icon/tabmenu/menu.svg'
     },
     {
       title: 'Telefono',
@@ -35,23 +34,10 @@ export class TabsPage implements OnInit {
       icon: '../../assets/icon/tabmenu/perfil.svg'
     }
 ]
-  isDesktop: boolean;
-  public width: number;
   private activeTab?: HTMLElement;
-  constructor(public platform: Platform,
-    private screenSizeService: ScreensizeService, private menuCtrol: MenuController) {
-      this.screenSizeService.isDesktopView().subscribe(isDesktop => {
-          if (this.isDesktop && !isDesktop) {
-          window.location.reload();
-        }  
-        this.isDesktop = isDesktop;   
-      });
-        
-    }
+  constructor(public platform: Platform,private menuCtrol: MenuController) {}
 
-  ngOnInit() { 
-    this.updateMenuBasedOnWidth(window.innerWidth);
-  }
+  ngOnInit() {}
 
   close(){
     this.menuCtrol.close();
@@ -61,15 +47,6 @@ export class TabsPage implements OnInit {
     this.activeTab = tabsRef.outlet.activatedView.element;
   }
 
-  toggleMenu(width: number) {
-    if (width > 1200) { 
-      setTimeout(() => {
-        this.menuCtrol.enable(false, 'myMenu');
-      }, 1000);  
-    } else {
-      this.menuCtrol.enable(true, 'myMenu');
-    }  
-  }
     ionViewWillLeave() {
     this.propagateToActiveTab('ionViewWillLeave');
   }
@@ -91,12 +68,5 @@ export class TabsPage implements OnInit {
       this.activeTab.dispatchEvent(new CustomEvent(eventName));
     }
   }
-@HostListener('window:resize', ['$event'])
-  onResize(event){
-    const width = event.target.innerWidth;
-    this.toggleMenu(width);
-}
-updateMenuBasedOnWidth(width: number) {
-  this.toggleMenu(width);
-}   
+
 }

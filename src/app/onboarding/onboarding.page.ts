@@ -1,15 +1,15 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef,OnDestroy, ElementRef, AfterViewInit } from '@angular/core';/* 
-import SwiperCore ,{Pagination, Autoplay,SwiperOptions,EffectFade, Navigation} from 'swiper'; *//* 
-import { SwiperComponent } from 'swiper/angular'; */
+import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { StorageService } from '../services/storage.service';
 import { ToastService } from '../services/toast.service';
 import { v4 as uuidv4 } from 'uuid';
-import { DeviceService } from '../services/device.service'; 
 import { ScreensizeService } from '../services/screensize.service';
 import { OnboardingService } from '../services/onboarding.service';
+interface IScreensizeService {
+  type: 'desktop' | 'mobile' | 'tablet';
+}
 @Component({
   selector: 'app-onboarding',
   templateUrl: './onboarding.page.html',
@@ -30,7 +30,7 @@ export class OnboardingPage implements OnInit {
   selected: string = '';
   latitude: any;
   longitude: any;
-  isDesktop: boolean = false;
+  typeScreen : IScreensizeService = { type: 'mobile' };
   usuarioId = uuidv4();
   constructor(private router: Router, private cd: ChangeDetectorRef,
     private alertController: AlertController,private toastService: ToastService
@@ -43,8 +43,8 @@ export class OnboardingPage implements OnInit {
   ngOnInit() { 
     this.background = '#fff';
      this.screenSize.isDesktopView().subscribe(isDesktop => {
-       this.headerPixel = isDesktop ? '125px' : '71px';
-        this.isDesktop = isDesktop;
+       this.headerPixel = isDesktop ? '90px' : '0px';
+        this.typeScreen = isDesktop;
       });
   }
  

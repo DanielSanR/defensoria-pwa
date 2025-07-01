@@ -57,7 +57,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/insultos.svg"
+        "icon" : "../../assets/icon/form/amenazas.svg"
       },
       {
         "id": 6,
@@ -65,7 +65,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/insultos.svg"
+        "icon" : "../../assets/icon/form/insultos-diarios.svg"
       },
       {
         "id": 7,
@@ -73,7 +73,7 @@
         "inputs": [
           
         ],
-        "icon" : "../../assets/icon/form/comida.svg"
+        "icon" : "../../assets/icon/form/prohibir-comida.svg"
       },
       {
         "id": 8,
@@ -105,7 +105,7 @@
         "inputs": [
           {"key": "reason_other", "label": "¿Cuál es tu motivo?", "type": "text"}
         ],
-        "icon" : "../../assets/icon/form/insultos.svg"
+        "icon" : "../../assets/icon/form/otro-motivo.svg"
       }
     ]
   },

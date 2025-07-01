@@ -1,0 +1,280 @@
+.mainStructure {
+    padding: 16px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.save{ 
+    @include button-clean(#F07800,#fff);
+    border: 1px solid #F07800;
+    &:hover{
+        --background: #F07800;
+        color: #fff;
+    }
+}
+
+.next{
+    @include button-clean(#6B4EE6,#fff);
+    border: 1px solid #6B4EE6;
+    &:hover{
+        --background: #6B4EE6;
+        color: #fff;
+    }
+}
+.w-100{
+    width: 100%;
+}
+.cancel{
+    @include button-clean(#fff,#666);
+    border: 1px solid #666
+}
+
+.HomeCards{
+    @include grid(1, 16px);
+    margin-bottom: 48px;
+    &-card{
+        @include card(pointer);
+        @include flexbox(column, flex-start, flex-start);
+          &-icon {
+            @include icon(48px)
+          }
+          &-title {
+            @include font(18px, 600, #6B4EE6, 16 0 8px 0);
+          }
+          &-description {
+            @include font(14px, 400, #666, 0);
+          }
+          &--primary {
+            background: linear-gradient(45deg, #6B4EE6, #7865d6, #6B4EE6);
+            background-size: 200% 200%;
+            animation: gradientBg 5s ease infinite, pulse 2s infinite ease-in-out;
+            box-shadow: 0 5px 15px rgba(107, 78, 230, 0.3);
+            & .HomeCards-card-title, & .HomeCards-card-description {
+              color: white;
+            }
+            &:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 8px 20px rgba(107, 78, 230, 0.5);
+            }
+          }
+    }
+}
+
+/* Seccion HERO */
+.Hero {
+    background: linear-gradient(to right, #6B4EE6, #8F7FF7);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 48px;
+    min-height: 295px;
+    @include flex-column();
+    position: relative;
+    &-image {
+        display: flex;
+        justify-content: center;
+        margin-top: 24px;
+        flex: 1;
+        position: absolute;
+        bottom: 0;
+        left: 75%;
+        img {
+            width: 200px;
+            height: auto;
+        }
+    }
+    &-content {
+        flex: 1;
+        &-title {
+            @include font (28px, 700, white, 20px 0 16px 0);
+        }
+        &-text {
+            @include font(16px, 400, rgba(255, 255, 255, 0.9), 0 0 24px 0);
+            max-width: 500px;
+        }
+        &-buttons{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            &-primary{
+                @include button-clean(#fff,#6B4EE6);
+            }
+        }
+        &-clock {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            ion-icon {
+                font-size: 16px;
+            }
+        }
+    }
+}
+/* PRESETS */
+.h2-black-title {
+    @include font(20px, 700, #333, 16px 0 16px 0);
+    @media (min-width: 768px) {
+        font-size: 24px;
+      }
+}
+.h2-black-title-center {
+    @include font(20px, 700, #333, 16px 0 16px 0, center);
+    @media (min-width: 768px) {
+        font-size: 24px;
+      }
+}
+
+.simple-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+/*  SECCION TELEFONO */
+.phone-card{
+    background-color: white;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    &-icon{
+        background-color: #f5f5f5;
+        border-radius: 12px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        ion-icon {
+            font-size: 36px; 
+          }
+    }
+    &-content{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        &-header{
+            &-title{
+                font-size: 18px;
+                font-weight: 600;
+                color: #333;
+                margin: 0 0 4px 0;
+            }
+            &-subtitle{
+                font-size: 14px;
+                color: #666;
+                margin: 0 0 8px 0;
+            }
+
+        }
+        &-number{
+            font-size: 14px;
+            width: fit-content;
+            font-weight: 700;
+            color: #6B4EE6;
+            margin: 0 0 8px 0;  
+            transition: all 0.2s ease;
+            position: relative;
+            overflow-wrap: anywhere;
+
+        }
+        &-description{
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 16px;
+            color: #666;
+            margin: 0 0 12px 0;
+            ion-icon {
+                color: #666;
+                font-size: 16px;
+              }
+
+        }
+        &-features{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            &-item{
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                background-color: #F5F3FF;
+                color: #6B4EE6;
+                padding: 4px 10px;
+                border-radius: 100px;
+                font-size: 12px;
+                font-weight: 500;
+
+                ion-icon {
+                    font-size: 12px;
+                  }
+            }
+        }
+
+    }
+}
+
+.helpCard{
+    @include simple-card();
+    &-title{
+        font-size: 20px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 16px;
+    }
+    &-text{
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 24px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &-button{
+       @include button-with-icon(#6B4EE6, white);
+    }
+}
+
+.homeTrust{
+    @include simple-card();
+    &-items{
+        @include grid(1, 24px);
+        &-item{
+            @include flexbox(column, center, center);
+            &-icon{
+                @include icon(48px);
+            }
+            &-title{
+                @include font(18px, 600, #333, 16px 0 10px 0,center);
+            }
+            &-text{
+                @include font(16px, 400, #666,0,center);
+            }
+        }
+    }
+}
+
+/* Animaciones */
+@keyframes gradientBg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+  }
+  

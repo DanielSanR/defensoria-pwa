@@ -1,41 +1,79 @@
+<!-- sobre-nosotros.page.html -->
 <ion-content>
-  <ion-grid class="Grid"> 
-    <ion-card class="Grid-card">
-      <ion-card-header class="Grid-card-header">
-        <ion-card-title class="Grid-card-header-title">Sobre nosotros</ion-card-title> 
-      </ion-card-header>
-      <ion-card-content  class="Grid-card-content ion-tex-center">
-        <div style="width: 100%;display: flex;justify-content: center;">
-          <ion-icon src="../../assets/icon/sobre-nosotros.svg" class="Grid-card-content-icon"></ion-icon>
-        </div>
-        <ion-label class="Grid-card-content-label">
-          <p class="Grid-card-content-label-p">Nuestra aplicación se ha creado con el propósito de proporcionar una plataforma segura y fácil de usar para hacer denuncias de abuso sexual y acoso infantil. Sabemos que estos temas son sensibles y difíciles de abordar, y nuestro objetivo es proporcionar un medio para que las víctimas y testigos puedan hacer denuncias de manera anónima y segura.</p>
-          <p class="Grid-card-content-label-p">Todas las denuncias que recibimos son manejadas de manera confidencial y se envían a las autoridades competentes para su procesamiento y investigación. Hemos implementado medidas de seguridad para proteger la privacidad y la seguridad de los denunciantes, y nos tomamos muy en serio nuestra responsabilidad de garantizar que estas denuncias se manejen de manera adecuada.</p>
-          <p class="Grid-card-content-label-p">Si necesitas más ayuda o asesoramiento después de hacer una denuncia a través de nuestra aplicación, no dudes en ponerte en contacto con nosotros. Estaremos encantados de proporcionar más información o apoyo. Puedes contactarnos a través de nuestra sección de "Contacto" en la aplicación o enviando un correo electrónico a nuestro equipo de soporte. Estamos aquí para ayudarte.</p>
-        </ion-label>
-        <ion-label class="ion-text-end" >
-            <p style="font-size: 0.6rem;"> Version de la aplicación :  {{ v }}</p>
-        </ion-label>
-      </ion-card-content>
-    </ion-card>
+  <div class="about">
+    <!-- Hero Section -->
+    <div class="about__hero">
+      <h1 class="about__hero-title">{{ pageContent.hero.title }}</h1>
+      <p class="about__hero-text">
+        {{ pageContent.hero.text }}
+      </p>
+    </div>
 
-  <!--  <ion-row class="Grid-row">
-     <ion-col class="Grid-row-col" size="12">
-       <ion-icon src="../../assets/icon/sobre-nosotros.svg" class="Grid-row-col-icon"></ion-icon>
-     </ion-col>
-     <ion-col size="12" class="Grid-col-tyc">
-       <ion-text class="Grid-col-tyc-text"> 
-           <p> Nuestra aplicación se ha creado con el propósito de proporcionar una plataforma segura y fácil de usar para hacer denuncias de abuso sexual, acoso infantil u otra vulneración de los derechos. Sabemos que estos temas son sensibles y difíciles de abordar, y nuestro objetivo es proporcionar un medio para que las víctimas y testigos puedan hacer denuncias de manera anónima y segura. <br>
-            Todas las denuncias que recibimos son manejadas de manera confidencial y se envían a las autoridades competentes para su procesamiento e investigación. Hemos implementado medidas de seguridad para proteger la privacidad y la seguridad de los denunciantes, y nos tomamos muy en serio nuestra responsabilidad de garantizar que estas denuncias se manejen de manera adecuada. <br>
-            Si necesitas más ayuda o asesoramiento después de hacer una denuncia a través de nuestra aplicación, no dudes en ponerte en contacto con nosotros. Estaremos encantados de proporcionar más información o apoyo. Puedes contactarnos a través de nuestra sección de "Telefono" en la aplicación o enviando un correo electrónico a nuestro equipo de soporte. Estamos aquí para ayudarte.
-           </p>
-     </ion-text>
-     </ion-col>
-    </ion-row>
-     <ion-row class="Grid-button-row">
-       <ion-col size="12" class="Grid-button-row-col">
-         <ion-button class="Grid-button-row-col-nextBtn" (click)="volver()">Volver</ion-button>
-       </ion-col>
-      </ion-row> -->
-   </ion-grid>
+    <!-- Logo Section -->
+    <div class="about__logo">
+      <img src="../../assets/icon/yocuento-desktop.svg" alt="YoCuento">
+    </div>
+
+    <!-- Main Content -->
+    <div class="about__content">
+      <p class="about__text" *ngFor="let paragraph of pageContent.paragraphs">
+        {{ paragraph }}
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="about__features">
+      <!-- Feature Items -->
+      <div class="about__feature" *ngFor="let feature of features">
+        <div class="about__feature-icon">
+          <ion-icon [name]="feature.icon"></ion-icon>
+        </div>
+        <div class="about__feature-content">
+          <h3 class="about__feature-title">{{ feature.title }}</h3>
+          <p class="about__feature-description">
+            {{ feature.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Institutions Section -->
+    <div class="about__institutions">
+      <h2 class="about__section-title">Instituciones Participantes</h2>
+      
+      <div class="about__institution" *ngFor="let institution of institutions">
+        <div class="about__institution-logo">
+          <img [src]="institution.logo" [alt]="institution.name">
+        </div>
+        <div class="about__institution-content">
+          <h3 class="about__institution-title">{{ institution.name }}</h3>
+          <p class="about__institution-description">{{ institution.description }}</p>
+          
+          <div class="about__institution-contact">
+            <div class="about__institution-contact-item">
+              <ion-icon name="business-outline"></ion-icon>
+              <span>{{ institution.contact.address }}</span>
+            </div>
+            <div class="about__institution-contact-item">
+              <ion-icon name="call-outline"></ion-icon>
+              <span>{{ institution.contact.phone }}</span>
+            </div>
+            <div class="about__institution-contact-item">
+              <ion-icon name="mail-outline"></ion-icon>
+              <span>{{ institution.contact.email }}</span>
+            </div>
+            <div class="about__institution-contact-item">
+              <ion-icon name="globe-outline"></ion-icon>
+              <span>{{ institution.contact.web }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Version Info -->
+    <div class="about__version">
+      <p>Versión de la aplicación: {{ v }}</p>
+    </div>
+  </div>
 </ion-content>

@@ -1,0 +1,124 @@
+@mixin flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @mixin grid($columns: 1, $gap: 16px) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: $gap;
+  }
+  
+  @mixin flexbox($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    
+  }
+
+  @mixin respond-max($max) {
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+
+  @mixin respond-min($min) {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+
+
+  @mixin between-min-max($min, $max) {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  @mixin card($cursor: none) {
+        background-color: white;
+        border-radius: 16px;
+        padding: 24px;
+        cursor: $cursor;
+        transition: all 0.3s ease;
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          }
+  }
+
+  @mixin simple-card(){
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  @mixin icon($size) {
+    width: $size;
+    height: $size;
+    margin-bottom: 12px;
+    ion-icon {
+      width: 100%;
+      height: 100%;
+    }
+}
+
+@mixin font($size, $weight, $color, $margin: 0, $text-align: start) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+    margin: $margin;
+    text-align: $text-align;
+  }
+
+  @mixin button-with-icon($background,$color){
+    background: $background;
+    --background: #{$background};
+    color: $color;
+    --color: #{$color};
+    --border-radius: 12px;
+    --box-shadow:none;
+    text-transform: none;
+    letter-spacing: -0.02em;
+    border-radius: 12px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --padding-start: 24px;
+    --padding-end: 24px;
+    font-weight: 600;
+    font-size: 16px;
+    width: auto;
+    &:hover {
+      transform: translateY(-1px); 
+    }
+  }
+
+  @mixin button-clean($background,$color){
+      background: $background;
+      --background: #{$background};
+      color: $color;
+      --color: #{$color};
+      --border-radius: 12px;
+      border-radius: 12px;
+      --padding-start: 24px;
+      --padding-end: 24px;
+      --padding-top: 16px;
+      --padding-bottom: 16px;
+      --box-shadow:none;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      text-transform: none; 
+      width: auto;
+      &:hover {
+        transform: translateY(-1px);
+        --background: #F5F3FF;
+      }
+  }

@@ -1,35 +1,72 @@
-<ion-grid class="Grid">
-    <ion-row class="Grid-header-row">
-        <ion-col class="Grid-header-row-col" sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12" sizeXl="6">
-            <div class="Grid-header-row-col-titulo">
-                <ion-label class="Grid-header-row-col-titulo-label">
-                    Conéctate con quien necesites
-                </ion-label>
+<ion-content>
+    <div class="map-page">
+      <div class="map-page__header">
+        <h1 class="map-page__title">Encuentra ayuda cerca de ti</h1>
+        <p class="map-page__subtitle">Localiza hospitales y comisarías en Posadas</p>
+      </div>
+      <div class="map-page__search-box">
+        <div class="map-page__search-container">
+          <div class="map-page__search-input-container">
+            <ion-icon class="map-page__search-icon" name="search-outline"></ion-icon>
+            <ion-input
+              [(ngModel)]="searchTerm"
+              placeholder="Buscar por nombre o dirección..."
+              class="map-page__search-input"
+              (ionChange)="filterLocations()"
+            ></ion-input>
+          </div>
+          <div class="map-page__filters">
+            <ion-button 
+              [ngClass]="{'map-page__filter-btn--active': selectedType === 'all'}"
+              class="map-page__filter-btn" 
+              (click)="setSelectedType('all')">
+              Todos
+            </ion-button>
+            <ion-button 
+              [ngClass]="{'map-page__filter-btn--active': selectedType === 'hospital'}"
+              class="map-page__filter-btn" 
+              (click)="setSelectedType('hospital')">
+              Hospitales
+            </ion-button>
+            <ion-button 
+              [ngClass]="{'map-page__filter-btn--active': selectedType === 'police'}"
+              class="map-page__filter-btn" 
+              (click)="setSelectedType('police')">
+              Comisarías
+            </ion-button>
+          </div>
+        </div>
+      </div>
+      <div class="map-page__content">
+        <div class="map-page__locations">
+          <h2 class="map-page__locations-title">
+            Ubicaciones ({{filteredLocations.length}})
+          </h2>
+          <div class="map-page__locations-list">
+            <div 
+              *ngFor="let location of filteredLocations" 
+              class="map-page__location-card"
+              (click)="selectLocation(location)">
+              <div class="map-page__location-info">
+                <ion-icon 
+                  [src]="location.type === 'hospital' ? '../../assets/icon/hospital.svg' : '../../assets/icon/policia.svg'"
+                  class="map-page__location-icon"
+                ></ion-icon>
+                <div class="map-page__location-details">
+                  <h3 class="map-page__location-name">{{ location.name }}</h3>
+                  <p class="map-page__location-address">{{ location.address }}</p>
+                  <div class="map-page__location-phone">
+                    <ion-icon name="call-outline"></ion-icon>
+                    <span>{{ location.phone }}</span>
+                  </div>
+                </div>
+              </div>
             </div>
-        </ion-col>
-        <ion-col class="Grid-header-row-col"   sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
-            <div class="Grid-header-row-col-container">
-                <ion-icon class="Grid-header-row-col-container-icon" src="../../assets/icon/hospital.svg"></ion-icon>     
-                <div class="Grid-header-row-col-container-label">
-                <ion-label class="Grid-header-row-col-container-label-badge">
-                    Hospitales
-                </ion-label></div>  
-            </div> 
-        </ion-col>
-            <ion-col class="Grid-header-row-col"   sizeXs="6" sizeSm="6" sizeMd="6" sizeLg="6" sizeXl="3">
-                <div class="Grid-header-row-col-container">
-                <ion-icon class="Grid-header-row-col-container-icon" src="../../assets/icon/policia.svg"></ion-icon>        
-                <div class="Grid-header-row-col-container-label">
-                <ion-label class="Grid-header-row-col-container-label-badge">
-                    Comisarías
-                </ion-label></div>   
-            </div>
-            </ion-col>
-    </ion-row>
-    <ion-row class="Grid-map-row">
-        <ion-col class="Grid-map-row-col">
-            <div class="Grid-map-row-col-map" id="map"></div>
-        </ion-col>
-    </ion-row>
-</ion-grid>
-
+          </div>
+        </div>
+        <div class="map-page__map-container">
+          <div id="map" class="map-page__map"></div>
+        </div>
+      </div>
+    </div>
+  </ion-content>

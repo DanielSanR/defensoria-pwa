@@ -18,13 +18,13 @@ export class AppComponent {
 
    initializeApp(){
     this.platform.ready().then(() => {
-      this.screenSizeService.onResize(this.platform.width());
-      
+      this.screenSizeService.onResize(this.platform.width(), this.platform.height());
     });
    }   
    
    @HostListener('window:resize', ['$event'])
    private onResize(event){
-     this.screenSizeService.onResize(event.target.innerWidth);
+     this.screenSizeService.onResize(event.target.innerWidth, event.target.innerHeight);
    }
+
 }
