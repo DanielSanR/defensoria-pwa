@@ -37,19 +37,19 @@ export class TelefonoPage {
     {
       iconSrc: '../../assets/icon/numeros-utiles/defensoria.svg',
       title: 'Defensoría de los Derechos',
-      phoneNumber: '3764345421',
-      displayNumber: '3764-345421',
-      hours: 'Lunes a viernes de 8:00 a 20:00 hs'
+      phoneNumber: '3764433019',
+      displayNumber: '3764-433019',
+      hours: 'Lunes a viernes de 7:30 a 18:00 hs'
     }
   ];
 
   otherContacts: Contact[] = [
     {
       iconSrc: '../../assets/icon/numeros-utiles/102.svg',
-      title: 'Secretaría Nacional',
-      subtitle: 'Línea 102 y 137',
-      contactInfo: '3764433019',
-      displayInfo: '3764-433019',
+      title: 'Línea Contame',
+      subtitle: 'Línea de asistencia temprana',
+      contactInfo: '3765-490888',
+      displayInfo: '3765-490888',
       responseTime: 'Atención y asistencia las 24 horas',
       features: [
         { icon: 'heart', text: 'Asistencia Psicológica' },
